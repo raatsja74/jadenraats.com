@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact - Jaden Raats"
+  description="Get in touch with me about opportunities, collaborations, or just to say hello."
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>Get In Touch</h1>
+      <p class="subtitle">I'm always open to discussing new opportunities, projects, or collaborations.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Let's Connect</h2>
+          <p>
+            Whether you're looking to hire, collaborate on a project, or just want to chat about
+            technology, I'd love to hear from you.
+          </p>
+
+          <!-- TODO(human): Replace these with your actual contact details -->
+          <div class="contact-methods">
+            <a href="mailto:your.email@example.com" class="contact-method">
+              <span class="icon">📧</span>
+              <div>
+                <strong>Email</strong>
+                <p>your.email@example.com</p>
+              </div>
+            </a>
+
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="contact-method">
+              <span class="icon">💻</span>
+              <div>
+                <strong>GitHub</strong>
+                <p>@yourusername</p>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="contact-method">
+              <span class="icon">💼</span>
+              <div>
+                <strong>LinkedIn</strong>
+                <p>/in/yourprofile</p>
+              </div>
+            </a>
+
+            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" class="contact-method">
+              <span class="icon">🐦</span>
+              <div>
+                <strong>Twitter</strong>
+                <p>@yourhandle</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="quick-info">
+          <div class="info-card">
+            <h3>🎯 What I'm Looking For</h3>
+            <ul>
+              <li>Entry-level or junior developer positions</li>
+              <li>Opportunities to learn from experienced teams</li>
+              <li>Projects where I can make a tangible impact</li>
+              <li>Remote or flexible work arrangements</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>⚡ Response Time</h3>
+            <p>
+              I typically respond to messages within 24-48 hours. If you haven't heard back from me,
+              feel free to send a follow-up!
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>📍 Location</h3>
+            <p>
+              <!-- TODO(human): Add your location or "Remote" -->
+              Open to remote opportunities worldwide
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    .page-header {
+      padding: var(--spacing-lg) 0 var(--spacing-md);
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-section {
+      padding: var(--spacing-md) 0 var(--spacing-xl);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .contact-info > p {
+      color: var(--color-text-light);
+      line-height: 1.7;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-sm);
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 0.5rem;
+      transition: all 0.2s;
+      color: var(--color-text);
+    }
+
+    .contact-method:hover {
+      transform: translateX(4px);
+      border-color: var(--color-primary);
+    }
+
+    .contact-method .icon {
+      font-size: 1.5rem;
+    }
+
+    .contact-method strong {
+      display: block;
+      color: var(--color-text);
+      margin-bottom: 0.125rem;
+    }
+
+    .contact-method p {
+      color: var(--color-text-light);
+      font-size: 0.875rem;
+      margin: 0;
+    }
+
+    .quick-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .info-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 0.5rem;
+      padding: var(--spacing-md);
+    }
+
+    .info-card h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-card li {
+      padding: 0.25rem 0;
+      color: var(--color-text-light);
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .info-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .info-card p {
+      color: var(--color-text-light);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    @media (max-width: 968px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+      }
+
+      .page-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</BaseLayout>

@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Jaden Raats - Developer & Problem Solver">
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">
+        Hi, I'm <span class="highlight">Jaden Raats</span>
+      </h1>
+      <p class="hero-subtitle">
+        I build things for the web. Self-taught developer focused on creating practical solutions and learning through building.
+      </p>
+      <div class="hero-cta">
+        <a href="/projects" class="btn btn-primary">View My Work</a>
+        <a href="/contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">What I Do</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>💻 Web Development</h3>
+          <p>Building responsive, user-friendly websites and applications using modern technologies.</p>
+        </div>
+        <div class="skill-card">
+          <h3>🛠️ Problem Solving</h3>
+          <p>Breaking down complex challenges into manageable solutions through code.</p>
+        </div>
+        <div class="skill-card">
+          <h3>📚 Continuous Learning</h3>
+          <p>Constantly exploring new technologies and best practices to improve my craft.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TODO(human): Add featured projects section -->
+
+  <section class="section cta-section">
+    <div class="container">
+      <h2>Let's Work Together</h2>
+      <p class="cta-text">I'm currently exploring opportunities where I can contribute and grow. If you're looking for someone passionate about building quality software, let's connect.</p>
+      <a href="/contact" class="btn btn-primary">Contact Me</a>
+    </div>
+  </section>
+
+  <style>
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    .hero {
+      padding: var(--spacing-xl) 0;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .highlight {
+      color: var(--color-primary);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto var(--spacing-md);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--spacing-sm);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .section {
+      padding: var(--spacing-lg) 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-md);
+    }
+
+    .skill-card {
+      background: var(--color-card-bg);
+      padding: var(--spacing-md);
+      border-radius: 0.5rem;
+      border: 1px solid var(--color-border);
+    }
+
+    .skill-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .skill-card p {
+      color: var(--color-text-light);
+    }
+
+    .cta-section {
+      background: var(--color-card-bg);
+      text-align: center;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cta-text {
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto var(--spacing-md);
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: var(--spacing-lg) 0;
+      }
+
+      .section {
+        padding: var(--spacing-md) 0;
+      }
+    }
+  </style>
+</BaseLayout>

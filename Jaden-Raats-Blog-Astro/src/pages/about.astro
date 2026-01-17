@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About - Jaden Raats"
+  description="Learn about my journey into development and what drives me to build."
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>About Me</h1>
+    </div>
+  </section>
+
+  <section class="about-content">
+    <div class="container">
+      <div class="content-grid">
+        <div class="main-content">
+          <!-- TODO(human): Customize this section with your personal story -->
+          <h2>My Story</h2>
+          <p>
+            I'm a self-taught developer who believes in learning by building. While I don't have a traditional
+            computer science degree, I've developed my skills through hands-on projects, online resources, and
+            a commitment to continuous learning.
+          </p>
+
+          <p>
+            What started as curiosity about how websites work has grown into a passion for creating solutions
+            that solve real problems. I approach each project as an opportunity to learn something new and
+            improve my craft.
+          </p>
+
+          <h2>What Drives Me</h2>
+          <p>
+            I'm motivated by the challenge of turning complex problems into simple, elegant solutions. I believe
+            the best way to learn is by building, failing, iterating, and improving. Every project teaches me
+            something new about both technology and problem-solving.
+          </p>
+
+          <p>
+            I'm currently exploring opportunities where I can contribute to meaningful projects while continuing
+            to grow as a developer. I'm particularly interested in roles where I can learn from experienced teams
+            and make a tangible impact.
+          </p>
+        </div>
+
+        <div class="sidebar">
+          <div class="skills-section">
+            <h3>Technical Skills</h3>
+            <!-- TODO(human): Update with your actual tech stack -->
+            <div class="skills-list">
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">HTML & CSS</span>
+              <span class="skill-badge">React</span>
+              <span class="skill-badge">Node.js</span>
+              <span class="skill-badge">Git & GitHub</span>
+              <span class="skill-badge">Astro</span>
+              <span class="skill-badge">Responsive Design</span>
+            </div>
+          </div>
+
+          <div class="learning-section">
+            <h3>Currently Learning</h3>
+            <!-- TODO(human): Add technologies you're currently studying -->
+            <ul class="learning-list">
+              <li>TypeScript</li>
+              <li>API Development</li>
+              <li>Database Design</li>
+            </ul>
+          </div>
+
+          <div class="approach-section">
+            <h3>My Approach</h3>
+            <ul class="approach-list">
+              <li>🎯 Focus on solving real problems</li>
+              <li>📖 Learn through building</li>
+              <li>🔍 Attention to detail</li>
+              <li>💬 Clear communication</li>
+              <li>🔄 Continuous improvement</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    .page-header {
+      padding: var(--spacing-lg) 0 var(--spacing-md);
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+
+    .about-content {
+      padding: var(--spacing-md) 0 var(--spacing-xl);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .main-content h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .main-content h2:first-child {
+      margin-top: 0;
+    }
+
+    .main-content p {
+      color: var(--color-text-light);
+      line-height: 1.8;
+      margin-bottom: var(--spacing-sm);
+      font-size: 1.05rem;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .skills-section,
+    .learning-section,
+    .approach-section {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 0.5rem;
+      padding: var(--spacing-md);
+    }
+
+    .sidebar h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-badge {
+      background: white;
+      border: 1px solid var(--color-border);
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    .learning-list,
+    .approach-list {
+      list-style: none;
+    }
+
+    .learning-list li,
+    .approach-list li {
+      padding: 0.25rem 0;
+      color: var(--color-text-light);
+    }
+
+    .learning-list li::before {
+      content: "→ ";
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    @media (max-width: 968px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+      }
+
+      .page-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</BaseLayout>

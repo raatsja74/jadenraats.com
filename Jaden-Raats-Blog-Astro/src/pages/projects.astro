@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// TODO(human): Replace these placeholder projects with your actual work
+const projects = [
+  {
+    title: "Project 1",
+    description: "Brief description of what this project does and the problem it solves. Focus on impact and results.",
+    tech: ["Technology 1", "Technology 2", "Technology 3"],
+    github: "#",
+    demo: "#",
+    highlights: [
+      "Key achievement or metric",
+      "Technical challenge solved",
+      "User impact or business value"
+    ]
+  },
+  {
+    title: "Project 2",
+    description: "Brief description of what this project does and the problem it solves. Focus on impact and results.",
+    tech: ["Technology 1", "Technology 2", "Technology 3"],
+    github: "#",
+    demo: "#",
+    highlights: [
+      "Key achievement or metric",
+      "Technical challenge solved",
+      "User impact or business value"
+    ]
+  },
+  {
+    title: "Project 3",
+    description: "Brief description of what this project does and the problem it solves. Focus on impact and results.",
+    tech: ["Technology 1", "Technology 2", "Technology 3"],
+    github: "#",
+    highlights: [
+      "Key achievement or metric",
+      "Technical challenge solved",
+      "User impact or business value"
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Projects - Jaden Raats"
+  description="A collection of projects showcasing my development skills and problem-solving abilities."
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>My Projects</h1>
+      <p class="subtitle">A selection of work that demonstrates my skills and approach to building software.</p>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <div class="container">
+      {projects.map((project) => (
+        <article class="project-card">
+          <div class="project-header">
+            <h2 class="project-title">{project.title}</h2>
+            <div class="project-links">
+              {project.github && (
+                <a href={project.github} class="project-link" target="_blank" rel="noopener">
+                  GitHub →
+                </a>
+              )}
+              {project.demo && (
+                <a href={project.demo} class="project-link" target="_blank" rel="noopener">
+                  Live Demo →
+                </a>
+              )}
+            </div>
+          </div>
+
+          <p class="project-description">{project.description}</p>
+
+          {project.highlights && (
+            <ul class="highlights">
+              {project.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          )}
+
+          <div class="tech-stack">
+            {project.tech.map((tech) => (
+              <span class="tech-tag">{tech}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Want to see more?</h2>
+      <p>Check out my GitHub for additional projects and contributions.</p>
+      <a href="#" class="btn btn-primary">View GitHub Profile</a>
+    </div>
+  </section>
+
+  <style>
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    .page-header {
+      padding: var(--spacing-lg) 0 var(--spacing-md);
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .projects-section {
+      padding: var(--spacing-md) 0 var(--spacing-lg);
+    }
+
+    .project-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 0.75rem;
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-sm);
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .project-links {
+      display: flex;
+      gap: var(--spacing-sm);
+    }
+
+    .project-link {
+      font-weight: 600;
+      font-size: 0.875rem;
+      white-space: nowrap;
+    }
+
+    .project-description {
+      color: var(--color-text);
+      margin-bottom: var(--spacing-sm);
+      line-height: 1.7;
+    }
+
+    .highlights {
+      list-style: none;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .highlights li {
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--color-text-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .highlights li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: var(--spacing-sm);
+    }
+
+    .tech-tag {
+      background: white;
+      border: 1px solid var(--color-border);
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      color: var(--color-text-light);
+      font-weight: 500;
+    }
+
+    .cta-section {
+      background: var(--color-card-bg);
+      text-align: center;
+      padding: var(--spacing-lg) 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .cta-section p {
+      color: var(--color-text-light);
+      margin-bottom: var(--spacing-md);
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .page-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</BaseLayout>

@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// TODO(human): Once you add content collections, import and display your actual blog posts
+// For now, this is a placeholder that shows what your blog will look like
+
+const placeholderPosts = [
+  {
+    title: "Getting Started with Web Development",
+    description: "My journey into learning web development and the resources that helped me most.",
+    date: "2024-01-15",
+    slug: "getting-started-web-dev"
+  },
+  {
+    title: "Building My First Project",
+    description: "Lessons learned from building my first real web application from scratch.",
+    date: "2024-01-20",
+    slug: "first-project"
+  }
+];
+---
+
+<BaseLayout
+  title="Blog - Jaden Raats"
+  description="Thoughts on web development, learning to code, and building things."
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>Blog</h1>
+      <p class="subtitle">
+        Sharing what I'm learning, building, and discovering along the way.
+      </p>
+    </div>
+  </section>
+
+  <section class="blog-section">
+    <div class="container">
+      {placeholderPosts.length > 0 ? (
+        <div class="posts-grid">
+          {placeholderPosts.map((post) => (
+            <article class="post-card">
+              <time class="post-date">{post.date}</time>
+              <h2 class="post-title">
+                <a href={`/blog/${post.slug}`}>{post.title}</a>
+              </h2>
+              <p class="post-description">{post.description}</p>
+              <a href={`/blog/${post.slug}`} class="read-more">
+                Read more →
+              </a>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <p>📝 Blog posts coming soon! Check back later for content.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <style>
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    .page-header {
+      padding: var(--spacing-lg) 0 var(--spacing-md);
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .blog-section {
+      padding: var(--spacing-md) 0 var(--spacing-xl);
+    }
+
+    .posts-grid {
+      display: grid;
+      gap: var(--spacing-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .post-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 0.5rem;
+      padding: var(--spacing-md);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .post-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .post-date {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--color-text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .post-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-title a {
+      color: var(--color-text);
+    }
+
+    .post-title a:hover {
+      color: var(--color-primary);
+    }
+
+    .post-description {
+      color: var(--color-text-light);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .read-more {
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: var(--spacing-xl) 0;
+    }
+
+    .empty-state p {
+      font-size: 1.125rem;
+      color: var(--color-text-light);
+    }
+
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</BaseLayout>

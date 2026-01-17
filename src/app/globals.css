@@ -1,26 +1,157 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-fade-in: fadeIn 0.5s ease-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+
+  --font-inter: var(--font-inter);
+  --font-outfit: var(--font-outfit);
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+:root {
+  /* Modern Minimalist - Neutral/Slate Theme */
+  --font-size: 16px;
+
+  /* Backgrounds: Clean White/Off-White base */
+  --background: #ffffff;
+  --foreground: #171717;
+  /* Neutral 900 */
+
+  /* Cards: Subtle float */
+  --card: #ffffff;
+  --card-foreground: #171717;
+
+  /* Primary: Distinct but professional (Black/Dark Grey) */
+  --primary: #171717;
+  --primary-foreground: #ffffff;
+
+  /* Secondary: Soft Slate */
+  --secondary: #f1f5f9;
+  /* Slate 100 */
+  --secondary-foreground: #0f172a;
+  /* Slate 900 */
+
+  /* Muted: For subtext */
+  --muted: #f8fafc;
+  /* Slate 50 */
+  --muted-foreground: #64748b;
+  /* Slate 500 */
+
+  /* Accent: Subtle highlights (matches brand Slate 400) */
+  --accent: #94a3b8;
+  --accent-foreground: #ffffff;
+
+  /* Borders: Very subtle */
+  --border: #e2e8f0;
+  /* Slate 200 */
+  --ring: #cbd5e1;
+  /* Slate 300 */
+
+  --radius: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Dark Mode: Deep Slate/Charcoal */
     --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Neutral 950 */
+    --foreground: #fafafa;
+    /* Neutral 50 */
+
+    --card: #171717;
+    /* Neutral 900 */
+    --card-foreground: #fafafa;
+
+    --primary: #fafafa;
+    --primary-foreground: #171717;
+
+    --secondary: #262626;
+    /* Neutral 800 */
+    --secondary-foreground: #fafafa;
+
+    --muted: #171717;
+    --muted-foreground: #a3a3a3;
+    /* Neutral 400 */
+
+    --accent: #404040;
+    /* Neutral 700 */
+    --accent-foreground: #fafafa;
+
+    --border: #262626;
+    --ring: #404040;
   }
 }
 
+* {
+  border-color: var(--border);
+}
+
+html {
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass {
+  background: rgba(10, 10, 10, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
