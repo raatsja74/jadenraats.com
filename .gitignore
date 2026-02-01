@@ -1,0 +1,70 @@
+# Standard Mac Folders
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Public/
+Applications/
+Archive/
+Automator/
+Chrome Applications/
+Numbers/
+
+# System / Cache / Hidden Folders
+.DS_Store
+.next/
+node_modules/
+.npm/
+.npm-cache/
+.cache/
+.gemini/
+.antigravity/
+.vscode/
+.cursor/
+.windsurf/
+.codex/
+.claude/
+.claude-code/
+.copilot/
+.docker/
+.gnupg/
+.today-cli-config.json
+.zsh_history
+.zsh_sessions
+.n8n/
+.ollama/
+.config/
+.local/
+.mcp-auth/
+.viminfo
+.zcompdump
+
+# Backups and copies
+* copy/
+* copy.*
+* backup
+* .backup
+Apple-Notes-Archive*
+Backup Zips/
+LeadBolt.zip
+Estimator-en-total.zip
+
+# Other Projects/Experiments
+Code Projects/
+ASC Stuff/
+dashboard-app/
+lead-automation-demo/
+world-map-concept copy/
+shortcuts/
+tmp/
+tmp-gnupg/
+tmp_move_test/
+venv/
+bin/
+Scripts/
+daily-screenshot-review/
+design-system/
+design-system 2/

@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* LUXE LIGHT THEME (Default) */
+  --bg-primary: 252 252 250;
+  --bg-surface: 255 255 255;
+  --bg-surface-muted: 245 245 243;
+  --bg-surface-glass: rgba(255, 255, 255, 0.7);
+
+  --primary: 255 95 31;
+  /* Neon Orange - constant across themes for brand consistency */
+  --primary-glow: rgba(255, 95, 31, 0.15);
+  --secondary: 0 119 182;
+  /* Deepened Cyan for light mode legibility */
+  --secondary-glow: rgba(0, 119, 182, 0.15);
+
+  --text-main: 23 23 23;
+  --text-muted: 82 82 82;
+  --text-dim: 115 115 115;
+
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --border-active: rgba(0, 0, 0, 0.1);
+
+  /* FONTS */
+  --font-primary: 'Inter', sans-serif;
+  --font-accent: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* TYPOGRAPHY SCALE - LUXE PROPORTIONS */
+  --h1: 4.5rem;
+  --h2: 3.25rem;
+  --h3: 2.25rem;
+  --h4: 1.75rem;
+
+  /* SPACING SYSTEM */
+  --section-py: 10rem;
+  --container-px: 2rem;
+  --content-gap: 5rem;
+}
+
+.dark {
+  /* CYBER-NIGHT THEME */
+  --bg-primary: 5 5 5;
+  --bg-surface: 15 15 15;
+  --bg-surface-glass: rgba(15, 15, 15, 0.7);
+
+  --primary: 255 95 31;
+  --primary-glow: rgba(255, 95, 31, 0.3);
+  --secondary: 0 210 255;
+  --secondary-glow: rgba(0, 210, 255, 0.3);
+
+  --text-main: 255 255 255;
+  --text-muted: 163 163 163;
+  --text-dim: 115 115 115;
+
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-active: rgba(255, 255, 255, 0.2);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-main antialiased font-sans;
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(255, 95, 31, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 0% 100%, rgba(0, 210, 255, 0.03) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  h1 {
+    font-size: var(--h1);
+    @apply leading-[1.1] mb-6;
+  }
+
+  h2 {
+    font-size: var(--h2);
+    @apply leading-tight mb-4;
+  }
+
+  h3 {
+    font-size: var(--h3);
+    @apply leading-snug mb-3;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface-glass backdrop-blur-xl border border-white/10;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl p-6 transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-white/20 bg-white/[0.08];
+    transform: translateY(-4px);
+  }
+
+  .btn-cyber {
+    @apply relative overflow-hidden inline-flex items-center justify-center font-display font-bold py-3 px-8 rounded-full transition-all duration-300 active:scale-95;
+  }
+
+  .btn-cyber-primary {
+    @apply btn-cyber bg-primary text-black shadow-glow-orange hover:brightness-110;
+  }
+
+  .btn-cyber-secondary {
+    @apply btn-cyber bg-transparent text-main border border-border-subtle hover:border-border-active hover:bg-white/5;
+  }
+
+  .neon-border-orange {
+    @apply border-primary/30 hover:border-primary shadow-glow-orange;
+  }
+
+  .neon-border-cyan {
+    @apply border-secondary/30 hover:border-secondary shadow-glow-cyan;
+  }
+
+  .input-cyber {
+    @apply w-full bg-surface-muted border border-border-subtle rounded-xl px-5 py-4 text-main placeholder-dim transition-all focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 dark:focus:ring-primary/50;
+  }
+}
+
+@layer utilities {
+  .text-glow-orange {
+    text-shadow: 0 0 10px rgba(255, 95, 31, 0.5);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+  }
+
+  .grain {
+    position: relative;
+  }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    opacity: 0.02;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3");
+  }
+}
