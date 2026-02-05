@@ -9,14 +9,9 @@ import {
   Calculator,
   Home,
   Package,
-  Clock,
-  FileText,
   ArrowRight,
-  Sparkles,
   ChevronRight,
   Shield,
-  Cpu,
-  Globe,
 } from "lucide-react";
 
 const tools = [
@@ -86,7 +81,7 @@ const itemVariants = {
   },
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="grain min-h-screen">
       <Header />
