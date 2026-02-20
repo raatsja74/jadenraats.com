@@ -6,12 +6,45 @@ A free utility website for anyone interested in AI. Not a portfolio. Not a sales
 
 **Positioning**: "I build things with AI that actually work. Here's how."
 
-## Core Values
+## Current State
+- **Status:** Production ready, deployed to Vercel
+- **Stack:** Next.js 16, React 19, Tailwind CSS 4, Framer Motion
+- **Live tools:** Website Health Checker, ROI Calculator
+- **Coming soon:** FloorQuote Estimator, AI Tool Finder, Prompt Tester, Quick Prototyper
 
-- **Utility first**: Every page provides immediate value
-- **No friction**: No signup, no ads, no upsells
-- **Honesty**: Direct, practical tone. Builder to builder
-- **Open**: Show your work, share real examples
+## Implementation Plan (Feb 2026)
+
+### Recommended Workflow
+Based on deep research (see `★ Main Vault/00 Inbox/jadenraats.com web build improvements 5.2 pro.md`):
+
+- **Claude Opus 4.6** → design/strategy, style extraction, long-context synthesis, voice/copy
+- **GPT-5.3-Codex** → implementation, refactors, component generation (agentic coding)
+- **OpenAI embeddings** → RAG/personalization retrieval (text-embedding-3-large)
+- **GPT Image** → hero images, backgrounds, brand visuals
+
+### Key Architecture Decisions
+- **Minimal runtime LLM calls** — build-time generation preferred
+- **Persona-based personalization** without runtime AI:
+  - Routes: `/for/recruiters`, `/for/peers`, `/for/clients`
+  - localStorage preference (opt-in)
+  - Copy/project ordering variants per persona
+- **Embeddings for search** — "find relevant projects" without LLM generation
+
+### 5-Phase Workflow
+1. **Phase 0: Prep** (2-4h) — style references, brand tokens, content inventory
+2. **Phase 1: Prototype** (6-12h) — design tokens, typography scale, page wireframes, copy variants
+3. **Phase 2: Integration** (8-16h) — implement tokens + components via Codex
+4. **Phase 3: Personalization** (4-8h) — persona routes, toggle UI, local preference
+5. **Phase 4: QA** (6-12h) — a11y (axe), SEO, Lighthouse ≥90, Playwright tests
+6. **Phase 5: Launch** (2-4h) — analytics, monitoring, rollback plan
+
+### Deliverables (from plan)
+- [ ] `brand.tokens.json` (palette, type scale, spacing, radii, shadows)
+- [ ] `voice.md` (tone rules, do/don't)
+- [ ] `copy.variants.json` (Recruiter/Peer/Client)
+- [ ] Component library (Nav, Button, Card, ProjectCard, Footer)
+- [ ] CI gates: lint + typecheck + Playwright + axe + Lighthouse
+- [ ] Persona routes + toggle
 
 ## Site Structure
 
@@ -19,236 +52,53 @@ A free utility website for anyone interested in AI. Not a portfolio. Not a sales
 Homepage (/)
 ├── Hero: "I build things with AI that actually work"
 ├── Tool Grid (6 items)
-│   ├── Live Tools
-│   │   ├── Website Health Checker (/tools/website-health)
-│   │   └── ROI Calculator (/tools/roi-calculator)
-│   └── Coming Soon (placeholders)
-│       ├── FloorQuote Estimator
-│       ├── AI Tool Finder
-│       ├── Prompt Tester
-│       └── Quick Prototyper
+│   ├── Live: Website Health Checker, ROI Calculator
+│   └── Coming: FloorQuote Estimator, AI Tool Finder, Prompt Tester, Quick Prototyper
 └── CTA: "See What I'm Building"
 
 Projects/Blog (/projects or /writing)
-├── Things I've made with AI
-├── Experiments & learnings
-├── Real examples with code
-└── CTA: "Try the Tools"
+└── Things I've made, experiments, real examples
 ```
+
+## Core Values
+
+- **Utility first**: Every page provides immediate value
+- **No friction**: No signup, no ads, no upsells
+- **Honesty**: Direct, practical tone. Builder to builder
+- **Open**: Show your work, share real examples
 
 ## Key Copy
 
-### Homepage Hero
+**Hero:** "I build things with AI that actually work"
 
-> "I build things with AI that actually work"
-
-> "These are tools and experiments I've built while exploring what's possible with AI. No signup required. No hidden features. Just useful stuff and real examples."
-
-### Tone
-
-- Direct, practical, no-nonsense
-- Avoid: Startup hype, consultant-speak, academic theory, AI buzzwords
-- Use: Short sentences, clear value, real examples, honest about limitations
-- Speaking as: Builder to builder, experimenter to curious person
+**Tone:** Direct, practical, no-nonsense. Avoid startup hype, consultant-speak, AI buzzwords. Short sentences, clear value, honest about limitations.
 
 ## Technical Details
 
-### Stack
-
-- **Next.js 16** (App Router)
-- **React 19**
-- **Tailwind CSS v4**
-- **Framer Motion** (animations)
-- **Lucide React** (icons)
-- **TypeScript** (type safety)
-
-### Deployment
-
-- **Platform**: Vercel
-- **Domain**: jadenraats.com
-- **CI/CD**: GitHub → Vercel auto-deploy
-- **Analytics**: Vercel Web Analytics (optional)
-
 ### Design System
+- **Colors:** Primary Orange (#F97316), Secondary Sky (#0EA5E9), Neutral grays
+- **Typography:** Poppins (display), Inter (body), System mono
+- **Spacing:** 8pt grid (8/16/24/32/48/64)
 
-**Colors**:
-- Primary: Orange (#F97316)
-- Secondary: Sky Blue (#0EA5E9)
-- Neutral: Dark to light gray
-- Status: Green, Yellow, Red, Blue
-
-**Typography**:
-- Display: Poppins (bold, friendly)
-- Body: Inter (neutral, legible)
-- Mono: System (code)
-
-**Spacing**: 8pt grid (8px, 16px, 24px, 32px, etc.)
-
-**Components**:
-- `.card` - Content container
-- `.btn`, `.btn-primary`, `.btn-secondary` - Buttons
-- `.badge` - Status indicators
-- `.input` - Form inputs
-
-## What NOT to Add
-
+### What NOT to Add
 ❌ Email capture / lead magnet
-❌ Signup / authentication
+❌ Signup / authentication  
 ❌ Payment / premium tier
-❌ Consulting CTA / sales funnel
 ❌ Blog / content marketing
-❌ Portfolio / case studies
-❌ Obsidian vault integration
-❌ Complex animations (keep it fast)
+❌ Complex animations
 
-## File Organization
+## Active Files
+- `src/app/` — App router pages
+- `src/components/` — UI components
+- `BUILD_SUMMARY.md` — build details
+- `DEPLOYMENT.md` — deploy config
+- `PROJECT_MAP.md` — file overview
 
-The project is now located in `~/Code Projects/jadenraats-com/` to optimize performance by isolating it from the user home directory.
-
-```bash
-/Users/jadenraats/Code Projects/jadenraats-com/
-├── src/                # Next.js pages & layouts
-│   ├── app/            # App router components
-│   └── components/     # UI components
-├── .gitignore          # Performance: excludes non-project folders
-├── .antigravityignore  # Performance: excludes non-project folders
-├── CONTEXT.md          # This file
-└── ...                 # Other config files
-```
-
-## Adding New Features
-
-### Adding a New Tool
-
-1. **Create component** in `src/components/tools/NewTool.tsx`
-2. **Create page** in `src/app/tools/new-tool/page.tsx`
-3. **Update homepage** in `src/app/page.tsx` - add to tools array
-4. **Deploy**: `git push` (Vercel auto-deploys)
-
-### Updating Copy
-
-1. Edit relevant `.tsx` file
-2. Keep tone consistent (direct, practical)
-3. Test on mobile
-4. Deploy
-
-### Styling Changes
-
-1. Update `tailwind.config.ts` for theme changes
-2. Update `src/app/globals.css` for global styles
-3. Use Tailwind classes in components
-4. Avoid inline CSS
-
-## Performance Notes
-
-- ✅ Already optimized for speed
-- ✅ Lazy loading on images
-- ✅ CSS purged by Tailwind
-- ✅ JavaScript code-split by Next.js
-- ✅ Dark mode efficient (native CSS)
-- ✅ Project isolated from home directory
-- ✅ Custom ignore files for IDE performance
-
-**Lighthouse target**: 90+ on all metrics
-
-## SEO
-
-- ✅ Metadata in layout.tsx
-- ✅ Open Graph tags for social sharing
-- ✅ Semantic HTML
-- ✅ Mobile-responsive
-
-**To improve**:
-- Add JSON-LD structured data
-- Create sitemap.xml
-- Add robots.txt
-- Monitor Core Web Vitals
-
-## Analytics & Monitoring
-
-- Enable Vercel Web Analytics
-- Track tool usage
-- Monitor page performance
-- Watch for errors in console
-
-**Metrics to track**:
-- Tool usage (which tools are most popular)
-- Time on site
-- Conversion (guide clicks)
-- Errors or issues
-
-## Common Tasks
-
-### Deploy Changes
-
-```bash
-git add .
-git commit -m "Update: [description]"
-git push origin main
-# Vercel auto-deploys
-```
-
-### Test Locally
-
-```bash
-npm run dev
-# Open http://localhost:3000
-```
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
-
-### Lint & Check
-
-```bash
-npm run lint
-# Fix: eslint . --fix
-```
-
-## Future Roadmap
-
-**Phase 1 (Done)**
-- ✅ Homepage & tool grid
-- ✅ Website Health Checker
-- ✅ ROI Calculator
-- ✅ Guide page
-- ✅ Placeholder tools
-
-**Phase 2 (Next)**
-- [ ] Connect real APIs for checkers
-- [ ] Implement remaining tools
-- [ ] Add analytics
-- [ ] Add testimonials/social proof
-
-**Phase 3 (Later)**
-- [ ] Email notifications for tool results
-- [ ] Tool result history (local storage)
-- [ ] Advanced filtering/options
-- [ ] More tools based on user feedback
-
-## Resources
-
-- **Next.js Docs**: https://nextjs.org/docs
-- **Tailwind Docs**: https://tailwindcss.com/docs
-- **Framer Motion**: https://www.framer.com/motion
-- **Lucide Icons**: https://lucide.dev
-- **Vercel Docs**: https://vercel.com/docs
-
-## Questions to Remember
-
-- **Why this over portfolio?** → Utility > authority signaling
-- **Why free?** → Build trust through usefulness, not marketing
-- **Why no signup?** → Remove friction, maximize usage
-- **Why dark mode?** → Modern default, easier on eyes
-- **Why AI focus?** → It's what I'm building with, show real examples not just theory
-- **Who's this for?** → Anyone curious about AI applications, builders, experimenters
+## LLM Notes
+- OpenClaw: high-level planning, project oversight
+- Claude Code: has context, use for implementation sessions
+- Codex: recommended for component generation per implementation plan
+- Reference doc: `jadenraats.com web build improvements 5.2 pro.md` in Main Vault inbox
 
 ---
-
-**Built by**: Jaden Raats
-**Last Updated**: 2026-01-17
-**Status**: Production Ready (Optimized)
+*Last updated: 2026-02-07*
