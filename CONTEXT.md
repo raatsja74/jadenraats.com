@@ -1,5 +1,10 @@
 # JadenRaats.com - Project Context
 
+> **Start here:** Read `WHO.md` first for personal/professional context about Jaden.
+> This file covers the technical project state.
+
+---
+
 ## Vision
 
 A free utility website for anyone interested in AI. Not a portfolio. Not a sales funnel. Just useful tools and practical guides.
@@ -101,4 +106,4 @@ Projects/Blog (/projects or /writing)
 - Reference doc: `jadenraats.com web build improvements 5.2 pro.md` in Main Vault inbox
 
 ---
-*Last updated: 2026-02-07*
+*Last updated: 2026-02-21*
