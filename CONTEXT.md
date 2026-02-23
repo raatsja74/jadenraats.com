@@ -7,9 +7,13 @@
 
 ## Vision
 
-A free utility website for anyone interested in AI. Not a portfolio. Not a sales funnel. Just useful tools and practical guides.
+**Brand:** "Watch This Work"
 
-**Positioning**: "I build things with AI that actually work. Here's how."
+A personal site that shows cool shit working. Not a portfolio. Not a funnel. Not too techy. Just a real person showing demos of interesting things.
+
+**Positioning:** "I build things and show how they work."
+
+**Vibe:** Personal YouTube channel, not LinkedIn thought leader. Montana-approved (if it's too techy/cringe, it's wrong).
 
 ## Current State
 - **Status:** Production ready, deployed to Vercel
@@ -51,32 +55,34 @@ Based on deep research (see `★ Main Vault/00 Inbox/jadenraats.com web build im
 - [ ] CI gates: lint + typecheck + Playwright + axe + Lighthouse
 - [ ] Persona routes + toggle
 
-## Site Structure
+## Site Structure (Target)
 
 ```
 Homepage (/)
-├── Hero: "I build things with AI that actually work"
-├── Tool Grid (6 items)
-│   ├── Live: Website Health Checker, ROI Calculator
-│   └── Coming: FloorQuote Estimator, AI Tool Finder, Prompt Tester, Quick Prototyper
-└── CTA: "See What I'm Building"
-
-Projects/Blog (/projects or /writing)
-└── Things I've made, experiments, real examples
+├── Hero: Real photo (trailer/outdoors, casual) + "I build things and show how they work."
+├── Demo Grid (Looms/videos)
+│   ├── "AI answers my business calls" (5 min)
+│   ├── "How I automated lead follow-up" (3 min)
+│   ├── "Built this estimator in a weekend" (4 min)
+│   └── More demos as built
+└── That's it. No about page, no blog, no services.
 ```
+
+**Current state:** Has tools (Health Checker, ROI Calculator) — may keep or replace with demo-first approach.
 
 ## Core Values
 
-- **Utility first**: Every page provides immediate value
-- **No friction**: No signup, no ads, no upsells
-- **Honesty**: Direct, practical tone. Builder to builder
-- **Open**: Show your work, share real examples
+- **Show don't tell**: Demos > descriptions. Looms > blog posts.
+- **Dual audience**: Must impress both contractors AND tech people
+- **No friction**: No signup, no popups, no newsletter
+- **Montana test**: If it's too techy/cringe, tone it down
+- **Real person energy**: Casual, authentic, not corporate
 
 ## Key Copy
 
-**Hero:** "I build things with AI that actually work"
+**Hero:** "I build things and show how they work."
 
-**Tone:** Direct, practical, no-nonsense. Avoid startup hype, consultant-speak, AI buzzwords. Short sentences, clear value, honest about limitations.
+**Tone:** Direct, casual, no-nonsense. Personal YouTube channel vibe. Zero startup buzzwords or AI hype.
 
 ## Technical Details
 
@@ -89,21 +95,38 @@ Projects/Blog (/projects or /writing)
 ❌ Email capture / lead magnet
 ❌ Signup / authentication  
 ❌ Payment / premium tier
-❌ Blog / content marketing
+❌ Blog / content calendar
 ❌ Complex animations
+❌ Corporate headshots / "about me" essays
+❌ Anything that fails the Montana test
 
 ## Active Files
-- `src/app/` — App router pages
-- `src/components/` — UI components
+- `src/app/` — App router pages (needs rebuild)
+- `src/components/` — UI components (needs simplification)
+- `WHO.md` — **READ FIRST** — personal/brand context
+- `DEMO-PLAN.md` — Content pipeline for demos
+- `REBUILD-SPEC.md` — Implementation guide for redesign
 - `BUILD_SUMMARY.md` — build details
 - `DEPLOYMENT.md` — deploy config
-- `PROJECT_MAP.md` — file overview
+
+## Next Actions
+
+### Immediate (Brand Pivot)
+- [ ] Get hero photo (trailer, outdoors, casual)
+- [ ] Record first demo: "AI answers my business calls" (5 min Loom)
+- [ ] Record second demo: pick from DEMO-PLAN.md
+- [ ] Rebuild homepage per REBUILD-SPEC.md
+
+### After Content Ready
+- [ ] Strip current page.tsx (remove cyber/glass aesthetic)
+- [ ] Implement simple Hero + DemoGrid layout
+- [ ] Test on mobile
+- [ ] Ship it
 
 ## LLM Notes
-- OpenClaw: high-level planning, project oversight
-- Claude Code: has context, use for implementation sessions
-- Codex: recommended for component generation per implementation plan
-- Reference doc: `jadenraats.com web build improvements 5.2 pro.md` in Main Vault inbox
+- OpenClaw: high-level planning, brand direction
+- Gemini/Claude: implementation per REBUILD-SPEC.md
+- **Key docs:** WHO.md (brand), DEMO-PLAN.md (content), REBUILD-SPEC.md (implementation)
 
 ---
-*Last updated: 2026-02-21*
+*Last updated: 2026-02-21 — "Watch This Work" pivot*
