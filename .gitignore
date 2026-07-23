@@ -69,3 +69,4 @@ daily-screenshot-review/
 design-system/
 design-system 2/
 .vercel
+.env*.local

@@ -1,26 +1,47 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "./providers";
 
-const inter = Inter({
-  variable: "--font-inter",
+const sans = Instrument_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const serif = Instrument_Serif({
+  variable: "--font-serif",
   subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const mono = IBM_Plex_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Jaden Raats | Digital Systems & Automation",
-  description: "Building production-ready tools for service business owners.",
+  metadataBase: new URL("https://jadenraats.com"),
+  title: "Jaden Raats — AI for business owners, proven in a real business",
+  description:
+    "I run a floor coating company in Phoenix and use AI to run it better. Tools and plain-English guidance for business owners, tested in real operations first.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Jaden Raats — AI for business owners, proven in a real business",
+    description:
+      "AI tools and plain-English guidance for business owners, tested in a real operating business first.",
+    url: "https://jadenraats.com",
+    siteName: "jadenraats.com",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jaden Raats — AI for business owners, proven in a real business",
+    description:
+      "AI tools and plain-English guidance for business owners, tested in a real operating business first.",
+  },
 };
 
 export default function RootLayout({
@@ -29,14 +50,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
-      <body className="antialiased font-sans">
-        <ThemeProvider>
-          <div className="bg-background text-main">
-            {children}
-          </div>
-        </ThemeProvider>
-      </body>
+    <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+      <body className="grain">{children}</body>
     </html>
   );
 }

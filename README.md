@@ -1,83 +1,35 @@
-# JadenRaats.com
+# jadenraats.com
 
-Personal site and tool lab for building practical AI and automation utilities for service businesses.
+Personal site. One page, clean and warm, animation-forward. Rebuilt from scratch July 2026.
 
-## What is here
+## Design
 
-Pages and tools currently in the app:
+- **Vibe**: soft, cinematic, personal — big lowercase wordmark, pill nav, film grain, slow warm light wash (cobi.works-inspired)
+- **Palette**: warm cream / warm ink / terracotta accent — tokens live in `src/app/globals.css` as RGB triplets (design law: no raw hex in components)
+- **Type**: Instrument Sans (display + body) · Instrument Serif italic (accents) · IBM Plex Mono (labels)
+- **Motion**: framer-motion — masked line reveals, scroll-triggered fades, respects reduced-motion
 
-- **Homepage** (`/`) - overview and tool grid
-- **Guide** (`/guide`) - operations and automation guidance
-- **Lab** (`/lab`) - experimental utilities and prototypes
-- **Website Health Checker** (`/tools/website-health`) - quick site audit
-- **ROI Calculator** (`/tools/roi-calculator`) - break-even and time-savings math
-- **Competitor Analysis Wizard** (`/tools/competitor-analysis`) - positioning and gap analysis
-- **Prompt Genie** (`/tools/prompt-genie`) - prompt utilities
-- **Dynamic Tool** (`/tools/dynamic-tool`) - placeholder route for new tools
+## Stack
 
-## Tech Stack
+- Next.js 16 (App Router) · React 19 · Tailwind CSS 3 · framer-motion
+- Deployed on Vercel
 
-- **Framework**: Next.js 16 (React 19)
-- **Styling**: Tailwind CSS 3
-- **UI**: Framer Motion, Lucide icons
-- **Themes**: next-themes
-- **Deployment**: Vercel
+## Structure
 
-## Requirements
+```
+src/app/
+  layout.tsx          fonts + metadata
+  page.tsx            the whole site (Nav, Hero, Marquee, About, Work, Contact, Footer)
+  globals.css         design tokens + keyframe animations
+  opengraph-image.tsx social preview card
+  sitemap.ts / robots.ts
+```
 
-- Node.js 18+
-- npm or pnpm
-
-## Getting Started
+## Commands
 
 ```bash
-npm install
-npm run dev
+npm run dev     # local dev
+npm run build   # production build
 ```
 
-Open `http://localhost:3000`.
-
-## Scripts
-
-```bash
-npm run dev
-npm run build
-npm run start
-npm run lint
-```
-
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   ├── globals.css
-│   ├── providers.tsx
-│   ├── guide/page.tsx
-│   ├── lab/page.tsx
-│   └── tools/
-│       ├── competitor-analysis/page.tsx
-│       ├── dynamic-tool/page.tsx
-│       ├── prompt-genie/page.tsx
-│       ├── roi-calculator/page.tsx
-│       └── website-health/page.tsx
-├── components/
-│   ├── Header.tsx
-│   └── Footer.tsx
-└── lib/
-```
-
-## Deployment
-
-Vercel is the default target. Connect the repo and deploy, or run:
-
-```bash
-npm install -g vercel
-vercel
-```
-
-## Notes
-
-No environment variables are required by default. If you add external APIs, create a `.env.local` file and wire the values in your components.
+Contact email on the site: **me@jadenraats.com**. A pre-commit hook (`.husky/pre-commit`) enforces the design law — banned patterns, no inline hex, fonts owned by layout/globals.

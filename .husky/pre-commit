@@ -1,0 +1,48 @@
+#!/bin/sh
+# Husky runs this with `sh -e`; a grep that finds nothing exits 1, which would
+# abort the hook on the PASS path. Disable errexit — failures are explicit below.
+set +e
+
+# ── Design Law Pre-commit Hook ────────────────────────────────────────────────
+# Phase 1-2: runs on staged files only. Graduates to full src/ scan after Phase 3.
+# See DESIGN_SYSTEM.md for the full violation list.
+
+STAGED=$(git diff --cached --name-only 2>/dev/null | grep -E '\.(tsx?|css)$')
+
+if [ -z "$STAGED" ]; then
+  echo "✓ design check clear (no .ts/.tsx/.css staged)"
+  exit 0
+fi
+
+# 1. Design law grep — banned patterns
+VIOLATIONS=$(echo "$STAGED" | xargs grep -ln \
+  "backdrop-filter\|backdrop-blur\|ease-in-out\|purple\|violet\|indigo\|[\"']Inter[\"']\|[\"']Poppins[\"']\|background-clip.*text\|#6366f1\|#a855f7\|#8b5cf6" \
+  2>/dev/null)
+
+if [ -n "$VIOLATIONS" ]; then
+  echo "✕ design law violation — see DESIGN_SYSTEM.md §01-§05"
+  echo "$VIOLATIONS" | sed 's/^/  /'
+  exit 1
+fi
+
+# 2. No inline hex values outside src/tokens/
+HEX_VIOLATIONS=$(echo "$STAGED" | xargs grep -l '#[0-9a-fA-F]\{6\}' 2>/dev/null \
+  | grep -v '^src/tokens/')
+
+if [ -n "$HEX_VIOLATIONS" ]; then
+  echo "✕ inline hex in staged file — declare a CSS token instead"
+  echo "$HEX_VIOLATIONS" | sed 's/^/  /'
+  exit 1
+fi
+
+# 3. No rogue font-family declarations outside layout.tsx and globals.css
+FONT_VIOLATIONS=$(echo "$STAGED" | xargs grep -l 'font-family' 2>/dev/null \
+  | grep -Ev '(layout\.tsx|globals\.css)')
+
+if [ -n "$FONT_VIOLATIONS" ]; then
+  echo "✕ rogue font-family declaration — typography is owned by layout.tsx + globals.css"
+  echo "$FONT_VIOLATIONS" | sed 's/^/  /'
+  exit 1
+fi
+
+echo "✓ design check clear"

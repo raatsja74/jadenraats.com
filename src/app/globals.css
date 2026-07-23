@@ -1,158 +1,186 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ── Design tokens ─────────────────────────────────────────────────────────
+   Palette: warm cream / ink / terracotta. Values are RGB triplets so Tailwind
+   can compose alpha (design law: no raw hex outside src/tokens/).           */
+
 :root {
-  /* LUXE LIGHT THEME (Default) */
-  --bg-primary: 252 252 250;
-  --bg-surface: 255 255 255;
-  --bg-surface-muted: 245 245 243;
-  --bg-surface-glass: rgba(255, 255, 255, 0.7);
+  --bg:      244 239 230;   /* warm cream */
+  --surface: 236 229 216;   /* deeper cream, cards */
+  --ink:      30  27  21;   /* warm near-black */
+  --soft:    108 100  87;   /* body text on cream */
+  --faint:   160 151 136;   /* labels, meta */
+  --accent:  191  87  49;   /* terracotta */
 
-  --primary: 255 95 31;
-  /* Neon Orange - constant across themes for brand consistency */
-  --primary-glow: rgba(255, 95, 31, 0.15);
-  --secondary: 0 119 182;
-  /* Deepened Cyan for light mode legibility */
-  --secondary-glow: rgba(0, 119, 182, 0.15);
-
-  --text-main: 23 23 23;
-  --text-muted: 82 82 82;
-  --text-dim: 115 115 115;
-
-  --border-subtle: rgba(0, 0, 0, 0.05);
-  --border-active: rgba(0, 0, 0, 0.1);
-
-  /* FONTS */
-  --font-primary: 'Inter', sans-serif;
-  --font-accent: 'Space Grotesk', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-
-  /* TYPOGRAPHY SCALE - LUXE PROPORTIONS */
-  --h1: 4.5rem;
-  --h2: 3.25rem;
-  --h3: 2.25rem;
-  --h4: 1.75rem;
-
-  /* SPACING SYSTEM */
-  --section-py: 10rem;
-  --container-px: 2rem;
-  --content-gap: 5rem;
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.dark {
-  /* CYBER-NIGHT THEME */
-  --bg-primary: 5 5 5;
-  --bg-surface: 15 15 15;
-  --bg-surface-glass: rgba(15, 15, 15, 0.7);
+/* ── Base ── */
 
-  --primary: 255 95 31;
-  --primary-glow: rgba(255, 95, 31, 0.3);
-  --secondary: 0 210 255;
-  --secondary-glow: rgba(0, 210, 255, 0.3);
-
-  --text-main: 255 255 255;
-  --text-muted: 163 163 163;
-  --text-dim: 115 115 115;
-
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-active: rgba(255, 255, 255, 0.2);
+html {
+  scroll-behavior: smooth;
 }
 
-@layer base {
-  body {
-    @apply bg-background text-main antialiased font-sans;
-    background-image:
-      radial-gradient(circle at 50% 0%, rgba(255, 95, 31, 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 0% 100%, rgba(0, 210, 255, 0.03) 0%, transparent 50%);
-    min-height: 100vh;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-display font-bold tracking-tight;
-  }
-
-  h1 {
-    font-size: var(--h1);
-    @apply leading-[1.1] mb-6;
-  }
-
-  h2 {
-    font-size: var(--h2);
-    @apply leading-tight mb-4;
-  }
-
-  h3 {
-    font-size: var(--h3);
-    @apply leading-snug mb-3;
-  }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
-@layer components {
-  .glass {
-    @apply bg-surface-glass backdrop-blur-xl border border-white/10;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-  }
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+  font-family: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
 
-  .glass-card {
-    @apply glass rounded-2xl p-6 transition-all duration-300;
-  }
+::selection {
+  background: rgb(var(--accent) / 0.25);
+}
 
-  .glass-card:hover {
-    @apply border-white/20 bg-white/[0.08];
-    transform: translateY(-4px);
-  }
+/* ── Film grain overlay — cinematic texture over the whole page ── */
 
-  .btn-cyber {
-    @apply relative overflow-hidden inline-flex items-center justify-center font-display font-bold py-3 px-8 rounded-full transition-all duration-300 active:scale-95;
-  }
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -100%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 9s steps(6) infinite;
+}
 
-  .btn-cyber-primary {
-    @apply btn-cyber bg-primary text-black shadow-glow-orange hover:brightness-110;
-  }
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-4%, 3%); }
+  40%  { transform: translate(3%, -5%); }
+  60%  { transform: translate(-5%, -2%); }
+  80%  { transform: translate(4%, 4%); }
+  100% { transform: translate(0, 0); }
+}
 
-  .btn-cyber-secondary {
-    @apply btn-cyber bg-transparent text-main border border-border-subtle hover:border-border-active hover:bg-white/5;
-  }
+/* ── Hero wash — slow drifting warm light ── */
 
-  .neon-border-orange {
-    @apply border-primary/30 hover:border-primary shadow-glow-orange;
-  }
+.wash {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
 
-  .neon-border-cyan {
-    @apply border-secondary/30 hover:border-secondary shadow-glow-cyan;
-  }
+.wash::before,
+.wash::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform;
+}
 
-  .input-cyber {
-    @apply w-full bg-surface-muted border border-border-subtle rounded-xl px-5 py-4 text-main placeholder-dim transition-all focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 dark:focus:ring-primary/50;
+.wash::before {
+  width: 55vw;
+  height: 55vw;
+  top: -18%;
+  right: -12%;
+  background: rgb(var(--accent) / 0.13);
+  animation: drift-a 26s var(--ease-soft) infinite alternate;
+}
+
+.wash::after {
+  width: 45vw;
+  height: 45vw;
+  bottom: -22%;
+  left: -10%;
+  background: rgb(214 168 96 / 0.18);
+  animation: drift-b 32s var(--ease-soft) infinite alternate;
+}
+
+@keyframes drift-a {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-9vw, 7vh) scale(1.15); }
+}
+
+@keyframes drift-b {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(8vw, -6vh) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain::after,
+  .wash::before,
+  .wash::after {
+    animation: none;
   }
 }
 
-@layer utilities {
-  .text-glow-orange {
-    text-shadow: 0 0 10px rgba(255, 95, 31, 0.5);
-  }
+/* ── Marquee ── */
 
-  .text-glow-cyan {
-    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-  }
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+}
 
-  .grain {
-    position: relative;
-  }
+.marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100%;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+  align-items: center;
+  animation: marquee 36s linear infinite;
+}
 
-  .grain::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    opacity: 0.02;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3");
-  }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ── Links & buttons ── */
+
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--ease-soft);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.4s var(--ease-soft);
+}
+
+a:hover .btn-arrow,
+button:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Visible focus for keyboard users */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 3px;
+  border-radius: 4px;
 }

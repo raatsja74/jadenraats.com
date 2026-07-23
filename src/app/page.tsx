@@ -1,292 +1,327 @@
 "use client";
 
-import Link from "next/link";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { motion } from "framer-motion";
-import {
-  Zap,
-  Calculator,
-  Home,
-  Package,
-  ArrowRight,
-  ChevronRight,
-  Shield,
-} from "lucide-react";
+import { motion, MotionConfig } from "framer-motion";
 
-const tools = [
+// ── Motion presets ────────────────────────────────────────────────────────────
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const fadeUp = {
+  initial: { opacity: 0, y: 32 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.8, ease: EASE },
+};
+
+/** Masked line reveal — text slides up from behind an invisible edge. */
+function RevealLine({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  return (
+    <span className={`block overflow-hidden ${className}`}>
+      <motion.span
+        className="block"
+        initial={{ y: "115%" }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.9, ease: EASE, delay }}
+      >
+        {children}
+      </motion.span>
+    </span>
+  );
+}
+
+// ── Data ──────────────────────────────────────────────────────────────────────
+
+const WORK = [
   {
-    id: "website-health",
-    title: "Health Checker",
-    description: "Instant 6-point audit. Performance, SEO, and SSL scan.",
-    icon: Home,
-    href: "/tools/website-health",
-    status: "live",
-    protocol: "SYS-01",
-    color: "text-primary"
+    name: "Award Coatings",
+    tag: "the proving ground",
+    desc: "My floor coating company in Phoenix. Every system I talk about — lead follow-up, quoting, scheduling — runs this business first. If it can't survive a real Monday here, it doesn't get shared.",
+    href: "https://awardcoatings.com",
+    label: "awardcoatings.com ↗",
   },
   {
-    id: "roi-calculator",
-    title: "ROI Calculator",
-    description: "Real-time time savings and break-even analysis.",
-    icon: Calculator,
-    href: "/tools/roi-calculator",
-    status: "live",
-    protocol: "FIN-02",
-    color: "text-primary"
+    name: "AI tools & playbooks",
+    tag: "for business owners",
+    desc: "Practical systems and plain-English guides for owners who want AI doing real work — not another subscription collecting dust. The first ones land here soon.",
+    href: null,
+    label: null,
   },
-  {
-    id: "competitor-analysis",
-    title: "Analysis Wizard",
-    description: "Rapid competitive auditing and strategic positioning gadget.",
-    icon: Zap,
-    href: "/tools/competitor-analysis",
-    status: "live",
-    protocol: "STR-03",
-    color: "text-primary"
-  },
-  {
-    id: "floorquote",
-    title: "FloorQuote",
-    description: "Visual estimator for rapid, accurate floor quoting.",
-    icon: Package,
-    href: "/tools/floorquote",
-    status: "developing",
-    protocol: "OS-04",
-    color: "text-dim"
-  }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
-  },
-};
+const MARQUEE = ["ai for business owners", "no hype", "phoenix, az", "tested in a real business", "plain english"];
 
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring" as const,
-      stiffness: 100,
-      damping: 15,
-    },
-  },
-};
+// ── Sections ──────────────────────────────────────────────────────────────────
+
+function Nav() {
+  return (
+    <motion.header
+      className="fixed inset-x-0 top-5 z-50 flex justify-center px-4"
+      initial={{ y: -28, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
+    >
+      <nav
+        aria-label="Main"
+        className="flex items-center gap-1 rounded-full bg-ink px-2 py-2 text-cream shadow-lg shadow-ink/10"
+      >
+        <a
+          href="#top"
+          className="rounded-full px-4 py-1.5 font-serif text-lg italic tracking-tight"
+        >
+          jaden<span className="not-italic text-accent">*</span>
+        </a>
+        {[
+          ["about", "#about"],
+          ["work", "#work"],
+          ["contact", "#contact"],
+        ].map(([label, href]) => (
+          <a
+            key={href}
+            href={href}
+            className="rounded-full px-4 py-1.5 text-sm text-cream/70 transition-colors duration-300 hover:bg-cream/10 hover:text-cream"
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+    </motion.header>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-hidden px-6 pb-14 pt-36 sm:px-10 lg:px-16">
+      <div className="wash" aria-hidden="true" />
+
+      <motion.div
+        className="relative mb-10 inline-flex items-center gap-2 self-start rounded-full border border-ink/15 px-4 py-1.5 font-mono text-xs text-soft"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: EASE, delay: 0.9 }}
+      >
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+        </span>
+        open to real work
+      </motion.div>
+
+      <h1 className="relative font-sans text-[17vw] font-medium leading-[0.9] tracking-[-0.04em] sm:text-[13vw] lg:text-[11vw]">
+        <RevealLine delay={0.35}>jaden</RevealLine>
+        <RevealLine delay={0.5}>
+          <span className="font-serif italic tracking-[-0.02em]">
+            raats<span className="not-italic text-accent">*</span>
+          </span>
+        </RevealLine>
+      </h1>
+
+      <div className="relative mt-12 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <motion.p
+          className="max-w-md text-lg leading-relaxed text-soft"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.75 }}
+        >
+          I run a floor coating company in Phoenix and use AI to run it
+          better. This is where I show other business owners how to do the
+          same — real systems, tested in real operations, explained in plain
+          English.
+        </motion.p>
+
+        <motion.div
+          className="flex flex-wrap gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.9 }}
+        >
+          <motion.a
+            href="#work"
+            className="rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-cream"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.3, ease: EASE }}
+          >
+            See the work <span className="btn-arrow">→</span>
+          </motion.a>
+          <motion.a
+            href="mailto:me@jadenraats.com"
+            className="rounded-full border border-ink/20 px-7 py-3.5 text-sm font-medium"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.3, ease: EASE }}
+          >
+            Say hello
+          </motion.a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Marquee() {
+  const items = [...MARQUEE, ...MARQUEE];
+  return (
+    <div className="marquee border-y border-ink/10 py-4" aria-hidden="true">
+      {[0, 1].map((track) => (
+        <div key={track} className="marquee-track">
+          {items.map((item, i) => (
+            <span key={i} className="flex items-center gap-10 font-mono text-sm text-faint">
+              {item} <span className="text-accent">✳</span>
+            </span>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.p {...fadeUp} className="mb-8 font-mono text-sm text-accent">
+      {children}
+    </motion.p>
+  );
+}
+
+function About() {
+  return (
+    <section id="about" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-28 sm:px-10 sm:py-36">
+      <SectionLabel>about *</SectionLabel>
+      <motion.h2
+        {...fadeUp}
+        className="max-w-3xl text-4xl font-medium leading-tight tracking-tight sm:text-5xl"
+      >
+        Operator first, <span className="font-serif italic text-accent">builder</span> second.
+      </motion.h2>
+      <div className="mt-10 grid gap-6 text-lg leading-relaxed text-soft sm:grid-cols-2 sm:gap-12">
+        <motion.p {...fadeUp}>
+          Most AI advice comes from people who&apos;ve never run a business. I
+          run Award Coatings — leads, quotes, crews, callbacks. Every system I
+          share exists because something in that business was eating my week.
+        </motion.p>
+        <motion.p {...fadeUp}>
+          If a tool survives a real Monday, I&apos;ll show you exactly how it
+          works. If it doesn&apos;t, you&apos;ll never hear about it.
+          That&apos;s the whole filter.
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
+function Work() {
+  return (
+    <section id="work" className="mx-auto max-w-5xl scroll-mt-24 px-6 pb-28 sm:px-10 sm:pb-36">
+      <SectionLabel>work *</SectionLabel>
+      <div className="border-t border-ink/10">
+        {WORK.map((w, i) => (
+          <motion.article
+            key={w.name}
+            className="group border-b border-ink/10 py-10 transition-colors duration-500 sm:py-12"
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: EASE, delay: i * 0.1 }}
+          >
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
+              <h3 className="text-3xl font-medium tracking-tight transition-transform duration-500 ease-soft group-hover:translate-x-2 sm:text-4xl">
+                {w.name}
+              </h3>
+              <span className="font-mono text-sm text-faint">{w.tag}</span>
+            </div>
+            <p className="mt-4 max-w-xl leading-relaxed text-soft">{w.desc}</p>
+            {w.href && (
+              <a
+                href={w.href}
+                target="_blank"
+                rel="noreferrer"
+                className="link-underline mt-5 inline-block font-mono text-sm text-accent"
+              >
+                {w.label}
+              </a>
+            )}
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="relative scroll-mt-24 overflow-hidden bg-ink px-6 py-28 text-cream sm:px-10 sm:py-40">
+      <div className="mx-auto max-w-5xl">
+        <motion.p {...fadeUp} className="mb-8 font-mono text-sm text-accent">
+          contact *
+        </motion.p>
+        <motion.h2
+          {...fadeUp}
+          className="text-6xl font-medium tracking-tight sm:text-8xl"
+        >
+          <a
+            href="mailto:me@jadenraats.com"
+            className="transition-colors duration-500 hover:text-accent"
+          >
+            say <span className="font-serif italic">hello</span>
+            <span className="not-italic text-accent">*</span>
+          </a>
+        </motion.h2>
+        <motion.p {...fadeUp} className="mt-8 max-w-md text-lg leading-relaxed text-cream/60">
+          Running a business and wondering what AI can actually do for you?
+          Ask. Open to consulting and select contract work — if it&apos;s real
+          work, I&apos;m interested.
+        </motion.p>
+        <motion.div {...fadeUp} className="mt-10 flex flex-wrap gap-8 font-mono text-sm">
+          <a href="mailto:me@jadenraats.com" className="link-underline text-cream/80">
+            me@jadenraats.com
+          </a>
+          <a
+            href="https://github.com/raatsja74"
+            target="_blank"
+            rel="noreferrer"
+            className="link-underline text-cream/80"
+          >
+            github ↗
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-ink px-6 pb-8 text-cream sm:px-10">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 border-t border-cream/10 pt-8 font-mono text-xs text-cream/40">
+        <span>© 2026 Jaden Raats</span>
+        <span>phoenix, az — made by me (and the machines)</span>
+      </div>
+    </footer>
+  );
+}
+
+// ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
   return (
-    <div className="grain min-h-screen">
-      <Header />
-
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative pt-48 pb-32 overflow-hidden">
-          {/* Background Ambient Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-6xl pointer-events-none">
-            <div className="absolute top-[-20%] left-[10%] w-[40%] h-[60%] bg-primary/10 blur-[120px] rounded-full animate-pulse" />
-            <div className="absolute bottom-[-10%] right-[10%] w-[35%] h-[50%] bg-primary/5 blur-[100px] rounded-full" />
-          </div>
-
-          <div className="container relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="max-w-4xl"
-            >
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="flex items-center gap-3 mb-10"
-              >
-                <div className="w-12 h-[1px] bg-primary" />
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">
-                  Engineering Authentic Utility
-                </span>
-              </motion.div>
-
-              <h1 className="text-main mb-10 tracking-tighter leading-[0.9] font-display">
-                I build AI tools that <span className="text-primary text-glow-orange">actually work.</span>
-              </h1>
-
-              <p className="text-xl md:text-2xl text-dim leading-relaxed mb-16 max-w-2xl font-medium">
-                Not demos. Not marketing fluff. Just pragmatic systems I use every day to solve real operational problems in my flooring business.
-              </p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="flex flex-col sm:flex-row items-center gap-8"
-              >
-                <Link href="/lab" className="btn-cyber-primary group w-full sm:w-auto">
-                  Enter The Lab
-                  <ArrowRight
-                    size={20}
-                    className="ml-3 transition-transform group-hover:translate-x-1"
-                  />
-                </Link>
-                <Link
-                  href="/guide"
-                  className="text-main hover:text-primary font-bold text-sm tracking-widest uppercase flex items-center gap-3 transition-colors group"
-                >
-                  View Operations Guide
-                  <div className="w-8 h-[1px] bg-border-subtle group-hover:bg-primary transition-colors" />
-                </Link>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Social Proof / Metrics */}
-        <section className="container pb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
-          >
-            {[
-              { label: "Lines of Logic", value: "10k+", sub: "Verified" },
-              { label: "Pipeline Audited", value: "$1.2M", sub: "Production" },
-              { label: "Deployment Speed", value: "48h", sub: "Avg. Cycle" },
-              { label: "Success Rate", value: "99.9%", sub: "Uptime" }
-            ].map((stat, idx) => (
-              <div key={idx} className="flex flex-col">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-3">{stat.label}</span>
-                <span className="text-4xl font-display font-black text-main tracking-tighter mb-1">{stat.value}</span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-dim opacity-50">{stat.sub}</span>
-              </div>
-            ))}
-          </motion.div>
-        </section>
-
-        {/* Tools Section */}
-        <section id="tools" className="container py-32 border-t border-border-subtle">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={containerVariants}
-            className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20 mx-auto"
-          >
-            <div className="max-w-2xl">
-              <motion.h2 variants={itemVariants} className="text-main mb-6">Things I've made</motion.h2>
-              <motion.p variants={itemVariants} className="text-dim text-lg leading-relaxed">
-                Production-ready tools focused on operational efficiency. Use them to audit, calculate, and accelerate.
-              </motion.p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {tools.map((tool) => {
-              const IconComponent = tool.icon;
-              return (
-                <motion.div
-                  key={tool.id}
-                  variants={itemVariants}
-                  whileHover={{
-                    y: -8,
-                    transition: { type: "spring", stiffness: 400, damping: 10 }
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Link
-                    href={tool.href}
-                    className={`group relative glass-card p-10 border transition-all duration-300 ${tool.status === 'live'
-                      ? "border-primary/20 hover:border-primary shadow-lg hover:shadow-primary/10"
-                      : "opacity-40 cursor-not-allowed border-border-subtle"
-                      }`}
-                  >
-                    <div className="flex items-start justify-between mb-12">
-                      <div className={`p-4 rounded-xl bg-black/5 dark:bg-white/5 border border-border-subtle group-hover:bg-primary/10 group-hover:border-primary/30 transition-colors ${tool.color}`}>
-                        <IconComponent size={28} />
-                      </div>
-                      <div className="flex flex-col items-end">
-                        <span className="text-[10px] font-black text-dim uppercase tracking-widest mb-1 opacity-50">Protocol</span>
-                        <span className={`text-xs font-mono font-bold ${tool.status === 'live' ? 'text-primary' : 'text-dim'}`}>
-                          {tool.protocol}
-                        </span>
-                      </div>
-                    </div>
-
-                    <h3 className={`text-2xl font-black mb-4 transition-colors font-display ${tool.status === 'live' ? 'text-main group-hover:text-primary' : 'text-dim'}`}>
-                      {tool.title}
-                    </h3>
-                    <p className="text-dim text-sm leading-relaxed mb-12 flex-1 opacity-80">
-                      {tool.description}
-                    </p>
-
-                    <div className={`flex items-center gap-2 text-[10px] font-black uppercase tracking-widest ${tool.status === 'live' ? 'text-main group-hover:text-primary' : 'text-muted'
-                      }`}>
-                      <span>{tool.status === 'live' ? 'INITIALIZE TOOL' : 'DEVELOPING'}</span>
-                      {tool.status === 'live' && <ChevronRight size={14} className="transition-transform group-hover:translate-x-1" />}
-                    </div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </section>
-
-        {/* About Section */}
-        <section className="container py-40 mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col lg:flex-row gap-20 items-center"
-          >
-            <div className="flex-1">
-              <h2 className="text-main mb-10 tracking-tighter">Grounded in <span className="text-primary">Real Work.</span></h2>
-              <div className="space-y-8 text-xl text-dim leading-relaxed font-medium">
-                <p>
-                  I'm Jaden Raats. I live in Phoenix, Arizona, where I spend my days running a local service business.
-                </p>
-                <p>
-                  I don't build software to sell to investors. I build it to solve the friction in my own day—whether that's automating lead responses, auditing competitors at machine-speed, or refining prompts to save hours of manual logic.
-                </p>
-                <p className="text-main font-bold">
-                  The tools you see here aren't theoretical. They're what I use to keep my operations tight and my time my own.
-                </p>
-              </div>
-            </div>
-            <div className="flex-1 w-full lg:w-auto">
-              <div className="glass-card p-12 border-primary/20 bg-primary/5 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <Shield size={120} className="text-primary" />
-                </div>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8">
-                  Commitment to Quality
-                </h3>
-                <p className="text-base text-main leading-relaxed mb-10 font-bold">
-                  Every tool in "Things I've made" or "The Lab" follows a single rule: it must provide immediate, verifiable utility.
-                </p>
-                <Link href="mailto:jaden@raatsja.com" className="btn-cyber-primary !w-full text-center">
-                  Work with me
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </section>
+    <MotionConfig reducedMotion="user">
+      <Nav />
+      <main>
+        <Hero />
+        <Marquee />
+        <About />
+        <Work />
+        <Contact />
       </main>
-
       <Footer />
-    </div>
+    </MotionConfig>
   );
 }
