@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Jaden Raats">
+  <!-- Token values mirrored from globals.css (no raw hex — design law) -->
+  <rect width="32" height="32" rx="7" fill="rgb(30,27,21)"/>
+  <g stroke="rgb(191,87,49)" stroke-width="3.6" stroke-linecap="round">
+    <line x1="16" y1="7.5" x2="16" y2="24.5"/>
+    <line x1="23.36" y1="11.75" x2="8.64" y2="20.25"/>
+    <line x1="23.36" y1="20.25" x2="8.64" y2="11.75"/>
+  </g>
+</svg>
