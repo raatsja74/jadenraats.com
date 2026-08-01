@@ -143,6 +143,44 @@ body {
   .marquee-track { animation: none; }
 }
 
+/* ── Asterisk — the brand mark turns a quarter-turn on hover ── */
+
+.ast {
+  display: inline-block;
+  transition: transform 0.45s var(--ease-soft);
+}
+
+.ast-host:hover .ast,
+.ast-host:focus-visible .ast {
+  transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ast { transition: none; }
+  .ast-host:hover .ast,
+  .ast-host:focus-visible .ast { transform: none; }
+}
+
+/* ── Typewriter caret ── */
+
+.caret {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: rgb(var(--accent));
+  animation: caret-blink 1.1s step-end infinite;
+}
+
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret { animation: none; opacity: 0; }
+}
+
 /* ── Links & buttons ── */
 
 .link-underline {
