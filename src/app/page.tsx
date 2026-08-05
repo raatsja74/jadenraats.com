@@ -1,6 +1,15 @@
 "use client";
 
-import { motion, MotionConfig } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  MotionConfig,
+  useInView,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "framer-motion";
+import Nav from "@/components/Nav";
 
 // ── Motion presets ────────────────────────────────────────────────────────────
 
@@ -37,6 +46,104 @@ function RevealLine({
   );
 }
 
+/** Link that drifts toward the cursor as it gets close. Fine pointers only. */
+function MagneticLink({
+  href,
+  className = "",
+  children,
+  radius = 110,
+  pull = 0.22,
+}: {
+  href: string;
+  className?: string;
+  children: React.ReactNode;
+  radius?: number;
+  pull?: number;
+}) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const reduce = useReducedMotion();
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const spring = { stiffness: 240, damping: 22, mass: 0.4 };
+  const sx = useSpring(x, spring);
+  const sy = useSpring(y, spring);
+
+  useEffect(() => {
+    if (reduce || !window.matchMedia("(pointer: fine)").matches) return;
+
+    let frame = 0;
+    const onMove = (e: PointerEvent) => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const el = ref.current;
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        const reach = radius + Math.max(r.width, r.height) / 2;
+        const near = Math.hypot(dx, dy) < reach;
+        x.set(near ? dx * pull : 0);
+        y.set(near ? dy * pull : 0);
+      });
+    };
+
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, [reduce, radius, pull, x, y]);
+
+  return (
+    <motion.a
+      ref={ref}
+      href={href}
+      className={className}
+      style={{ x: sx, y: sy }}
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ duration: 0.3, ease: EASE }}
+    >
+      {children}
+    </motion.a>
+  );
+}
+
+/** Types its text out once it scrolls into view. Reserves its final width. */
+function Typewriter({ text }: { text: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const reduce = useReducedMotion();
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    if (reduce) {
+      setCount(text.length);
+      return;
+    }
+    const id = setInterval(() => {
+      setCount((c) => (c >= text.length ? c : c + 1));
+    }, 34);
+    return () => clearInterval(id);
+  }, [inView, reduce, text]);
+
+  return (
+    <span ref={ref} className="relative inline-block">
+      {/* holds the line's full width so the footer never reflows mid-type */}
+      <span aria-hidden="true" className="invisible">
+        {text}
+      </span>
+      <span aria-hidden="true" className="absolute left-0 top-0 whitespace-pre">
+        {text.slice(0, count)}
+        {count < text.length && <span className="caret" />}
+      </span>
+      <span className="sr-only">{text}</span>
+    </span>
+  );
+}
+
 // ── Data ──────────────────────────────────────────────────────────────────────
 
 const WORK = [
@@ -60,42 +167,6 @@ const MARQUEE = ["ai for business owners", "no hype", "phoenix, az", "tested in 
 
 // ── Sections ──────────────────────────────────────────────────────────────────
 
-function Nav() {
-  return (
-    <motion.header
-      className="fixed inset-x-0 top-5 z-50 flex justify-center px-4"
-      initial={{ y: -28, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
-    >
-      <nav
-        aria-label="Main"
-        className="flex items-center gap-1 rounded-full bg-ink px-2 py-2 text-cream shadow-lg shadow-ink/10"
-      >
-        <a
-          href="#top"
-          className="rounded-full px-4 py-1.5 font-serif text-lg italic tracking-tight"
-        >
-          jaden<span className="not-italic text-accent">*</span>
-        </a>
-        {[
-          ["about", "#about"],
-          ["work", "#work"],
-          ["contact", "#contact"],
-        ].map(([label, href]) => (
-          <a
-            key={href}
-            href={href}
-            className="rounded-full px-4 py-1.5 text-sm text-cream/70 transition-colors duration-300 hover:bg-cream/10 hover:text-cream"
-          >
-            {label}
-          </a>
-        ))}
-      </nav>
-    </motion.header>
-  );
-}
-
 function Hero() {
   return (
     <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-hidden px-6 pb-14 pt-36 sm:px-10 lg:px-16">
@@ -117,8 +188,8 @@ function Hero() {
       <h1 className="relative font-sans text-[17vw] font-medium leading-[0.9] tracking-[-0.04em] sm:text-[13vw] lg:text-[11vw]">
         <RevealLine delay={0.35}>jaden</RevealLine>
         <RevealLine delay={0.5}>
-          <span className="font-serif italic tracking-[-0.02em]">
-            raats<span className="not-italic text-accent">*</span>
+          <span className="ast-host font-serif italic tracking-[-0.02em]">
+            raats<span className="ast not-italic text-accent">*</span>
           </span>
         </RevealLine>
       </h1>
@@ -142,24 +213,18 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.9 }}
         >
-          <motion.a
+          <MagneticLink
             href="#work"
             className="rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-cream"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.3, ease: EASE }}
           >
             See the work <span className="btn-arrow">→</span>
-          </motion.a>
-          <motion.a
+          </MagneticLink>
+          <MagneticLink
             href="mailto:me@jadenraats.com"
             className="rounded-full border border-ink/20 px-7 py-3.5 text-sm font-medium"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.3, ease: EASE }}
           >
             Say hello
-          </motion.a>
+          </MagneticLink>
         </motion.div>
       </div>
     </section>
@@ -186,7 +251,10 @@ function Marquee() {
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <motion.p {...fadeUp} className="mb-8 font-mono text-sm text-accent">
-      {children}
+      <span className="ast-host inline-flex items-center gap-1.5">
+        {children}
+        <span className="ast">*</span>
+      </span>
     </motion.p>
   );
 }
@@ -194,7 +262,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function About() {
   return (
     <section id="about" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-28 sm:px-10 sm:py-36">
-      <SectionLabel>about *</SectionLabel>
+      <SectionLabel>about</SectionLabel>
       <motion.h2
         {...fadeUp}
         className="max-w-3xl text-4xl font-medium leading-tight tracking-tight sm:text-5xl"
@@ -220,7 +288,7 @@ function About() {
 function Work() {
   return (
     <section id="work" className="mx-auto max-w-5xl scroll-mt-24 px-6 pb-28 sm:px-10 sm:pb-36">
-      <SectionLabel>work *</SectionLabel>
+      <SectionLabel>work</SectionLabel>
       <div className="border-t border-ink/10">
         {WORK.map((w, i) => (
           <motion.article
@@ -259,19 +327,17 @@ function Contact() {
   return (
     <section id="contact" className="relative scroll-mt-24 overflow-hidden bg-ink px-6 py-28 text-cream sm:px-10 sm:py-40">
       <div className="mx-auto max-w-5xl">
-        <motion.p {...fadeUp} className="mb-8 font-mono text-sm text-accent">
-          contact *
-        </motion.p>
+        <SectionLabel>contact</SectionLabel>
         <motion.h2
           {...fadeUp}
           className="text-6xl font-medium tracking-tight sm:text-8xl"
         >
           <a
             href="mailto:me@jadenraats.com"
-            className="transition-colors duration-500 hover:text-accent"
+            className="ast-host transition-colors duration-500 hover:text-accent"
           >
             say <span className="font-serif italic">hello</span>
-            <span className="not-italic text-accent">*</span>
+            <span className="ast not-italic text-accent">*</span>
           </a>
         </motion.h2>
         <motion.p {...fadeUp} className="mt-8 max-w-md text-lg leading-relaxed text-cream/60">
@@ -302,7 +368,7 @@ function Footer() {
     <footer className="bg-ink px-6 pb-8 text-cream sm:px-10">
       <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 border-t border-cream/10 pt-8 font-mono text-xs text-cream/40">
         <span>© 2026 Jaden Raats</span>
-        <span>phoenix, az — made by me (and the machines)</span>
+        <Typewriter text="phoenix, az — made by me (and the machines)" />
       </div>
     </footer>
   );
