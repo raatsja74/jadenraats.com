@@ -70,3 +70,4 @@ design-system/
 design-system 2/
 .vercel
 .env*.local
+tsconfig.tsbuildinfo

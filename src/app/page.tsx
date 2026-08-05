@@ -155,11 +155,47 @@ const WORK = [
     label: "awardcoatings.com ↗",
   },
   {
+    name: "Hermes",
+    tag: "multi-agent assistant",
+    desc: "I built an AI assistant that pulls nine different apps into one place, ran it as its only user for 55 days, and then wrote down everything that broke. Total cost: $14.15.",
+    href: "#hermes",
+    label: "read the teardown ↓",
+  },
+  {
     name: "AI tools & playbooks",
     tag: "for business owners",
     desc: "Practical systems and plain-English guides for owners who want AI doing real work — not another subscription collecting dust. The first ones land here soon.",
     href: null,
     label: null,
+  },
+];
+
+const HERMES_STATS = [
+  { n: "9", l: "apps unified" },
+  { n: "2,142", l: "messages" },
+  { n: "$14.15", l: "total cost" },
+  { n: "55", l: "days live" },
+];
+
+const HERMES_FLOW = [
+  { k: "capture", v: "telegram · slack · imessage · cli · cron" },
+  { k: "gateway", v: "always-on process, routes by destination" },
+  { k: "state", v: "one sqlite db · full-text search" },
+  { k: "homes", v: "obsidian · todoist · drive" },
+];
+
+const HERMES_BROKE = [
+  {
+    t: "A 14-day outage that never alerted anyone",
+    d: "An expired token plus two automations pointing at a folder I'd deleted. Nothing crashed — it just quietly stopped working, and I stopped using it without deciding to. Silent failure is worse than loud failure.",
+  },
+  {
+    t: "The one scheduled job is still broken",
+    d: "It refuses to run because a safety check is doing its job, and its error notification can't send. The job meant to keep the system from needing me is the part that needs me. I automated the filing before I automated the monitoring.",
+  },
+  {
+    t: "I measured the wrong things",
+    d: "I tracked cost and message counts because they were free to collect. I never tracked whether I could actually find what I'd saved — the only number that would have justified the whole project.",
   },
 ];
 
@@ -309,8 +345,9 @@ function Work() {
             {w.href && (
               <a
                 href={w.href}
-                target="_blank"
-                rel="noreferrer"
+                {...(w.href.startsWith("#")
+                  ? {}
+                  : { target: "_blank", rel: "noreferrer" })}
                 className="link-underline mt-5 inline-block font-mono text-sm text-accent"
               >
                 {w.label}
@@ -319,6 +356,122 @@ function Work() {
           </motion.article>
         ))}
       </div>
+    </section>
+  );
+}
+
+function CaseStudy() {
+  return (
+    <section id="hermes" className="mx-auto max-w-5xl scroll-mt-24 px-6 pb-28 sm:px-10 sm:pb-36">
+      <SectionLabel>case study</SectionLabel>
+
+      <motion.h2
+        {...fadeUp}
+        className="max-w-3xl text-4xl font-medium leading-tight tracking-tight sm:text-5xl"
+      >
+        I built an AI assistant, then wrote down{" "}
+        <span className="font-serif italic text-accent">everything that broke</span>.
+      </motion.h2>
+
+      <motion.p {...fadeUp} className="mt-8 max-w-2xl text-lg leading-relaxed text-soft">
+        I was capturing work in eight places and finding it in none of them.
+        Links in one app, ideas in another, tasks somewhere else — plus five AI
+        agents that couldn&apos;t see each other&apos;s work. The problem was
+        never lost data. It was that I couldn&apos;t get anything back out.
+      </motion.p>
+
+      <motion.div
+        {...fadeUp}
+        className="mt-12 grid grid-cols-2 gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-4"
+      >
+        {HERMES_STATS.map((s) => (
+          <div key={s.l} className="bg-cream px-5 py-7 text-center">
+            <div className="font-mono text-3xl font-medium tracking-tight sm:text-4xl">{s.n}</div>
+            <div className="mt-2 font-mono text-xs text-faint">{s.l}</div>
+          </div>
+        ))}
+      </motion.div>
+
+      <motion.p {...fadeUp} className="mt-14 max-w-2xl text-lg leading-relaxed text-soft">
+        So I built one front door. Everything goes to a chat app, and{" "}
+        <em className="font-serif italic text-ink">which chat you send it to</em>{" "}
+        decides where it ends up. No AI guessing your intent — you already made
+        the decision when you picked the chat. It gets filed automatically, and
+        every conversation from every app lands in one searchable place.
+      </motion.p>
+
+      <motion.div {...fadeUp} className="mt-10 border-t border-ink/10">
+        {HERMES_FLOW.map((f) => (
+          <div
+            key={f.k}
+            className="flex flex-col gap-1 border-b border-ink/10 py-4 sm:flex-row sm:items-baseline sm:gap-6"
+          >
+            <span className="font-mono text-sm text-accent sm:w-28 sm:shrink-0">{f.k}</span>
+            <span className="font-mono text-sm text-soft">{f.v}</span>
+          </div>
+        ))}
+      </motion.div>
+
+      <motion.h3 {...fadeUp} className="mt-20 text-2xl font-medium tracking-tight sm:text-3xl">
+        The fix wasn&apos;t code.
+      </motion.h3>
+
+      <motion.p {...fadeUp} className="mt-6 max-w-2xl text-lg leading-relaxed text-soft">
+        Six weeks in, it broke for two weeks and I didn&apos;t notice. When I
+        came back, I didn&apos;t rewrite anything — I wrote down the filing
+        rules on a single page that both I and the agents could read. Same code,
+        same models, four times the use.
+      </motion.p>
+
+      <motion.div {...fadeUp} className="mt-10 max-w-xl overflow-hidden border border-ink/10">
+        <div className="grid grid-cols-3 border-b border-ink/10 bg-ink/5 font-mono text-xs text-faint">
+          <div className="px-4 py-3" />
+          <div className="px-4 py-3">before</div>
+          <div className="px-4 py-3">after</div>
+        </div>
+        <div className="grid grid-cols-3 border-b border-ink/10 text-sm">
+          <div className="px-4 py-4 text-soft">days used</div>
+          <div className="px-4 py-4 font-mono">28%</div>
+          <div className="px-4 py-4 font-mono text-accent">53%</div>
+        </div>
+        <div className="grid grid-cols-3 text-sm">
+          <div className="px-4 py-4 text-soft">messages / day</div>
+          <div className="px-4 py-4 font-mono">21</div>
+          <div className="px-4 py-4 font-mono text-accent">87</div>
+        </div>
+      </motion.div>
+
+      <motion.h3 {...fadeUp} className="mt-20 text-2xl font-medium tracking-tight sm:text-3xl">
+        What&apos;s still broken
+      </motion.h3>
+
+      <motion.p {...fadeUp} className="mt-6 max-w-2xl leading-relaxed text-soft">
+        This is the part most write-ups leave out. All of it is still true as of
+        today.
+      </motion.p>
+
+      <div className="mt-10 border-t border-ink/10">
+        {HERMES_BROKE.map((b, i) => (
+          <motion.div
+            key={b.t}
+            className="border-b border-ink/10 py-8"
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: EASE, delay: i * 0.1 }}
+          >
+            <h4 className="text-xl font-medium tracking-tight">{b.t}</h4>
+            <p className="mt-3 max-w-2xl leading-relaxed text-soft">{b.d}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      <motion.p {...fadeUp} className="mt-14 max-w-2xl text-lg leading-relaxed">
+        The useful lesson wasn&apos;t technical. The system didn&apos;t fail
+        because it couldn&apos;t do enough — it failed because the rules for
+        where things go lived in my head instead of on a page. Writing them down
+        cost an afternoon and did more than six weeks of building.
+      </motion.p>
     </section>
   );
 }
@@ -385,6 +538,7 @@ export default function HomePage() {
         <Marquee />
         <About />
         <Work />
+        <CaseStudy />
         <Contact />
       </main>
       <Footer />
