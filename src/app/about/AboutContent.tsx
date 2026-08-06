@@ -175,12 +175,15 @@ function Systems() {
             transition={{ duration: 0.75, ease: EASE, delay: i * 0.1 }}
           >
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-10">
-              {s.stat && (
-                <span className="font-mono text-3xl font-medium tracking-tight text-accent sm:w-40 sm:shrink-0">
-                  {s.stat}
-                </span>
-              )}
-              <div className={s.stat ? "" : "sm:pl-0"}>
+              {/* Always rendered — an empty column keeps stat-less rows aligned
+                  with the ones that do carry a figure. */}
+              <span
+                aria-hidden={!s.stat}
+                className="font-mono text-3xl font-medium tracking-tight text-accent sm:w-40 sm:shrink-0"
+              >
+                {s.stat}
+              </span>
+              <div>
                 <h3 className="text-xl font-medium tracking-tight sm:text-2xl">
                   {s.title}
                 </h3>
