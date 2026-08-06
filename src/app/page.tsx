@@ -317,6 +317,13 @@ function About() {
           That&apos;s the whole filter.
         </motion.p>
       </div>
+      <motion.a
+        {...fadeUp}
+        href="/about"
+        className="link-underline mt-10 inline-block font-mono text-sm text-accent"
+      >
+        more about me ↗
+      </motion.a>
     </section>
   );
 }

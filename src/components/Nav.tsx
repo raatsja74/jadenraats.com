@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const LINKS = [
-  ["about", "/#about"],
+  ["about", "/about"],
   ["work", "/#work"],
   ["lab", "/prompt-lab"],
   ["contact", "/#contact"],
