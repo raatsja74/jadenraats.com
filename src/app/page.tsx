@@ -309,26 +309,47 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function About() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isDark = useInView(sectionRef, {
+    amount: 0.25,
+    margin: "-15% 0px -25% 0px",
+  });
+  const sectionTone = isDark ? "bg-ink text-cream" : "bg-cream text-ink";
+  const bodyTone = isDark ? "text-cream/70" : "text-soft";
+
   return (
-    <section id="about" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-28 sm:px-10 sm:py-36">
-      <SectionLabel>about</SectionLabel>
-      <motion.h2
-        {...fadeUp}
-        className="max-w-3xl text-4xl font-medium leading-tight tracking-tight sm:text-5xl"
-      >
-        Operator first, <span className="font-serif italic text-accent">builder</span> second.
-      </motion.h2>
-      <div className="mt-10 grid gap-6 text-lg leading-relaxed text-soft sm:grid-cols-2 sm:gap-12">
-        <motion.p {...fadeUp}>
-          Most AI advice comes from people who&apos;ve never run a business. I
-          run Award Coatings — leads, quotes, crews, callbacks. Every system I
-          share exists because something in that business was eating my week.
-        </motion.p>
-        <motion.p {...fadeUp}>
-          If a tool survives a real Monday, I&apos;ll show you exactly how it
-          works. If it doesn&apos;t, you&apos;ll never hear about it.
-          That&apos;s the whole filter.
-        </motion.p>
+    <section
+      ref={sectionRef}
+      id="about"
+      className={`scroll-mt-24 py-28 transition-colors duration-700 motion-reduce:duration-0 sm:py-36 ${sectionTone}`}
+    >
+      <div className="mx-auto max-w-5xl px-6 sm:px-10">
+        <SectionLabel>about</SectionLabel>
+        <motion.h2
+          {...fadeUp}
+          className="max-w-3xl text-4xl font-medium leading-tight tracking-tight sm:text-5xl"
+        >
+          Operator first, <span className="font-serif italic text-accent">builder</span> second.
+        </motion.h2>
+        <div className={`mt-10 grid gap-6 text-lg leading-relaxed sm:grid-cols-2 sm:gap-12 ${bodyTone}`}>
+          <motion.p {...fadeUp}>
+            Most AI advice comes from people who&apos;ve never run a business. I
+            run Award Coatings — leads, quotes, crews, callbacks. Every system I
+            share exists because something in that business was eating my week.
+          </motion.p>
+          <motion.p {...fadeUp}>
+            If a tool survives a real Monday, I&apos;ll show you exactly how it
+            works. If it doesn&apos;t, you&apos;ll never hear about it.
+            That&apos;s the whole filter.
+          </motion.p>
+        </div>
+        <motion.a
+          {...fadeUp}
+          href="/about"
+          className="link-underline mt-10 inline-block font-mono text-sm text-accent"
+        >
+          more about me ↗
+        </motion.a>
       </div>
     </section>
   );
