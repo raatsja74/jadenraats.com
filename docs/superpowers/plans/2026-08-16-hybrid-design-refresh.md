@@ -2,7 +2,7 @@
 
 > For agentic workers: REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox syntax for tracking.
 
-Goal: Build a local-only Phase 1 refresh with a small real portrait mark, calmer homepage editorial rhythm, and a restrained cream-to-ink About transition while deferring the illustrated hero.
+Goal: Build a local-only Phase 1 refresh with a small supplied portrait mark, calmer homepage editorial rhythm, and a restrained cream-to-ink About transition while deferring the illustrated hero.
 
 Architecture: Preserve the existing Next.js App Router structure, centered floating navigation, Framer Motion layer, Tailwind token system, routes, copy, work index, Hermes case study, contact section, and prompt lab. Add a focused ProfileMark component, extend the shared Nav, and make the homepage About section own its in-view color state. Do not add a new dependency or deploy.
 
@@ -10,7 +10,7 @@ Tech Stack: Next.js 16, React 19, TypeScript, Tailwind CSS 3, Framer Motion 12, 
 
 ## Global Constraints
 
-- Use only the supplied real portrait; if it is missing, stop before UI work and ask Jaden for it.
+- Use only the supplied portrait artwork; if it is missing, stop before UI work and ask Jaden for it.
 - Preserve the warm cream, ink, terracotta, mono-label, grain, and asterisk identity.
 - Keep the current hero, marquee, work index, Hermes case study, contact section, footer, routes, and prompt lab.
 - Do not implement the large illustrated/cartoon hero in Phase 1.
@@ -23,39 +23,39 @@ Tech Stack: Next.js 16, React 19, TypeScript, Tailwind CSS 3, Framer Motion 12, 
 
 ## File Structure
 
-- public/images/jaden-portrait.jpg: square-cropped, supplied web asset only.
+- public/images/jaden-portrait.png: square-cropped, supplied transparent web asset only.
 - src/components/ProfileMark.tsx: one-purpose accessible link containing the portrait.
 - src/components/Nav.tsx: shared placement of ProfileMark beside the existing centered nav.
 - src/app/page.tsx: homepage About bridge and narrowly scoped spacing/hierarchy adjustments.
 - src/app/globals.css: only shared portrait or transition styles that cannot use existing utilities.
 - docs/superpowers/plans/2026-08-16-hybrid-design-refresh.md: this execution plan.
 
-### Task 1: Confirm the real portrait dependency
+### Task 1: Confirm the supplied portrait dependency
 
 Files:
-- Create: public/images/jaden-portrait.jpg only after Jaden supplies the source image.
+- Create: public/images/jaden-portrait.png only from Jaden's supplied source image.
 
 Interfaces:
-- Produces: a local square portrait asset at /images/jaden-portrait.jpg.
+- Produces: a local square portrait asset at /images/jaden-portrait.png.
 - Consumers: ProfileMark in Task 2.
 
 - [ ] Step 1: Check whether the supplied asset already exists.
 
 Run:
 
-    test -f public/images/jaden-portrait.jpg && file public/images/jaden-portrait.jpg
+    test -f public/images/jaden-portrait.png && file public/images/jaden-portrait.png
 
-Expected: The file exists and reports a raster image. If it does not exist, stop the implementation and ask Jaden to upload or identify the real portrait.
+Expected: The file exists and reports a raster image. If it does not exist, stop the implementation and ask Jaden to upload or identify the supplied portrait.
 
 - [ ] Step 2: Prepare the supplied image without inventing a replacement.
 
-Crop the supplied source to a square with enough margin for a circular crop. Keep the original source outside the repository. Export a high-quality JPG or WebP with no unnecessary metadata, then place the final asset at public/images/jaden-portrait.jpg.
+Crop the supplied source to a square face-focused composition with enough margin for a circular crop. Keep the original source outside the repository. Preserve its transparency and place the final PNG at public/images/jaden-portrait.png.
 
 - [ ] Step 3: Verify the asset dimensions.
 
 Run:
 
-    sips -g pixelWidth -g pixelHeight public/images/jaden-portrait.jpg
+    sips -g pixelWidth -g pixelHeight public/images/jaden-portrait.png
 
 Expected: pixelWidth and pixelHeight are equal, and the image is large enough for the 40px desktop mark.
 
@@ -65,7 +65,7 @@ Files:
 - Create: src/components/ProfileMark.tsx
 
 Interfaces:
-- Consumes: /images/jaden-portrait.jpg.
+- Consumes: /images/jaden-portrait.png.
 - Produces: a default-exported ProfileMark component that renders an anchor to / with an accessible name of Jaden Raats - home.
 
 - [ ] Step 1: Create the component with explicit image dimensions.
@@ -74,23 +74,24 @@ Use the existing Next.js patterns and implement this exact shape:
 
 ~~~tsx
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ProfileMark() {
   return (
-    <a
+    <Link
       href="/"
       aria-label="Jaden Raats - home"
       className="profile-mark fixed left-3 top-3 z-50 h-8 w-8 overflow-hidden rounded-full border border-ink/20 sm:left-5 sm:top-5 sm:h-10 sm:w-10"
     >
       <Image
-        src="/images/jaden-portrait.jpg"
+        src="/images/jaden-portrait.png"
         alt=""
         width={40}
         height={40}
         sizes="(max-width: 639px) 32px, 40px"
         className="h-full w-full object-cover"
       />
-    </a>
+    </Link>
   );
 }
 ~~~
@@ -105,9 +106,9 @@ Use the global focus-visible rule already present in src/app/globals.css. If the
 
 Run:
 
-    npm run lint
+    ./node_modules/.bin/eslint src/components/ProfileMark.tsx src/components/Nav.tsx
 
-Expected: PASS with no JSX, TypeScript, or accessibility errors.
+Expected: PASS with no JSX, TypeScript, or accessibility errors in the changed components.
 
 ### Task 3: Mount ProfileMark without changing the centered navigation
 
@@ -224,7 +225,7 @@ Run:
     npm run check:design
     npm run build
 
-Expected: all three commands pass.
+Expected: check:design and build pass; full lint is also attempted and any pre-existing errors outside this refresh are recorded without modifying unrelated worktree files.
 
 - [ ] Step 2: Review the profile mark at required widths.
 
@@ -251,7 +252,8 @@ Expected: changes are limited to the supplied portrait asset, ProfileMark, share
 
 Run:
 
-    git add public/images/jaden-portrait.jpg src/components/ProfileMark.tsx src/components/Nav.tsx src/app/page.tsx src/app/globals.css
+    git add -f public/images/jaden-portrait.png
+    git add src/components/ProfileMark.tsx src/components/Nav.tsx src/app/page.tsx src/app/globals.css
     git commit -m "feat: add hybrid editorial homepage refresh"
 
 Do not deploy. Phase 2 cartoon-hero work requires a new design review and its own plan.
