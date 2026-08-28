@@ -209,7 +209,20 @@ function Hero() {
       <div className="wash" aria-hidden="true" />
 
       <motion.div
-        className="relative mb-10 inline-flex items-center gap-2 self-start rounded-full border border-ink/15 px-4 py-1.5 font-mono text-xs text-soft"
+        className="hero-portrait"
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: EASE, delay: 0.45 }}
+      >
+        <img
+          src="/images/jaden-fishing.webp"
+          alt="Illustration of Jaden Raats holding a bass"
+          className="h-full w-auto"
+        />
+      </motion.div>
+
+      <motion.div
+        className="relative z-10 mb-10 inline-flex items-center gap-2 self-start rounded-full border border-ink/15 px-4 py-1.5 font-mono text-xs text-soft"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: EASE, delay: 0.9 }}
@@ -221,7 +234,7 @@ function Hero() {
         open to real work
       </motion.div>
 
-      <h1 className="relative font-sans text-[17vw] font-medium leading-[0.9] tracking-[-0.04em] sm:text-[13vw] lg:text-[11vw]">
+      <h1 className="relative z-10 font-sans text-[17vw] font-medium leading-[0.9] tracking-[-0.04em] sm:text-[13vw] lg:text-[11vw]">
         <RevealLine delay={0.35}>jaden</RevealLine>
         <RevealLine delay={0.5}>
           <span className="ast-host font-serif italic tracking-[-0.02em]">
@@ -230,7 +243,7 @@ function Hero() {
         </RevealLine>
       </h1>
 
-      <div className="relative mt-12 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+      <div className="relative z-10 mt-12 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
         <motion.p
           className="max-w-md text-lg leading-relaxed text-soft"
           initial={{ opacity: 0, y: 20 }}
