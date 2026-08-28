@@ -98,6 +98,39 @@ body {
   animation: drift-b 32s var(--ease-soft) infinite alternate;
 }
 
+/* ── Hero portrait — a transparent, illustrated cutout that lives in the
+   same field as the name rather than inside a card or image frame. ─────── */
+
+.hero-portrait {
+  position: absolute;
+  z-index: 1;
+  right: -5.5rem;
+  bottom: 7.75rem;
+  height: min(54svh, 31rem);
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-portrait img {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .hero-portrait {
+    right: auto;
+    bottom: 0;
+    left: 46%;
+    height: min(77svh, 45rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-portrait {
+    left: 43%;
+    height: min(79svh, 48rem);
+  }
+}
+
 @keyframes drift-a {
   from { transform: translate(0, 0) scale(1); }
   to   { transform: translate(-9vw, 7vh) scale(1.15); }
