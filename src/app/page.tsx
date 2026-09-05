@@ -164,9 +164,9 @@ const WORK = [
   {
     name: "AI tools & playbooks",
     tag: "for business owners",
-    desc: "Practical systems and plain-English guides for owners who want AI doing real work — not another subscription collecting dust. The first ones land here soon.",
-    href: null,
-    label: null,
+    desc: "Practical systems and plain-English guides for owners who want AI doing real work — not another subscription collecting dust.",
+    href: "/guides",
+    label: "read the guides →",
   },
 ];
 
@@ -358,9 +358,9 @@ function Work() {
             {w.href && (
               <a
                 href={w.href}
-                {...(w.href.startsWith("#")
-                  ? {}
-                  : { target: "_blank", rel: "noreferrer" })}
+                {...(w.href.startsWith("http")
+                  ? { target: "_blank", rel: "noreferrer" }
+                  : {})}
                 className="link-underline mt-5 inline-block font-mono text-sm text-accent"
               >
                 {w.label}
