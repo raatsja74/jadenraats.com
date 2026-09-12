@@ -1,205 +1,188 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import Nav from "@/components/Nav";
-import { BANK, CATEGORIES } from "./prompts";
+import { SKILL_CATEGORIES, SKILLS } from "./skills";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-70px" },
+  transition: { duration: 0.7, ease: EASE },
 };
 
-const PLACEHOLDER = "Press draw to pull a prompt.";
+async function copyText(text: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
-export default function PromptLab() {
-  const [category, setCategory] = useState(CATEGORIES[0]);
-  const [index, setIndex] = useState(-1);
-  const [visible, setVisible] = useState(false);
+function SkillRow({ id, name, category, desc, prompt, uses }: (typeof SKILLS)[number]) {
   const [copied, setCopied] = useState(false);
 
-  // Timers are cleared on unmount so a pending swap can't fire into a dead tree.
-  const swapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(
-    () => () => {
-      if (swapTimer.current) clearTimeout(swapTimer.current);
-      if (copyTimer.current) clearTimeout(copyTimer.current);
-    },
-    [],
-  );
-
-  const list = BANK[category];
-  const prompt = index >= 0 ? list[index] : PLACEHOLDER;
-
-  /** Pull a random prompt, never repeating the one already on screen. */
-  const draw = useCallback(
-    (from = category, avoid = index) => {
-      const pool = BANK[from];
-      let next = Math.floor(Math.random() * pool.length);
-      if (pool.length > 1 && next === avoid) next = (next + 1) % pool.length;
-
-      setVisible(false);
-      if (swapTimer.current) clearTimeout(swapTimer.current);
-      swapTimer.current = setTimeout(() => {
-        setIndex(next);
-        setVisible(true);
-      }, 180);
-    },
-    [category, index],
-  );
-
-  function pickCategory(cat: string) {
-    if (cat === category) return;
-    setCategory(cat);
-    setIndex(-1);
-    draw(cat, -1);
-  }
-
-  async function copy() {
-    if (index < 0) return;
-    try {
-      await navigator.clipboard.writeText(list[index]);
+  async function onCopy() {
+    if (await copyText(prompt)) {
       setCopied(true);
-      if (copyTimer.current) clearTimeout(copyTimer.current);
-      copyTimer.current = setTimeout(() => setCopied(false), 1200);
-    } catch {
-      // Clipboard is blocked without a secure context or permission — the
-      // prompt is selectable on screen, so fail quietly rather than alerting.
+      setTimeout(() => setCopied(false), 1200);
     }
   }
 
-  const pad = (n: number) => String(n).padStart(2, "0");
+  return (
+    <article className="data-row">
+      <div>
+        <div className="flex flex-wrap items-center gap-3">
+          <h3 className="display text-2xl leading-none">{name}</h3>
+          <span className="status-tag status-live">{category}</span>
+        </div>
+        <p className="mt-3 max-w-2xl font-mono text-sm leading-relaxed text-soft">{desc}</p>
+        <p className="kicker kicker-faint mt-3">
+          {String(uses).padStart(3, "0")} uses · id:{id}
+        </p>
+      </div>
+      <div className="flex flex-wrap gap-2.5">
+        <button
+          type="button"
+          onClick={onCopy}
+          className="btn btn-secondary text-xs"
+        >
+          {copied ? "COPIED ✓" : "COPY PROMPT"}
+        </button>
+        <a
+          href={`mailto:me@jadenraats.com?subject=USE SKILL: ${encodeURIComponent(name)}`}
+          className="btn btn-primary text-xs"
+        >
+          USE SKILL <span className="btn-arrow">→</span>
+        </a>
+      </div>
+    </article>
+  );
+}
+
+export default function PromptLab() {
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("ALL");
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return SKILLS.filter((s) => {
+      if (category !== "ALL" && s.category !== category) return false;
+      if (!q) return true;
+      return (
+        s.name.toLowerCase().includes(q) ||
+        s.desc.toLowerCase().includes(q) ||
+        s.category.toLowerCase().includes(q) ||
+        s.id.toLowerCase().includes(q)
+      );
+    });
+  }, [query, category]);
+
+  const counts = useMemo(() => {
+    const map = new Map<string, number>();
+    for (const s of SKILLS) map.set(s.category, (map.get(s.category) ?? 0) + 1);
+    return map;
+  }, []);
 
   return (
     <MotionConfig reducedMotion="user">
       <Nav />
 
-      {/* .wash is absolutely positioned, so it needs a viewport-sized parent —
-          inside <main> it would only glow behind the centred column. */}
-      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
-        <div className="wash" />
-      </div>
+      <main className="mx-auto max-w-6xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
+        <section className="border-t-2 border-line pt-10">
+          <motion.p
+            className="kicker kicker-accent"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.15 }}
+          >
+            <span className="ast-host inline-flex items-center gap-1.5">
+              the lab
+              <span className="ast">*</span>
+            </span>
+          </motion.p>
 
-      <main className="relative z-10 mx-auto max-w-3xl px-6 pb-24 pt-32 sm:px-10 sm:pt-36">
-        <motion.div
-          {...fadeUp}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.15 }}
-          className="relative mb-7 inline-flex items-center gap-2 rounded-full border border-ink/15 px-4 py-1.5 font-mono text-xs text-soft"
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          ideation tool · testing generative range
-        </motion.div>
+          <motion.h1
+            className="display mt-6 max-w-4xl text-6xl sm:text-7xl"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, ease: EASE, delay: 0.25 }}
+          >
+            Skills &amp; prompt library
+          </motion.h1>
 
-        <motion.h1
-          {...fadeUp}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.25 }}
-          className="ast-host relative font-serif text-5xl italic tracking-tight sm:text-6xl"
-        >
-          prompt lab<span className="ast not-italic text-accent">*</span>
-        </motion.h1>
+          <motion.p
+            className="mt-8 max-w-2xl font-mono text-sm leading-relaxed text-soft"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.4 }}
+          >
+            A public database of the AI skills, prompts, workflows, and agent
+            instructions that run a real business. Copy any prompt, or hit USE
+            SKILL and I&apos;ll set it up with you.
+          </motion.p>
+        </section>
 
-        <motion.p
-          {...fadeUp}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.35 }}
-          className="relative mt-4 max-w-xl text-lg leading-relaxed text-soft"
-        >
-          A small instrument for stress-testing how far a language model will
-          commit to a strange idea. Eight categories, forty prompts — pull one
-          and see what happens.
-        </motion.p>
+        <section className="mt-12" aria-label="Search and filter">
+          <div className="grid gap-4 lg:grid-cols-[1fr_auto]">
+            <label className="block">
+              <span className="kicker kicker-faint">search</span>
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="skills, prompts, workflows…"
+                aria-label="Search the library"
+                className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 font-mono text-sm text-ink placeholder:text-faint focus:border-accent focus:outline-none"
+              />
+            </label>
 
-        <motion.div
-          {...fadeUp}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.45 }}
-          className="relative mt-12"
-        >
-          <p className="mb-4 font-mono text-xs uppercase tracking-[0.1em] text-faint">
-            category
-          </p>
-
-          <div className="flex flex-wrap gap-2">
-            {CATEGORIES.map((cat) => {
-              const active = cat === category;
-              return (
+            <div className="flex items-end gap-2">
+              <button
+                type="button"
+                onClick={() => setCategory("ALL")}
+                aria-pressed={category === "ALL"}
+                className={`btn min-h-[44px] text-xs ${category === "ALL" ? "btn-primary" : "btn-secondary"}`}
+              >
+                ALL · {SKILLS.length}
+              </button>
+              {SKILL_CATEGORIES.map((cat) => (
                 <button
                   key={cat}
                   type="button"
-                  onClick={() => pickCategory(cat)}
-                  aria-pressed={active}
-                  className={
-                    "rounded-full border px-4 py-2 font-mono text-xs transition-colors duration-200 " +
-                    (active
-                      ? "border-ink bg-ink text-cream"
-                      : "border-ink/10 bg-surface text-soft hover:border-ink/25 hover:text-ink")
-                  }
+                  onClick={() => setCategory(cat === category ? "ALL" : cat)}
+                  aria-pressed={category === cat}
+                  className={`btn min-h-[44px] text-xs ${category === cat ? "btn-primary" : "btn-secondary"}`}
                 >
-                  {cat}
+                  {cat} · {counts.get(cat) ?? 0}
                 </button>
-              );
-            })}
-          </div>
-
-          <div className="relative mt-7 flex min-h-[220px] items-center justify-center rounded-3xl border border-ink/[0.08] bg-surface px-6 py-12 text-center sm:px-10">
-            <span
-              aria-hidden="true"
-              className="absolute left-6 top-4 font-serif text-5xl italic leading-none text-accent/40"
-            >
-              &ldquo;
-            </span>
-            <p
-              aria-live="polite"
-              className={
-                "max-w-xl font-serif text-2xl italic leading-snug transition-[opacity,transform] duration-300 sm:text-[1.65rem] " +
-                (index < 0 || visible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-1.5 opacity-0")
-              }
-            >
-              {prompt}
-            </p>
-          </div>
-
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-            <span className="font-mono text-xs text-faint">
-              {index < 0
-                ? `${pad(list.length)} prompts in category`
-                : `${pad(index + 1)} / ${pad(list.length)} in category`}
-            </span>
-            <div className="flex gap-2.5">
-              <button
-                type="button"
-                onClick={copy}
-                disabled={index < 0}
-                className="rounded-full border border-ink/15 px-5 py-3 text-sm text-soft transition-colors duration-200 hover:border-ink/30 hover:text-ink disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-ink/15 disabled:hover:text-soft"
-              >
-                {copied ? "copied" : "copy"}
-              </button>
-              <button
-                type="button"
-                onClick={() => draw()}
-                className="rounded-full bg-ink px-6 py-3 text-sm font-medium text-cream transition-colors duration-200 hover:bg-accent"
-              >
-                draw prompt <span className="btn-arrow">→</span>
-              </button>
+              ))}
             </div>
           </div>
-        </motion.div>
 
-        <motion.p
-          {...fadeUp}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.55 }}
-          className="relative mt-14 border-t border-ink/10 pt-6 text-sm leading-relaxed text-soft"
-        >
-          Use these to test <b className="font-medium text-accent">commitment
-          and range</b>, not just fluency — a strong answer should surprise you,
-          stay internally consistent, and follow its own premise instead of
-          hedging. Try the same prompt across a few models to compare how far
-          each is willing to go.
-        </motion.p>
+          <p className="kicker kicker-faint mt-6" aria-live="polite">
+            {filtered.length} skill{filtered.length === 1 ? "" : "s"}
+            {query.trim() ? ` matching “${query.trim()}”` : ""}
+            {category !== "ALL" ? ` in ${category}` : ""}
+          </p>
+        </section>
+
+        <section className="mt-6 grid gap-4">
+          {filtered.map((skill, i) => (
+            <motion.div key={skill.id} {...fadeUp} transition={{ duration: 0.6, ease: EASE, delay: Math.min(i * 0.03, 0.3) }}>
+              <SkillRow {...skill} />
+            </motion.div>
+          ))}
+          {filtered.length === 0 && (
+            <p className="border-2 border-dashed border-line p-10 text-center font-mono text-sm text-faint">
+              Nothing matches. Widen the search or drop the category filter.
+            </p>
+          )}
+        </section>
       </main>
     </MotionConfig>
   );

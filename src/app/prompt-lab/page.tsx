@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import PromptLab from "./PromptLab";
 
-const TITLE = "Prompt Lab — Jaden Raats";
+const TITLE = "The Lab — Skills & Prompt Library | Jaden Raats";
 const DESCRIPTION =
-  "Forty prompts across eight categories for stress-testing how far a language model will commit to a strange idea, instead of hedging.";
+  "A public database of the AI skills, prompts, workflows, and agent instructions Jaden actually uses to run a business. Copy any prompt or request a skill.";
 
 export const metadata: Metadata = {
   title: TITLE,
