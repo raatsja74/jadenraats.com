@@ -1,47 +1,48 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
+import Link from "next/link";
 
 const LINKS = [
   ["about", "/about"],
-  ["work", "/#work"],
   ["guides", "/guides"],
   ["lab", "/prompt-lab"],
   ["portfolio", "/portfolio"],
   ["contact", "/#contact"],
 ] as const;
 
-/** Shared floating nav. Hrefs are root-relative so they work from any page. */
+/** Brutalist editorial nav. Left wordmark, plain text links, one orange
+ *  block anchoring the right edge. Square, bordered, 44px targets. */
 export default function Nav() {
   return (
-    <motion.header
-      className="fixed inset-x-0 top-5 z-50 flex justify-center px-4"
-      initial={{ y: -28, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-line bg-cream">
       <nav
         aria-label="Main"
-        className="flex items-center gap-1 rounded-full bg-ink px-2 py-2 text-cream shadow-lg shadow-ink/10"
+        className="mx-auto flex max-w-6xl flex-wrap items-stretch justify-between gap-x-2 px-4 sm:px-6"
       >
-        <a
+        <Link
           href="/"
-          className="ast-host rounded-full px-4 py-1.5 font-serif text-lg italic tracking-tight"
+          aria-label="Jaden Raats — home"
+          className="ast-host flex min-h-[44px] items-center font-display text-xl uppercase tracking-wide"
         >
-          jaden<span className="ast not-italic text-accent">*</span>
-        </a>
-        {LINKS.map(([label, href]) => (
-          <a
-            key={href}
-            href={href}
-            className="rounded-full px-3 py-1.5 text-sm text-cream/70 transition-colors duration-300 hover:bg-cream/10 hover:text-cream sm:px-4"
+          jaden<span className="ast text-accent">*</span>
+        </Link>
+        <div className="flex flex-wrap items-stretch">
+          {LINKS.map(([label, href]) => (
+            <Link
+              key={href + label}
+              href={href}
+              className="flex min-h-[44px] items-center border-l-2 border-transparent px-2 font-mono text-xs uppercase tracking-[0.08em] text-soft transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-3"
+            >
+              {label}
+            </Link>
+          ))}
+          <Link
+            href="/#contact"
+            aria-label="Say hello"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center bg-accent px-3 font-display text-lg text-ink"
           >
-            {label}
-          </a>
-        ))}
+            <span aria-hidden="true">✱</span>
+          </Link>
+        </div>
       </nav>
-    </motion.header>
+    </header>
   );
 }
