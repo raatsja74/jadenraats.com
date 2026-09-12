@@ -266,6 +266,46 @@ button:hover .btn-arrow {
   border-color: rgb(var(--ink));
 }
 
+/* ── Chips — compact square filter/label controls (operational brutalism) ── */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid rgb(var(--ink));
+  border-radius: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color 200ms var(--ease-soft), color 200ms var(--ease-soft), border-color 200ms var(--ease-soft);
+}
+
+.chip-active {
+  background: rgb(var(--accent));
+  color: rgb(var(--ink));
+}
+
+.chip-active:hover {
+  background: rgb(var(--ink));
+  color: rgb(var(--bg));
+}
+
+.chip-idle {
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+}
+
+.chip-idle:hover {
+  background: rgb(var(--ink));
+  color: rgb(var(--bg));
+}
+
 /* ── Data rows & status tags — operational brutalism (The Lab) ── */
 
 .data-row {

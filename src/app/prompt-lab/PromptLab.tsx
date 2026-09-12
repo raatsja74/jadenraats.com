@@ -141,12 +141,12 @@ export default function PromptLab() {
               />
             </label>
 
-            <div className="flex items-end gap-2">
+            <div className="flex flex-wrap items-end gap-2">
               <button
                 type="button"
                 onClick={() => setCategory("ALL")}
                 aria-pressed={category === "ALL"}
-                className={`btn min-h-[44px] text-xs ${category === "ALL" ? "btn-primary" : "btn-secondary"}`}
+                className={`chip ${category === "ALL" ? "chip-active" : "chip-idle"}`}
               >
                 ALL · {SKILLS.length}
               </button>
@@ -156,7 +156,7 @@ export default function PromptLab() {
                   type="button"
                   onClick={() => setCategory(cat === category ? "ALL" : cat)}
                   aria-pressed={category === cat}
-                  className={`btn min-h-[44px] text-xs ${category === cat ? "btn-primary" : "btn-secondary"}`}
+                  className={`chip ${category === cat ? "chip-active" : "chip-idle"}`}
                 >
                   {cat} · {counts.get(cat) ?? 0}
                 </button>

@@ -29,7 +29,7 @@ export default function Nav() {
             <Link
               key={href + label}
               href={href}
-              className="flex min-h-[44px] items-center border-l-2 border-transparent px-2 font-mono text-xs uppercase tracking-[0.08em] text-soft transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-3"
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center border-l-2 border-transparent px-2 font-mono text-xs uppercase tracking-[0.08em] text-soft transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-3"
             >
               {label}
             </Link>
