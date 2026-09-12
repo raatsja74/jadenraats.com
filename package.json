@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "check:design": "! grep -rn 'backdrop-filter\\|backdrop-blur\\|ease-in-out\\|purple\\|violet\\|indigo\\|[\"\\x27]Inter[\"\\x27]\\|[\"\\x27]Poppins[\"\\x27]\\|background-clip.*text\\|#6366f1\\|#a855f7\\|#8b5cf6' src/",
+    "check:design": "! grep -rn 'backdrop-filter\\|backdrop-blur\\|ease-in-out\\|purple\\|violet\\|indigo\\|[\"\\x27]Inter[\"\\x27]\\|[\"\\x27]Poppins[\"\\x27]\\|background-clip.*text\\|#6366f1\\|#a855f7\\|#8b5cf6\\|rounded-full\\|rounded-lg\\|rounded-xl\\|rounded-2xl\\|rounded-3xl\\|shadow-lg\\|shadow-xl\\|shadow-2xl\\|blur-\\[90px\\]' src/",
     "prepare": "husky"
   },
   "dependencies": {

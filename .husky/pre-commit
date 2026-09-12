@@ -14,9 +14,10 @@ if [ -z "$STAGED" ]; then
   exit 0
 fi
 
-# 1. Design law grep — banned patterns
+# 1. Design law grep — banned patterns (brutalist: no pills, no rounded cards,
+#    no soft shadows, no glass, no blur glows)
 VIOLATIONS=$(echo "$STAGED" | xargs grep -ln \
-  "backdrop-filter\|backdrop-blur\|ease-in-out\|purple\|violet\|indigo\|[\"']Inter[\"']\|[\"']Poppins[\"']\|background-clip.*text\|#6366f1\|#a855f7\|#8b5cf6" \
+  "backdrop-filter\|backdrop-blur\|ease-in-out\|purple\|violet\|indigo\|[\"']Inter[\"']\|[\"']Poppins[\"']\|background-clip.*text\|#6366f1\|#a855f7\|#8b5cf6\|rounded-full\|rounded-lg\|rounded-xl\|rounded-2xl\|rounded-3xl\|shadow-lg\|shadow-xl\|shadow-2xl\|blur-\[90px\]" \
   2>/dev/null)
 
 if [ -n "$VIOLATIONS" ]; then
