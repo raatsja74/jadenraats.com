@@ -4,8 +4,8 @@ export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
 // Token values mirrored from globals.css (no raw hex — design law)
-const INK = "rgb(30, 27, 21)";
-const ACCENT = "rgb(191, 87, 49)";
+const INK = "rgb(10, 10, 9)";
+const ACCENT = "rgb(244, 81, 30)";
 
 export default function AppleIcon() {
   return new ImageResponse(

@@ -2,17 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Design tokens ─────────────────────────────────────────────────────────
-   Palette: warm cream / ink / terracotta. Values are RGB triplets so Tailwind
-   can compose alpha (design law: no raw hex outside src/tokens/).           */
+/* ── Jaden theme tokens ────────────────────────────────────────────────────
+   UDS semantic roles (brand-neutral): canvas / surface / ink / soft / faint /
+   accent / line. Jaden theme values: warm paper, ink black, signal orange.
+   Values are RGB triplets so Tailwind can compose alpha (design law: no raw
+   hex in src). Accent text is reserved for large type, kickers, and graphics —
+   orange on paper is ~3.3:1, black on orange is ~7:1. Body text uses ink or
+   soft. */
 
 :root {
-  --bg:      244 239 230;   /* warm cream */
-  --surface: 236 229 216;   /* deeper cream, cards */
-  --ink:      30  27  21;   /* warm near-black */
-  --soft:    108 100  87;   /* body text on cream */
-  --faint:   160 151 136;   /* labels, meta */
-  --accent:  191  87  49;   /* terracotta */
+  --bg:      242 239 230;   /* warm paper */
+  --surface: 231 224 207;   /* deeper paper, data surfaces */
+  --ink:      10  10   9;   /* ink black */
+  --line:     10  10   9;   /* hard borders */
+  --soft:     58  54  45;   /* body text on paper (AA) */
+  --faint:   108 100  85;   /* meta text on paper (large/labels only) */
+  --accent:  244  81  30;   /* signal orange — only strong accent */
 
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -30,72 +35,52 @@ html {
 body {
   background: rgb(var(--bg));
   color: rgb(var(--ink));
-  font-family: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: rgb(var(--accent) / 0.25);
+  background: rgb(var(--accent));
+  color: rgb(var(--ink));
 }
 
-/* ── Film grain overlay — cinematic texture over the whole page ── */
+/* ── Display type — heavy condensed grotesk, uppercase, tight ── */
 
-.grain::after {
+.display {
+  font-family: var(--font-display), "Arial Narrow", Impact, sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.92;
+}
+
+/* ── Kickers — tiny uppercase mono labels, orange for section identity ── */
+
+.kicker {
+  font-family: var(--font-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.kicker-accent { color: rgb(var(--accent)); }
+.kicker-faint { color: rgb(var(--faint)); }
+.kicker-paper { color: rgb(var(--bg) / 0.6); }
+
+/* ── Photocopy texture — static grain over the whole page ── */
+
+.texture-grain::after {
   content: "";
   position: fixed;
-  inset: -100%;
+  inset: 0;
   z-index: 60;
   pointer-events: none;
   opacity: 0.05;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grain-shift 9s steps(6) infinite;
-}
-
-@keyframes grain-shift {
-  0%   { transform: translate(0, 0); }
-  20%  { transform: translate(-4%, 3%); }
-  40%  { transform: translate(3%, -5%); }
-  60%  { transform: translate(-5%, -2%); }
-  80%  { transform: translate(4%, 4%); }
-  100% { transform: translate(0, 0); }
-}
-
-/* ── Hero wash — slow drifting warm light ── */
-
-.wash {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.wash::before,
-.wash::after {
-  content: "";
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(90px);
-  will-change: transform;
-}
-
-.wash::before {
-  width: 55vw;
-  height: 55vw;
-  top: -18%;
-  right: -12%;
-  background: rgb(var(--accent) / 0.13);
-  animation: drift-a 26s var(--ease-soft) infinite alternate;
-}
-
-.wash::after {
-  width: 45vw;
-  height: 45vw;
-  bottom: -22%;
-  left: -10%;
-  background: rgb(214 168 96 / 0.18);
-  animation: drift-b 32s var(--ease-soft) infinite alternate;
 }
 
 /* ── Hero portrait — a transparent, illustrated cutout that lives in the
@@ -105,7 +90,7 @@ body {
   position: absolute;
   z-index: 1;
   right: -5.5rem;
-  bottom: 7.75rem;
+  bottom: 8.5rem;
   height: min(54svh, 31rem);
   pointer-events: none;
   user-select: none;
@@ -128,24 +113,6 @@ body {
   .hero-portrait {
     left: 43%;
     height: min(79svh, 48rem);
-  }
-}
-
-@keyframes drift-a {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(-9vw, 7vh) scale(1.15); }
-}
-
-@keyframes drift-b {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(8vw, -6vh) scale(1.1); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .grain::after,
-  .wash::before,
-  .wash::after {
-    animation: none;
   }
 }
 
@@ -214,7 +181,7 @@ body {
   .caret { animation: none; opacity: 0; }
 }
 
-/* ── Links & buttons ── */
+/* ── Links ── */
 
 .link-underline {
   position: relative;
@@ -248,10 +215,99 @@ button:hover .btn-arrow {
   transform: translateX(4px);
 }
 
-/* Visible focus for keyboard users */
+/* ── Buttons — square, hard-edged, 44px targets ── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.65rem 1.5rem;
+  border: 2px solid rgb(var(--ink));
+  border-radius: 0;
+  font-family: var(--font-display), "Arial Narrow", Impact, sans-serif;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  transition: background-color 200ms var(--ease-soft), color 200ms var(--ease-soft), border-color 200ms var(--ease-soft);
+}
+
+.btn-primary {
+  background: rgb(var(--accent));
+  color: rgb(var(--ink));
+}
+
+.btn-primary:hover {
+  background: rgb(var(--ink));
+  color: rgb(var(--bg));
+}
+
+.btn-secondary {
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+}
+
+.btn-secondary:hover {
+  background: rgb(var(--ink));
+  color: rgb(var(--bg));
+}
+
+.btn-inverse {
+  background: rgb(var(--ink));
+  color: rgb(var(--bg));
+  border-color: rgb(var(--bg));
+}
+
+.btn-inverse:hover {
+  background: rgb(var(--accent));
+  color: rgb(var(--ink));
+  border-color: rgb(var(--ink));
+}
+
+/* ── Data rows & status tags — operational brutalism (The Lab) ── */
+
+.data-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border: 2px solid rgb(var(--line));
+  background: rgb(var(--bg));
+}
+
+@media (min-width: 768px) {
+  .data-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgb(var(--line));
+  font-family: var(--font-mono), monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.status-live {
+  background: rgb(var(--accent));
+  color: rgb(var(--ink));
+}
+
+/* Visible focus for keyboard users — square, orange, never rounded */
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
   outline: 2px solid rgb(var(--accent));
   outline-offset: 3px;
-  border-radius: 4px;
 }

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
+import { Anton, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const sans = Instrument_Sans({
-  variable: "--font-sans",
+const display = Anton({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400"],
 });
 
 const serif = Instrument_Serif({
@@ -50,8 +50,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
-      <body className="grain">{children}</body>
+    <html lang="en" className={`${display.variable} ${serif.variable} ${mono.variable}`}>
+      <body className="texture-grain">{children}</body>
     </html>
   );
 }
