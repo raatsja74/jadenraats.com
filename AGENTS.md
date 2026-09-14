@@ -38,3 +38,18 @@ Creative and strategic thinking partner for Jaden's personal site. This site is 
 - Design: lean into the terminal/industrial aesthetic. Avoid rounded, pastel, generic SaaS.
 - Copy: short sentences. Real outcomes. No "leverage synergies" or "thought leader" language.
 - The site should make someone say "this guy actually builds stuff" not "this guy talks about AI".
+
+## Task Coordination
+On session start, check for open issues in this repository:
+1. **Find work:** Look for issues labeled with your agent identifier (`claude-code`, `codex`, `clanker`, etc.)
+2. **Prioritize:** 
+   - Issues with assigned milestones first
+   - Then issues labeled `urgent`
+   - Then oldest issue first
+3. **Self-assign:** Assign yourself to the issue and move to "In Progress" (if using Projects)
+4. **Work & update:** Comment at meaningful checkpoints (not every small step)
+5. **Close cleanly:** When complete, add a closing comment with:
+   - What was accomplished
+   - Any relevant file paths or outputs
+   - Link to this session if applicable
+If no labeled issues exist, proceed with the user's direct request.
