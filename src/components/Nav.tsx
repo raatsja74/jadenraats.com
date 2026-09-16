@@ -1,12 +1,7 @@
-import Link from "next/link";
+"use client";
 
-const LINKS = [
-  ["about", "/about"],
-  ["guides", "/guides"],
-  ["lab", "/prompt-lab"],
-  ["portfolio", "/portfolio"],
-  ["contact", "/#contact"],
-] as const;
+import Link from "next/link";
+import { NAV_LINKS } from "@/data/site";
 
 /** Brutalist editorial nav. Left wordmark, plain text links, one orange
  *  block anchoring the right edge. Square, bordered, 44px targets. */
@@ -24,8 +19,9 @@ export default function Nav() {
         >
           jaden<span className="ast text-accent">*</span>
         </Link>
+
         <div className="flex flex-wrap items-stretch">
-          {LINKS.map(([label, href]) => (
+          {NAV_LINKS.map(({ label, href }) => (
             <Link
               key={href + label}
               href={href}
