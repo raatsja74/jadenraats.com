@@ -161,6 +161,59 @@ body {
   .ast-host:focus-visible .ast { transform: none; }
 }
 
+/* ── Brand mark — constructed six-arm asterisk (src/components/Mark.tsx) ── */
+
+.mark {
+  display: inline-block;
+  vertical-align: -0.08em;
+  flex: none;
+}
+
+/* Nav lockup: mark at 28px, 8px gap, then the wordmark. */
+.nav-mark {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+}
+
+/* Hero: scales with the h1 it sits in, nudged to optical cap-height. */
+.hero-mark {
+  width: 0.72em;
+  height: 0.72em;
+  vertical-align: 0.08em;
+  margin-left: 0.06em;
+}
+
+/* ── About — editorial image slot (placeholder until a real photo lands) ── */
+
+.about-image-slot {
+  aspect-ratio: 4 / 3;
+  border: 2px solid rgb(var(--line));
+  background: rgb(var(--surface));
+  overflow: hidden;
+}
+
+/* ── Guide cards — meta left, difficulty chip right ── */
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card-chip {
+  border: 1px solid rgb(var(--line));
+  padding: 0.15rem 0.5rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgb(var(--soft));
+  white-space: nowrap;
+}
+
 /* ── Typewriter caret ── */
 
 .caret {

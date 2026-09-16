@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Mark from "@/components/Mark";
 
 const LINKS = [
   ["about", "/about"],
@@ -8,8 +9,8 @@ const LINKS = [
   ["contact", "/#contact"],
 ] as const;
 
-/** Brutalist editorial nav. Left wordmark, plain text links, one orange
- *  block anchoring the right edge. Square, bordered, 44px targets. */
+/** Brutalist editorial nav. Mark + wordmark on the left, plain text links, one
+ *  orange block anchoring the right edge. Square, bordered, 44px targets. */
 export default function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-line bg-cream">
@@ -20,9 +21,10 @@ export default function Nav() {
         <Link
           href="/"
           aria-label="Jaden Raats — home"
-          className="ast-host flex min-h-[44px] items-center font-display text-xl uppercase tracking-wide"
+          className="ast-host flex min-h-[44px] items-center gap-2 font-display text-[1.15rem] uppercase tracking-[0.04em]"
         >
-          jaden<span className="ast text-accent">*</span>
+          <Mark className="nav-mark ast text-accent" />
+          jaden
         </Link>
         <div className="flex flex-wrap items-stretch">
           {LINKS.map(([label, href]) => (
@@ -37,9 +39,9 @@ export default function Nav() {
           <Link
             href="/#contact"
             aria-label="Say hello"
-            className="flex min-h-[44px] min-w-[44px] items-center justify-center bg-accent px-3 font-display text-lg text-ink"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center bg-accent px-3"
           >
-            <span aria-hidden="true">✱</span>
+            <Mark className="h-5 w-5 text-ink" />
           </Link>
         </div>
       </nav>

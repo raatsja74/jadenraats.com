@@ -10,6 +10,7 @@ export type Guide = {
   tag: string;
   summary: string;
   readMinutes: number;
+  difficulty: "beginner" | "operator" | "advanced";
   published: string;
   sections: GuideSection[];
 };
@@ -23,6 +24,7 @@ export const GUIDES: Guide[] = [
     summary:
       "The biggest unlock in my AI assistant wasn't a new model. It was a one-page filing guide both I and the agents could read.",
     readMinutes: 6,
+    difficulty: "beginner",
     published: "2026-09-05",
     sections: [
       {
@@ -96,6 +98,7 @@ export const GUIDES: Guide[] = [
     summary:
       "I stopped asking models to classify my mess. Which chat I open is the classification. The agent just files.",
     readMinutes: 5,
+    difficulty: "operator",
     published: "2026-09-05",
     sections: [
       {
@@ -152,6 +155,7 @@ export const GUIDES: Guide[] = [
     summary:
       "The lead that goes cold is the most expensive thing a service business owns. Here's the filter I use before any AI touches lead response.",
     readMinutes: 7,
+    difficulty: "advanced",
     published: "2026-09-05",
     sections: [
       {

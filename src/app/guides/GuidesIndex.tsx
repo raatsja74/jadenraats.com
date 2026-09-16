@@ -80,8 +80,11 @@ export default function GuidesIndex() {
                   <p className="mt-4 flex-1 font-mono text-sm leading-relaxed text-soft">
                     {g.summary}
                   </p>
-                  <span className="kicker kicker-accent mt-8">
-                    Read guide <span className="btn-arrow">→</span>
+                  <span className="card-footer">
+                    <span className="kicker kicker-accent">
+                      Read guide <span className="btn-arrow">→</span>
+                    </span>
+                    <span className="card-chip">{g.difficulty}</span>
                   </span>
                 </Link>
               </motion.article>
