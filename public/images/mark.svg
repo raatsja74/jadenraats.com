@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none"
+  role="img" aria-label="Jaden Raats logo mark — geometric six-arm asterisk">
+  <!--
+    JADEN RAATS — LOGO MARK v1
+    Six-arm asterisk: 3 strokes crossing at (24,24), 60° apart.
+    center 24,24 · arm radius 20 · stroke-width 5 · square caps
+    signals: orange #F4511E · ink #0A0A09 · paper #F2EFE6
+    Inverse variant: mark-on-ink.svg · geometry mirrors src/components/Mark.tsx
+  -->
+  <g id="mark-arms" stroke="#F4511E" stroke-width="5" stroke-linecap="square">
+    <line id="arm-vertical" x1="24" y1="4" x2="24" y2="44" />
+    <line id="arm-ne-sw" x1="41.32" y1="14" x2="6.68" y2="34" />
+    <line id="arm-nw-se" x1="6.68" y1="14" x2="41.32" y2="34" />
+  </g>
+</svg>

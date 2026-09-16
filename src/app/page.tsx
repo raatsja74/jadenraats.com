@@ -11,6 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import { GUIDES } from "@/data/guides";
+import Mark from "@/components/Mark";
 
 // ── Motion presets ────────────────────────────────────────────────────────────
 
@@ -165,7 +166,7 @@ function Hero() {
           <RevealLine delay={0.35}>jaden</RevealLine>
           <RevealLine delay={0.5}>
             <span className="ast-host">
-              raats<span className="ast text-accent">*</span>
+              raats<Mark className="ast hero-mark text-accent" />
             </span>
           </RevealLine>
         </h1>
@@ -224,7 +225,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     <motion.p {...fadeUp} className="kicker kicker-accent">
       <span className="ast-host inline-flex items-center gap-1.5">
         {children}
-        <span className="ast">*</span>
+        <Mark className="ast text-accent" />
       </span>
     </motion.p>
   );
@@ -240,17 +241,24 @@ function About() {
       >
         Operator first, <span className="font-serif italic normal-case">builder</span> second.
       </motion.h2>
-      <div className="mt-10 grid gap-8 font-mono text-base leading-relaxed text-soft sm:grid-cols-2 sm:gap-12">
-        <motion.p {...fadeUp}>
-          Most AI advice comes from people who&apos;ve never run a business. I
-          run Award Coatings — leads, quotes, crews, callbacks. Every system I
-          share exists because something in that business was eating my week.
-        </motion.p>
-        <motion.p {...fadeUp}>
-          If a tool survives a real Monday, I&apos;ll show you exactly how it
-          works. If it doesn&apos;t, you&apos;ll never hear about it.
-          That&apos;s the whole filter.
-        </motion.p>
+      <div className="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-12">
+        <div className="grid gap-6 font-mono text-base leading-relaxed text-soft">
+          <motion.p {...fadeUp}>
+            Most AI advice comes from people who&apos;ve never run a business. I
+            run Award Coatings — leads, quotes, crews, callbacks. Every system I
+            share exists because something in that business was eating my week.
+          </motion.p>
+          <motion.p {...fadeUp}>
+            If a tool survives a real Monday, I&apos;ll show you exactly how it
+            works. If it doesn&apos;t, you&apos;ll never hear about it.
+            That&apos;s the whole filter.
+          </motion.p>
+        </div>
+        <motion.div {...fadeUp} className="about-image-slot">
+          <div className="flex h-full items-end p-4">
+            <span className="kicker kicker-faint">photo — job site, az</span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -295,8 +303,11 @@ function Guides() {
               <p className="mt-4 flex-1 font-mono text-sm leading-relaxed text-soft">
                 {g.summary}
               </p>
-              <span className="kicker kicker-accent mt-6">
-                Read guide <span className="btn-arrow">→</span>
+              <span className="card-footer">
+                <span className="kicker kicker-accent">
+                  Read guide <span className="btn-arrow">→</span>
+                </span>
+                <span className="card-chip">{g.difficulty}</span>
               </span>
             </Link>
           </motion.article>
@@ -435,7 +446,7 @@ function Contact() {
             className="ast-host inline-flex items-center gap-4 transition-colors duration-500 hover:text-accent sm:gap-6"
           >
             say hello <MessageBubbleIcon className="h-8 w-8 text-accent sm:h-10 sm:w-10" />
-            <span className="ast text-accent">*</span>
+            <Mark className="ast h-8 w-8 text-accent sm:h-10 sm:w-10" />
           </a>
         </motion.h2>
         <motion.p {...fadeUp} className="mt-8 max-w-md font-mono text-sm leading-relaxed text-cream/60">

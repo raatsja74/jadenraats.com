@@ -5,7 +5,7 @@ export const contentType = "image/png";
 
 // Token values mirrored from globals.css (no raw hex — design law)
 const INK = "rgb(10, 10, 9)";
-const ACCENT = "rgb(244, 81, 30)";
+const PAPER = "rgb(242, 239, 230)";
 
 export default function AppleIcon() {
   return new ImageResponse(
@@ -20,11 +20,11 @@ export default function AppleIcon() {
           background: INK,
         }}
       >
-        <svg width="118" height="118" viewBox="0 0 32 32">
-          <g stroke={ACCENT} strokeWidth="3.6" strokeLinecap="round">
-            <line x1="16" y1="7.5" x2="16" y2="24.5" />
-            <line x1="23.36" y1="11.75" x2="8.64" y2="20.25" />
-            <line x1="23.36" y1="20.25" x2="8.64" y2="11.75" />
+        <svg width="118" height="118" viewBox="0 0 48 48">
+          <g stroke={PAPER} strokeWidth="5" strokeLinecap="square">
+            <line x1="24" y1="4" x2="24" y2="44" />
+            <line x1="41.32" y1="14" x2="6.68" y2="34" />
+            <line x1="6.68" y1="14" x2="41.32" y2="34" />
           </g>
         </svg>
       </div>
