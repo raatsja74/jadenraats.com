@@ -56,7 +56,7 @@ const ELSEWHERE = [
     meta: "profile",
   },
   { label: "GitHub", href: "https://github.com/raatsja74", meta: "code" },
-  { label: "me@jadenraats.com", href: "mailto:me@jadenraats.com", meta: "email" },
+  { label: "ai@jadenraats.com", href: "mailto:ai@jadenraats.com", meta: "email" },
 ];
 
 // ── Sections ──────────────────────────────────────────────────────────────────
@@ -118,7 +118,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.6 }}
         >
-          <a href="mailto:me@jadenraats.com" className="btn btn-primary">
+          <a href="mailto:ai@jadenraats.com" className="btn btn-primary">
             Get in touch <span className="btn-arrow">→</span>
           </a>
           <Link href="/#hermes" className="btn btn-secondary">

@@ -192,7 +192,7 @@ function Hero() {
             <Link href="/#guides" className="btn btn-primary">
               See the guides <span className="btn-arrow">→</span>
             </Link>
-            <a href="mailto:me@jadenraats.com" className="btn btn-secondary">
+            <a href="mailto:ai@jadenraats.com" className="btn btn-secondary">
               <MessageBubbleIcon className="h-4 w-4" /> Say hello
             </a>
           </motion.div>
@@ -431,7 +431,7 @@ function Contact() {
           className="display mt-6 text-6xl sm:text-8xl"
         >
           <a
-            href="mailto:me@jadenraats.com"
+            href="mailto:ai@jadenraats.com"
             className="ast-host inline-flex items-center gap-4 transition-colors duration-500 hover:text-accent sm:gap-6"
           >
             say hello <MessageBubbleIcon className="h-8 w-8 text-accent sm:h-10 sm:w-10" />
@@ -443,8 +443,8 @@ function Contact() {
           Ask. If it&apos;s real work, I&apos;m interested.
         </motion.p>
         <motion.div {...fadeUp} className="mt-10 flex flex-wrap gap-8 font-mono text-sm">
-          <a href="mailto:me@jadenraats.com" className="link-underline text-cream/80">
-            me@jadenraats.com
+          <a href="mailto:ai@jadenraats.com" className="link-underline text-cream/80">
+            ai@jadenraats.com
           </a>
           <a
             href="https://github.com/raatsja74"

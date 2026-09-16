@@ -121,7 +121,7 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
             <Link href="/guides" className="link-underline text-accent">
               ← all guides
             </Link>
-            <a href="mailto:me@jadenraats.com" className="link-underline text-soft">
+            <a href="mailto:ai@jadenraats.com" className="link-underline text-soft">
               ask about this →
             </a>
           </motion.div>
