@@ -14,6 +14,7 @@ module.exports = {
       },
       fontFamily: {
         display: ['var(--font-display)', 'Arial Narrow', 'Impact', 'sans-serif'],
+        sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
         serif:  ['var(--font-serif)', 'Georgia', 'serif'],
         mono:   ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import PromptLab from "./PromptLab";
 
 const TITLE = "The Lab — Skills & Prompt Library | Jaden Raats";
@@ -25,5 +26,9 @@ export const metadata: Metadata = {
 };
 
 export default function PromptLabPage() {
-  return <PromptLab />;
+  return (
+    <Suspense>
+      <PromptLab />
+    </Suspense>
+  );
 }

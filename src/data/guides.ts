@@ -9,6 +9,7 @@ export type Guide = {
   title: string;
   tag: string;
   summary: string;
+  image: string;
   readMinutes: number;
   published: string;
   sections: GuideSection[];
@@ -18,6 +19,7 @@ export type Guide = {
 export const GUIDES: Guide[] = [
   {
     slug: "write-the-rules-down",
+    image: "/images/guides/write-the-rules-down.webp",
     title: "Write the rules down before you automate more",
     tag: "systems",
     summary:
@@ -91,6 +93,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "one-front-door",
+    image: "/images/guides/one-front-door.webp",
     title: "One front door: stop making AI guess your intent",
     tag: "capture",
     summary:
@@ -147,6 +150,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "follow-up-that-survives-monday",
+    image: "/images/guides/follow-up-that-survives-monday.webp",
     title: "Follow-up that survives a Monday on a job site",
     tag: "ops",
     summary:

@@ -15,16 +15,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: "https://jadenraats.com/portfolio",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
       url: "https://jadenraats.com/prompt-lab",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
+    },
+    {
+      url: "https://jadenraats.com/case-study",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: "https://jadenraats.com/guides",

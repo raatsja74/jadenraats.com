@@ -11,10 +11,27 @@ import Link from "next/link";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import { GUIDES } from "@/data/guides";
+import { SKILL_CATEGORIES, SKILLS } from "./prompt-lab/skills";
 
 // ── Motion presets ────────────────────────────────────────────────────────────
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+/** First-paint guard for above-the-fold motion: the server and the initial
+ *  client mount render the final state (no blank flash while JS loads);
+ *  client-side navigations keep the designed entrance animation. */
+let heroHasMounted = false;
+
+function useHeroInitial<T extends object>(hidden: T): false | T {
+  const [isFirstPaint] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !heroHasMounted;
+  });
+  useEffect(() => {
+    heroHasMounted = true;
+  }, []);
+  return isFirstPaint ? false : hidden;
+}
 
 const fadeUp = {
   initial: { opacity: 0, y: 32 },
@@ -33,11 +50,12 @@ function RevealLine({
   delay?: number;
   className?: string;
 }) {
+  const initial = useHeroInitial({ y: "115%" });
   return (
     <span className={`block overflow-hidden ${className}`}>
       <motion.span
         className="block"
-        initial={{ y: "115%" }}
+        initial={initial}
         animate={{ y: 0 }}
         transition={{ duration: 0.9, ease: EASE, delay }}
       >
@@ -92,35 +110,6 @@ function MessageBubbleIcon({ className = "" }: { className?: string }) {
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
-const HERMES_STATS = [
-  { n: "9", l: "apps unified" },
-  { n: "2,142", l: "messages" },
-  { n: "$14.15", l: "total cost" },
-  { n: "55", l: "days live" },
-];
-
-const HERMES_FLOW = [
-  { k: "capture", v: "telegram · slack · imessage · cli · cron" },
-  { k: "gateway", v: "always-on process, routes by destination" },
-  { k: "state", v: "one sqlite db · full-text search" },
-  { k: "homes", v: "obsidian · todoist · drive" },
-];
-
-const HERMES_BROKE = [
-  {
-    t: "A 14-day outage that never alerted anyone",
-    d: "An expired token plus two automations pointing at a folder I'd deleted. Nothing crashed — it just quietly stopped working, and I stopped using it without deciding to. Silent failure is worse than loud failure.",
-  },
-  {
-    t: "The one scheduled job is still broken",
-    d: "It refuses to run because a safety check is doing its job, and its error notification can't send. The job meant to keep the system from needing me is the part that needs me. I automated the filing before I automated the monitoring.",
-  },
-  {
-    t: "I measured the wrong things",
-    d: "I tracked cost and message counts because they were free to collect. I never tracked whether I could actually find what I'd saved — the only number that would have justified the whole project.",
-  },
-];
-
 const MARQUEE = [
   "real systems. real results.",
   "build. operate. automate. share.",
@@ -133,11 +122,14 @@ const MARQUEE = [
 // ── Sections ──────────────────────────────────────────────────────────────────
 
 function Hero() {
+  const fade = useHeroInitial({ opacity: 0, y: 20 });
+  const fadeSmall = useHeroInitial({ opacity: 0, y: 12 });
+  const fadePortrait = useHeroInitial({ opacity: 0, y: 28 });
   return (
     <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-hidden px-6 pb-14 pt-32 sm:px-10 lg:px-16">
       <motion.div
         className="hero-portrait"
-        initial={{ opacity: 0, y: 28 }}
+        initial={fadePortrait}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: EASE, delay: 0.45 }}
       >
@@ -154,7 +146,7 @@ function Hero() {
       <div className="relative z-10">
         <motion.p
           className="kicker kicker-accent"
-          initial={{ opacity: 0, y: 12 }}
+          initial={fadeSmall}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
         >
@@ -172,8 +164,8 @@ function Hero() {
 
         <div className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <motion.p
-            className="max-w-md font-mono text-sm leading-relaxed text-soft"
-            initial={{ opacity: 0, y: 20 }}
+            className="max-w-md text-sm leading-relaxed text-soft"
+            initial={fade}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.75 }}
           >
@@ -185,7 +177,7 @@ function Hero() {
 
           <motion.div
             className="flex flex-wrap gap-3"
-            initial={{ opacity: 0, y: 20 }}
+            initial={fade}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.9 }}
           >
@@ -240,7 +232,7 @@ function About() {
       >
         Operator first, <span className="font-serif italic normal-case">builder</span> second.
       </motion.h2>
-      <div className="mt-10 grid gap-8 font-mono text-base leading-relaxed text-soft sm:grid-cols-2 sm:gap-12">
+      <div className="mt-10 grid gap-8 text-base leading-relaxed text-soft sm:grid-cols-2 sm:gap-12">
         <motion.p {...fadeUp}>
           Most AI advice comes from people who&apos;ve never run a business. I
           run Award Coatings — leads, quotes, crews, callbacks. Every system I
@@ -283,20 +275,31 @@ function Guides() {
           >
             <Link
               href={`/guides/${g.slug}`}
-              className="group flex h-full flex-col border-2 border-line bg-cream p-6 transition-colors duration-200 hover:border-accent"
+              className="group flex h-full flex-col border-2 border-line bg-cream transition-colors duration-200 hover:border-accent"
             >
-              <span className="font-mono text-xs text-accent">
-                {String(i + 1).padStart(2, "0")}
+              <span className="relative block aspect-[16/9] overflow-hidden border-b-2 border-line">
+                <Image
+                  src={g.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover"
+                />
               </span>
-              <span className="kicker kicker-faint mt-6">{g.tag}</span>
-              <h3 className="display mt-3 text-2xl leading-tight transition-colors duration-200 group-hover:text-accent">
-                {g.title}
-              </h3>
-              <p className="mt-4 flex-1 font-mono text-sm leading-relaxed text-soft">
-                {g.summary}
-              </p>
-              <span className="kicker kicker-accent mt-6">
-                Read guide <span className="btn-arrow">→</span>
+              <span className="flex flex-1 flex-col p-6">
+                <span className="font-mono text-xs text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="kicker kicker-faint mt-6">{g.tag} · {g.readMinutes} min</span>
+                <h3 className="display-sentence mt-3 text-2xl leading-tight transition-colors duration-200 group-hover:text-accent">
+                  {g.title}
+                </h3>
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-soft">
+                  {g.summary}
+                </p>
+                <span className="kicker kicker-accent mt-6">
+                  Read guide <span className="btn-arrow">→</span>
+                </span>
               </span>
             </Link>
           </motion.article>
@@ -306,11 +309,75 @@ function Guides() {
   );
 }
 
-function CaseStudy() {
-  return (
-    <section id="hermes" className="mx-auto max-w-6xl scroll-mt-24 border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28">
-      <SectionLabel>case study</SectionLabel>
+/** Featured skills for the Lab teaser — top 6 by real usage. Curated only;
+ *  the full library lives at /prompt-lab. */
+const FEATURED_SKILLS = [...SKILLS]
+  .sort((a, b) => b.uses - a.uses)
+  .slice(0, 6);
 
+function LabTeaser() {
+  return (
+    <section id="lab" className="mx-auto max-w-6xl scroll-mt-24 border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28">
+      <SectionLabel>the lab</SectionLabel>
+      <motion.h2
+        {...fadeUp}
+        className="display mt-6 max-w-3xl text-5xl sm:text-6xl"
+      >
+        Skills &amp; prompt library
+      </motion.h2>
+      <motion.p {...fadeUp} className="mt-8 max-w-2xl text-sm leading-relaxed text-soft sm:text-base">
+        A public database of the AI skills, prompts, workflows, and agent
+        instructions that run a real business. Copy any prompt, or hit USE
+        SKILL and I&apos;ll set it up with you.
+      </motion.p>
+
+      <motion.div {...fadeUp} className="mt-8 flex flex-wrap gap-2">
+        {SKILL_CATEGORIES.map((cat) => (
+          <Link key={cat} href={`/prompt-lab?cat=${encodeURIComponent(cat)}`} className="chip chip-idle">
+            {cat}
+          </Link>
+        ))}
+      </motion.div>
+
+      <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        {FEATURED_SKILLS.map((s, i) => (
+          <motion.article
+            key={s.id}
+            {...fadeUp}
+            transition={{ duration: 0.7, ease: EASE, delay: Math.min(i * 0.06, 0.3) }}
+          >
+            <Link
+              href={`/prompt-lab?q=${encodeURIComponent(s.name)}`}
+              className="group flex h-full flex-col border-2 border-line bg-cream p-6 transition-colors duration-200 hover:border-accent"
+            >
+              <span className="flex flex-wrap items-center gap-3">
+                <h3 className="display-sentence text-xl leading-tight transition-colors duration-200 group-hover:text-accent">
+                  {s.name}
+                </h3>
+                <span className="status-tag status-live">{s.category}</span>
+              </span>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-soft">{s.desc}</p>
+              <span className="kicker kicker-accent mt-6">
+                Open in the lab <span className="btn-arrow">→</span>
+              </span>
+            </Link>
+          </motion.article>
+        ))}
+      </div>
+
+      <motion.div {...fadeUp} className="mt-10">
+        <Link href="/prompt-lab" className="btn btn-primary">
+          Enter the lab <span className="btn-arrow">→</span>
+        </Link>
+      </motion.div>
+    </section>
+  );
+}
+
+function CaseStudyTeaser() {
+  return (
+    <section id="case-study" className="mx-auto max-w-6xl scroll-mt-24 border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28">
+      <SectionLabel>case study</SectionLabel>
       <motion.h2
         {...fadeUp}
         className="display mt-6 max-w-4xl text-5xl sm:text-6xl"
@@ -318,131 +385,40 @@ function CaseStudy() {
         I built an AI assistant, then wrote down{" "}
         <span className="font-serif italic normal-case">everything that broke</span>.
       </motion.h2>
-
-      <motion.p {...fadeUp} className="mt-8 max-w-2xl font-mono text-sm leading-relaxed text-soft sm:text-base">
-        I was capturing work in eight places and finding it in none of them.
-        Links in one app, ideas in another, tasks somewhere else — plus five AI
-        agents that couldn&apos;t see each other&apos;s work. The problem was
-        never lost data. It was that I couldn&apos;t get anything back out.
+      <motion.p {...fadeUp} className="mt-8 max-w-2xl text-sm leading-relaxed text-soft sm:text-base">
+        Nine apps behind one front door, 2,142 messages, $14.15 in model costs —
+        and a two-week silent outage nobody noticed. The fix wasn&apos;t code.
+        It was writing the filing rules down on a single page.
       </motion.p>
-
-      <motion.div {...fadeUp} className="mt-12 border-2 border-line">
-        <div className="-m-[2px] grid grid-cols-2 sm:grid-cols-4">
-          {HERMES_STATS.map((s) => (
-            <div key={s.l} className="border-2 border-line px-5 py-7 text-center">
-              <div className="display text-4xl tracking-wide sm:text-5xl">{s.n}</div>
-              <div className="kicker kicker-faint mt-2">{s.l}</div>
-            </div>
-          ))}
-        </div>
+      <motion.div {...fadeUp} className="mt-10">
+        <Link href="/case-study" className="btn btn-secondary">
+          Read the full case study <span className="btn-arrow">→</span>
+        </Link>
       </motion.div>
-
-      <motion.p {...fadeUp} className="mt-14 max-w-2xl font-mono text-sm leading-relaxed text-soft sm:text-base">
-        So I built one front door. Everything goes to a chat app, and{" "}
-        <em className="font-serif italic normal-case text-ink">which chat you send it to</em>{" "}
-        decides where it ends up. No AI guessing your intent — you already made
-        the decision when you picked the chat. It gets filed automatically, and
-        every conversation from every app lands in one searchable place.
-      </motion.p>
-
-      <motion.div {...fadeUp} className="mt-10 border-t-2 border-line">
-        {HERMES_FLOW.map((f) => (
-          <div
-            key={f.k}
-            className="flex flex-col gap-1 border-b-2 border-line py-4 sm:flex-row sm:items-baseline sm:gap-6"
-          >
-            <span className="kicker kicker-accent sm:w-28 sm:shrink-0">{f.k}</span>
-            <span className="font-mono text-sm text-soft">{f.v}</span>
-          </div>
-        ))}
-      </motion.div>
-
-      <motion.h3 {...fadeUp} className="display mt-20 text-3xl sm:text-4xl">
-        The fix wasn&apos;t code.
-      </motion.h3>
-
-      <motion.p {...fadeUp} className="mt-6 max-w-2xl font-mono text-sm leading-relaxed text-soft sm:text-base">
-        Six weeks in, it broke for two weeks and I didn&apos;t notice. When I
-        came back, I didn&apos;t rewrite anything — I wrote down the filing
-        rules on a single page that both I and the agents could read. Same code,
-        same models, four times the use.
-      </motion.p>
-
-      <motion.div {...fadeUp} className="mt-10 max-w-xl border-2 border-line">
-        <div className="grid grid-cols-3 border-b-2 border-line font-mono text-xs text-faint">
-          <div className="px-4 py-3" />
-          <div className="px-4 py-3">before</div>
-          <div className="px-4 py-3">after</div>
-        </div>
-        <div className="grid grid-cols-3 border-b-2 border-line text-sm">
-          <div className="px-4 py-4 text-soft">days used</div>
-          <div className="px-4 py-4 font-mono">28%</div>
-          <div className="px-4 py-4 font-mono text-accent">53%</div>
-        </div>
-        <div className="grid grid-cols-3 text-sm">
-          <div className="px-4 py-4 text-soft">messages / day</div>
-          <div className="px-4 py-4 font-mono">21</div>
-          <div className="px-4 py-4 font-mono text-accent">87</div>
-        </div>
-      </motion.div>
-
-      <motion.h3 {...fadeUp} className="display mt-20 text-3xl sm:text-4xl">
-        What&apos;s still broken
-      </motion.h3>
-
-      <motion.p {...fadeUp} className="mt-6 max-w-2xl font-mono text-sm leading-relaxed text-soft">
-        This is the part most write-ups leave out. All of it is still true as of
-        today.
-      </motion.p>
-
-      <div className="mt-10 border-t-2 border-line">
-        {HERMES_BROKE.map((b, i) => (
-          <motion.div
-            key={b.t}
-            className="border-b-2 border-line py-8"
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, ease: EASE, delay: i * 0.1 }}
-          >
-            <h4 className="display text-2xl">{b.t}</h4>
-            <p className="mt-3 max-w-2xl font-mono text-sm leading-relaxed text-soft">{b.d}</p>
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.p {...fadeUp} className="mt-14 max-w-2xl font-mono text-sm leading-relaxed sm:text-base">
-        The useful lesson wasn&apos;t technical. The system didn&apos;t fail
-        because it couldn&apos;t do enough — it failed because the rules for
-        where things go lived in my head instead of on a page. Writing them down
-        cost an afternoon and did more than six weeks of building.
-      </motion.p>
     </section>
   );
 }
 
 function Contact() {
   return (
-    <section id="contact" className="scroll-mt-24 border-t-2 border-line bg-ink px-6 py-28 text-cream sm:px-10 sm:py-36">
+    <section id="contact" className="scroll-mt-24 border-t-2 border-line bg-ink px-6 py-20 text-cream sm:px-10 sm:py-24">
       <div className="mx-auto max-w-6xl">
-        <p className="kicker kicker-paper">contact</p>
+        <p className="kicker kicker-paper">let&apos;s talk</p>
         <motion.h2
           {...fadeUp}
-          className="display mt-6 text-6xl sm:text-8xl"
+          className="display mt-6 text-5xl sm:text-7xl"
         >
           <a
             href="mailto:me@jadenraats.com"
             className="ast-host inline-flex items-center gap-4 transition-colors duration-500 hover:text-accent sm:gap-6"
           >
-            say hello <MessageBubbleIcon className="h-8 w-8 text-accent sm:h-10 sm:w-10" />
-            <span className="ast text-accent">*</span>
+            say hello <span className="ast text-accent">*</span>
           </a>
         </motion.h2>
-        <motion.p {...fadeUp} className="mt-8 max-w-md font-mono text-sm leading-relaxed text-cream/60">
-          Running a business and wondering what AI can actually do for you?
-          Ask. If it&apos;s real work, I&apos;m interested.
+        <motion.p {...fadeUp} className="mt-6 max-w-md text-sm leading-relaxed text-cream/60">
+          Running a business and wondering what AI can actually do for you? Ask.
         </motion.p>
-        <motion.div {...fadeUp} className="mt-10 flex flex-wrap gap-8 font-mono text-sm">
+        <motion.div {...fadeUp} className="mt-8 flex flex-wrap gap-8 font-mono text-sm">
           <a href="mailto:me@jadenraats.com" className="link-underline text-cream/80">
             me@jadenraats.com
           </a>
@@ -482,7 +458,8 @@ export default function HomePage() {
         <Marquee />
         <About />
         <Guides />
-        <CaseStudy />
+        <LabTeaser />
+        <CaseStudyTeaser />
         <Contact />
       </main>
       <Footer />

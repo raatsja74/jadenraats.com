@@ -47,7 +47,7 @@ export default function GuidesIndex() {
             </motion.h1>
 
             <motion.p
-              className="mt-8 max-w-xl font-mono text-sm leading-relaxed text-soft"
+              className="mt-8 max-w-xl text-sm leading-relaxed text-soft"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: EASE, delay: 0.4 }}
@@ -77,7 +77,7 @@ export default function GuidesIndex() {
                   <h2 className="display mt-8 text-3xl leading-tight transition-colors duration-200 group-hover:text-accent sm:text-4xl">
                     {g.title}
                   </h2>
-                  <p className="mt-4 flex-1 font-mono text-sm leading-relaxed text-soft">
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-soft">
                     {g.summary}
                   </p>
                   <span className="kicker kicker-accent mt-8">
