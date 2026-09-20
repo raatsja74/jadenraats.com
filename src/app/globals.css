@@ -35,7 +35,7 @@ html {
 body {
   background: rgb(var(--bg));
   color: rgb(var(--ink));
-  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -54,6 +54,15 @@ body {
   font-weight: 400;
   letter-spacing: 0.005em;
   line-height: 0.92;
+}
+
+/* Sentence-case display — same grotesk, no uppercase transform.
+   Use for card titles and other titles that read better as written. */
+.display-sentence {
+  font-family: var(--font-display), "Arial Narrow", Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
 }
 
 /* ── Kickers — tiny uppercase mono labels, orange for section identity ── */

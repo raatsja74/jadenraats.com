@@ -91,7 +91,7 @@ function Hero() {
         </motion.h1>
 
         <motion.p
-          className="mt-7 max-w-3xl font-mono text-sm leading-relaxed text-soft sm:text-base"
+          className="mt-7 max-w-3xl text-sm leading-relaxed text-soft sm:text-base"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
@@ -101,7 +101,7 @@ function Hero() {
         </motion.p>
 
         <motion.p
-          className="mt-10 max-w-2xl font-mono text-sm leading-relaxed text-soft sm:text-base"
+          className="mt-10 max-w-2xl text-sm leading-relaxed text-soft sm:text-base"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.5 }}
@@ -142,7 +142,7 @@ function Systems() {
         Operator first, <span className="font-serif italic normal-case">builder</span> second.
       </motion.h2>
 
-      <motion.p {...fadeUp} className="mt-8 max-w-2xl font-mono text-sm leading-relaxed text-soft sm:text-base">
+      <motion.p {...fadeUp} className="mt-8 max-w-2xl text-sm leading-relaxed text-soft sm:text-base">
         Most AI advice comes from people who have never had to make payroll. Mine
         comes out of a coating business with crews, callbacks and a phone that
         rings during a pour. Three things AI actually does here:
@@ -169,7 +169,7 @@ function Systems() {
               </span>
               <div>
                 <h3 className="display text-2xl">{s.title}</h3>
-                <p className="mt-3 max-w-2xl font-mono text-sm leading-relaxed text-soft">{s.body}</p>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-soft">{s.body}</p>
               </div>
             </div>
           </motion.article>
@@ -184,7 +184,7 @@ function Numbers() {
     <section className="mx-auto max-w-6xl border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28">
       <SectionLabel>measured, not estimated</SectionLabel>
 
-      <motion.p {...fadeUp} className="mb-10 max-w-2xl font-mono text-sm leading-relaxed text-soft sm:text-base">
+      <motion.p {...fadeUp} className="mb-10 max-w-2xl text-sm leading-relaxed text-soft sm:text-base">
         The assistant that runs the back office, as actually metered over its
         first 55 days. The full teardown — including the two weeks it silently
         broke — is on the{" "}
@@ -215,7 +215,7 @@ function Background() {
     <section className="mx-auto max-w-6xl border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28">
       <SectionLabel>background</SectionLabel>
 
-      <div className="grid gap-8 font-mono text-sm leading-relaxed text-soft sm:grid-cols-2 sm:gap-14 sm:text-base">
+      <div className="grid gap-8 text-sm leading-relaxed text-soft sm:grid-cols-2 sm:gap-14 sm:text-base">
         <motion.p {...fadeUp}>
           I came up in sales, not engineering. I taught myself to build because
           the software I needed for a floor coating company either didn&apos;t

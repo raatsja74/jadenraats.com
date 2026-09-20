@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, MotionConfig } from "framer-motion";
 import Nav from "@/components/Nav";
 import { SKILL_CATEGORIES, SKILLS } from "./skills";
@@ -40,7 +41,7 @@ function SkillRow({ id, name, category, desc, prompt, uses }: (typeof SKILLS)[nu
           <h3 className="display text-2xl leading-none">{name}</h3>
           <span className="status-tag status-live">{category}</span>
         </div>
-        <p className="mt-3 max-w-2xl font-mono text-sm leading-relaxed text-soft">{desc}</p>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-soft">{desc}</p>
         <p className="kicker kicker-faint mt-3">
           {String(uses).padStart(3, "0")} uses · id:{id}
         </p>
@@ -65,8 +66,12 @@ function SkillRow({ id, name, category, desc, prompt, uses }: (typeof SKILLS)[nu
 }
 
 export default function PromptLab() {
-  const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("ALL");
+  const params = useSearchParams();
+  const [query, setQuery] = useState(() => params.get("q") ?? "");
+  const [category, setCategory] = useState(() => {
+    const cat = params.get("cat");
+    return cat && (SKILL_CATEGORIES as readonly string[]).includes(cat) ? cat : "ALL";
+  });
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -116,7 +121,7 @@ export default function PromptLab() {
           </motion.h1>
 
           <motion.p
-            className="mt-8 max-w-2xl font-mono text-sm leading-relaxed text-soft"
+            className="mt-8 max-w-2xl text-sm leading-relaxed text-soft"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.4 }}
@@ -137,7 +142,7 @@ export default function PromptLab() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="skills, prompts, workflows…"
                 aria-label="Search the library"
-                className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 font-mono text-sm text-ink placeholder:text-faint focus:border-accent focus:outline-none"
+                className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 text-sm text-ink placeholder:text-faint focus:border-accent focus:outline-none"
               />
             </label>
 
@@ -178,7 +183,7 @@ export default function PromptLab() {
             </motion.div>
           ))}
           {filtered.length === 0 && (
-            <p className="border-2 border-dashed border-line p-10 text-center font-mono text-sm text-faint">
+            <p className="border-2 border-dashed border-line p-10 text-center text-sm text-faint">
               Nothing matches. Widen the search or drop the category filter.
             </p>
           )}

@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Anton, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
+import { Anton, Archivo, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 const display = Anton({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400"],
+});
+
+const sans = Archivo({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 const serif = Instrument_Serif({
@@ -50,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${serif.variable} ${mono.variable}`}>
+    <html lang="en" className={`${display.variable} ${sans.variable} ${serif.variable} ${mono.variable}`}>
       <body className="texture-grain">{children}</body>
     </html>
   );
