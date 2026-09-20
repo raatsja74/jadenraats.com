@@ -1,16 +1,17 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   FLOW_STAGES,
   HUB,
+  STAGE_COLUMNS,
   type FlowStage,
   type VaultModule,
 } from "./modules";
 
 export const EASE = [0.22, 1, 0.36, 1] as const;
 
-export { FLOW_STAGES, HUB };
+export { FLOW_STAGES, HUB, STAGE_COLUMNS };
 export type { FlowStage, VaultModule };
 
 export function stageMatches(mod: VaultModule, stage: FlowStage | null): boolean {
@@ -18,6 +19,7 @@ export function stageMatches(mod: VaultModule, stage: FlowStage | null): boolean
   return mod.stages.includes(stage);
 }
 
+/** Compact module tile — detail lives in the full-width drawer, not in-grid. */
 export function ModuleCard({
   mod,
   active,
@@ -25,6 +27,7 @@ export function ModuleCard({
   expanded,
   onToggle,
   panelId,
+  disabled,
 }: {
   mod: VaultModule;
   active: boolean;
@@ -32,19 +35,23 @@ export function ModuleCard({
   expanded: boolean;
   onToggle: () => void;
   panelId: string;
+  disabled?: boolean;
 }) {
   return (
     <article
       className={`border-2 border-ink bg-cream transition-[opacity,border-color,background-color] duration-200 ${
         active ? "border-accent bg-accent/10" : ""
-      } ${dimmed ? "opacity-35" : "opacity-100"}`}
+      } ${dimmed ? "opacity-35" : "opacity-100"} ${
+        disabled ? "pointer-events-none" : ""
+      }`}
     >
       <button
         type="button"
         onClick={onToggle}
+        disabled={disabled}
         aria-expanded={expanded}
         aria-controls={panelId}
-        className="flex w-full flex-col gap-2 p-4 text-left sm:p-5"
+        className="flex w-full flex-col gap-2 p-4 text-left disabled:cursor-not-allowed sm:p-5"
       >
         <div className="flex items-baseline justify-between gap-3">
           <span className="font-mono text-xs text-accent">{mod.num}</span>
@@ -52,33 +59,18 @@ export function ModuleCard({
             {expanded ? "CLOSE ✕" : "OPEN →"}
           </span>
         </div>
-        <h2 className="display text-2xl leading-none sm:text-3xl">{mod.title}</h2>
-        <p className="kicker kicker-accent max-w-[28ch]">{mod.tagline}</p>
+        <h2 className="display-sentence text-2xl leading-none sm:text-3xl">
+          {mod.title}
+        </h2>
+        <p className="max-w-[28ch] text-sm leading-snug text-soft">{mod.tagline}</p>
       </button>
-
-      <AnimatePresence initial={false}>
-        {expanded && (
-          <motion.div
-            id={panelId}
-            role="region"
-            aria-label={`${mod.title} details`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: EASE }}
-            className="overflow-hidden border-t-2 border-ink"
-          >
-            <ModuleDetail mod={mod} />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </article>
   );
 }
 
-function ModuleDetail({ mod }: { mod: VaultModule }) {
+export function ModuleDetail({ mod }: { mod: VaultModule }) {
   return (
-    <div className="space-y-4 bg-surface/40 p-4 sm:p-5">
+    <div className="space-y-4">
       {mod.chain && mod.chain.length > 0 && (
         <ol className="flex flex-wrap items-center gap-2" aria-label="Workflow chain">
           {mod.chain.map((step, i) => (
@@ -139,6 +131,54 @@ function ModuleDetail({ mod }: { mod: VaultModule }) {
         </ol>
       )}
     </div>
+  );
+}
+
+/** Full-width detail drawer under the map (CV4). */
+export function ModuleDrawer({
+  mod,
+  panelId,
+  onClose,
+}: {
+  mod: VaultModule;
+  panelId: string;
+  onClose: () => void;
+}) {
+  return (
+    <motion.aside
+      id={panelId}
+      role="region"
+      aria-label={`${mod.title} details`}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 8 }}
+      transition={{ duration: 0.35, ease: EASE }}
+      className="scroll-mt-20 border-2 border-ink bg-cream"
+    >
+      <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-ink bg-accent/15 p-4 sm:p-5">
+        <div className="min-w-0">
+          <div className="flex items-baseline gap-3">
+            <span className="font-mono text-xs text-accent">{mod.num}</span>
+            <span className="kicker kicker-faint">
+              {mod.stages.join(" · ")}
+            </span>
+          </div>
+          <h2 className="display-sentence mt-2 text-3xl sm:text-4xl">{mod.title}</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-snug text-soft">{mod.tagline}</p>
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          className="chip chip-idle shrink-0"
+          aria-label={`Close ${mod.title} details`}
+        >
+          Close ✕
+        </button>
+      </div>
+      <div className="bg-surface/40 p-4 sm:p-6">
+        <ModuleDetail mod={mod} />
+      </div>
+    </motion.aside>
   );
 }
 
