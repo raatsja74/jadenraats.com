@@ -96,25 +96,34 @@ body {
    same field as the name rather than inside a card or image frame. ─────── */
 
 .hero-portrait {
-  position: absolute;
+  position: relative;
   z-index: 1;
-  right: -5.5rem;
-  bottom: 8.5rem;
-  height: min(54svh, 31rem);
+  width: 100%;
+  margin-top: 2.5rem;
   pointer-events: none;
   user-select: none;
 }
 
 .hero-portrait img {
   display: block;
+  width: 100%;
+  height: auto;
 }
 
 @media (min-width: 640px) {
   .hero-portrait {
+    position: absolute;
     right: auto;
     bottom: 0;
     left: 46%;
+    width: auto;
     height: min(77svh, 45rem);
+    margin-top: 0;
+  }
+
+  .hero-portrait img {
+    width: auto;
+    height: 100%;
   }
 }
 
