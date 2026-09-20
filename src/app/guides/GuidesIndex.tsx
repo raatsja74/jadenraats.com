@@ -100,15 +100,15 @@ export default function GuidesIndex() {
               </h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-soft">
                 How capture becomes context, then agent leverage, then real
-                progress — an interactive mind map of the operating system
-                behind the guides.
+                progress — interactive modules you can filter and expand, not a
+                static diagram.
               </p>
             </div>
             <Link
               href="/capturevault"
               className="btn btn-primary mt-6 shrink-0 sm:mt-0"
             >
-              Open map <span className="btn-arrow">→</span>
+              View system map <span className="btn-arrow">→</span>
             </Link>
           </motion.aside>
         </section>
