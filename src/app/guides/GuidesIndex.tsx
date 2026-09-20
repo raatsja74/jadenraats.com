@@ -87,6 +87,30 @@ export default function GuidesIndex() {
               </motion.article>
             ))}
           </div>
+
+          <motion.aside
+            {...fadeUp}
+            className="mt-10 border-2 border-ink bg-cream p-6 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-8"
+            aria-label="CaptureVault system map"
+          >
+            <div>
+              <p className="kicker kicker-accent">systems map</p>
+              <h2 className="display mt-3 text-3xl sm:text-4xl">
+                CaptureVault
+              </h2>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-soft">
+                How capture becomes context, then agent leverage, then real
+                progress — an interactive mind map of the operating system
+                behind the guides.
+              </p>
+            </div>
+            <Link
+              href="/capturevault"
+              className="btn btn-primary mt-6 shrink-0 sm:mt-0"
+            >
+              Open map <span className="btn-arrow">→</span>
+            </Link>
+          </motion.aside>
         </section>
       </main>
     </MotionConfig>
