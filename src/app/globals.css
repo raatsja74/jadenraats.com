@@ -96,32 +96,51 @@ body {
    same field as the name rather than inside a card or image frame. ─────── */
 
 .hero-portrait {
-  position: absolute;
+  position: relative;
   z-index: 1;
-  right: -5.5rem;
-  bottom: 8.5rem;
-  height: min(54svh, 31rem);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1.75rem;
   pointer-events: none;
   user-select: none;
 }
 
 .hero-portrait img {
   display: block;
+  width: auto;
+  max-width: min(100%, 22rem);
+  height: auto;
+  max-height: min(42svh, 22rem);
+  object-fit: contain;
+  object-position: bottom center;
 }
 
 @media (min-width: 640px) {
   .hero-portrait {
-    right: auto;
+    position: absolute;
+    right: 0;
     bottom: 0;
-    left: 46%;
-    height: min(77svh, 45rem);
+    left: auto;
+    display: block;
+    width: auto;
+    max-width: 48%;
+    height: min(72svh, 42rem);
+    margin-top: 0;
+  }
+
+  .hero-portrait img {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    max-height: none;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-portrait {
-    left: 43%;
-    height: min(79svh, 48rem);
+    max-width: 46%;
+    height: min(76svh, 46rem);
   }
 }
 

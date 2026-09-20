@@ -126,24 +126,8 @@ function Hero() {
   const fadeSmall = useHeroInitial({ opacity: 0, y: 12 });
   const fadePortrait = useHeroInitial({ opacity: 0, y: 28 });
   return (
-    <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-hidden px-6 pb-14 pt-32 sm:px-10 lg:px-16">
-      <motion.div
-        className="hero-portrait"
-        initial={fadePortrait}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: EASE, delay: 0.45 }}
-      >
-        <Image
-          src="/images/jaden-fishing.webp"
-          alt="Illustration of Jaden Raats holding a bass"
-          width={960}
-          height={1100}
-          priority
-          className="h-full w-auto"
-        />
-      </motion.div>
-
-      <div className="relative z-10">
+    <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-x-hidden px-6 pb-10 pt-28 sm:overflow-hidden sm:px-10 sm:pb-14 sm:pt-32 lg:px-16">
+      <div className="relative z-10 w-full sm:max-w-[50%] lg:max-w-[48%]">
         <motion.p
           className="kicker kicker-accent"
           initial={fadeSmall}
@@ -162,7 +146,7 @@ function Hero() {
           </RevealLine>
         </h1>
 
-        <div className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mt-10 flex flex-col gap-6">
           <motion.p
             className="max-w-md text-sm leading-relaxed text-soft"
             initial={fade}
@@ -190,6 +174,21 @@ function Hero() {
           </motion.div>
         </div>
       </div>
+
+      <motion.div
+        className="hero-portrait"
+        initial={fadePortrait}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: EASE, delay: 0.45 }}
+      >
+        <Image
+          src="/images/jaden-fishing.webp"
+          alt="Illustration of Jaden Raats holding a bass"
+          width={960}
+          height={1100}
+          priority
+        />
+      </motion.div>
     </section>
   );
 }
@@ -219,6 +218,199 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
         <span className="ast">*</span>
       </span>
     </motion.p>
+  );
+}
+
+
+const SKILL_GROUPS = [
+  {
+    label: "01 / build",
+    title: "Products that earn their keep.",
+    skills: ["Next.js + React", "TypeScript", "SwiftUI", "Python", "Tailwind CSS", "SQL + SQLite"],
+  },
+  {
+    label: "02 / connect",
+    title: "The useful parts between apps.",
+    skills: ["MCP servers", "API design", "Telegram + iMessage", "Google Workspace", "n8n automations", "Webhooks + cron"],
+  },
+  {
+    label: "03 / think",
+    title: "Systems agents can actually follow.",
+    skills: [
+      "Prompt engineering",
+      "Context engineering",
+      "Multi-agent orchestration",
+      "RAG + retrieval",
+      "Knowledge architecture",
+      "Human-in-the-loop workflows",
+    ],
+  },
+  {
+    label: "04 / grow",
+    title: "Work that reaches real people.",
+    skills: ["Local SEO", "Content systems", "Sales operations", "Lead capture", "Customer research", "Plain-English teaching"],
+  },
+] as const;
+
+const BUILDS = [
+  {
+    name: "Hermes Agent",
+    type: "local-first agent infrastructure",
+    description:
+      "An always-on assistant with a gateway, shared state, skills, scheduling, and a real operating history.",
+    source: "github.com/raatsja74/hermes-agent",
+    href: "https://github.com/raatsja74/hermes-agent",
+    mark: "H",
+  },
+  {
+    name: "FloorQuote",
+    type: "contractor SaaS",
+    description: "Estimating software shaped by the messy reality of quoting floor coating jobs.",
+    source: "github.com/raatsja74/floorquote",
+    href: "https://github.com/raatsja74/floorquote",
+    mark: "F",
+  },
+  {
+    name: "Obsidian Skills",
+    type: "agent skills library",
+    description:
+      "Instructions that teach agents to work with Markdown, Bases, JSON Canvas, and a living vault.",
+    source: "github.com/raatsja74/obsidian-skills",
+    href: "https://github.com/raatsja74/obsidian-skills",
+    mark: "O",
+  },
+  {
+    name: "Sync-Share",
+    type: "capture + filing",
+    description: "A bridge from Telegram, Slack, email, SMS, and Raycast into structured Obsidian notes.",
+    source: "github.com/raatsja74/Sync-Share",
+    href: "https://github.com/raatsja74/Sync-Share",
+    mark: "S",
+  },
+  {
+    name: "Fluid Voice",
+    type: "native macOS software",
+    description: "A Swift app exploring a faster, more natural voice interface for the desktop.",
+    source: "local project / Developer / FluidVoice",
+    href: "https://github.com/raatsja74/FluidVoice",
+    mark: "V",
+  },
+  {
+    name: "Award Coatings",
+    type: "the proving ground",
+    description:
+      "The Phoenix floor coating company where the automations, websites, and systems meet a real Monday.",
+    source: "local project / AwardCoatings-Dev",
+    href: "https://awardcoatings.com",
+    mark: "A",
+  },
+] as const;
+
+function Skills() {
+  return (
+    <section
+      id="skills"
+      className="scroll-mt-24 border-t-2 border-line bg-cream px-6 py-24 sm:px-10 sm:py-28"
+    >
+      <div className="mx-auto max-w-6xl">
+        <SectionLabel>capabilities</SectionLabel>
+        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <motion.h2 {...fadeUp} className="display max-w-2xl text-5xl sm:text-6xl">
+            A wide toolkit.{" "}
+            <span className="font-serif italic normal-case text-accent">One filter.</span>
+          </motion.h2>
+          <motion.p {...fadeUp} className="max-w-xs text-sm leading-relaxed text-soft">
+            These are not badges from a course platform. They are the tools and
+            practices showing up in local files and shipped repositories.
+          </motion.p>
+        </div>
+        <div className="mt-14 grid gap-px border-2 border-line bg-line sm:grid-cols-2">
+          {SKILL_GROUPS.map((group, i) => (
+            <motion.article
+              key={group.label}
+              className="bg-cream p-6 sm:p-8"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: EASE, delay: i * 0.08 }}
+            >
+              <p className="font-mono text-xs uppercase tracking-[0.08em] text-accent">
+                {group.label}
+              </p>
+              <h3 className="display-sentence mt-5 max-w-xs text-2xl font-medium tracking-tight">
+                {group.title}
+              </h3>
+              <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-3 font-mono text-sm text-soft">
+                {group.skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Builds() {
+  return (
+    <section
+      id="builds"
+      className="mx-auto max-w-6xl scroll-mt-24 border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28"
+    >
+      <SectionLabel>proof of work</SectionLabel>
+      <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <motion.h2 {...fadeUp} className="display max-w-2xl text-5xl sm:text-6xl">
+          Things I&apos;ve{" "}
+          <span className="font-serif italic normal-case text-accent">actually built.</span>
+        </motion.h2>
+        <motion.a
+          {...fadeUp}
+          href="https://github.com/raatsja74?tab=repositories"
+          target="_blank"
+          rel="noreferrer"
+          className="font-mono text-sm uppercase tracking-[0.08em] text-accent underline-offset-4 hover:underline"
+        >
+          browse all repositories ↗
+        </motion.a>
+      </div>
+      <div className="mt-14 grid gap-4 sm:grid-cols-2">
+        {BUILDS.map((build, i) => (
+          <motion.a
+            key={build.name}
+            href={build.href}
+            target="_blank"
+            rel="noreferrer"
+            className="group flex min-h-64 flex-col justify-between border-2 border-line bg-cream p-6 transition-colors duration-300 hover:bg-ink hover:text-cream sm:p-8"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: EASE, delay: i * 0.07 }}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <span className="flex h-10 w-10 items-center justify-center border-2 border-current font-serif text-lg italic">
+                {build.mark}
+              </span>
+              <span className="font-mono text-xs uppercase tracking-[0.08em] text-faint group-hover:text-cream/50">
+                {build.type}
+              </span>
+            </div>
+            <div>
+              <h3 className="display-sentence text-2xl font-medium tracking-tight transition-transform duration-300 group-hover:translate-x-1">
+                {build.name} <span className="text-accent">↗</span>
+              </h3>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-soft group-hover:text-cream/70">
+                {build.description}
+              </p>
+              <p className="mt-6 font-mono text-xs text-faint group-hover:text-cream/40">
+                {build.source}
+              </p>
+            </div>
+          </motion.a>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -457,6 +649,8 @@ export default function HomePage() {
         <Hero />
         <Marquee />
         <About />
+        <Skills />
+        <Builds />
         <Guides />
         <LabTeaser />
         <CaseStudyTeaser />

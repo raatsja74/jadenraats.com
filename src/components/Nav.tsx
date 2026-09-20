@@ -5,6 +5,7 @@ import Link from "next/link";
 
 const LINKS = [
   ["about", "/about"],
+  ["skills", "/#skills"],
   ["guides", "/guides"],
   ["lab", "/prompt-lab"],
   ["contact", "/#contact"],
