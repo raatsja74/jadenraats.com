@@ -52,3 +52,67 @@ const FAILURES = [
     body: "Lock color-scheme: light only in both a meta tag and CSS, or OS dark mode inverts the warm paper palette.",
   },
 ] as const;
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.p {...fadeUp} className="kicker kicker-accent">
+      <span className="ast-host inline-flex items-center gap-1.5">
+        {children}
+        <span className="ast">*</span>
+      </span>
+    </motion.p>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="mx-auto max-w-6xl px-6 pb-16 pt-32 sm:px-10 sm:pb-20 sm:pt-44">
+      <div className="border-t-2 border-line pt-10">
+        <SectionLabel>universal design system</SectionLabel>
+        <motion.h1
+          className="display mt-6 max-w-4xl text-6xl sm:text-7xl lg:text-8xl"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: EASE, delay: 0.2 }}
+        >
+          One contract.{" "}
+          <span className="font-serif italic normal-case text-accent">Many brands.</span>
+        </motion.h1>
+        <motion.p
+          className="mt-8 max-w-2xl text-sm leading-relaxed text-soft sm:text-base"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.35 }}
+        >
+          UDS is the brand-neutral set of semantic tokens, component contracts, and
+          design rules. Themes change values and voice — never what a role means.
+          This page is the <strong className="font-medium text-ink">canonical
+          Jaden-facing home</strong> for that system.
+        </motion.p>
+        <motion.div
+          className="mt-10 flex flex-wrap gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.45 }}
+        >
+          <a
+            href="https://github.com/raatsja74/universal-design-system"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-primary"
+          >
+            Open the repo <span className="btn-arrow">↗</span>
+          </a>
+          <a
+            href="https://raatsja74.github.io/universal-design-system/"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-secondary"
+          >
+            Agent style guide
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
