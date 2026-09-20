@@ -126,8 +126,8 @@ function Hero() {
   const fadeSmall = useHeroInitial({ opacity: 0, y: 12 });
   const fadePortrait = useHeroInitial({ opacity: 0, y: 28 });
   return (
-    <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-hidden px-6 pb-14 pt-32 sm:px-10 lg:px-16">
-      <div className="relative z-10">
+    <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-x-hidden px-6 pb-10 pt-28 sm:overflow-hidden sm:px-10 sm:pb-14 sm:pt-32 lg:px-16">
+      <div className="relative z-10 w-full sm:max-w-[50%] lg:max-w-[48%]">
         <motion.p
           className="kicker kicker-accent"
           initial={fadeSmall}
@@ -146,7 +146,7 @@ function Hero() {
           </RevealLine>
         </h1>
 
-        <div className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mt-10 flex flex-col gap-6">
           <motion.p
             className="max-w-md text-sm leading-relaxed text-soft"
             initial={fade}

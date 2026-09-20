@@ -98,39 +98,49 @@ body {
 .hero-portrait {
   position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: center;
   width: 100%;
-  margin-top: 2.5rem;
+  margin-top: 1.75rem;
   pointer-events: none;
   user-select: none;
 }
 
 .hero-portrait img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: min(100%, 22rem);
   height: auto;
+  max-height: min(42svh, 22rem);
+  object-fit: contain;
+  object-position: bottom center;
 }
 
 @media (min-width: 640px) {
   .hero-portrait {
     position: absolute;
-    right: auto;
+    right: 0;
     bottom: 0;
-    left: 46%;
+    left: auto;
+    display: block;
     width: auto;
-    height: min(77svh, 45rem);
+    max-width: 48%;
+    height: min(72svh, 42rem);
     margin-top: 0;
   }
 
   .hero-portrait img {
     width: auto;
+    max-width: 100%;
     height: 100%;
+    max-height: none;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-portrait {
-    left: 43%;
-    height: min(79svh, 48rem);
+    max-width: 46%;
+    height: min(76svh, 46rem);
   }
 }
 
