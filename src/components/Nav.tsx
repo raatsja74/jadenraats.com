@@ -6,6 +6,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const LINKS = [
   ["about", "/#about"],
+  ["skills", "/#skills"],
   ["work", "/#work"],
   ["lab", "/prompt-lab"],
   ["contact", "/#contact"],
