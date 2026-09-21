@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import GuidesIndex from "./GuidesIndex";
 
-const TITLE = "Guides — AI playbooks for business owners";
-const DESCRIPTION =
-  "Practical AI systems and plain-English playbooks for owners who want real work done — tested in a floor coating company first.";
+const TITLE = "Free Guides to Learn AI | Jaden Raats";
+const DESCRIPTION = "Step-by-step AI guides you can follow. No sales copy.";
 
 export const metadata: Metadata = {
   title: TITLE,

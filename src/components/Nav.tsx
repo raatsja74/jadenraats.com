@@ -4,19 +4,16 @@ import { useState } from "react";
 import Link from "next/link";
 
 const LINKS = [
-  ["about", "/about"],
-  ["skills", "/#skills"],
   ["guides", "/guides"],
   ["lab", "/prompt-lab"],
-  ["contact", "/#contact"],
+  ["daily note", "/daily-note"],
+  ["resources", "/resources"],
 ] as const;
 
 const linkCls =
   "flex min-h-[44px] min-w-[44px] items-center justify-center px-2 font-mono text-xs uppercase tracking-[0.08em] text-soft transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-3";
 
-/** Brutalist editorial nav. Left wordmark, plain text links on desktop,
- *  hamburger sheet under 900px, one labeled orange CTA anchoring the right
- *  edge. Square, bordered, 44px targets. */
+/** Wordmark + plain links. No sales CTA in the header. */
 export default function Nav() {
   const [open, setOpen] = useState(false);
 
@@ -34,7 +31,6 @@ export default function Nav() {
           jaden<span className="ast text-accent">*</span>
         </Link>
 
-        {/* Desktop links — 900px and up */}
         <div className="hidden min-[900px]:flex min-[900px]:items-stretch">
           {LINKS.map(([label, href]) => (
             <Link key={href + label} href={href} className={linkCls}>
@@ -44,15 +40,13 @@ export default function Nav() {
         </div>
 
         <div className="flex items-stretch gap-2">
-          {/* Labeled orange CTA — never icon-only */}
           <Link
-            href="/#contact"
+            href="/prompt-lab"
             className="flex min-h-[44px] items-center gap-2 self-center bg-accent px-4 font-display text-base uppercase tracking-wide text-ink transition-colors duration-200 hover:bg-ink hover:text-cream"
           >
-            <span aria-hidden="true">✱</span> Say hello
+            <span aria-hidden="true">✱</span> Lab
           </Link>
 
-          {/* Hamburger — under 900px */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -66,7 +60,6 @@ export default function Nav() {
         </div>
       </nav>
 
-      {/* Mobile sheet — under 900px */}
       {open && (
         <div
           id="mobile-nav-sheet"
@@ -80,7 +73,9 @@ export default function Nav() {
               className="flex min-h-[56px] items-center justify-between border-b border-line px-6 font-mono text-sm uppercase tracking-[0.08em] text-ink transition-colors duration-200 last:border-b-0 hover:bg-ink hover:text-cream"
             >
               {label}
-              <span aria-hidden="true" className="text-accent">→</span>
+              <span aria-hidden="true" className="text-accent">
+                →
+              </span>
             </Link>
           ))}
         </div>

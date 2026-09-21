@@ -2,18 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { motion, MotionConfig } from "framer-motion";
 import Nav from "@/components/Nav";
 import { SKILL_CATEGORIES, SKILLS } from "./skills";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-const fadeUp = {
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-70px" },
-  transition: { duration: 0.7, ease: EASE },
-};
 
 async function copyText(text: string): Promise<boolean> {
   try {
@@ -24,7 +14,13 @@ async function copyText(text: string): Promise<boolean> {
   }
 }
 
-function SkillRow({ id, name, category, desc, prompt, uses }: (typeof SKILLS)[number]) {
+function SkillRow({
+  id,
+  name,
+  category,
+  desc,
+  prompt,
+}: (typeof SKILLS)[number]) {
   const [copied, setCopied] = useState(false);
 
   async function onCopy() {
@@ -38,13 +34,13 @@ function SkillRow({ id, name, category, desc, prompt, uses }: (typeof SKILLS)[nu
     <article className="data-row">
       <div>
         <div className="flex flex-wrap items-center gap-3">
-          <h3 className="display text-2xl leading-none">{name}</h3>
+          <h3 className="display-sentence text-xl leading-tight sm:text-2xl">
+            {name}
+          </h3>
           <span className="status-tag status-live">{category}</span>
         </div>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-soft">{desc}</p>
-        <p className="kicker kicker-faint mt-3">
-          {String(uses).padStart(3, "0")} uses · id:{id}
-        </p>
+        <p className="kicker kicker-faint mt-3">id:{id}</p>
       </div>
       <div className="flex flex-wrap gap-2.5">
         <button
@@ -70,7 +66,9 @@ export default function PromptLab() {
   const [query, setQuery] = useState(() => params.get("q") ?? "");
   const [category, setCategory] = useState(() => {
     const cat = params.get("cat");
-    return cat && (SKILL_CATEGORIES as readonly string[]).includes(cat) ? cat : "ALL";
+    return cat && (SKILL_CATEGORIES as readonly string[]).includes(cat)
+      ? cat
+      : "ALL";
   });
 
   const filtered = useMemo(() => {
@@ -94,42 +92,15 @@ export default function PromptLab() {
   }, []);
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <Nav />
 
       <main className="mx-auto max-w-6xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
         <section className="border-t-2 border-line pt-10">
-          <motion.p
-            className="kicker kicker-accent"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: EASE, delay: 0.15 }}
-          >
-            <span className="ast-host inline-flex items-center gap-1.5">
-              the lab
-              <span className="ast">*</span>
-            </span>
-          </motion.p>
-
-          <motion.h1
-            className="display mt-6 max-w-4xl text-6xl sm:text-7xl"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, ease: EASE, delay: 0.25 }}
-          >
-            Skills &amp; prompt library
-          </motion.h1>
-
-          <motion.p
-            className="mt-8 max-w-2xl text-sm leading-relaxed text-soft"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.4 }}
-          >
-            A public database of the AI skills, prompts, workflows, and agent
-            instructions that run a real business. Copy any prompt, or hit USE
-            SKILL and I&apos;ll set it up with you.
-          </motion.p>
+          <p className="kicker kicker-accent">lab</p>
+          <h1 className="display mt-6 max-w-4xl text-5xl sm:text-6xl">
+            AI Skills Lab to Personalize Your AI Agent
+          </h1>
         </section>
 
         <section className="mt-12" aria-label="Search and filter">
@@ -140,7 +111,7 @@ export default function PromptLab() {
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="skills, prompts, workflows…"
+                placeholder="name or keyword…"
                 aria-label="Search the library"
                 className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 text-sm text-ink placeholder:text-faint focus:border-accent focus:outline-none"
               />
@@ -177,18 +148,16 @@ export default function PromptLab() {
         </section>
 
         <section className="mt-6 grid gap-4">
-          {filtered.map((skill, i) => (
-            <motion.div key={skill.id} {...fadeUp} transition={{ duration: 0.6, ease: EASE, delay: Math.min(i * 0.03, 0.3) }}>
-              <SkillRow {...skill} />
-            </motion.div>
+          {filtered.map((skill) => (
+            <SkillRow key={skill.id} {...skill} />
           ))}
           {filtered.length === 0 && (
             <p className="border-2 border-dashed border-line p-10 text-center text-sm text-faint">
-              Nothing matches. Widen the search or drop the category filter.
+              Nothing matches. Try a wider search or clear the filter.
             </p>
           )}
         </section>
       </main>
-    </MotionConfig>
+    </>
   );
 }
