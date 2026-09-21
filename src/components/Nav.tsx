@@ -8,6 +8,7 @@ const LINKS = [
   ["skills", "/#skills"],
   ["guides", "/guides"],
   ["lab", "/prompt-lab"],
+  ["uds", "/uds"],
   ["contact", "/#contact"],
 ] as const;
 
