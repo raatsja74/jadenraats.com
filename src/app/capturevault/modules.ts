@@ -1,4 +1,4 @@
-/** CaptureVault mind-map content — rebuilt from the editorial system map. */
+/** CaptureVault mind-map — current locked system (2026-09-20). */
 
 export type FlowStage =
   | "CAPTURE"
@@ -29,17 +29,14 @@ export type VaultModule = {
   tagline: string;
   stages: FlowStage[];
   items: ModuleItem[];
-  /** Optional extra blocks (numbered principles, flow chains). */
   principles?: string[];
   chain?: string[];
   bracketNote?: string;
 };
 
-/** Desktop / map columns — reading order within each stage group. */
 export type StageColumn = {
   id: string;
   label: string;
-  /** Short kicker shown above the column. */
   kicker: string;
   moduleIds: string[];
 };
@@ -61,7 +58,7 @@ export const STAGE_COLUMNS: StageColumn[] = [
     id: "context",
     label: "Context",
     kicker: "03–04 · 08 · 10",
-    moduleIds: ["project-context", "canonical-home", "reference", "key-truths"],
+    moduleIds: ["project-context", "layer-map", "reference", "key-truths"],
   },
   {
     id: "handoff",
@@ -73,7 +70,7 @@ export const STAGE_COLUMNS: StageColumn[] = [
 
 export const HUB = {
   title: "CaptureVault System",
-  slogan: "A CLEARER MIND BUILDS A BRIGHTER TOMORROW.",
+  slogan: "CURRENT TRUTH. ACTIVE CONTEXT.",
 } as const;
 
 export const MODULES: VaultModule[] = [
@@ -81,27 +78,27 @@ export const MODULES: VaultModule[] = [
     id: "capture",
     num: "01",
     title: "Capture",
-    tagline: "Get things out of your head",
+    tagline: "Get it out",
     stages: ["CAPTURE"],
     items: [
-      { label: "Calvin / ChatGPT" },
-      { label: "Apple Notes" },
+      { label: "ChatGPT Agents email → Todoist", note: "default" },
+      { label: "Gmail = sent-record layer" },
+      { label: "Telegram for notes / Hermes", note: "not default" },
       { label: "00Inbox" },
-      { label: "Reminders" },
-      { label: "Raw thoughts, ideas, links, screenshots" },
+      { label: "Raw thoughts, links, screenshots" },
     ],
   },
   {
     id: "process",
     num: "02",
     title: "Process",
-    tagline: "Turn chaos into clarity",
+    tagline: "Route once",
     stages: ["PROCESS"],
     items: [
+      { label: "Classify: action / context / habit / archive / trash" },
       { label: "Capture folder = temporary working area" },
-      { label: "Organize messy thoughts" },
       { label: "Combine related captures" },
-      { label: "Decide what matters" },
+      { label: "No parallel task lists" },
       { label: "Prepare handoffs" },
     ],
   },
@@ -109,35 +106,37 @@ export const MODULES: VaultModule[] = [
     id: "project-context",
     num: "03",
     title: "Project context",
-    tagline: "A simple template that scales",
+    tagline: "Where I resume",
     stages: ["CONTEXT"],
-    bracketNote: "Where I resume the project.",
+    bracketNote: "Lives in CaptureVault (current truth).",
     items: [
       { label: "Folder Note" },
       { label: "Current Goal" },
       { label: "Current State" },
       { label: "Decisions" },
       { label: "Key Links / Files" },
-      { label: "Next Action" },
+      { label: "Next Action pointer" },
       { label: "Agent Handoff" },
     ],
   },
   {
-    id: "canonical-home",
+    id: "layer-map",
     num: "04",
-    title: "Canonical home",
-    tagline: "One source of truth",
+    title: "Layer map",
+    tagline: "Who is truth",
     stages: ["CONTEXT"],
     items: [
-      { label: "GitHub / Drive / designated repo" },
-      { label: "Authoritative source of truth" },
+      { label: "CaptureVault = current truth / active context" },
+      { label: "MyDriveVault = reference / depth" },
+      { label: "GitHub = code + repo docs" },
+      { label: "Drive vault mirrors = not live", note: "do not write as SoT" },
     ],
   },
   {
     id: "agent-workflow",
     num: "05",
     title: "Agent workflow",
-    tagline: "Human context. Agent leverage. Real progress.",
+    tagline: "Context, then leverage",
     stages: ["HANDOFF", "SESSION", "UPDATE"],
     chain: [
       "Project context",
@@ -147,9 +146,10 @@ export const MODULES: VaultModule[] = [
       "Update project context",
     ],
     principles: [
-      "Keep session note for history",
-      "Add Daily Note reference",
-      "Put real follow-up work in Todoist",
+      "Session note = history (Vault-Write Contract)",
+      "Link the Daily Note",
+      "Real follow-ups go to Todoist",
+      "Hermes reviews pending sessions",
     ],
     items: [],
   },
@@ -157,39 +157,44 @@ export const MODULES: VaultModule[] = [
     id: "daily-note",
     num: "06",
     title: "Daily note",
-    tagline: "A daily anchor for momentum",
+    tagline: "Timeline hub",
     stages: ["SESSION", "UPDATE"],
     items: [
-      { label: "Daily summary / timeline" },
-      { label: "Important activity" },
+      { label: "Hermes Main owns (Codex backup)" },
+      { label: "Summary / timeline — not dumps" },
       { label: "Completed work" },
       { label: "Decisions" },
-      { label: "Key captures" },
       { label: "Carry-forward items" },
       { label: "Links to sessions / projects" },
-      { label: "Not full transcripts or giant logs", note: "guardrail" },
+      { label: "Not full transcripts", note: "guardrail" },
     ],
   },
   {
     id: "todoist",
     num: "07",
     title: "Todoist",
-    tagline: "Turn intent into action",
+    tagline: "Actions only",
     stages: ["UPDATE"],
     items: [
-      { label: "Active commitments" },
-      { label: "Next actions" },
+      { label: "Next actions (short titles)" },
       { label: "Deadlines" },
       { label: "Follow-ups" },
+      { label: "Habits in one place only" },
+      { label: "Inbox → My Website for site ship" },
     ],
   },
   {
     id: "reference",
     num: "08",
     title: "Reference",
-    tagline: "Build a second brain",
+    tagline: "MyDriveVault",
     stages: ["CONTEXT"],
-    items: [{ label: "Reusable knowledge" }],
+    items: [
+      { label: "Reusable knowledge" },
+      { label: "Research / depth" },
+      { label: "Not a second task list" },
+      { label: "Not LLM-Wiki", note: "scrubbed" },
+    ],
   },
   {
     id: "archive",
@@ -197,23 +202,30 @@ export const MODULES: VaultModule[] = [
     title: "Archive",
     tagline: "Close the loop",
     stages: ["UPDATE"],
-    items: [{ label: "Done but worth keeping" }],
+    items: [
+      { label: "Done but worth keeping" },
+      { label: "Delete junk first" },
+      { label: "No zombie open tasks" },
+    ],
   },
   {
     id: "key-truths",
     num: "10",
     title: "Key truths",
-    tagline: "Keep these in mind",
+    tagline: "Keep these",
     stages: ["CONTEXT"],
     items: [],
     principles: [
-      "Capture = temporary thinking",
+      "Capture = temporary",
       "Project context = where I resume",
-      "Canonical home = truth",
+      "CaptureVault = current truth",
+      "MyDriveVault = reference",
+      "GitHub = code",
       "Session Note = history",
       "Daily Note = timeline",
       "Todoist = action",
-      "Bases / Dataview = views, not truth",
+      "Views ≠ truth",
+      "Gmail = record layer",
     ],
   },
 ];
