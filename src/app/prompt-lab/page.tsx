@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import PromptLab from "./PromptLab";
 
-const TITLE = "The Lab — Skills & Prompt Library | Jaden Raats";
+const TITLE = "AI Skills Lab | Jaden Raats";
 const DESCRIPTION =
-  "A public database of the AI skills, prompts, workflows, and agent instructions Jaden actually uses to run a business. Copy any prompt or request a skill.";
+  "Copy prompts and skills to personalize your AI agent. Plain list, no sales copy.";
 
 export const metadata: Metadata = {
   title: TITLE,
