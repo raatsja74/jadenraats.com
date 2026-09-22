@@ -78,7 +78,7 @@ export default function CaseStudyPage() {
           </motion.p>
 
           <motion.div {...fadeUp} className="mt-12 border-2 border-line">
-            <div className="-m-[2px] grid grid-cols-2 sm:grid-cols-4">
+            <div className="border-grid-overlap grid grid-cols-2 sm:grid-cols-4">
               {HERMES_STATS.map((s) => (
                 <div key={s.l} className="border-2 border-line px-5 py-7 text-center">
                   <div className="display text-4xl tracking-wide sm:text-5xl">{s.n}</div>
@@ -128,12 +128,12 @@ export default function CaseStudyPage() {
             <div className="grid grid-cols-3 border-b-2 border-line text-sm">
               <div className="px-4 py-4 text-soft">days used</div>
               <div className="px-4 py-4 font-mono">28%</div>
-              <div className="px-4 py-4 font-mono text-accent">53%</div>
+              <div className="px-4 py-4 font-mono text-ink">53%</div>
             </div>
             <div className="grid grid-cols-3 text-sm">
               <div className="px-4 py-4 text-soft">messages / day</div>
               <div className="px-4 py-4 font-mono">21</div>
-              <div className="px-4 py-4 font-mono text-accent">87</div>
+              <div className="px-4 py-4 font-mono text-ink">87</div>
             </div>
           </motion.div>
 

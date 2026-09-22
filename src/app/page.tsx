@@ -68,7 +68,7 @@ function GuidesSection() {
                   />
                 </span>
                 <span className="flex flex-1 flex-col p-6">
-                  <span className="font-mono text-xs text-accent">
+                  <span className="font-mono text-xs text-ink">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="display-sentence mt-3 text-xl leading-tight sm:text-2xl">
@@ -113,16 +113,16 @@ function LabSection() {
             >
               <Link
                 href={`/prompt-lab?q=${encodeURIComponent(s.name)}`}
-                className="flex flex-wrap items-baseline justify-between gap-3 px-5 py-4 transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-6"
+                className="group flex flex-wrap items-baseline justify-between gap-3 px-5 py-4 transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-6"
               >
                 <span className="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-4 gap-y-1">
-                  <span className="font-mono text-xs text-accent">
+                  <span className="font-mono text-xs text-ink group-hover:text-cream">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="display-sentence text-lg sm:text-xl">
                     {s.name}
                   </span>
-                  <span className="font-mono text-xs uppercase tracking-[0.06em] text-faint">
+                  <span className="font-mono text-xs uppercase tracking-[0.06em] text-faint group-hover:text-cream">
                     {s.category}
                   </span>
                 </span>
@@ -141,7 +141,7 @@ function LabSection() {
 function Footer() {
   return (
     <footer className="border-t-2 border-line bg-ink px-6 py-10 text-cream sm:px-10">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 font-mono text-xs text-cream/50">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 font-mono text-xs text-cream/60">
         <Link href="/" className="ast-host font-display text-lg uppercase text-cream">
           jaden<span className="ast text-accent">*</span>
         </Link>

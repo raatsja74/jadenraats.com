@@ -17,6 +17,8 @@ Numbers/
 .DS_Store
 .next/
 node_modules/
+output/playwright/
+.playwright-cli/
 .npm/
 .npm-cache/
 .cache/

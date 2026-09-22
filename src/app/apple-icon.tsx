@@ -1,11 +1,11 @@
 import { ImageResponse } from "next/og";
+import theme from "@jadenraats/universal-design-system/themes/jadenraats.json";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-// Token values mirrored from globals.css (no raw hex — design law)
-const INK = "rgb(10, 10, 9)";
-const ACCENT = "rgb(244, 81, 30)";
+const INK = theme.semantic["color.text.primary"];
+const ACCENT = theme.semantic["color.action.primary"];
 
 export default function AppleIcon() {
   return new ImageResponse(

@@ -27,7 +27,7 @@ export default function GuidesIndex() {
                   className="group flex h-full flex-col border-2 border-line bg-cream p-6 transition-colors duration-200 hover:border-accent sm:p-8"
                 >
                   <div className="flex items-baseline justify-between gap-4">
-                    <span className="font-mono text-xs text-accent">
+                    <span className="font-mono text-xs text-ink">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="kicker kicker-faint">

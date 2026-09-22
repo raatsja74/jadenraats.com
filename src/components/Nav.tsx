@@ -11,7 +11,7 @@ const LINKS = [
 ] as const;
 
 const linkCls =
-  "flex min-h-[44px] min-w-[44px] items-center justify-center px-2 font-mono text-xs uppercase tracking-[0.08em] text-soft transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-3";
+  "flex min-h-[var(--uds-layout-touch-target-min)] min-w-[var(--uds-layout-touch-target-min)] items-center justify-center px-2 font-mono text-xs uppercase tracking-[0.08em] text-soft transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-3";
 
 /** Wordmark + plain links. No sales CTA in the header. */
 export default function Nav() {
@@ -26,7 +26,7 @@ export default function Nav() {
         <Link
           href="/"
           aria-label="Jaden Raats — home"
-          className="ast-host flex min-h-[44px] items-center font-display text-xl uppercase tracking-wide"
+          className="ast-host flex min-h-[var(--uds-layout-touch-target-min)] items-center font-display text-xl uppercase tracking-wide"
         >
           jaden<span className="ast text-accent">*</span>
         </Link>
@@ -42,7 +42,7 @@ export default function Nav() {
         <div className="flex items-stretch gap-2">
           <Link
             href="/prompt-lab"
-            className="flex min-h-[44px] items-center gap-2 self-center bg-accent px-4 font-display text-base uppercase tracking-wide text-ink transition-colors duration-200 hover:bg-ink hover:text-cream"
+            className="flex min-h-[var(--uds-layout-touch-target-min)] items-center gap-2 self-center bg-accent px-4 font-display text-base uppercase tracking-wide text-ink transition-colors duration-200 hover:bg-ink hover:text-cream"
           >
             <span aria-hidden="true">✱</span> Lab
           </Link>
@@ -53,7 +53,7 @@ export default function Nav() {
             aria-expanded={open}
             aria-controls="mobile-nav-sheet"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex min-h-[44px] min-w-[44px] items-center justify-center border-l-2 border-line px-3 font-display text-xl text-ink min-[900px]:hidden"
+            className="flex min-h-[var(--uds-layout-touch-target-min)] min-w-[var(--uds-layout-touch-target-min)] items-center justify-center border-l-2 border-line px-3 font-display text-xl text-ink min-[900px]:hidden"
           >
             <span aria-hidden="true">{open ? "✕" : "☰"}</span>
           </button>

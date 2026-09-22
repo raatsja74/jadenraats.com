@@ -49,12 +49,6 @@ export default function CaptureVaultMap() {
   }, [openId, stage, closePanel]);
 
   useEffect(() => {
-    if (!openId || !stage) return;
-    const mod = moduleById(openId);
-    if (mod && !stageMatches(mod, stage)) setOpenId(null);
-  }, [stage, openId]);
-
-  useEffect(() => {
     if (!openId) return;
     document.getElementById(drawerId)?.scrollIntoView({
       behavior: "smooth",
@@ -156,7 +150,7 @@ export default function CaptureVaultMap() {
             </div>
 
             <motion.div
-              className="sticky top-[3.25rem] z-40 -mx-6 mt-10 border-y-2 border-line bg-cream/95 px-6 py-4 backdrop-blur-sm sm:-mx-10 sm:px-10"
+              className="sticky top-[3.25rem] z-40 -mx-6 mt-10 border-y-2 border-line bg-cream px-6 py-4 sm:-mx-10 sm:px-10"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: EASE, delay: 0.45 }}
@@ -275,7 +269,7 @@ export default function CaptureVaultMap() {
             </AnimatePresence>
           </div>
 
-          <div className="mt-10 grid gap-4 border-2 border-ink bg-accent p-5 sm:grid-cols-2 sm:p-6">
+          <div className="mt-10 grid gap-4 border-2 border-ink bg-cream p-5 sm:grid-cols-2 sm:p-6">
             <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink">
               Folder Note = where I resume
             </p>
@@ -295,7 +289,7 @@ export default function CaptureVaultMap() {
               <p>Notes</p>
               <p>Knowledge</p>
               <p>Progress</p>
-              <p className="text-accent">A calmer you</p>
+              <p className="text-ink">A calmer you</p>
             </div>
             <div className="space-y-2">
               <p className="display text-2xl text-ink">
@@ -308,7 +302,7 @@ export default function CaptureVaultMap() {
             <div className="col-span-2 space-y-1 sm:col-span-1">
               <p>Same ideas.</p>
               <p>Higher leverage.</p>
-              <p className="text-accent">A clearer mind.</p>
+              <p className="text-ink">A clearer mind.</p>
             </div>
           </aside>
         </section>

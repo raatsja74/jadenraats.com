@@ -1,16 +1,24 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import theme from "@jadenraats/universal-design-system/themes/jadenraats.json";
 
 export const alt = "Jaden Raats — AI for business owners, proven in a real business";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Token values mirrored from globals.css (no raw hex — design law)
-const PAPER = "rgb(242, 239, 230)";
-const INK = "rgb(10, 10, 9)";
-const SOFT = "rgb(58, 54, 45)";
-const ACCENT = "rgb(244, 81, 30)";
+const PAPER = theme.semantic["surface.canvas"];
+const INK = theme.semantic["color.text.primary"];
+const SOFT = theme.semantic["color.text.secondary"];
+const ACCENT = theme.semantic["color.action.primary"];
 
-export default function OgImage() {
+export default async function OgImage() {
+  const [antonFile, plexMonoFile] = await Promise.all([
+    readFile(join(process.cwd(), "src/assets/fonts/Anton-Regular.ttf")),
+    readFile(join(process.cwd(), "src/assets/fonts/IBMPlexMono-Regular.ttf")),
+  ]);
+  const anton = Uint8Array.from(antonFile).buffer;
+  const plexMono = Uint8Array.from(plexMonoFile).buffer;
   return new ImageResponse(
     (
       <div
@@ -23,17 +31,23 @@ export default function OgImage() {
           padding: 80,
           background: PAPER,
           color: INK,
-          fontFamily: "Impact, Arial Narrow, sans-serif",
+          fontFamily: "Anton",
         }}
       >
         <div style={{ fontSize: 170, letterSpacing: "0.005em", display: "flex", textTransform: "uppercase" }}>
           jaden raats<span style={{ color: ACCENT }}>*</span>
         </div>
-        <div style={{ marginTop: 24, fontSize: 30, color: SOFT, maxWidth: 900, display: "flex", fontFamily: "monospace" }}>
+        <div style={{ marginTop: 24, fontSize: 30, color: SOFT, maxWidth: 900, display: "flex", fontFamily: "IBM Plex Mono" }}>
           REAL SYSTEMS. REAL RESULTS. — Phoenix, AZ.
         </div>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+      fonts: [
+        { name: "Anton", data: anton, weight: 400, style: "normal" },
+        { name: "IBM Plex Mono", data: plexMono, weight: 400, style: "normal" },
+      ],
+    },
   );
 }

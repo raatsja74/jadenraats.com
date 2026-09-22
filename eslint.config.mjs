@@ -9,6 +9,7 @@ const eslintConfig = [
       ".next/**",
       ".claude/**",
       ".agents/**",
+      ".remember/**",
       "output/**",
       "Inbox/**",
       "Library/**",

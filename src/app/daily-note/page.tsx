@@ -44,7 +44,7 @@ export default function DailyNotePage() {
                 key={step}
                 className="flex gap-4 border-b-2 border-line px-5 py-4 last:border-b-0 sm:px-6"
               >
-                <span className="font-mono text-xs text-accent">
+                <span className="font-mono text-xs text-ink">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="text-sm leading-relaxed text-ink">{step}</span>

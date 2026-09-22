@@ -188,14 +188,14 @@ function Numbers() {
         The assistant that runs the back office, as actually metered over its
         first 55 days. The full teardown — including the two weeks it silently
         broke — is on the{" "}
-        <Link href="/#hermes" className="link-underline text-accent">
+        <Link href="/#hermes" className="link-underline text-ink">
           home page
         </Link>
         .
       </motion.p>
 
       <motion.div {...fadeUp} className="border-2 border-line">
-        <div className="-m-[2px] grid grid-cols-2 sm:grid-cols-4">
+        <div className="border-grid-overlap grid grid-cols-2 sm:grid-cols-4">
           {NUMBERS.map((s) => (
             <div key={s.l} className="border-2 border-line px-5 py-7 text-center">
               <div className="display text-4xl tracking-wide sm:text-5xl">
@@ -276,7 +276,7 @@ function Elsewhere() {
 function Footer() {
   return (
     <footer className="bg-ink px-6 pb-8 pt-10 text-cream sm:px-10">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-cream/10 pt-8 font-mono text-xs text-cream/40">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-cream/10 pt-8 font-mono text-xs text-cream/60">
         <span>© 2026 Jaden Raats</span>
         <Link href="/" className="link-underline">
           back home

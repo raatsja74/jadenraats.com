@@ -113,7 +113,7 @@ export default function PromptLab() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="name or keyword…"
                 aria-label="Search the library"
-                className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 text-sm text-ink placeholder:text-faint focus:border-accent focus:outline-none"
+                className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 text-sm text-ink placeholder:text-faint focus:border-accent"
               />
             </label>
 
