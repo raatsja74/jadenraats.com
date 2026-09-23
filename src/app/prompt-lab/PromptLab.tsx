@@ -97,9 +97,9 @@ export default function PromptLab() {
 
       <main className="mx-auto max-w-6xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
         <section className="border-t-2 border-line pt-10">
-          <p className="kicker kicker-accent">lab</p>
+          <p className="kicker kicker-accent">skills library</p>
           <h1 className="display mt-6 max-w-4xl text-5xl sm:text-6xl">
-            AI Skills Lab to Personalize Your AI Agent
+            AI Skills Library
           </h1>
         </section>
 

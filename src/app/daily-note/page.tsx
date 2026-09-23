@@ -65,7 +65,7 @@ export default function DailyNotePage() {
               href={`/prompt-lab?q=${encodeURIComponent(skill.name)}`}
               className="btn btn-primary mt-6"
             >
-              Open in the lab <span className="btn-arrow">→</span>
+              Open in Skills Library <span className="btn-arrow">→</span>
             </Link>
           </section>
         )}

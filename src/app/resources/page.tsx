@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 import { GUIDES } from "@/data/guides";
 
 const TITLE = "Resources | Jaden Raats";
-const DESCRIPTION = "Guides, skills lab, daily note, and other public pages.";
+const DESCRIPTION = "Guides, skills library, daily note, and other public pages.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -20,7 +20,7 @@ const LINKS = [
   },
   {
     href: "/prompt-lab",
-    label: "AI Skills Lab",
+    label: "AI Skills Library",
     note: "Copy prompts to personalize your AI agent",
   },
   {

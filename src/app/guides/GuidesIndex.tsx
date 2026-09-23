@@ -53,7 +53,7 @@ export default function GuidesIndex() {
               <p className="kicker kicker-accent">also</p>
               <h2 className="display mt-3 text-3xl sm:text-4xl">Resources</h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-soft">
-                Lab, daily note, CaptureVault map, and the rest of the public
+                Skills library, daily note, CaptureVault map, and the rest of the public
                 pages.
               </p>
             </div>

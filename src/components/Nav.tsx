@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const LINKS = [
   ["guides", "/guides"],
-  ["lab", "/prompt-lab"],
+  ["skills library", "/prompt-lab"],
   ["daily note", "/daily-note"],
   ["resources", "/resources"],
 ] as const;
@@ -44,7 +44,7 @@ export default function Nav() {
             href="/prompt-lab"
             className="flex min-h-[var(--uds-layout-touch-target-min)] items-center gap-2 self-center bg-accent px-4 font-display text-base uppercase tracking-wide text-ink transition-colors duration-200 hover:bg-ink hover:text-cream"
           >
-            <span aria-hidden="true">✱</span> Lab
+            <span aria-hidden="true">✱</span> Skills Library
           </Link>
 
           <button

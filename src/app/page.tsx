@@ -19,7 +19,7 @@ function Hero() {
             raats<span className="ast text-accent">*</span>
           </span>
         </h1>
-        <p className="kicker kicker-faint mt-6">guides · lab</p>
+        <p className="kicker kicker-faint mt-6">guides · skills library</p>
       </div>
 
       <div className="hero-portrait">
@@ -98,10 +98,10 @@ function LabSection() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <h2 className="display max-w-3xl text-4xl sm:text-5xl">
-            AI Skills Lab to Personalize Your AI Agent
+            AI Skills Library
           </h2>
           <Link href="/prompt-lab" className="kicker kicker-accent">
-            Open the lab <span className="btn-arrow">→</span>
+            Browse skills <span className="btn-arrow">→</span>
           </Link>
         </div>
 
