@@ -11,6 +11,59 @@ html[data-uds-theme="jadenraats"] {
   color-scheme: light only;
 }
 
+/* The homepage uses the same UDS type roles as the rest of the site. */
+.home-overline,
+.home-section-topline,
+.home-card-meta,
+.home-cover-meta,
+.home-cover-footnote,
+.home-cover-index,
+.home-art-label,
+.home-art-stamp,
+.home-system-card-index,
+.home-skills-topline,
+.home-skills-list-head,
+.home-skill-index,
+.home-skill-name small,
+.home-skills-all,
+.home-footer-kicker,
+.home-footer-bottom,
+.home-text-link,
+.home-footer-about,
+.home-card-action {
+  font-family: var(--uds-font-mono), monospace;
+}
+
+.home-cover-description,
+.home-systems-intro p,
+.home-skills-intro p {
+  font-family: var(--uds-font-body), monospace;
+}
+
+.home-cover-title,
+.home-title-mark,
+.home-signal-track span,
+.home-section-title,
+.home-system-card strong,
+.home-system-card-arrow,
+.home-guide-number,
+.home-guide-content h3,
+.home-skills-asterisk,
+.home-skills-intro h2,
+.home-skill-name,
+.home-skill-arrow,
+.home-footer p {
+  font-family: var(--uds-font-heading), Impact, sans-serif;
+}
+
+.home-cover-title em,
+.home-section-title em,
+.home-skills-intro h2 em,
+.home-footer p em,
+.home-art-scribble {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
 /* ── Base ── */
 
 html {
