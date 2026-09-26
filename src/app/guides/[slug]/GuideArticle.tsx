@@ -96,7 +96,7 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
                   <motion.aside
                     key={i}
                     {...fadeUp}
-                    className="border-2 border-line bg-surface px-6 py-6 font-serif text-lg italic leading-relaxed text-ink sm:px-8 sm:py-7"
+                    className="border-2 border-line bg-surface px-6 py-6 font-mono text-base leading-relaxed text-ink sm:px-8 sm:py-7"
                   >
                     {section.text}
                   </motion.aside>
@@ -118,10 +118,10 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
             {...fadeUp}
             className="mt-16 flex flex-wrap gap-8 border-t-2 border-line pt-10 font-mono text-sm"
           >
-            <Link href="/guides" className="link-underline text-accent">
+            <Link href="/guides" className="link-underline text-ink">
               ← all guides
             </Link>
-            <a href="mailto:me@jadenraats.com" className="link-underline text-soft">
+            <a href="mailto:ai@jadenraats.com" className="link-underline text-soft">
               ask about this →
             </a>
           </motion.div>

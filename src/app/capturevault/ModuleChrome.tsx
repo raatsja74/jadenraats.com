@@ -54,7 +54,7 @@ export function ModuleCard({
         className="flex w-full flex-col gap-2 p-4 text-left disabled:cursor-not-allowed sm:p-5"
       >
         <div className="flex items-baseline justify-between gap-3">
-          <span className="font-mono text-xs text-accent">{mod.num}</span>
+          <span className="font-mono text-xs text-ink">{mod.num}</span>
           <span className="kicker kicker-faint" aria-hidden="true">
             {expanded ? "CLOSE ✕" : "OPEN →"}
           </span>
@@ -158,7 +158,7 @@ export function ModuleDrawer({
       <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-ink bg-accent/15 p-4 sm:p-5">
         <div className="min-w-0">
           <div className="flex items-baseline gap-3">
-            <span className="font-mono text-xs text-accent">{mod.num}</span>
+            <span className="font-mono text-xs text-ink">{mod.num}</span>
             <span className="kicker kicker-faint">
               {mod.stages.join(" · ")}
             </span>
@@ -190,7 +190,7 @@ export function HubNode({
   onClear: () => void;
 }) {
   return (
-    <div className="relative border-2 border-ink bg-accent p-5 text-center sm:p-7">
+    <div className="relative border-2 border-ink bg-cream p-5 text-center sm:p-7">
       <p className="kicker text-ink/70">hub</p>
       <h2 className="display mt-2 text-3xl leading-none text-ink sm:text-4xl lg:text-5xl">
         {HUB.title}

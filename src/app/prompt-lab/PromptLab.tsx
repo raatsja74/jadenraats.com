@@ -51,7 +51,7 @@ function SkillRow({
           {copied ? "COPIED ✓" : "COPY PROMPT"}
         </button>
         <a
-          href={`mailto:me@jadenraats.com?subject=USE SKILL: ${encodeURIComponent(name)}`}
+          href={`mailto:ai@jadenraats.com?subject=USE SKILL: ${encodeURIComponent(name)}`}
           className="btn btn-primary text-xs"
         >
           USE SKILL <span className="btn-arrow">→</span>
@@ -97,9 +97,9 @@ export default function PromptLab() {
 
       <main className="mx-auto max-w-6xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
         <section className="border-t-2 border-line pt-10">
-          <p className="kicker kicker-accent">lab</p>
+          <p className="kicker kicker-accent">skills library</p>
           <h1 className="display mt-6 max-w-4xl text-5xl sm:text-6xl">
-            AI Skills Lab to Personalize Your AI Agent
+            AI Skills Library
           </h1>
         </section>
 
@@ -113,7 +113,7 @@ export default function PromptLab() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="name or keyword…"
                 aria-label="Search the library"
-                className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 text-sm text-ink placeholder:text-faint focus:border-accent focus:outline-none"
+                className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 text-sm text-ink placeholder:text-faint focus:border-accent"
               />
             </label>
 

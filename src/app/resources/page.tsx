@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 import { GUIDES } from "@/data/guides";
 
 const TITLE = "Resources | Jaden Raats";
-const DESCRIPTION = "Guides, skills lab, daily note, and other public pages.";
+const DESCRIPTION = "Guides, skills library, daily note, and other public pages.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -20,7 +20,7 @@ const LINKS = [
   },
   {
     href: "/prompt-lab",
-    label: "AI Skills Lab",
+    label: "AI Skills Library",
     note: "Copy prompts to personalize your AI agent",
   },
   {
@@ -65,15 +65,15 @@ export default function ResourcesPage() {
               >
                 <Link
                   href={item.href}
-                  className="flex flex-col gap-1 px-5 py-4 transition-colors duration-200 hover:bg-ink hover:text-cream sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 sm:px-6"
+                  className="group flex flex-col gap-1 px-5 py-4 transition-colors duration-200 hover:bg-ink hover:text-cream sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 sm:px-6"
                 >
                   <span className="flex gap-4">
-                    <span className="font-mono text-xs text-accent">
+                    <span className="font-mono text-xs text-ink group-hover:text-cream">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="display-sentence text-lg">{item.label}</span>
                   </span>
-                  <span className="pl-10 text-sm text-faint sm:pl-0 sm:text-right">
+                  <span className="pl-10 text-sm text-faint group-hover:text-cream sm:pl-0 sm:text-right">
                     {item.note}
                   </span>
                 </Link>
@@ -92,9 +92,9 @@ export default function ResourcesPage() {
               >
                 <Link
                   href={`/guides/${g.slug}`}
-                  className="flex gap-4 px-5 py-4 transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-6"
+                  className="group flex gap-4 px-5 py-4 transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-6"
                 >
-                  <span className="font-mono text-xs text-accent">
+                  <span className="font-mono text-xs text-ink group-hover:text-cream">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-sm leading-snug">{g.title}</span>

@@ -11,6 +11,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@jadenraats/universal-design-system": "https://codeload.github.com/raatsja74/universal-design-system/tar.gz/23d2f3e94174b440f51bfb5fbe77eadc4d526566",
     "framer-motion": "^12.23.26",
     "next": "16.0.10",
     "react": "19.2.1",

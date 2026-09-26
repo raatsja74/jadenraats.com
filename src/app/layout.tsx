@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
+import { Anton, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
+import "@jadenraats/universal-design-system/dist/uds.core.css";
+import "@jadenraats/universal-design-system/dist/themes/jadenraats.css";
 import "./globals.css";
 
 const display = Anton({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400"],
-});
-
-const sans = Archivo({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
 });
 
 const serif = Instrument_Serif({
@@ -56,7 +52,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${serif.variable} ${mono.variable}`}>
+    <html lang="en" data-uds-theme="jadenraats" className={`${display.variable} ${serif.variable} ${mono.variable}`}>
+      <head>
+        <meta name="color-scheme" content="light only" />
+      </head>
       <body className="texture-grain">{children}</body>
     </html>
   );

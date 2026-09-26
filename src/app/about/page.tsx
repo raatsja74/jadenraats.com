@@ -34,7 +34,7 @@ const PROFILE_SCHEMA = {
     url: "https://jadenraats.com/about",
     jobTitle: "AI Automation Entrepreneur & Owner, Award Coatings",
     description: DESCRIPTION,
-    email: "mailto:me@jadenraats.com",
+    email: "mailto:ai@jadenraats.com",
     knowsAbout: [
       "AI automation for service businesses",
       "AI agents",
