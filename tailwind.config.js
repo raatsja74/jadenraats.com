@@ -3,14 +3,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cream:   'rgb(from var(--uds-surface-canvas) r g b / <alpha-value>)',
-        paper:   'rgb(from var(--uds-surface-canvas) r g b / <alpha-value>)',
-        surface: 'rgb(from var(--uds-surface-elevated) r g b / <alpha-value>)',
-        ink:     'rgb(from var(--uds-color-text-primary) r g b / <alpha-value>)',
-        line:    'rgb(from var(--uds-color-border-subtle) r g b / <alpha-value>)',
-        soft:    'rgb(from var(--uds-color-text-secondary) r g b / <alpha-value>)',
-        faint:   'rgb(from var(--uds-color-text-secondary) r g b / <alpha-value>)',
+        cream:   'rgb(from var(--site-surface) r g b / <alpha-value>)',
+        paper:   'rgb(from var(--site-surface) r g b / <alpha-value>)',
+        surface: 'rgb(from var(--site-surface-elevated) r g b / <alpha-value>)',
+        ink:     'rgb(from var(--site-text-primary) r g b / <alpha-value>)',
+        line:    'rgb(from var(--site-border) r g b / <alpha-value>)',
+        soft:    'rgb(from var(--site-text-secondary) r g b / <alpha-value>)',
+        faint:   'rgb(from var(--site-text-secondary) r g b / <alpha-value>)',
         accent:  'rgb(from var(--uds-color-action-primary) r g b / <alpha-value>)',
+        action:  'rgb(from var(--uds-color-action-primaryText) r g b / <alpha-value>)',
       },
       borderWidth: {
         DEFAULT: 'var(--uds-border-width-standard)',

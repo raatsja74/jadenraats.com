@@ -39,20 +39,20 @@ function SkillRow({
           </h3>
           <span className="status-tag status-live">{category}</span>
         </div>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-soft">{desc}</p>
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-soft">{desc}</p>
         <p className="kicker kicker-faint mt-3">id:{id}</p>
       </div>
       <div className="flex flex-wrap gap-2.5">
         <button
           type="button"
           onClick={onCopy}
-          className="btn btn-secondary text-xs"
+          className="btn btn-secondary"
         >
           {copied ? "COPIED ✓" : "COPY PROMPT"}
         </button>
         <a
           href={`mailto:ai@jadenraats.com?subject=USE SKILL: ${encodeURIComponent(name)}`}
-          className="btn btn-primary text-xs"
+          className="btn btn-primary"
         >
           USE SKILL <span className="btn-arrow">→</span>
         </a>
@@ -113,7 +113,7 @@ export default function PromptLab() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="name or keyword…"
                 aria-label="Search the library"
-                className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 text-sm text-ink placeholder:text-faint focus:border-accent"
+                className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 text-base text-ink placeholder:text-faint focus:border-accent"
               />
             </label>
 

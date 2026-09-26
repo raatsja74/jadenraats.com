@@ -7,8 +7,8 @@ import Nav from "@/components/Nav";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = {
-  initial: { opacity: 0, y: 28 },
-  whileInView: { opacity: 1, y: 0 },
+  initial: { y: 28 },
+  whileInView: { y: 0 },
   viewport: { once: true, margin: "-70px" },
   transition: { duration: 0.75, ease: EASE },
 };
@@ -91,7 +91,7 @@ function Hero() {
         </motion.h1>
 
         <motion.p
-          className="mt-7 max-w-3xl text-sm leading-relaxed text-soft sm:text-base"
+          className="mt-7 max-w-3xl text-base leading-relaxed text-soft"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
@@ -101,7 +101,7 @@ function Hero() {
         </motion.p>
 
         <motion.p
-          className="mt-10 max-w-2xl text-sm leading-relaxed text-soft sm:text-base"
+          className="mt-10 max-w-2xl text-base leading-relaxed text-soft"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.5 }}
@@ -142,7 +142,7 @@ function Systems() {
         Operator first, <span className="font-serif italic normal-case">builder</span> second.
       </motion.h2>
 
-      <motion.p {...fadeUp} className="mt-8 max-w-2xl text-sm leading-relaxed text-soft sm:text-base">
+      <motion.p {...fadeUp} className="mt-8 max-w-2xl text-base leading-relaxed text-soft">
         Most AI advice comes from people who have never had to make payroll. Mine
         comes out of a coating business with crews, callbacks and a phone that
         rings during a pour. Three things AI actually does here:
@@ -153,8 +153,8 @@ function Systems() {
           <motion.article
             key={s.title}
             className="border-b-2 border-line py-9 sm:py-11"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 28 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.75, ease: EASE, delay: i * 0.1 }}
           >
@@ -169,7 +169,7 @@ function Systems() {
               </span>
               <div>
                 <h3 className="display text-2xl">{s.title}</h3>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-soft">{s.body}</p>
+                <p className="mt-3 max-w-2xl text-base leading-relaxed text-soft">{s.body}</p>
               </div>
             </div>
           </motion.article>
@@ -184,7 +184,7 @@ function Numbers() {
     <section className="mx-auto max-w-6xl border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28">
       <SectionLabel>measured, not estimated</SectionLabel>
 
-      <motion.p {...fadeUp} className="mb-10 max-w-2xl text-sm leading-relaxed text-soft sm:text-base">
+      <motion.p {...fadeUp} className="mb-10 max-w-2xl text-base leading-relaxed text-soft">
         The assistant that runs the back office, as actually metered over its
         first 55 days. The full teardown — including the two weeks it silently
         broke — is in the{" "}
@@ -215,7 +215,7 @@ function Background() {
     <section className="mx-auto max-w-6xl border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28">
       <SectionLabel>background</SectionLabel>
 
-      <div className="grid gap-8 text-sm leading-relaxed text-soft sm:grid-cols-2 sm:gap-14 sm:text-base">
+      <div className="grid gap-8 text-base leading-relaxed text-soft sm:grid-cols-2 sm:gap-14">
         <motion.p {...fadeUp}>
           I came up in sales, not engineering. I taught myself to build because
           the software I needed for a floor coating company either didn&apos;t
@@ -255,13 +255,13 @@ function Elsewhere() {
               {...(e.href.startsWith("http")
                 ? { target: "_blank", rel: "me noreferrer" }
                 : {})}
-              className="group flex items-baseline justify-between gap-6 border-b border-cream/10 py-6 transition-colors duration-500 hover:text-accent"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="group flex items-baseline justify-between gap-6 border-b border-cream/10 py-6 transition-colors duration-500 hover:underline decoration-accent underline-offset-8"
+              initial={{ y: 24 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, ease: EASE, delay: i * 0.07 }}
             >
-              <span className="display text-2xl transition-colors duration-500 group-hover:text-accent sm:text-3xl">
+              <span className="display text-2xl transition-colors duration-500 sm:text-3xl">
                 {e.label}
               </span>
               <span className="kicker kicker-paper">{e.meta} ↗</span>
@@ -276,7 +276,7 @@ function Elsewhere() {
 function Footer() {
   return (
     <footer className="bg-ink px-6 pb-8 pt-10 text-cream sm:px-10">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-cream/10 pt-8 font-mono text-xs text-cream/60">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-cream/10 pt-8 font-mono text-sm text-cream/75">
         <span>© 2026 Jaden Raats</span>
         <Link href="/" className="link-underline">
           back home

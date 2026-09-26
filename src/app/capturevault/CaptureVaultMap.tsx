@@ -194,7 +194,7 @@ export default function CaptureVaultMap() {
               <div key={col.id} className="space-y-3">
                 <div className="flex items-baseline justify-between gap-3 border-b-2 border-line pb-2">
                   <p className="kicker kicker-accent">{col.label}</p>
-                  <p className="font-mono text-[0.65rem] text-faint">{col.kicker}</p>
+                  <p className="font-mono text-xs text-faint">{col.kicker}</p>
                 </div>
                 <div className="grid gap-3">
                   {col.mods.map((mod) => (
@@ -210,7 +210,7 @@ export default function CaptureVaultMap() {
               <span className="kicker kicker-faint">flow</span>
               {STAGE_COLUMNS.map((col, i) => (
                 <span key={col.id} className="flex items-center gap-3">
-                  <span className="font-mono text-[0.65rem] uppercase tracking-[0.1em] text-soft">
+                  <span className="font-mono text-xs uppercase tracking-[0.08em] text-soft">
                     {col.label}
                   </span>
                   {i < STAGE_COLUMNS.length - 1 && (
@@ -227,7 +227,7 @@ export default function CaptureVaultMap() {
                 <div key={col.id} className="flex flex-col gap-3">
                   <div className="border-2 border-ink bg-surface/50 px-3 py-2">
                     <p className="kicker kicker-accent">{col.label}</p>
-                    <p className="mt-1 font-mono text-[0.6rem] uppercase tracking-[0.1em] text-faint">
+                    <p className="mt-1 font-mono text-xs uppercase tracking-[0.08em] text-faint">
                       {col.kicker}
                     </p>
                   </div>
@@ -249,7 +249,7 @@ export default function CaptureVaultMap() {
               </div>
               <div className="mx-auto max-w-xl">
                 <HubNode filtered={!!stage} onClear={clearStage} />
-                <p className="mt-3 text-center font-mono text-[0.65rem] uppercase tracking-[0.12em] text-faint">
+                <p className="mt-3 text-center font-mono text-xs uppercase tracking-[0.08em] text-faint">
                   Click a module · Escape to close · Flow strip filters
                 </p>
               </div>
@@ -283,7 +283,7 @@ export default function CaptureVaultMap() {
           className="mx-auto max-w-6xl px-6 pb-16 sm:px-10 sm:pb-24"
           aria-label="Brand strip"
         >
-          <aside className="grid grid-cols-2 gap-x-6 gap-y-1 border-2 border-ink p-4 font-mono text-[0.65rem] uppercase tracking-[0.08em] text-soft sm:grid-cols-3 sm:p-6">
+          <aside className="grid grid-cols-2 gap-x-6 gap-y-1 border-2 border-ink p-4 font-mono text-xs uppercase tracking-[0.06em] text-soft sm:grid-cols-3 sm:p-6">
             <div className="space-y-1">
               <p>Systems</p>
               <p>Notes</p>
