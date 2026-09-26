@@ -32,7 +32,7 @@ export default function Nav() {
         </Link>
 
         <div className="hidden min-[900px]:flex min-[900px]:items-stretch">
-          {LINKS.map(([label, href]) => (
+          {LINKS.filter(([, href]) => href !== "/prompt-lab").map(([label, href]) => (
             <Link key={href + label} href={href} className={linkCls}>
               {label}
             </Link>

@@ -147,8 +147,8 @@ function Footer() {
         </Link>
         <span>Phoenix, AZ</span>
         <div className="flex flex-wrap gap-6">
-          <a href="mailto:me@jadenraats.com" className="link-underline">
-            me@jadenraats.com
+          <a href="mailto:ai@jadenraats.com" className="link-underline">
+            ai@jadenraats.com
           </a>
           <a
             href="https://github.com/raatsja74"

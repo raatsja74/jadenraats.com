@@ -1,35 +1,25 @@
 # jadenraats.com
 
-Personal site. One page, clean and warm, animation-forward. Rebuilt from scratch July 2026.
+Jaden's personal site. The current public pages are Home, Guides (three articles),
+Skills Library, Daily Note, Resources, About, Case Study, and CaptureVault.
+`/skills` redirects to the Skills Library at `/prompt-lab`.
 
-## Design
+## Stack and design
 
-- **Vibe**: soft, cinematic, personal — big lowercase wordmark, pill nav, film grain, slow warm light wash (cobi.works-inspired)
-- **Palette**: warm cream / warm ink / terracotta accent — tokens live in `src/app/globals.css` as RGB triplets (design law: no raw hex in components)
-- **Type**: Instrument Sans (display + body) · Instrument Serif italic (accents) · IBM Plex Mono (labels)
-- **Motion**: framer-motion — masked line reveals, scroll-triggered fades, respects reduced-motion
+- Next.js 16 (App Router), React 19, Tailwind CSS 3, and Framer Motion.
+- Semantic tokens come from the pinned `@jadenraats/universal-design-system`
+  package. Site-specific layout and component rules live in `src/app/globals.css`.
+- Fonts are loaded in `src/app/layout.tsx`.
 
-## Stack
-
-- Next.js 16 (App Router) · React 19 · Tailwind CSS 3 · framer-motion
-- Deployed on Vercel
-
-## Structure
-
-```
-src/app/
-  layout.tsx          fonts + metadata
-  page.tsx            the whole site (Nav, Hero, Marquee, About, Work, Contact, Footer)
-  globals.css         design tokens + keyframe animations
-  opengraph-image.tsx social preview card
-  sitemap.ts / robots.ts
-```
-
-## Commands
+## Checks
 
 ```bash
-npm run dev     # local dev
-npm run build   # production build
+npm run lint
+npx tsc --noEmit
+npm run check:design
+npm run build
 ```
 
-Contact email on the site: **me@jadenraats.com**. A pre-commit hook (`.husky/pre-commit`) enforces the design law — banned patterns, no inline hex, fonts owned by layout/globals.
+The production domain is `https://jadenraats.com`, connected to the Vercel
+project `jadenraats.com`. The contact address used on the site is
+`ai@jadenraats.com`.

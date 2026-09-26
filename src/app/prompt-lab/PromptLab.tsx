@@ -51,7 +51,7 @@ function SkillRow({
           {copied ? "COPIED ✓" : "COPY PROMPT"}
         </button>
         <a
-          href={`mailto:me@jadenraats.com?subject=USE SKILL: ${encodeURIComponent(name)}`}
+          href={`mailto:ai@jadenraats.com?subject=USE SKILL: ${encodeURIComponent(name)}`}
           className="btn btn-primary text-xs"
         >
           USE SKILL <span className="btn-arrow">→</span>
