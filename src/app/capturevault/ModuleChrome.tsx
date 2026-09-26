@@ -62,7 +62,7 @@ export function ModuleCard({
         <h2 className="display-sentence text-2xl leading-none sm:text-3xl">
           {mod.title}
         </h2>
-        <p className="max-w-[28ch] text-sm leading-snug text-soft">{mod.tagline}</p>
+        <p className="max-w-[28ch] text-base leading-snug text-soft">{mod.tagline}</p>
       </button>
     </article>
   );
@@ -75,7 +75,7 @@ export function ModuleDetail({ mod }: { mod: VaultModule }) {
         <ol className="flex flex-wrap items-center gap-2" aria-label="Workflow chain">
           {mod.chain.map((step, i) => (
             <li key={step} className="flex items-center gap-2">
-              <span className="border border-ink bg-cream px-2 py-1 font-mono text-[0.65rem] uppercase tracking-wide">
+              <span className="border border-ink bg-cream px-2 py-1 font-mono text-xs uppercase tracking-wide">
                 {step}
               </span>
               {i < mod.chain!.length - 1 && (
@@ -93,7 +93,7 @@ export function ModuleDetail({ mod }: { mod: VaultModule }) {
           {mod.items.map((item) => (
             <li
               key={item.label}
-              className="flex items-start gap-2 text-sm leading-relaxed text-soft"
+              className="flex items-start gap-2 text-base leading-relaxed text-soft"
             >
               <span
                 className={`mt-1.5 inline-block h-1.5 w-1.5 shrink-0 ${
@@ -121,8 +121,8 @@ export function ModuleDetail({ mod }: { mod: VaultModule }) {
       {mod.principles && mod.principles.length > 0 && (
         <ol className="space-y-2">
           {mod.principles.map((p, i) => (
-            <li key={p} className="flex items-start gap-3 text-sm text-soft">
-              <span className="display shrink-0 bg-accent px-2 py-0.5 text-sm text-ink">
+            <li key={p} className="flex items-start gap-3 text-base text-soft">
+              <span className="display shrink-0 bg-accent px-2 py-0.5 text-sm text-action">
                 {i + 1}
               </span>
               <span>{p}</span>
@@ -164,7 +164,7 @@ export function ModuleDrawer({
             </span>
           </div>
           <h2 className="display-sentence mt-2 text-3xl sm:text-4xl">{mod.title}</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-snug text-soft">{mod.tagline}</p>
+          <p className="mt-2 max-w-2xl text-base leading-snug text-soft">{mod.tagline}</p>
         </div>
         <button
           type="button"
@@ -195,7 +195,7 @@ export function HubNode({
       <h2 className="display mt-2 text-3xl leading-none text-ink sm:text-4xl lg:text-5xl">
         {HUB.title}
       </h2>
-      <p className="mt-4 border-2 border-ink bg-ink px-3 py-2 font-mono text-[0.65rem] uppercase tracking-[0.1em] text-accent sm:text-xs">
+      <p className="mt-4 border-2 border-accent bg-ink px-3 py-2 font-mono text-sm uppercase tracking-[0.06em] text-cream">
         {HUB.slogan}
       </p>
       {filtered && (

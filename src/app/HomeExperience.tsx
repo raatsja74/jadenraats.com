@@ -66,16 +66,16 @@ function Hero() {
             </h1>
 
             <motion.p {...enter(0.38)} className="home-cover-description">
-              I run a floor coating company in Phoenix and build the AI systems
-              we actually use there. Here are the guides, tools, and results worth showing.
+              I run a floor coating company in Phoenix. I build the AI systems
+              we use there. Start with the systems, guides, or skills below.
             </motion.p>
 
             <motion.div {...enter(0.5)} className="home-cover-actions">
               <Link href="/systems" className="btn btn-primary">
-                Watch the work <span className="btn-arrow" aria-hidden="true">→</span>
+                See the systems <span className="btn-arrow" aria-hidden="true">→</span>
               </Link>
               <Link href="#guides" className="btn btn-secondary">
-                Start with a guide <span className="btn-arrow" aria-hidden="true">↘</span>
+                Read a guide <span className="btn-arrow" aria-hidden="true">↘</span>
               </Link>
             </motion.div>
 
@@ -150,8 +150,8 @@ function SystemsFeature() {
             </h2>
           </Reveal>
           <Reveal className="home-systems-intro" delay={0.1}>
-            <p>Systems from a business with leads, quotes, crews, and callbacks.
-              If one stops working on Monday, I have to fix it.</p>
+            <p>These systems handle leads, quotes, crews, and follow-up at my
+              floor coating company. If one breaks, I have to fix it.</p>
             <Link href="/systems" className="home-text-link">
               OPEN THE SYSTEMS <span aria-hidden="true">↗</span>
             </Link>
@@ -180,6 +180,7 @@ function GuidesSection() {
           <div>
             <p className="home-overline">NO COURSE. JUST THE STEPS.</p>
             <h2 id="guides-title" className="home-section-title">FREE GUIDES<br /><em>TO LEARN AI.</em></h2>
+            <p className="home-guides-summary">Short, practical steps from the tools I use at work.</p>
           </div>
           <Link href="/guides" className="home-text-link">
             ALL GUIDES <span aria-hidden="true">↗</span>
@@ -257,7 +258,23 @@ function Footer() {
           <a href="mailto:ai@jadenraats.com" className="btn btn-primary">SAY HELLO <span className="btn-arrow" aria-hidden="true">↗</span></a>
           <Link href="/about" className="home-footer-about">MORE ABOUT ME <span aria-hidden="true">↗</span></Link>
         </div>
-        <div className="home-footer-bottom"><span>JADEN✱ / PHOENIX, AZ</span><span>BUILT BY ME. USED BY ME.</span></div>
+        <div className="home-footer-bottom">
+          <span>JADEN✱ / PHOENIX, AZ</span>
+          <figure className="home-dog-signature">
+            <span className="home-dog-frame">
+              <Image
+                src="/images/easton-signature.webp"
+                alt="Illustrated portrait of Easton the dog"
+                width={1938}
+                height={1932}
+                unoptimized
+                className="home-dog-image"
+              />
+            </span>
+            <figcaption>EASTON</figcaption>
+          </figure>
+          <span>BUILT BY ME. USED BY ME.</span>
+        </div>
       </div>
     </footer>
   );

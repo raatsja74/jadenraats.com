@@ -8,8 +8,8 @@ import type { Guide } from "@/data/guides";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
+  initial: { y: 20 },
+  whileInView: { y: 0 },
   viewport: { once: true, margin: "-60px" },
   transition: { duration: 0.7, ease: EASE },
 };
@@ -55,7 +55,7 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
           </motion.p>
 
           <motion.p
-            className="mt-8 text-sm leading-relaxed text-soft sm:text-base"
+            className="mt-8 text-base leading-relaxed text-soft"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.25 }}
@@ -84,7 +84,7 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
                     className="list-none space-y-3 border-l-2 border-accent pl-6"
                   >
                     {section.items.map((item) => (
-                      <li key={item} className="text-sm leading-relaxed text-soft sm:text-base">
+                      <li key={item} className="text-base leading-relaxed text-soft">
                         {item}
                       </li>
                     ))}
@@ -106,7 +106,7 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
                 <motion.p
                   key={i}
                   {...fadeUp}
-                  className="text-sm leading-relaxed text-soft sm:text-base"
+                  className="text-base leading-relaxed text-soft"
                 >
                   {section.text}
                 </motion.p>

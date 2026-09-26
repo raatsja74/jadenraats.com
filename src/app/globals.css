@@ -8,7 +8,26 @@ html[data-uds-theme="jadenraats"] {
   --uds-theme-font-body: var(--font-mono);
   --uds-theme-font-heading: var(--font-display);
   --uds-theme-font-mono: var(--font-mono);
-  color-scheme: light only;
+  --site-text-primary: var(--uds-color-text-primary);
+  --site-text-secondary: var(--uds-color-text-secondary);
+  --site-text-inverse: var(--uds-color-text-inverse);
+  --site-border: var(--uds-color-border-subtle);
+  --site-surface: var(--uds-surface-canvas);
+  --site-surface-elevated: var(--uds-surface-elevated);
+  --site-surface-inverse: var(--uds-surface-inverse);
+  color-scheme: light;
+}
+
+/* Dark mode reuses the Jaden UDS palette, reversing its paper and ink roles. */
+html[data-uds-theme="jadenraats"][data-site-theme="dark"] {
+  --site-text-primary: var(--uds-color-text-inverse);
+  --site-text-secondary: color-mix(in srgb, var(--uds-color-text-inverse) 78%, var(--uds-surface-inverse));
+  --site-text-inverse: var(--uds-color-text-primary);
+  --site-border: var(--uds-color-text-inverse);
+  --site-surface: var(--uds-surface-inverse);
+  --site-surface-elevated: color-mix(in srgb, var(--uds-surface-inverse) 88%, var(--uds-surface-canvas));
+  --site-surface-inverse: var(--uds-surface-canvas);
+  color-scheme: dark;
 }
 
 /* The homepage uses the same UDS type roles as the rest of the site. */
@@ -36,6 +55,7 @@ html[data-uds-theme="jadenraats"] {
 
 .home-cover-description,
 .home-systems-intro p,
+.home-guides-summary,
 .home-skills-intro p {
   font-family: var(--uds-font-body), monospace;
 }
@@ -75,8 +95,8 @@ html {
 }
 
 body {
-  background: var(--uds-surface-canvas) !important;
-  color: var(--uds-color-text-primary) !important;
+  background: var(--site-surface) !important;
+  color: var(--site-text-primary) !important;
   font-family: var(--uds-font-body), monospace;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -85,7 +105,7 @@ body {
 
 ::selection {
   background: var(--uds-color-action-primary);
-  color: var(--uds-color-text-primary);
+  color: var(--uds-color-action-primaryText);
 }
 
 /* ── Display type — heavy condensed grotesk, uppercase, tight ── */
@@ -113,12 +133,12 @@ body {
   font-family: var(--uds-font-mono), monospace;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   line-height: 1.5;
 }
 
 .kicker-accent {
-  color: var(--uds-color-text-primary);
+  color: var(--site-text-primary);
   border-left: var(--uds-border-width-strong) solid var(--uds-color-action-primary);
   padding-left: var(--uds-space-2);
 }
@@ -127,8 +147,8 @@ body {
   align-items: center;
   min-height: var(--uds-layout-touch-target-min);
 }
-.kicker-faint { color: var(--uds-color-text-secondary); }
-.kicker-paper { color: rgb(from var(--uds-surface-canvas) r g b / 0.6); }
+.kicker-faint { color: var(--site-text-secondary); }
+.kicker-paper { color: rgb(from var(--site-surface) r g b / 0.6); }
 
 /* ── Photocopy texture — static grain over the whole page ── */
 
@@ -313,7 +333,7 @@ button:hover .btn-arrow {
   gap: 0.5rem;
   min-height: var(--uds-layout-touch-target-min);
   padding: var(--uds-space-3) var(--uds-space-5);
-  border: var(--uds-border-width-strong) solid var(--uds-color-text-primary);
+  border: var(--uds-border-width-strong) solid var(--site-text-primary);
   border-radius: var(--uds-radius-none);
   font-family: var(--uds-font-heading), Impact, sans-serif;
   text-transform: uppercase;
@@ -329,30 +349,30 @@ button:hover .btn-arrow {
 }
 
 .btn-primary:hover {
-  background: var(--uds-color-text-primary);
-  color: var(--uds-surface-canvas);
+  background: var(--site-text-primary);
+  color: var(--site-surface);
 }
 
 .btn-secondary {
-  background: var(--uds-surface-canvas);
-  color: var(--uds-color-text-primary);
+  background: var(--site-surface);
+  color: var(--site-text-primary);
 }
 
 .btn-secondary:hover {
-  background: var(--uds-color-text-primary);
-  color: var(--uds-surface-canvas);
+  background: var(--site-text-primary);
+  color: var(--site-surface);
 }
 
 .btn-inverse {
-  background: var(--uds-surface-inverse);
-  color: var(--uds-color-text-inverse);
-  border-color: var(--uds-surface-canvas);
+  background: var(--site-surface-inverse);
+  color: var(--site-text-inverse);
+  border-color: var(--site-surface);
 }
 
 .btn-inverse:hover {
   background: var(--uds-color-action-primary);
-  color: var(--uds-color-text-primary);
-  border-color: var(--uds-color-text-primary);
+  color: var(--uds-color-action-primaryText);
+  border-color: var(--site-text-primary);
 }
 
 /* ── Chips — compact square filter/label controls (operational brutalism) ── */
@@ -364,10 +384,10 @@ button:hover .btn-arrow {
   gap: var(--uds-space-1);
   min-height: var(--uds-layout-touch-target-min);
   padding: var(--uds-space-2) var(--uds-space-3);
-  border: var(--uds-border-width-strong) solid var(--uds-color-text-primary);
+  border: var(--uds-border-width-strong) solid var(--site-text-primary);
   border-radius: var(--uds-radius-none);
   font-family: var(--uds-font-mono), monospace;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   line-height: 1;
@@ -381,18 +401,18 @@ button:hover .btn-arrow {
 }
 
 .chip-active:hover {
-  background: var(--uds-color-text-primary);
-  color: var(--uds-surface-canvas);
+  background: var(--site-text-primary);
+  color: var(--site-surface);
 }
 
 .chip-idle {
-  background: var(--uds-surface-canvas);
-  color: var(--uds-color-text-primary);
+  background: var(--site-surface);
+  color: var(--site-text-primary);
 }
 
 .chip-idle:hover {
-  background: var(--uds-color-text-primary);
-  color: var(--uds-surface-canvas);
+  background: var(--site-text-primary);
+  color: var(--site-surface);
 }
 
 /* ── Data rows & status tags — operational brutalism (The Lab) ── */
@@ -403,8 +423,8 @@ button:hover .btn-arrow {
   gap: 1rem;
   justify-content: space-between;
   padding: 1.5rem;
-  border: var(--uds-border-width-strong) solid var(--uds-color-border-subtle);
-  background: var(--uds-surface-canvas);
+  border: var(--uds-border-width-strong) solid var(--site-border);
+  background: var(--site-surface);
 }
 
 @media (min-width: 768px) {
@@ -419,9 +439,9 @@ button:hover .btn-arrow {
   align-items: center;
   gap: 0.4rem;
   padding: 0.25rem 0.6rem;
-  border: var(--uds-border-width-standard) solid var(--uds-color-border-subtle);
+  border: var(--uds-border-width-standard) solid var(--site-border);
   font-family: var(--uds-font-mono), monospace;
-  font-size: 0.65rem;
+  font-size: 0.76rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   white-space: nowrap;

@@ -73,7 +73,7 @@ export default function ResourcesPage() {
                     </span>
                     <span className="display-sentence text-lg">{item.label}</span>
                   </span>
-                  <span className="pl-10 text-sm text-faint group-hover:text-cream sm:pl-0 sm:text-right">
+                  <span className="pl-10 text-base text-faint group-hover:text-cream sm:pl-0 sm:text-right">
                     {item.note}
                   </span>
                 </Link>
@@ -97,7 +97,7 @@ export default function ResourcesPage() {
                   <span className="font-mono text-xs text-ink group-hover:text-cream">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-sm leading-snug">{g.title}</span>
+                  <span className="text-base leading-snug">{g.title}</span>
                 </Link>
               </li>
             ))}

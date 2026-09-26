@@ -31,7 +31,7 @@ export default function DailyNotePage() {
         <section className="border-t-2 border-line pt-10">
           <p className="kicker kicker-accent">daily note</p>
           <h1 className="display mt-6 text-5xl sm:text-6xl">Daily Note</h1>
-          <p className="mt-6 text-sm leading-relaxed text-soft">
+          <p className="mt-6 text-base leading-relaxed text-soft">
             One note per day. Yesterday rolls forward. Nothing else.
           </p>
         </section>
@@ -47,7 +47,7 @@ export default function DailyNotePage() {
                 <span className="font-mono text-xs text-ink">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="text-sm leading-relaxed text-ink">{step}</span>
+                <span className="text-base leading-relaxed text-ink">{step}</span>
               </li>
             ))}
           </ol>
@@ -57,8 +57,8 @@ export default function DailyNotePage() {
           <section className="mt-12 border-2 border-line p-6 sm:p-8">
             <p className="kicker kicker-accent">Prompt</p>
             <h2 className="display-sentence mt-3 text-2xl">{skill.name}</h2>
-            <p className="mt-3 text-sm text-soft">{skill.desc}</p>
-            <pre className="mt-6 whitespace-pre-wrap border-2 border-line bg-surface p-4 font-mono text-xs leading-relaxed text-ink">
+            <p className="mt-3 text-base text-soft">{skill.desc}</p>
+            <pre className="mt-6 whitespace-pre-wrap border-2 border-line bg-surface p-4 font-mono text-sm leading-relaxed text-ink">
               {skill.prompt}
             </pre>
             <Link

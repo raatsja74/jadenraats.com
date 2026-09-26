@@ -23,6 +23,8 @@ const mono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const themeInit = `(function(){try{var saved=localStorage.getItem('jaden-theme');var theme=saved==='dark'||saved==='light'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-site-theme',theme)}catch(_){document.documentElement.setAttribute('data-site-theme','light')}})();`;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://jadenraats.com"),
   title: "Jaden Raats — AI for business owners, proven in a real business",
@@ -52,9 +54,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-uds-theme="jadenraats" className={`${display.variable} ${serif.variable} ${mono.variable}`}>
+    <html lang="en" data-uds-theme="jadenraats" data-site-theme="light" suppressHydrationWarning className={`${display.variable} ${serif.variable} ${mono.variable}`}>
       <head>
-        <meta name="color-scheme" content="light only" />
+        <meta name="color-scheme" content="light dark" />
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
       <body className="texture-grain">{children}</body>
     </html>

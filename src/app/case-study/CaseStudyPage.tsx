@@ -7,8 +7,8 @@ import Nav from "@/components/Nav";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = {
-  initial: { opacity: 0, y: 32 },
-  whileInView: { opacity: 1, y: 0 },
+  initial: { y: 32 },
+  whileInView: { y: 0 },
   viewport: { once: true, margin: "-80px" },
   transition: { duration: 0.8, ease: EASE },
 };
@@ -70,7 +70,7 @@ export default function CaseStudyPage() {
             <span className="font-serif italic normal-case">everything that broke</span>.
           </motion.h1>
 
-          <motion.p {...fadeUp} className="mt-8 max-w-2xl text-sm leading-relaxed text-soft sm:text-base">
+          <motion.p {...fadeUp} className="mt-8 max-w-2xl text-base leading-relaxed text-soft">
             I was capturing work in eight places and finding it in none of them.
             Links in one app, ideas in another, tasks somewhere else — plus five AI
             agents that couldn&apos;t see each other&apos;s work. The problem was
@@ -88,7 +88,7 @@ export default function CaseStudyPage() {
             </div>
           </motion.div>
 
-          <motion.p {...fadeUp} className="mt-14 max-w-2xl text-sm leading-relaxed text-soft sm:text-base">
+          <motion.p {...fadeUp} className="mt-14 max-w-2xl text-base leading-relaxed text-soft">
             So I built one front door. Everything goes to a chat app, and{" "}
             <em className="font-serif italic normal-case text-ink">which chat you send it to</em>{" "}
             decides where it ends up. No AI guessing your intent — you already made
@@ -103,7 +103,7 @@ export default function CaseStudyPage() {
                 className="flex flex-col gap-1 border-b-2 border-line py-4 sm:flex-row sm:items-baseline sm:gap-6"
               >
                 <span className="kicker kicker-accent sm:w-28 sm:shrink-0">{f.k}</span>
-                <span className="text-sm text-soft">{f.v}</span>
+                <span className="text-base text-soft">{f.v}</span>
               </div>
             ))}
           </motion.div>
@@ -112,7 +112,7 @@ export default function CaseStudyPage() {
             The fix wasn&apos;t code.
           </motion.h2>
 
-          <motion.p {...fadeUp} className="mt-6 max-w-2xl text-sm leading-relaxed text-soft sm:text-base">
+          <motion.p {...fadeUp} className="mt-6 max-w-2xl text-base leading-relaxed text-soft">
             Six weeks in, it broke for two weeks and I didn&apos;t notice. When I
             came back, I didn&apos;t rewrite anything — I wrote down the filing
             rules on a single page that both I and the agents could read. Same code,
@@ -141,7 +141,7 @@ export default function CaseStudyPage() {
             What&apos;s still broken
           </motion.h2>
 
-          <motion.p {...fadeUp} className="mt-6 max-w-2xl text-sm leading-relaxed text-soft">
+          <motion.p {...fadeUp} className="mt-6 max-w-2xl text-base leading-relaxed text-soft">
             This is the part most write-ups leave out. All of it is still true as of
             today.
           </motion.p>
@@ -151,18 +151,18 @@ export default function CaseStudyPage() {
               <motion.div
                 key={b.t}
                 className="border-b-2 border-line py-8"
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ y: 32 }}
+                whileInView={{ y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.8, ease: EASE, delay: i * 0.1 }}
               >
                 <h3 className="display-sentence text-2xl">{b.t}</h3>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-soft">{b.d}</p>
+                <p className="mt-3 max-w-2xl text-base leading-relaxed text-soft">{b.d}</p>
               </motion.div>
             ))}
           </div>
 
-          <motion.p {...fadeUp} className="mt-14 max-w-2xl text-sm leading-relaxed sm:text-base">
+          <motion.p {...fadeUp} className="mt-14 max-w-2xl text-base leading-relaxed">
             The useful lesson wasn&apos;t technical. The system didn&apos;t fail
             because it couldn&apos;t do enough — it failed because the rules for
             where things go lived in my head instead of on a page. Writing them down
