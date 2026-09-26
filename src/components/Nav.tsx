@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 const LINKS = [
+  ["systems", "/systems"],
   ["guides", "/guides"],
   ["skills library", "/prompt-lab"],
   ["daily note", "/daily-note"],

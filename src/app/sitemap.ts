@@ -15,6 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://jadenraats.com/systems",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: "https://jadenraats.com/prompt-lab",
       lastModified: new Date(),
       changeFrequency: "weekly",
