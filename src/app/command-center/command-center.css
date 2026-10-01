@@ -1,0 +1,36 @@
+.cc-header, .cc-main { max-width: 76rem; margin-inline: auto; padding-inline: clamp(1rem, 4vw, 3rem); }
+.cc-header { display: flex; justify-content: space-between; align-items: center; padding-block: 1rem; border-bottom: 2px solid var(--site-border); }
+.cc-header > a { display: flex; align-items: center; min-height: 44px; font-size: 1.5rem; text-transform: uppercase; }
+.cc-header > a span { color: var(--uds-color-action-primary); }
+.cc-main { padding-block: 6rem 2rem; }
+.cc-eyebrow { color: var(--site-text-secondary); font-size: .75rem; text-transform: uppercase; }
+.cc-main h1 { max-width: 14ch; margin-block: 1rem 1.5rem; font-size: clamp(2.5rem, 8vw, 6rem); line-height: 1; text-transform: uppercase; }
+.cc-intro { max-width: 60ch; margin-bottom: 2rem; font-size: 1rem; line-height: 1.7; }
+.cc-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: .5rem; }
+.cc-primary, .cc-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 1rem; min-height: 44px; padding: .75rem 1rem; border: 2px solid var(--site-border); font-size: .75rem; text-transform: uppercase; cursor: pointer; }
+.cc-primary { background: var(--uds-color-action-primary); color: var(--uds-color-action-primaryText); border-color: var(--uds-color-action-primary); }
+.cc-secondary { background: var(--site-surface); color: var(--site-text-primary); }
+.cc-primary:hover, .cc-secondary:hover:not(:disabled) { background: var(--site-surface-inverse); color: var(--site-text-inverse); border-color: var(--site-surface-inverse); }
+.cc-primary:active, .cc-secondary:active:not(:disabled) { transform: translateY(1px); }
+.cc-secondary:disabled { opacity: .5; cursor: default; }
+.cc-access { max-width: 60ch; margin-block: 1rem 2rem; font-size: .75rem; line-height: 1.7; color: var(--site-text-secondary); }
+.cc-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 2px solid var(--site-border); border-left: 2px solid var(--site-border); }
+.cc-panel { min-width: 0; padding: 1.5rem; border-right: 2px solid var(--site-border); border-bottom: 2px solid var(--site-border); }
+.cc-panel:hover { background: var(--site-surface-elevated); }
+.cc-number { font-size: .75rem; color: var(--site-text-secondary); }
+.cc-panel h2 { margin-block: .5rem 1rem; display: flex; justify-content: space-between; gap: 1rem; font-size: 1.5rem; text-transform: uppercase; }
+.cc-panel h2 span { color: var(--uds-color-action-primary); }
+.cc-panel p { font-size: 1rem; line-height: 1.7; }
+.cc-workspace { margin-top: 2rem; border: 2px solid var(--site-border); }
+.cc-frame-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; }
+.cc-frame-tools h2 { font-size: 1.5rem; text-transform: uppercase; }
+.cc-frame-status { padding: 1rem; border-top: 2px solid var(--site-border); font-size: .75rem; line-height: 1.7; }
+.cc-frame-status a { text-decoration: underline; }
+.cc-workspace iframe { display: block; width: 100%; height: 75vh; min-height: 40rem; border: 0; border-top: 2px solid var(--site-border); background: var(--site-surface); }
+.cc-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-block: 1rem; border-top: 2px solid var(--site-border); font-size: .75rem; color: var(--site-text-secondary); }
+.cc-footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; }
+.cc-main :is(a, button):focus-visible, .cc-header :is(a, button):focus-visible, .cc-skip:focus-visible { outline: 2px solid var(--uds-color-action-primary); outline-offset: 4px; }
+.cc-skip { position: fixed; top: .5rem; left: 1rem; z-index: 100; transform: translateY(-150%); padding: 1rem; background: var(--site-surface-inverse); color: var(--site-text-inverse); }
+.cc-skip:focus { transform: none; }
+@media (max-width: 700px) { .cc-main { padding-top: 3rem; } .cc-panels { grid-template-columns: minmax(0, 1fr); } .cc-actions > :is(a, button) { flex-grow: 1; } }
+@media (prefers-reduced-motion: reduce) { .cc-primary:active, .cc-secondary:active { transform: none; } }
