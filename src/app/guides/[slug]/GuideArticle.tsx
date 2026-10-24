@@ -114,6 +114,16 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
             })}
           </div>
 
+          {guide.sources && guide.sources.length > 0 && (
+            <nav aria-label="Article sources" className="mt-10 flex flex-wrap gap-4">
+              {guide.sources.map((source) => (
+                <a key={source.href} href={source.href} className="btn btn-secondary">
+                  {source.label}
+                </a>
+              ))}
+            </nav>
+          )}
+
           <motion.div
             {...fadeUp}
             className="mt-16 flex flex-wrap gap-8 border-t-2 border-line pt-10 font-mono text-sm"

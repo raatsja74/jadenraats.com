@@ -1,5 +1,9 @@
 # Agent Command Center page
 
+## NOOP article addition
+
+The NOOP guide reuses the existing Guides article, index, homepage cards, typography and spacing unchanged. Its optional official-source links reuse the existing `btn btn-secondary` controls and their focus, border and touch-target tokens. The new card illustration is original static SVG artwork, not a WHOOP or NOOP logo/screenshot. Its fixed 1600 × 1000 illustration canvas uses the pinned Jaden UDS paper `#F2EFE6`, ink `#0A0A09` and signal orange `#F4511E`; these are illustration colors, not new UI tokens. Keep the supplied article text, tools tag, five-minute label and disclaimer intact. Include the public article in the sitemap, but keep the private command-center exclusion unchanged.
+
 The `/command-center` page is an unlisted, noindex entrance to Jaden's existing private Hermes control plane. It adds no public agent API, task store, or session export. The native dashboard handles sign-in, tasks, run details, questions, and schedules on the MBP behind Tailscale.
 
 Use the site's installed Jaden UDS theme and self-hosted Anton / IBM Plex Mono fonts. All colors use `--site-*` aliases and `--uds-color-action-primary` / `--uds-color-action-primaryText`; all borders use the existing UDS border widths. Square corners, no shadows. Native Hermes UI inside the optional frame keeps its own design.

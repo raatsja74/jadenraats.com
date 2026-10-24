@@ -57,6 +57,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: "https://jadenraats.com/guides/noop-whoop-without-subscription",
+      lastModified: new Date("2026-10-24T00:00:00-07:00"),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: "https://jadenraats.com/guides/write-the-rules-down",
       lastModified: new Date(),
       changeFrequency: "monthly",
