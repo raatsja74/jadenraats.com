@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">NOOP: Your strap. Your data.</title>
+  <desc id="desc">Original editorial artwork: a dark wearable strap and a heart-rate trace on warm paper, with orange accents. Not a WHOOP product image or logo.</desc>
+  <rect width="1600" height="1000" fill="#F2EFE6"/>
+  <path d="M80 80H1520V920H80Z" fill="none" stroke="#0A0A09" stroke-width="4"/>
+  <path d="M80 200H1520M80 800H1520" fill="none" stroke="#0A0A09" stroke-width="4"/>
+  <rect x="80" y="80" width="20" height="120" fill="#F4511E"/>
+  <text x="130" y="153" fill="#0A0A09" font-family="monospace" font-size="32" letter-spacing="4">FIELD NOTES / TOOLS</text>
+  <text x="150" y="460" fill="#0A0A09" font-family="Impact,Arial Black,sans-serif" font-size="210" font-weight="900">NOOP</text>
+  <text x="155" y="545" fill="#0A0A09" font-family="monospace" font-size="34" letter-spacing="2">YOUR STRAP.</text>
+  <text x="155" y="600" fill="#0A0A09" font-family="monospace" font-size="34" letter-spacing="2">YOUR DATA.</text>
+  <path d="M835 630L910 325Q930 250 1005 250H1220Q1280 250 1300 315L1390 650Q1410 725 1335 725H900Q815 725 835 630Z" fill="#0A0A09"/>
+  <path d="M929 390H1289L1330 590H880Z" fill="#F2EFE6" stroke="#0A0A09" stroke-width="12"/>
+  <path d="M900 495H988L1020 455L1050 535L1092 425L1137 555L1174 495H1300" fill="none" stroke="#F4511E" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M1015 280H1195M1030 310H1180M925 655H1300M940 685H1285" fill="none" stroke="#F2EFE6" stroke-width="8"/>
+  <text x="130" y="870" fill="#0A0A09" font-family="monospace" font-size="28" letter-spacing="2">OFFLINE. ON YOUR DEVICE. NO MEMBERSHIP.</text>
+  <rect x="1430" y="830" width="40" height="40" fill="#F4511E"/>
+</svg>
