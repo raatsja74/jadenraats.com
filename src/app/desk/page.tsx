@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import DeskTracker, { type DeskData, DESK_DATA_URL } from "./DeskTracker";
+import DeskTracker, { type DeskData } from "./DeskTracker";
+import { DESK_DATA_URL } from "./constants";
 
 const TITLE = "Memecoin desk: six AI agents, paper money | Jaden Raats";
 const DESCRIPTION =
