@@ -3,8 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Nav from "@/components/Nav";
 
-export const DESK_DATA_URL =
-  "https://raw.githubusercontent.com/raatsja74/jadenraats.com/desk-data/desk.json";
+import { DESK_DATA_URL } from "./constants";
 
 type Closed = {
   symbol: string;
