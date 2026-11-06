@@ -86,7 +86,8 @@ function EquityChart({ series, start }: { series: [string, number][]; start: num
   const x = (t: number) => P.l + ((t - t0) / Math.max(1, t1 - t0)) * (W - P.l - P.r);
   const y = (v: number) => P.t + (1 - (v - lo) / (hi - lo)) * (H - P.t - P.b);
   const d = pts.map(([t, v], i) => `${i ? "L" : "M"}${x(t).toFixed(1)},${y(v).toFixed(1)}`).join("");
-  const ticks = [lo + (hi - lo) * 0.15, start, hi - (hi - lo) * 0.15];
+  const r = hi - lo;
+  const ticks = [lo + r * 0.1, start, hi - r * 0.1].filter((v) => v === start || Math.abs(v - start) > r * 0.12);
   const last = pts[pts.length - 1];
 
   return (
