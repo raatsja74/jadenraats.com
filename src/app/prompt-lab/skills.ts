@@ -132,3 +132,10 @@ export const SKILLS: Skill[] = [
 export function getSkill(id: string): Skill | undefined {
   return SKILLS.find((s) => s.id === id);
 }
+
+/** Display labels are independent of filter keys and preserve acronym spelling. */
+const CATEGORY_LABELS: Record<string, string> = {
+  ALL: "All", AGENTS: "Agents", AUTOMATIONS: "Automations", WORKFLOWS: "Workflows",
+  VAULT: "Vault", PROMPTS: "Prompts", OPS: "Ops",
+};
+export const categoryLabel = (key: string): string => CATEGORY_LABELS[key] ?? key;

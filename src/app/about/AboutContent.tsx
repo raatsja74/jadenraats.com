@@ -75,7 +75,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function Hero() {
   return (
     <section className="mx-auto max-w-6xl px-6 pb-20 pt-32 sm:px-10 sm:pb-24 sm:pt-44">
-      <div className="border-t-2 border-line pt-10">
+      <div className="border-t border-line pt-10">
         <SectionLabel>about</SectionLabel>
 
         <motion.h1
@@ -132,7 +132,7 @@ function Hero() {
 
 function Systems() {
   return (
-    <section className="mx-auto max-w-6xl border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28">
+    <section className="mx-auto max-w-6xl border-t border-line px-6 py-24 sm:px-10 sm:py-28">
       <SectionLabel>how ai runs the business</SectionLabel>
 
       <motion.h2
@@ -148,11 +148,11 @@ function Systems() {
         rings during a pour. Three things AI actually does here:
       </motion.p>
 
-      <div className="mt-14 border-t-2 border-line">
+      <div className="mt-14 border-t border-line">
         {SYSTEMS.map((s, i) => (
           <motion.article
             key={s.title}
-            className="border-b-2 border-line py-9 sm:py-11"
+            className="border-b border-line py-9 sm:py-11"
             initial={{ y: 28 }}
             whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
@@ -181,7 +181,7 @@ function Systems() {
 
 function Numbers() {
   return (
-    <section className="mx-auto max-w-6xl border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28">
+    <section className="mx-auto max-w-6xl border-t border-line px-6 py-24 sm:px-10 sm:py-28">
       <SectionLabel>measured, not estimated</SectionLabel>
 
       <motion.p {...fadeUp} className="mb-10 max-w-2xl text-base leading-relaxed text-soft">
@@ -194,11 +194,11 @@ function Numbers() {
         .
       </motion.p>
 
-      <motion.div {...fadeUp} className="border-2 border-line">
+      <motion.div {...fadeUp} className="">
         <div className="border-grid-overlap grid grid-cols-2 sm:grid-cols-4">
           {NUMBERS.map((s) => (
-            <div key={s.l} className="border-2 border-line px-5 py-7 text-center">
-              <div className="display text-4xl tracking-wide sm:text-5xl">
+            <div key={s.l} className="card-outline border-line px-5 py-7 text-center">
+              <div className="display text-4xl sm:text-5xl">
                 {s.n}
               </div>
               <div className="kicker kicker-faint mt-2">{s.l}</div>
@@ -212,7 +212,7 @@ function Numbers() {
 
 function Background() {
   return (
-    <section className="mx-auto max-w-6xl border-t-2 border-line px-6 py-24 sm:px-10 sm:py-28">
+    <section className="mx-auto max-w-6xl border-t border-line px-6 py-24 sm:px-10 sm:py-28">
       <SectionLabel>background</SectionLabel>
 
       <div className="grid gap-8 text-base leading-relaxed text-soft sm:grid-cols-2 sm:gap-14">
@@ -236,7 +236,7 @@ function Background() {
 
 function Elsewhere() {
   return (
-    <section className="border-t-2 border-line bg-ink px-6 py-24 text-cream sm:px-10 sm:py-28">
+    <section className="border-t border-line rounded-[var(--modern-radius-inner)] bg-ink px-6 py-24 text-cream sm:px-10 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionLabel>elsewhere</SectionLabel>
 
@@ -275,7 +275,7 @@ function Elsewhere() {
 
 function Footer() {
   return (
-    <footer className="bg-ink px-6 pb-8 pt-10 text-cream sm:px-10">
+    <footer className="rounded-[var(--modern-radius-inner)] bg-ink px-6 pb-8 pt-10 text-cream sm:px-10">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-cream/10 pt-8 font-mono text-sm text-cream/75">
         <span>© 2026 Jaden Raats</span>
         <Link href="/" className="link-underline">

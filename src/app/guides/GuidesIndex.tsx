@@ -10,7 +10,7 @@ export default function GuidesIndex() {
       <Nav />
       <main className="min-h-screen bg-cream text-ink">
         <section className="mx-auto max-w-6xl px-6 pb-16 pt-32 sm:px-10 sm:pb-20 sm:pt-40">
-          <div className="border-t-2 border-line pt-10">
+          <div className="border-t border-line pt-10">
             <p className="kicker kicker-accent">guides</p>
             <h1 className="display mt-6 max-w-4xl text-5xl sm:text-6xl">
               Free Guides to Learn AI
@@ -24,7 +24,7 @@ export default function GuidesIndex() {
               <li key={g.slug}>
                 <Link
                   href={`/guides/${g.slug}`}
-                  className="group flex h-full flex-col border-2 border-line bg-cream p-6 transition-colors duration-200 hover:border-accent sm:p-8"
+                  className="group flex h-full flex-col card border-line bg-surface p-6 transition-colors duration-200 hover:border-accent sm:p-8"
                 >
                   <div className="flex items-baseline justify-between gap-4">
                     <span className="font-mono text-xs text-ink">
@@ -46,7 +46,7 @@ export default function GuidesIndex() {
           </ol>
 
           <aside
-            className="mt-10 border-2 border-ink bg-cream p-6 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-8"
+            className="mt-10 card border-ink bg-surface p-6 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-8"
             aria-label="More resources"
           >
             <div>

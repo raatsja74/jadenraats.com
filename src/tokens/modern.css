@@ -1,0 +1,11 @@
+/* Site aliases consume the canonical UDS modern theme. */
+html[data-uds-theme="jadenraats-modern"] {
+  --modern-positive: #1E9E5A;
+  --modern-radius-card: var(--uds-radius-card);
+  --modern-radius-inner: var(--uds-radius-inner);
+  --modern-radius-small: var(--uds-radius-small);
+  --modern-radius-pill: var(--uds-radius-pill);
+  --modern-shadow-card: var(--uds-shadow-card);
+  --modern-shadow-hover: var(--uds-shadow-hover);
+  --modern-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
