@@ -48,13 +48,13 @@ function SkillRow({
           onClick={onCopy}
           className="btn btn-secondary"
         >
-          {copied ? "COPIED ✓" : "COPY PROMPT"}
+          {copied ? "COPIED ✓" : "Copy prompt"}
         </button>
         <a
           href={`mailto:ai@jadenraats.com?subject=USE SKILL: ${encodeURIComponent(name)}`}
           className="btn btn-primary"
         >
-          USE SKILL <span className="btn-arrow">→</span>
+          Use skill <span className="btn-arrow">→</span>
         </a>
       </div>
     </article>

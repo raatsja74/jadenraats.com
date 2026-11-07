@@ -1,3 +1,13 @@
+# Site design law (Nov 2026)
+
+Modern, rounded, Apple-style. Neutral canvas (light and dark), white or graphite cards, Jaden orange as the only accent, the asterisk as the mark. Raw colors live only in `src/tokens/modern.css`; everything else uses `--site-*`, `--uds-*` and `--modern-*` tokens.
+
+- Type: the platform system face (SF Pro on Apple devices) via `--font-sans` / `--font-display`; `--font-code` for code only. Bold tight headlines, sentence case copy.
+- Shape: cards `--modern-radius-card` (22px), nested items `--modern-radius-inner` (14px), small marks `--modern-radius-small`, buttons, chips and tags `--modern-radius-pill`. Hairline 1px borders.
+- Depth: `--modern-shadow-card` at rest, `--modern-shadow-hover` on hover with a 2px lift. Shadows are off in dark mode.
+- Header: translucent bar with a saturate + blur backdrop, the one sanctioned blur.
+- Banned (pre-commit hook): Tailwind radius/shadow scale classes, backdrop-blur utility, glow blurs, purple palettes, Inter/Poppins, inline hex outside src/tokens/.
+
 # Agent Command Center page
 
 ## NOOP article addition
@@ -6,7 +16,7 @@ The NOOP guide reuses the existing Guides article, index, homepage cards, typogr
 
 The `/command-center` page is an unlisted, noindex entrance to Jaden's existing private Hermes control plane. It adds no public agent API, task store, or session export. The native dashboard handles sign-in, tasks, run details, questions, and schedules on the MBP behind Tailscale.
 
-Use the site's installed Jaden UDS theme and self-hosted Anton / IBM Plex Mono fonts. All colors use `--site-*` aliases and `--uds-color-action-primary` / `--uds-color-action-primaryText`; all borders use the existing UDS border widths. Square corners, no shadows. Native Hermes UI inside the optional frame keeps its own design.
+Use the site's installed Jaden UDS theme and self-hosted Anton / IBM Plex Mono fonts. All colors use `--site-*` aliases and `--uds-color-action-primary` / `--uds-color-action-primaryText`; all borders use the existing UDS border widths. Corners and depth follow the site design law above. Native Hermes UI inside the optional frame keeps its own design.
 
 Page tokens, documented layout exceptions: maximum width 76rem; outer padding clamp(1rem,4vw,3rem); top spacing 6rem; heading clamp(2.5rem,8vw,6rem); body 1rem with 1.7 line-height; metadata .75rem; gaps .5rem, 1rem, 1.5rem, 2rem; controls at least 44px; heading width 14ch; intro width 60ch; iframe minimum height 40rem / viewport height 75vh; tablet breakpoint 700px. Border and focus widths 2px (matching existing site controls).
 

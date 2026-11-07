@@ -7,7 +7,7 @@ Creative and strategic thinking partner for Jaden's personal site. This site is 
 - **Not:** AI consultant, thought leader, course seller, LinkedIn guru
 - **Yes:** Real builder. Ships ugly things that work. Montana-approved (if it'd make Montana friends cringe, it's wrong).
 - **Voice:** Direct, a little dry, no fluff. Demos over descriptions.
-- **Aesthetic:** Terminal / experimental. Cyber-Night dark mode + Utility-Light. Not SaaS-generic.
+- **Aesthetic:** Modern and rounded, Apple-style. Light and dark modes. See the design law in DESIGN.md.
 
 ## Who Jaden Is
 - Runs Award Coatings (floor coating business, Phoenix/Scottsdale)
@@ -35,6 +35,6 @@ Creative and strategic thinking partner for Jaden's personal site. This site is 
 
 ## How to Work With Jaden
 - Content decisions: ask "would a Montana rancher think this is bullshit?" If yes, cut it.
-- Design: lean into the terminal/industrial aesthetic. Avoid rounded, pastel, generic SaaS.
+- Design: follow DESIGN.md (rounded cards, pill controls, system type, orange accent). Avoid pastel, purple gradients, generic SaaS templates.
 - Copy: short sentences. Real outcomes. No "leverage synergies" or "thought leader" language.
 - The site should make someone say "this guy actually builds stuff" not "this guy talks about AI".

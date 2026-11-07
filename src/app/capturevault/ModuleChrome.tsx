@@ -56,7 +56,7 @@ export function ModuleCard({
         <div className="flex items-baseline justify-between gap-3">
           <span className="font-mono text-xs text-ink">{mod.num}</span>
           <span className="kicker kicker-faint" aria-hidden="true">
-            {expanded ? "CLOSE ✕" : "OPEN →"}
+            {expanded ? "CLOSE ✕" : "Open →"}
           </span>
         </div>
         <h2 className="display-sentence text-2xl leading-none sm:text-3xl">

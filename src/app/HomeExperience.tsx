@@ -46,22 +46,22 @@ function Hero() {
     <section id="top" className="home-cover" aria-labelledby="home-title">
       <div className="home-cover-frame">
         <div className="home-cover-meta">
-          <span>FIELD NOTES / 001</span>
-          <span>PHOENIX, AZ · BUILT IN THE OPEN</span>
+          <span>Field notes / 001</span>
+          <span>Phoenix, AZ · Built in the open</span>
         </div>
 
         <div className="home-cover-grid">
           <div className="home-cover-copy">
             <motion.p {...enter(0.05)} className="home-overline">
-              OWNER / BUILDER / THE PERSON WHO HAS TO USE IT
+              Owner / builder / the person who has to use it
             </motion.p>
 
             <h1 id="home-title" className="home-cover-title">
               <motion.span {...enter(0.12)} className="home-cover-title-line">
-                JADEN
+                Jaden
               </motion.span>
               <motion.span {...enter(0.22)} className="home-cover-title-line home-cover-title-last">
-                <em>RAATS</em><span aria-hidden="true" className="home-title-mark">✱</span>
+                <em>Raats</em><span aria-hidden="true" className="home-title-mark">✱</span>
               </motion.span>
             </h1>
 
@@ -81,7 +81,7 @@ function Hero() {
 
             <motion.p {...enter(0.62)} className="home-cover-footnote">
               <span className="home-footnote-rule" aria-hidden="true" />
-              REAL OPERATIONS. PLAIN ENGLISH. NO MAGIC TRICKS.
+              Real operations. Plain English. No magic tricks.
             </motion.p>
           </div>
 
@@ -102,17 +102,17 @@ function Hero() {
               className="home-art-portrait"
             />
             <figcaption className="home-art-label">
-              <span>01 / THE OPERATOR</span>
-              <span>TESTED ON A REAL MONDAY</span>
+              <span>01 / The operator</span>
+              <span>Tested on a real Monday</span>
             </figcaption>
-            <span className="home-art-stamp" aria-hidden="true">BUILT<br />USED<br />FIXED</span>
+            <span className="home-art-stamp" aria-hidden="true">Built<br />Used<br />Fixed</span>
           </motion.figure>
         </div>
 
         <div className="home-cover-index" aria-label="Explore the site">
-          <Link href="/systems"><span>01</span> SYSTEMS <span aria-hidden="true">↗</span></Link>
-          <Link href="#guides"><span>02</span> GUIDES <span aria-hidden="true">↗</span></Link>
-          <Link href="#lab"><span>03</span> SKILLS <span aria-hidden="true">↗</span></Link>
+          <Link href="/systems"><span>01</span> Systems <span aria-hidden="true">↗</span></Link>
+          <Link href="#guides"><span>02</span> Guides <span aria-hidden="true">↗</span></Link>
+          <Link href="#lab"><span>03</span> Skills <span aria-hidden="true">↗</span></Link>
         </div>
       </div>
     </section>
@@ -120,7 +120,7 @@ function Hero() {
 }
 
 function SignalStrip() {
-  const phrases = ["BUILD IT", "USE IT", "BREAK IT", "FIX IT", "SHOW THE WORK"];
+  const phrases = ["Build it", "Use it", "Break it", "Fix it", "Show the work"];
   return (
     <div className="home-signal">
       <span className="sr-only">Build it, use it, break it, fix it, show the work.</span>
@@ -140,27 +140,27 @@ function SystemsFeature() {
     <section id="systems" className="home-systems" aria-labelledby="systems-title">
       <div className="home-section-wrap">
         <Reveal className="home-section-topline">
-          <span>FIELD NOTE / 01</span><span>OPERATIONS → AUTOMATION</span>
+          <span>Field note / 01</span><span>Operations → automation</span>
         </Reveal>
         <div className="home-systems-grid">
           <Reveal className="home-systems-heading">
-            <p className="home-overline">THIS IS THE POINT</p>
+            <p className="home-overline">This is the point</p>
             <h2 id="systems-title" className="home-section-title">
-              WATCH THIS <em>WORK.</em>
+              Watch this <em>work.</em>
             </h2>
           </Reveal>
           <Reveal className="home-systems-intro" delay={0.1}>
             <p>These systems handle leads, quotes, crews, and follow-up at my
               floor coating company. If one breaks, I have to fix it.</p>
             <Link href="/systems" className="home-text-link">
-              OPEN THE SYSTEMS <span aria-hidden="true">↗</span>
+              Open the systems <span aria-hidden="true">↗</span>
             </Link>
           </Reveal>
         </div>
         <Reveal delay={0.15}>
           <Link href="/systems" className="home-system-card">
-            <span className="home-system-card-index">01 / SYSTEMS</span>
-            <strong>WORK THAT HAS TO RUN</strong>
+            <span className="home-system-card-index">01 / Systems</span>
+            <strong>Work that has to run</strong>
             <span className="home-system-card-arrow" aria-hidden="true">↗</span>
           </Link>
         </Reveal>
@@ -174,16 +174,16 @@ function GuidesSection() {
     <section id="guides" className="home-guides" aria-labelledby="guides-title">
       <div className="home-section-wrap">
         <Reveal className="home-section-topline">
-          <span>FIELD NOTE / 02</span><span>READ IT → TRY IT</span>
+          <span>Field note / 02</span><span>Read it → try it</span>
         </Reveal>
         <Reveal className="home-guides-head">
           <div>
-            <p className="home-overline">NO COURSE. JUST THE STEPS.</p>
-            <h2 id="guides-title" className="home-section-title">FREE GUIDES<br /><em>TO LEARN AI.</em></h2>
+            <p className="home-overline">No course. Just the steps.</p>
+            <h2 id="guides-title" className="home-section-title">Free guides<br /><em>to learn AI.</em></h2>
             <p className="home-guides-summary">Short, practical steps from the tools I use at work.</p>
           </div>
           <Link href="/guides" className="home-text-link">
-            ALL GUIDES <span aria-hidden="true">↗</span>
+            All guides <span aria-hidden="true">↗</span>
           </Link>
         </Reveal>
 
@@ -199,7 +199,7 @@ function GuidesSection() {
                   <div className="home-guide-content">
                     <span className="home-card-meta">GUIDE / {guide.readMinutes} MIN READ</span>
                     <h3>{guide.title}</h3>
-                    <span className="home-card-action">READ THE GUIDE <span aria-hidden="true">↗</span></span>
+                    <span className="home-card-action">Read the guide <span aria-hidden="true">↗</span></span>
                   </div>
                 </Link>
               </Reveal>
@@ -216,16 +216,16 @@ function SkillsSection() {
     <section id="lab" className="home-skills" aria-labelledby="skills-title">
       <div className="home-section-wrap home-skills-grid">
         <Reveal className="home-skills-intro">
-          <span className="home-skills-topline">FIELD NOTE / 03</span>
+          <span className="home-skills-topline">Field note / 03</span>
           <span className="home-skills-asterisk" aria-hidden="true">✱</span>
-          <h2 id="skills-title">SKILLS<br /><em>LIBRARY.</em></h2>
+          <h2 id="skills-title">Skills<br /><em>library.</em></h2>
           <p>Prompts and workflows you can copy, change, and put to work.</p>
           <Link href="/prompt-lab" className="btn btn-secondary">
             BROWSE ALL {SKILLS.length} <span className="btn-arrow" aria-hidden="true">→</span>
           </Link>
         </Reveal>
         <div className="home-skills-list">
-          <div className="home-skills-list-head"><span>POPULAR SKILLS</span><span>OPEN / COPY / USE</span></div>
+          <div className="home-skills-list-head"><span>Popular skills</span><span>Open / copy / use</span></div>
           <ol>
             {FEATURED_SKILLS.map((skill, index) => (
               <li key={skill.id}>
@@ -239,7 +239,7 @@ function SkillsSection() {
               </li>
             ))}
           </ol>
-          <Link href="/prompt-lab" className="home-skills-all">OPEN THE FULL LIBRARY <span aria-hidden="true">→</span></Link>
+          <Link href="/prompt-lab" className="home-skills-all">Open the full library <span aria-hidden="true">→</span></Link>
         </div>
       </div>
     </section>
@@ -251,15 +251,15 @@ function Footer() {
     <footer className="home-footer">
       <div className="home-section-wrap home-footer-grid">
         <div>
-          <span className="home-footer-kicker">END OF FIELD NOTES / START OF CONVERSATION</span>
-          <p>IF IT&apos;S REAL WORK,<br /><em>I&apos;M INTERESTED.</em></p>
+          <span className="home-footer-kicker">End of field notes / start of conversation</span>
+          <p>If it&apos;s real work,<br /><em>I&apos;m interested.</em></p>
         </div>
         <div className="home-footer-actions">
-          <a href="mailto:ai@jadenraats.com" className="btn btn-primary">SAY HELLO <span className="btn-arrow" aria-hidden="true">↗</span></a>
-          <Link href="/about" className="home-footer-about">MORE ABOUT ME <span aria-hidden="true">↗</span></Link>
+          <a href="mailto:ai@jadenraats.com" className="btn btn-primary">Say hello <span className="btn-arrow" aria-hidden="true">↗</span></a>
+          <Link href="/about" className="home-footer-about">More about me <span aria-hidden="true">↗</span></Link>
         </div>
         <div className="home-footer-bottom">
-          <span>JADEN✱ / PHOENIX, AZ</span>
+          <span>Jaden✱ / Phoenix, AZ</span>
           <figure className="home-dog-signature">
             <span className="home-dog-frame">
               <Image
@@ -271,9 +271,9 @@ function Footer() {
                 className="home-dog-image"
               />
             </span>
-            <figcaption>EASTON</figcaption>
+            <figcaption>Easton</figcaption>
           </figure>
-          <span>BUILT BY ME. USED BY ME.</span>
+          <span>Built by me. Used by me.</span>
         </div>
       </div>
     </footer>

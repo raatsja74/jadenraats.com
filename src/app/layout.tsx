@@ -1,27 +1,8 @@
 import type { Metadata } from "next";
-import { Anton, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
 import "@jadenraats/universal-design-system/dist/uds.core.css";
 import "@jadenraats/universal-design-system/dist/themes/jadenraats.css";
+import "../tokens/modern.css";
 import "./globals.css";
-
-const display = Anton({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-const serif = Instrument_Serif({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-});
-
-const mono = IBM_Plex_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
 
 const themeInit = `(function(){try{var saved=localStorage.getItem('jaden-theme');var theme=saved==='dark'||saved==='light'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-site-theme',theme)}catch(_){document.documentElement.setAttribute('data-site-theme','light')}})();`;
 
@@ -54,12 +35,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-uds-theme="jadenraats" data-site-theme="light" suppressHydrationWarning className={`${display.variable} ${serif.variable} ${mono.variable}`}>
+    <html lang="en" data-uds-theme="jadenraats" data-site-theme="light" suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light dark" />
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
-      <body className="texture-grain">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
