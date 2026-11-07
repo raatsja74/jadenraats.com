@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
+  stageLabel,
   FLOW_STAGES,
   HUB,
   STAGE_COLUMNS,
@@ -39,7 +40,7 @@ export function ModuleCard({
 }) {
   return (
     <article
-      className={`border-2 border-ink bg-cream transition-[opacity,border-color,background-color] duration-200 ${
+      className={`card border-ink bg-surface transition-[opacity,border-color,background-color] duration-200 ${
         active ? "border-accent bg-accent/10" : ""
       } ${dimmed ? "opacity-35" : "opacity-100"} ${
         disabled ? "pointer-events-none" : ""
@@ -56,7 +57,7 @@ export function ModuleCard({
         <div className="flex items-baseline justify-between gap-3">
           <span className="font-mono text-xs text-ink">{mod.num}</span>
           <span className="kicker kicker-faint" aria-hidden="true">
-            {expanded ? "CLOSE ✕" : "Open →"}
+            {expanded ? "Close ✕" : "Open →"}
           </span>
         </div>
         <h2 className="display-sentence text-2xl leading-none sm:text-3xl">
@@ -75,7 +76,7 @@ export function ModuleDetail({ mod }: { mod: VaultModule }) {
         <ol className="flex flex-wrap items-center gap-2" aria-label="Workflow chain">
           {mod.chain.map((step, i) => (
             <li key={step} className="flex items-center gap-2">
-              <span className="border border-ink bg-cream px-2 py-1 font-mono text-xs uppercase tracking-wide">
+              <span className="card border-ink bg-surface px-2 py-1 font-mono text-xs">
                 {step}
               </span>
               {i < mod.chain!.length - 1 && (
@@ -113,7 +114,7 @@ export function ModuleDetail({ mod }: { mod: VaultModule }) {
       )}
 
       {mod.bracketNote && (
-        <p className="border-l-2 border-accent pl-3 font-mono text-xs uppercase tracking-[0.08em] text-soft">
+        <p className="border-l border-accent pl-3 font-mono text-xs text-soft">
           {mod.bracketNote}
         </p>
       )}
@@ -153,14 +154,14 @@ export function ModuleDrawer({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 8 }}
       transition={{ duration: 0.35, ease: EASE }}
-      className="scroll-mt-20 border-2 border-ink bg-cream"
+      className="scroll-mt-20 card border-ink bg-surface"
     >
-      <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-ink bg-accent/15 p-4 sm:p-5">
+      <div className="flex flex-wrap items-start justify-between gap-4 border-b border-ink bg-accent/15 p-4 sm:p-5">
         <div className="min-w-0">
           <div className="flex items-baseline gap-3">
             <span className="font-mono text-xs text-ink">{mod.num}</span>
             <span className="kicker kicker-faint">
-              {mod.stages.join(" · ")}
+              {mod.stages.map(stageLabel).join(" · ")}
             </span>
           </div>
           <h2 className="display-sentence mt-2 text-3xl sm:text-4xl">{mod.title}</h2>
@@ -190,13 +191,13 @@ export function HubNode({
   onClear: () => void;
 }) {
   return (
-    <div className="relative border-2 border-ink bg-cream p-5 text-center sm:p-7">
+    <div className="relative card border-ink bg-surface p-5 text-center sm:p-7">
       <p className="kicker text-ink/70">hub</p>
       <h2 className="display mt-2 text-3xl leading-none text-ink sm:text-4xl lg:text-5xl">
         {HUB.title}
       </h2>
-      <p className="mt-4 border-2 border-accent bg-ink px-3 py-2 font-mono text-sm uppercase tracking-[0.06em] text-cream">
-        {HUB.slogan}
+      <p className="mt-4 card-outline border-accent rounded-[var(--modern-radius-inner)] bg-ink px-3 py-2 font-mono text-sm text-cream">
+        {HUB.slogan.charAt(0) + HUB.slogan.slice(1).toLowerCase()}
       </p>
       {filtered && (
         <button

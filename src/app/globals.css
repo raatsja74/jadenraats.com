@@ -4,7 +4,7 @@
 
 /* The palette lives in src/tokens/modern.css; type is the platform system face
    (SF Pro on Apple devices), with spacing and motion from UDS. */
-html[data-uds-theme="jadenraats"] {
+html[data-uds-theme="jadenraats-modern"] {
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -24,16 +24,7 @@ html[data-uds-theme="jadenraats"] {
   color-scheme: light;
 }
 
-html[data-uds-theme="jadenraats"][data-site-theme="dark"] {
-  --site-text-primary: var(--modern-dark-text);
-  --site-text-secondary: var(--modern-dark-secondary);
-  --site-text-inverse: var(--modern-light-text);
-  --site-border: var(--modern-dark-border);
-  --site-surface: var(--modern-dark-canvas);
-  --site-surface-elevated: var(--modern-dark-elevated);
-  --site-surface-inverse: var(--modern-dark-text);
-  --modern-shadow-card: none;
-  --modern-shadow-hover: none;
+html[data-uds-theme="jadenraats-modern"][data-site-theme="dark"] {
   color-scheme: dark;
 }
 
@@ -107,6 +98,8 @@ body {
   font-family: var(--uds-font-body), monospace;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.005em;
   overflow-x: hidden;
 }
 
@@ -459,6 +452,7 @@ button:hover .btn-arrow {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
+select:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid var(--uds-color-focus-ring);
   outline-offset: var(--uds-space-1);
@@ -476,47 +470,6 @@ input:focus-visible,
   }
 }
 
-/* ── Modern layer: soften the utility classes pages are written with ── */
-
-body {
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.005em;
-}
-
-code, pre, kbd, samp {
-  font-family: var(--font-code);
-}
-
-h1, h2, h3 { letter-spacing: -0.025em; }
-
-/* Sentence case everywhere: copy is written the way it should read. */
-.uppercase { text-transform: none; }
-[class*="tracking-"] { letter-spacing: -0.005em; }
-.font-display { font-weight: 700; letter-spacing: -0.025em; }
-
-/* Bordered boxes become cards: rounded, hairline, soft depth. */
-.border:not(.border-grid-overlap > *),
-.border-2:not(.border-grid-overlap > *) {
-  border-radius: var(--modern-radius-card);
-}
-.bg-cream.border, .bg-paper.border, .bg-surface.border,
-.bg-cream.border-2, .bg-paper.border-2, .bg-surface.border-2 {
-  background: var(--site-surface-elevated);
-  box-shadow: var(--modern-shadow-card);
-}
-.border-grid-overlap > .border,
-.border-grid-overlap > .border-2 {
-  background: var(--site-surface-elevated);
-}
-
-/* Hard black-on-hover inversions become a quiet tint. */
-.hover\:bg-ink:hover {
-  background: rgb(from var(--site-text-primary) r g b / 0.06);
-}
-.hover\:text-cream:hover { color: inherit; }
-.bg-ink.text-cream { border-radius: var(--modern-radius-inner); }
-
-
 /* Header: translucent bar over the page, the one place blur is used. */
 .nav-glass {
   background: rgb(from var(--site-surface) r g b / 0.78);
@@ -524,10 +477,12 @@ h1, h2, h3 { letter-spacing: -0.025em; }
   backdrop-filter: saturate(180%) blur(20px);
 }
 
-/* A frame that only wraps a card grid stays invisible: the cards carry the shape. */
-.border:has(> .border-grid-overlap),
-.border-2:has(> .border-grid-overlap) {
-  border-color: transparent;
-  background: none;
-  box-shadow: none;
+
+/* Explicit component surfaces; utility classes retain their normal meaning. */
+@layer components {
+.card-outline { border: 1px solid var(--site-border); border-radius: var(--modern-radius-card); }
+.card { border: 1px solid var(--site-border); border-radius: var(--modern-radius-card); background: var(--site-surface-elevated); box-shadow: var(--modern-shadow-card); }
+.border-grid-overlap > .card-outline { background: var(--site-surface-elevated); }
 }
+code, pre, kbd, samp { font-family: var(--font-code); }
+h1, h2, h3 { letter-spacing: -0.025em; }

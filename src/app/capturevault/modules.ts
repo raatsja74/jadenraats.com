@@ -221,3 +221,5 @@ export const MODULES: VaultModule[] = [
 export function moduleById(id: string): VaultModule | undefined {
   return MODULES.find((m) => m.id === id);
 }
+
+export const stageLabel = (stage: FlowStage) => stage.charAt(0) + stage.slice(1).toLowerCase();

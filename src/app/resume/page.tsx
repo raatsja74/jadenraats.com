@@ -108,7 +108,7 @@ export default function ResumePage() {
     <>
       <Nav />
       <main id="main" className="mx-auto max-w-6xl px-6 pb-24 pt-32 sm:px-10 sm:pt-44">
-        <section className="border-t-2 border-line pt-10">
+        <section className="border-t border-line pt-10">
           <Label>résumé</Label>
           <h1 className="display mt-6 text-6xl sm:text-8xl">
             Jaden{" "}
@@ -116,7 +116,7 @@ export default function ResumePage() {
               Raats<span className="ast text-accent">*</span>
             </span>
           </h1>
-          <p className="mt-4 font-mono text-sm uppercase tracking-[0.08em] text-soft">
+          <p className="mt-4 font-mono text-sm text-soft">
             Retail Sales Associate · Scottsdale, AZ
           </p>
           <p className="mt-8 max-w-3xl text-base leading-relaxed text-soft">
@@ -125,7 +125,7 @@ export default function ResumePage() {
             genuine interest, learn what they need, and help them find the right fit. Seeking a retail
             sales role where great service, teamwork, and hitting goals matter.
           </p>
-          <p className="mt-6 font-mono text-sm uppercase tracking-[0.04em]">
+          <p className="mt-6 font-mono text-sm">
             Available days, nights, weekends &amp; holidays · Can start immediately
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
@@ -135,11 +135,11 @@ export default function ResumePage() {
           </div>
         </section>
 
-        <section className="mt-24 border-t-2 border-line pt-10">
+        <section className="mt-24 border-t border-line pt-10">
           <Label>why hire jaden</Label>
           <div className="mt-8 grid gap-0 sm:grid-cols-3">
             {WHY.map((w) => (
-              <div key={w.title} className="border-2 border-line p-6 sm:-ml-[2px] sm:first:ml-0">
+              <div key={w.title} className="card-outline border-line p-6">
                 <h2 className="display text-2xl">{w.title}</h2>
                 <p className="mt-3 text-base leading-relaxed text-soft">{w.body}</p>
               </div>
@@ -147,16 +147,16 @@ export default function ResumePage() {
           </div>
         </section>
 
-        <section className="mt-24 border-t-2 border-line pt-10">
+        <section className="mt-24 border-t border-line pt-10">
           <Label>experience</Label>
           <ol className="mt-8">
             {EXPERIENCE.map((e) => (
-              <li key={e.org} className="border-b-2 border-line py-8 first:pt-0">
+              <li key={e.org} className="border-b border-line py-8 first:pt-0">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h2 className="display text-3xl">
                     {e.role}, <span className="text-accent">{e.org}</span>
                   </h2>
-                  <p className="font-mono text-xs uppercase tracking-[0.08em] text-soft">
+                  <p className="font-mono text-xs text-soft">
                     {e.when} · {e.where}
                   </p>
                 </div>
@@ -170,12 +170,12 @@ export default function ResumePage() {
           </ol>
         </section>
 
-        <section className="mt-24 border-t-2 border-line pt-10">
+        <section className="mt-24 border-t border-line pt-10">
           <Label>skills</Label>
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {SKILLS.map((s) => (
               <div key={s.group}>
-                <h2 className="font-mono text-sm uppercase tracking-[0.08em]">{s.group}</h2>
+                <h2 className="font-mono text-sm">{s.group}</h2>
                 <ul className="mt-3 space-y-1 text-base text-soft">
                   {s.items.map((i) => (
                     <li key={i}>{i}</li>
@@ -186,7 +186,7 @@ export default function ResumePage() {
           </div>
         </section>
 
-        <section className="mt-24 border-t-2 border-line pt-10">
+        <section className="mt-24 border-t border-line pt-10">
           <Label>contact</Label>
           <p className="display mt-6 text-4xl sm:text-5xl">Ready for the floor, the register and the rush.</p>
           <p className="mt-6 font-mono text-sm">

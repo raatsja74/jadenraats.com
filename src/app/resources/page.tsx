@@ -50,30 +50,30 @@ export default function ResourcesPage() {
     <>
       <Nav />
       <main className="mx-auto max-w-3xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
-        <section className="border-t-2 border-line pt-10">
+        <section className="border-t border-line pt-10">
           <p className="kicker kicker-accent">resources</p>
           <h1 className="display mt-6 text-5xl sm:text-6xl">Resources</h1>
         </section>
 
         <section className="mt-12">
           <h2 className="kicker kicker-faint">Pages</h2>
-          <ul className="mt-4 border-2 border-line">
+          <ul className="mt-4 card-outline border-line">
             {LINKS.map((item, i) => (
               <li
                 key={item.href}
-                className="border-b-2 border-line last:border-b-0"
+                className="border-b border-line last:border-b-0"
               >
                 <Link
                   href={item.href}
-                  className="group flex flex-col gap-1 px-5 py-4 transition-colors duration-200 hover:bg-ink hover:text-cream sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 sm:px-6"
+                  className="group flex flex-col gap-1 px-5 py-4 transition-colors duration-200 hover:bg-ink/[0.06] sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 sm:px-6"
                 >
                   <span className="flex gap-4">
-                    <span className="font-mono text-xs text-ink group-hover:text-cream">
+                    <span className="font-mono text-xs text-ink">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="display-sentence text-lg">{item.label}</span>
                   </span>
-                  <span className="pl-10 text-base text-faint group-hover:text-cream sm:pl-0 sm:text-right">
+                  <span className="pl-10 text-base text-faint sm:pl-0 sm:text-right">
                     {item.note}
                   </span>
                 </Link>
@@ -84,17 +84,17 @@ export default function ResourcesPage() {
 
         <section className="mt-12">
           <h2 className="kicker kicker-faint">Guides</h2>
-          <ul className="mt-4 border-2 border-line">
+          <ul className="mt-4 card-outline border-line">
             {GUIDES.map((g, i) => (
               <li
                 key={g.slug}
-                className="border-b-2 border-line last:border-b-0"
+                className="border-b border-line last:border-b-0"
               >
                 <Link
                   href={`/guides/${g.slug}`}
-                  className="group flex gap-4 px-5 py-4 transition-colors duration-200 hover:bg-ink hover:text-cream sm:px-6"
+                  className="group flex gap-4 px-5 py-4 transition-colors duration-200 hover:bg-ink/[0.06] sm:px-6"
                 >
-                  <span className="font-mono text-xs text-ink group-hover:text-cream">
+                  <span className="font-mono text-xs text-ink">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-base leading-snug">{g.title}</span>

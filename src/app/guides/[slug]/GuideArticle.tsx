@@ -63,7 +63,7 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
             {guide.summary}
           </motion.p>
 
-          <div className="mt-14 space-y-10 border-t-2 border-line pt-12">
+          <div className="mt-14 space-y-10 border-t border-line pt-12">
             {guide.sections.map((section, i) => {
               if (section.type === "h2") {
                 return (
@@ -81,7 +81,7 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
                   <motion.ul
                     key={i}
                     {...fadeUp}
-                    className="list-none space-y-3 border-l-2 border-accent pl-6"
+                    className="list-none space-y-3 border-l border-accent pl-6"
                   >
                     {section.items.map((item) => (
                       <li key={item} className="text-base leading-relaxed text-soft">
@@ -96,7 +96,7 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
                   <motion.aside
                     key={i}
                     {...fadeUp}
-                    className="border-2 border-line bg-surface px-6 py-6 font-mono text-base leading-relaxed text-ink sm:px-8 sm:py-7"
+                    className="card border-line bg-surface px-6 py-6 font-mono text-base leading-relaxed text-ink sm:px-8 sm:py-7"
                   >
                     {section.text}
                   </motion.aside>
@@ -126,7 +126,7 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
 
           <motion.div
             {...fadeUp}
-            className="mt-16 flex flex-wrap gap-8 border-t-2 border-line pt-10 font-mono text-sm"
+            className="mt-16 flex flex-wrap gap-8 border-t border-line pt-10 font-mono text-sm"
           >
             <Link href="/guides" className="link-underline text-ink">
               ← all guides

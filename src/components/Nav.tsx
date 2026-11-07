@@ -28,7 +28,7 @@ export default function Nav() {
         <Link
           href="/"
           aria-label="Jaden Raats — home"
-          className="ast-host flex min-h-[var(--uds-layout-touch-target-min)] items-center text-xl font-bold tracking-tight"
+          className="ast-host flex min-h-[var(--uds-layout-touch-target-min)] items-center text-xl font-bold"
         >
           jaden<span className="ast text-accent">*</span>
         </Link>

@@ -1,41 +1,11 @@
-/* Modern theme tokens: Apple-style neutrals, Jaden orange kept as the accent.
-   Raw color values live only in src/tokens/. */
-html[data-uds-theme="jadenraats"] {
-  --modern-light-canvas: #F5F5F7;
-  --modern-light-elevated: #FFFFFF;
-  --modern-light-text: #1D1D1F;
-  --modern-light-secondary: #6E6E73;
-  --modern-light-border: #D9D9DE;
-  --modern-dark-canvas: #000000;
-  --modern-dark-elevated: #1C1C1E;
-  --modern-dark-text: #F5F5F7;
-  --modern-dark-secondary: #A1A1A6;
-  --modern-dark-border: #38383A;
-  --modern-accent: #F4511E;
-  --modern-accent-text: #FFFFFF;
+/* Site aliases consume the canonical UDS modern theme. */
+html[data-uds-theme="jadenraats-modern"] {
   --modern-positive: #1E9E5A;
-  --modern-shadow-color: #000000;
-
-  --uds-color-text-primary: var(--modern-light-text);
-  --uds-color-text-secondary: var(--modern-light-secondary);
-  --uds-color-text-inverse: var(--modern-dark-text);
-  --uds-color-action-primary: var(--modern-accent);
-  --uds-color-action-primaryText: var(--modern-accent-text);
-  --uds-color-action-text: var(--modern-light-text);
-  --uds-color-border-subtle: var(--modern-light-border);
-  --uds-color-focus-ring: var(--modern-accent);
-  --uds-surface-canvas: var(--modern-light-canvas);
-  --uds-surface-elevated: var(--modern-light-elevated);
-  --uds-surface-inverse: var(--modern-light-text);
-
-  --uds-border-width-standard: 1px;
-  --uds-border-width-strong: 1px;
-
-  --modern-radius-card: 22px;
-  --modern-radius-inner: 14px;
-  --modern-radius-small: 10px;
-  --modern-radius-pill: 980px;
-  --modern-shadow-card: 0 1px 2px rgb(from var(--modern-shadow-color) r g b / 0.04), 0 10px 30px rgb(from var(--modern-shadow-color) r g b / 0.06);
-  --modern-shadow-hover: 0 2px 4px rgb(from var(--modern-shadow-color) r g b / 0.05), 0 18px 40px rgb(from var(--modern-shadow-color) r g b / 0.10);
+  --modern-radius-card: var(--uds-radius-card);
+  --modern-radius-inner: var(--uds-radius-inner);
+  --modern-radius-small: var(--uds-radius-small);
+  --modern-radius-pill: var(--uds-radius-pill);
+  --modern-shadow-card: var(--uds-shadow-card);
+  --modern-shadow-hover: var(--uds-shadow-hover);
   --modern-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
 }

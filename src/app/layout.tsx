@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@jadenraats/universal-design-system/dist/uds.core.css";
-import "@jadenraats/universal-design-system/dist/themes/jadenraats.css";
+import "@jadenraats/universal-design-system/dist/themes/jadenraats-modern.css";
 import "../tokens/modern.css";
 import "./globals.css";
 
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-uds-theme="jadenraats" data-site-theme="light" suppressHydrationWarning>
+    <html lang="en" data-uds-theme="jadenraats-modern" data-site-theme="light" suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light dark" />
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />

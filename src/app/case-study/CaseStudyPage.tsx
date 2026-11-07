@@ -47,7 +47,7 @@ export default function CaseStudyPage() {
     <MotionConfig reducedMotion="user">
       <Nav />
       <main className="mx-auto max-w-6xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
-        <section className="border-t-2 border-line pt-10">
+        <section className="border-t border-line pt-10">
           <motion.p
             className="kicker kicker-accent"
             initial={{ opacity: 0, y: 12 }}
@@ -77,11 +77,11 @@ export default function CaseStudyPage() {
             never lost data. It was that I couldn&apos;t get anything back out.
           </motion.p>
 
-          <motion.div {...fadeUp} className="mt-12 border-2 border-line">
+          <motion.div {...fadeUp} className="mt-12">
             <div className="border-grid-overlap grid grid-cols-2 sm:grid-cols-4">
               {HERMES_STATS.map((s) => (
-                <div key={s.l} className="border-2 border-line px-5 py-7 text-center">
-                  <div className="display text-4xl tracking-wide sm:text-5xl">{s.n}</div>
+                <div key={s.l} className="card-outline border-line px-5 py-7 text-center">
+                  <div className="display text-4xl sm:text-5xl">{s.n}</div>
                   <div className="kicker kicker-faint mt-2">{s.l}</div>
                 </div>
               ))}
@@ -96,11 +96,11 @@ export default function CaseStudyPage() {
             every conversation from every app lands in one searchable place.
           </motion.p>
 
-          <motion.div {...fadeUp} className="mt-10 border-t-2 border-line">
+          <motion.div {...fadeUp} className="mt-10 border-t border-line">
             {HERMES_FLOW.map((f) => (
               <div
                 key={f.k}
-                className="flex flex-col gap-1 border-b-2 border-line py-4 sm:flex-row sm:items-baseline sm:gap-6"
+                className="flex flex-col gap-1 border-b border-line py-4 sm:flex-row sm:items-baseline sm:gap-6"
               >
                 <span className="kicker kicker-accent sm:w-28 sm:shrink-0">{f.k}</span>
                 <span className="text-base text-soft">{f.v}</span>
@@ -119,13 +119,13 @@ export default function CaseStudyPage() {
             same models, four times the use.
           </motion.p>
 
-          <motion.div {...fadeUp} className="mt-10 max-w-xl border-2 border-line">
-            <div className="grid grid-cols-3 border-b-2 border-line font-mono text-xs text-faint">
+          <motion.div {...fadeUp} className="mt-10 max-w-xl card-outline border-line">
+            <div className="grid grid-cols-3 border-b border-line font-mono text-xs text-faint">
               <div className="px-4 py-3" />
               <div className="px-4 py-3">before</div>
               <div className="px-4 py-3">after</div>
             </div>
-            <div className="grid grid-cols-3 border-b-2 border-line text-sm">
+            <div className="grid grid-cols-3 border-b border-line text-sm">
               <div className="px-4 py-4 text-soft">days used</div>
               <div className="px-4 py-4 font-mono">28%</div>
               <div className="px-4 py-4 font-mono text-ink">53%</div>
@@ -146,11 +146,11 @@ export default function CaseStudyPage() {
             today.
           </motion.p>
 
-          <div className="mt-10 border-t-2 border-line">
+          <div className="mt-10 border-t border-line">
             {HERMES_BROKE.map((b, i) => (
               <motion.div
                 key={b.t}
-                className="border-b-2 border-line py-8"
+                className="border-b border-line py-8"
                 initial={{ y: 32 }}
                 whileInView={{ y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}

@@ -75,12 +75,12 @@ function EquityChart({ series, start }: { series: [string, number][]; start: num
   const box = useRef<HTMLDivElement>(null);
   const [W, setW] = useState(1000);
   const H = W < 560 ? 240 : 320;
-  const P = { l: 60, r: 12, t: 16, b: 32 };
+  const P = { l: 60, r: 12, t: 16, b: W < 400 ? 48 : 32 };
   const pts = useMemo(() => series.map(([t, v]) => [new Date(t).getTime(), v] as const), [series]);
   useEffect(() => {
     const el = box.current;
     if (!el) return;
-    const ro = new ResizeObserver(([e]) => setW(Math.max(280, Math.round(e.contentRect.width))));
+    const ro = new ResizeObserver(([e]) => setW(Math.max(1, e.contentRect.width)));
     ro.observe(el);
     return () => ro.disconnect();
   }, [pts.length]);
@@ -110,7 +110,7 @@ function EquityChart({ series, start }: { series: [string, number][]; start: num
           </text>
         </g>
       ))}
-      <text x={P.l} y={H - 8} className="fill-current font-mono" fontSize={12} fillOpacity={0.6}>{fmtTime(series[0][0])}</text>
+      <text x={P.l} y={H - (W < 400 ? 26 : 8)} className="fill-current font-mono" fontSize={12} fillOpacity={0.6}>{fmtTime(series[0][0])}</text>
       <text x={W - P.r} y={H - 8} textAnchor="end" className="fill-current font-mono" fontSize={12} fillOpacity={0.6}>{fmtTime(series[series.length - 1][0])}</text>
       <path d={d} fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round" />
       <circle cx={x(last[0])} cy={y(last[1])} r={5} className="fill-accent" />
@@ -149,7 +149,7 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
     <>
       <Nav />
       <main id="main" className="mx-auto max-w-6xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
-        <section className="border-t-2 border-line pt-10">
+        <section className="border-t border-line pt-10">
           <div className="flex flex-wrap items-center gap-3">
             <p className="kicker kicker-accent">memecoin desk</p>
             <span className={`status-tag ${running ? "status-live" : ""}`}>{running ? "● running" : "○ idle"}</span>
@@ -171,7 +171,7 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
             <p className="mt-12 font-mono text-sm text-soft">Couldn&apos;t load the desk right now. Try again in a minute.</p>
           ) : (
             <>
-              <div className="mt-12 border-2 border-line">
+              <div className="mt-12">
                 <div className="border-grid-overlap grid grid-cols-2 sm:grid-cols-4">
                   {[
                     { n: usd(data.equity), l: `balance, from ${usd(data.startBalance)}` },
@@ -179,8 +179,8 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
                     { n: `${data.wins}W / ${data.losses}L`, l: `${trades} closed trades` },
                     { n: signed(data.maxDrawdownPct, 2), l: "max drawdown" },
                   ].map((s) => (
-                    <div key={s.l} className="border-2 border-line px-5 py-7 text-center">
-                      <div className="display text-3xl tracking-wide sm:text-4xl">{s.n}</div>
+                    <div key={s.l} className="card-outline border-line px-5 py-7 text-center">
+                      <div className="display text-3xl sm:text-4xl">{s.n}</div>
                       <div className="kicker kicker-faint mt-2">{s.l}</div>
                     </div>
                   ))}
@@ -192,7 +192,7 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
                 {ago(data.lastTickAt, now)} · times in Phoenix
               </p>
 
-              <div className="mt-12 border-2 border-line p-4 sm:p-6">
+              <div className="mt-12 card-outline border-line p-4 sm:p-6">
                 <p className="kicker kicker-faint mb-4">equity</p>
                 <EquityChart series={data.series} start={data.startBalance} />
               </div>
@@ -201,9 +201,9 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
               {data.open.length === 0 ? (
                 <p className="mt-6 font-mono text-sm text-soft">Flat. Nothing open right now.</p>
               ) : (
-                <div className="mt-6 border-t-2 border-line">
+                <div className="mt-6 border-t border-line">
                   {data.open.map((p) => (
-                    <div key={p.symbol + p.opened} className="grid grid-cols-2 gap-2 border-b-2 border-line py-4 font-mono text-sm sm:grid-cols-4">
+                    <div key={p.symbol + p.opened} className="grid grid-cols-2 gap-2 border-b border-line py-4 font-mono text-sm sm:grid-cols-4">
                       <span className="text-ink">{p.symbol}</span>
                       <span className="text-soft">{usd(p.sizeUsd)} in</span>
                       <span className="text-soft">score {p.score.toFixed(2)}</span>
@@ -217,7 +217,7 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
               {data.closed.length === 0 ? (
                 <p className="mt-6 font-mono text-sm text-soft">No closed trades yet this run.</p>
               ) : (
-                <div className="mt-6 overflow-hidden rounded-[var(--modern-radius-card)] border border-line bg-cream">
+                <div className="mt-6 overflow-hidden rounded-[var(--modern-radius-card)] card border-line bg-surface">
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-line text-left text-xs text-faint">
@@ -235,7 +235,7 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
                           <td className="px-4 py-3 text-ink">
                             {t.symbol}
                             <span className="mt-0.5 block text-xs text-soft sm:hidden">
-                              {t.exit}
+                              Score {t.score.toFixed(2)} · {t.exit}
                               {t.exit === "trail" && t.peakPct !== null ? `, peak ${signed(t.peakPct)}` : ""} · {fmtTime(t.closed)}
                             </span>
                           </td>
@@ -261,13 +261,13 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-soft">
                 Almost everything new on Solana gets killed before it&apos;s ever scored. That&apos;s the point.
               </p>
-              <div className="mt-8 max-w-xl border-t-2 border-line">
+              <div className="mt-8 max-w-xl border-t border-line">
                 {[
                   ["checked", data.funnel.checked],
                   ["survived the filter", data.funnel.passed],
                   ["traded", data.funnel.traded],
                 ].map(([k, v]) => (
-                  <div key={k} className="flex items-baseline justify-between border-b-2 border-line py-4">
+                  <div key={k} className="flex items-baseline justify-between border-b border-line py-4">
                     <span className="kicker kicker-faint">{k}</span>
                     <span className="display text-2xl">{Number(v).toLocaleString("en-US")}</span>
                   </div>
@@ -277,9 +277,9 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
           )}
 
           <h2 className="display mt-20 text-3xl sm:text-4xl">The six agents</h2>
-          <div className="mt-6 border-t-2 border-line">
+          <div className="mt-6 border-t border-line">
             {AGENTS.map(([k, v]) => (
-              <div key={k} className="flex flex-col gap-1 border-b-2 border-line py-4 sm:flex-row sm:items-baseline sm:gap-6">
+              <div key={k} className="flex flex-col gap-1 border-b border-line py-4 sm:flex-row sm:items-baseline sm:gap-6">
                 <span className="kicker kicker-accent sm:w-28 sm:shrink-0">{k}</span>
                 <span className="text-base text-soft">{v}</span>
               </div>
@@ -293,9 +293,9 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
                 Each version changed one thing. Memecoins gap right through stop losses, so a -6% stop kept filling at
                 -8% to -21%.
               </p>
-              <div className="mt-8 border-t-2 border-line">
+              <div className="mt-8 border-t border-line">
                 {data.history.map((h) => (
-                  <div key={h.version} className="grid grid-cols-2 gap-2 border-b-2 border-line py-4 font-mono text-sm sm:grid-cols-5">
+                  <div key={h.version} className="grid grid-cols-2 gap-2 border-b border-line py-4 font-mono text-sm sm:grid-cols-5">
                     <span className="text-ink">{h.version}</span>
                     <span className="text-soft">{h.date}</span>
                     <span className={h.pnlPct < 0 ? "text-accent" : "text-ink"}>{signed(h.pnlPct)}</span>

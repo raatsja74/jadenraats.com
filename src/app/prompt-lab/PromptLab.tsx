@@ -3,10 +3,8 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Nav from "@/components/Nav";
-import { SKILL_CATEGORIES, SKILLS } from "./skills";
+import { SKILL_CATEGORIES, SKILLS, categoryLabel } from "./skills";
 
-/** Category keys stay upper case in data; show them as sentence case (AI-style acronyms excepted). */
-const sentenceCase = (v: string) => v.charAt(0) + v.slice(1).toLowerCase();
 
 async function copyText(text: string): Promise<boolean> {
   try {
@@ -40,7 +38,7 @@ function SkillRow({
           <h3 className="display-sentence text-xl leading-tight sm:text-2xl">
             {name}
           </h3>
-          <span className="status-tag status-live">{sentenceCase(category)}</span>
+          <span className="status-tag status-live">{categoryLabel(category)}</span>
         </div>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-soft">{desc}</p>
         <p className="kicker kicker-faint mt-3">id:{id}</p>
@@ -51,7 +49,7 @@ function SkillRow({
           onClick={onCopy}
           className="btn btn-secondary"
         >
-          {copied ? "COPIED ✓" : "Copy prompt"}
+          {copied ? "Copied ✓" : "Copy prompt"}
         </button>
         <a
           href={`mailto:ai@jadenraats.com?subject=USE SKILL: ${encodeURIComponent(name)}`}
@@ -99,7 +97,7 @@ export default function PromptLab() {
       <Nav />
 
       <main className="mx-auto max-w-6xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
-        <section className="border-t-2 border-line pt-10">
+        <section className="border-t border-line pt-10">
           <p className="kicker kicker-accent">skills library</p>
           <h1 className="display mt-6 max-w-4xl text-5xl sm:text-6xl">
             AI Skills Library
@@ -137,7 +135,7 @@ export default function PromptLab() {
                   aria-pressed={category === cat}
                   className={`chip ${category === cat ? "chip-active" : "chip-idle"}`}
                 >
-                  {sentenceCase(cat)} · {counts.get(cat) ?? 0}
+                  {categoryLabel(cat)} · {counts.get(cat) ?? 0}
                 </button>
               ))}
             </div>
@@ -146,7 +144,7 @@ export default function PromptLab() {
           <p className="kicker kicker-faint mt-6" aria-live="polite">
             {filtered.length} skill{filtered.length === 1 ? "" : "s"}
             {query.trim() ? ` matching “${query.trim()}”` : ""}
-            {category !== "ALL" ? ` in ${sentenceCase(category)}` : ""}
+            {category !== "ALL" ? ` in ${categoryLabel(category)}` : ""}
           </p>
         </section>
 
@@ -155,7 +153,7 @@ export default function PromptLab() {
             <SkillRow key={skill.id} {...skill} />
           ))}
           {filtered.length === 0 && (
-            <p className="border-2 border-dashed border-line p-10 text-center text-sm text-faint">
+            <p className="card-outline border-dashed border-line p-10 text-center text-sm text-faint">
               Nothing matches. Try a wider search or clear the filter.
             </p>
           )}
