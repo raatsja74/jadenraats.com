@@ -248,9 +248,9 @@
 .home-signal {
   display: flex;
   overflow: hidden;
-  border-block: var(--uds-border-width-strong) solid var(--site-border);
-  background: var(--site-text-primary);
-  color: var(--site-text-inverse);
+  border-block: 1px solid var(--site-border);
+  background: var(--site-surface);
+  color: var(--site-text-secondary);
   user-select: none;
 }
 
@@ -269,7 +269,9 @@
   align-items: center;
   gap: 2.5rem;
   flex: none;
-  font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   white-space: nowrap;
 }
 
@@ -401,17 +403,18 @@
 
 .home-guide-number {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0.75rem;
+  left: 0.75rem;
   display: grid;
-  width: 3.2rem;
-  height: 3.2rem;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 0.6rem;
   place-items: center;
-  border-right: var(--uds-border-width-strong) solid var(--site-border);
-  border-bottom: var(--uds-border-width-strong) solid var(--site-border);
+  border-radius: var(--modern-radius-pill);
   background: var(--uds-color-action-primary);
   color: var(--uds-color-action-primaryText);
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .home-guide-content {

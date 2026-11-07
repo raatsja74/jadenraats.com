@@ -44,7 +44,7 @@ export default function Nav() {
         <div className="flex items-center gap-2">
           <Link
             href="/prompt-lab"
-            className="flex h-9 items-center gap-1.5 self-center rounded-[var(--modern-radius-pill)] bg-accent px-4 text-sm font-semibold text-action transition-[filter] duration-200 hover:brightness-95"
+            className="flex min-h-[var(--uds-layout-touch-target-min)] items-center gap-1.5 self-center rounded-[var(--modern-radius-pill)] bg-accent px-4 text-sm font-semibold text-action transition-[filter] duration-200 hover:brightness-95"
           >
             <span aria-hidden="true">*</span><span className="hidden min-[375px]:inline">Skills Library</span><span className="min-[375px]:hidden">Skills</span>
           </Link>

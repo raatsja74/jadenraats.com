@@ -442,6 +442,19 @@ button:hover .btn-arrow {
   color: var(--uds-color-action-primaryText);
 }
 
+/* Apple-style text field: hairline border, inner radius, accent border on focus */
+.field {
+  min-height: var(--uds-layout-touch-target-min);
+  border: 1px solid var(--site-border);
+  border-radius: var(--modern-radius-inner);
+  background: var(--site-surface-elevated);
+  color: var(--site-text-primary);
+  padding: 0 1rem;
+  transition: border-color 0.2s;
+}
+.field::placeholder { color: var(--site-text-secondary); }
+.field:focus { border-color: var(--uds-color-action-primary); }
+
 /* Visible focus for keyboard users — orange ring that follows the corner radius */
 a:focus-visible,
 button:focus-visible,

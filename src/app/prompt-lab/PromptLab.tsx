@@ -5,6 +5,9 @@ import { useSearchParams } from "next/navigation";
 import Nav from "@/components/Nav";
 import { SKILL_CATEGORIES, SKILLS } from "./skills";
 
+/** Category keys stay upper case in data; show them as sentence case (AI-style acronyms excepted). */
+const sentenceCase = (v: string) => v.charAt(0) + v.slice(1).toLowerCase();
+
 async function copyText(text: string): Promise<boolean> {
   try {
     await navigator.clipboard.writeText(text);
@@ -37,7 +40,7 @@ function SkillRow({
           <h3 className="display-sentence text-xl leading-tight sm:text-2xl">
             {name}
           </h3>
-          <span className="status-tag status-live">{category}</span>
+          <span className="status-tag status-live">{sentenceCase(category)}</span>
         </div>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-soft">{desc}</p>
         <p className="kicker kicker-faint mt-3">id:{id}</p>
@@ -113,7 +116,7 @@ export default function PromptLab() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="name or keyword…"
                 aria-label="Search the library"
-                className="mt-2 w-full border-2 border-ink bg-cream px-4 py-3 text-base text-ink placeholder:text-faint focus:border-accent"
+                className="field mt-2 w-full text-base"
               />
             </label>
 
@@ -124,7 +127,7 @@ export default function PromptLab() {
                 aria-pressed={category === "ALL"}
                 className={`chip ${category === "ALL" ? "chip-active" : "chip-idle"}`}
               >
-                ALL · {SKILLS.length}
+                All · {SKILLS.length}
               </button>
               {SKILL_CATEGORIES.map((cat) => (
                 <button
@@ -134,7 +137,7 @@ export default function PromptLab() {
                   aria-pressed={category === cat}
                   className={`chip ${category === cat ? "chip-active" : "chip-idle"}`}
                 >
-                  {cat} · {counts.get(cat) ?? 0}
+                  {sentenceCase(cat)} · {counts.get(cat) ?? 0}
                 </button>
               ))}
             </div>
@@ -143,7 +146,7 @@ export default function PromptLab() {
           <p className="kicker kicker-faint mt-6" aria-live="polite">
             {filtered.length} skill{filtered.length === 1 ? "" : "s"}
             {query.trim() ? ` matching “${query.trim()}”` : ""}
-            {category !== "ALL" ? ` in ${category}` : ""}
+            {category !== "ALL" ? ` in ${sentenceCase(category)}` : ""}
           </p>
         </section>
 

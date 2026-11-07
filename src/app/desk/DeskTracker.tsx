@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Nav from "@/components/Nav";
 
 import { DESK_DATA_URL } from "./constants";
@@ -71,10 +71,19 @@ function ago(iso: string | null, now: number) {
 }
 
 function EquityChart({ series, start }: { series: [string, number][]; start: number }) {
-  const W = 1000;
-  const H = 320;
-  const P = { l: 64, r: 16, t: 16, b: 32 };
+  // Draw in real pixels so axis labels stay 12px on phones instead of scaling down with the viewBox.
+  const box = useRef<HTMLDivElement>(null);
+  const [W, setW] = useState(1000);
+  const H = W < 560 ? 240 : 320;
+  const P = { l: 60, r: 12, t: 16, b: 32 };
   const pts = useMemo(() => series.map(([t, v]) => [new Date(t).getTime(), v] as const), [series]);
+  useEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([e]) => setW(Math.max(280, Math.round(e.contentRect.width))));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [pts.length]);
   if (pts.length < 2) return <p className="font-mono text-sm text-soft">Waiting for the first session.</p>;
 
   const t0 = pts[0][0];
@@ -91,20 +100,22 @@ function EquityChart({ series, start }: { series: [string, number][]; start: num
   const last = pts[pts.length - 1];
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full text-ink" role="img" aria-label="Paper equity over time">
+    <div ref={box} className="w-full">
+    <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} className="block h-auto w-full text-ink" role="img" aria-label="Paper equity over time">
       {ticks.map((v) => (
         <g key={v}>
           <line x1={P.l} x2={W - P.r} y1={y(v)} y2={y(v)} stroke="currentColor" strokeOpacity={v === start ? 0.45 : 0.1} strokeDasharray={v === start ? "6 6" : undefined} strokeWidth={1} />
-          <text x={P.l - 10} y={y(v) + 4} textAnchor="end" className="fill-current font-mono" fontSize={13} fillOpacity={0.6}>
+          <text x={P.l - 10} y={y(v) + 4} textAnchor="end" className="fill-current font-mono" fontSize={12} fillOpacity={0.6}>
             ${Math.round(v).toLocaleString("en-US")}
           </text>
         </g>
       ))}
-      <text x={P.l} y={H - 8} className="fill-current font-mono" fontSize={13} fillOpacity={0.6}>{fmtTime(series[0][0])}</text>
-      <text x={W - P.r} y={H - 8} textAnchor="end" className="fill-current font-mono" fontSize={13} fillOpacity={0.6}>{fmtTime(series[series.length - 1][0])}</text>
+      <text x={P.l} y={H - 8} className="fill-current font-mono" fontSize={12} fillOpacity={0.6}>{fmtTime(series[0][0])}</text>
+      <text x={W - P.r} y={H - 8} textAnchor="end" className="fill-current font-mono" fontSize={12} fillOpacity={0.6}>{fmtTime(series[series.length - 1][0])}</text>
       <path d={d} fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round" />
-      <rect x={x(last[0]) - 5} y={y(last[1]) - 5} width={10} height={10} className="fill-accent" />
+      <circle cx={x(last[0])} cy={y(last[1])} r={5} className="fill-accent" />
     </svg>
+    </div>
   );
 }
 
@@ -206,33 +217,39 @@ export default function DeskTracker({ initial }: { initial: DeskData | null }) {
               {data.closed.length === 0 ? (
                 <p className="mt-6 font-mono text-sm text-soft">No closed trades yet this run.</p>
               ) : (
-                <div className="mt-6 overflow-x-auto border-2 border-line">
-                  <table className="w-full min-w-[40rem] font-mono text-sm">
+                <div className="mt-6 overflow-hidden rounded-[var(--modern-radius-card)] border border-line bg-cream">
+                  <table className="w-full text-sm">
                     <thead>
-                      <tr className="border-b-2 border-line text-left text-xs uppercase tracking-[0.08em] text-faint">
+                      <tr className="border-b border-line text-left text-xs text-faint">
                         <th className="px-4 py-3 font-normal">token</th>
-                        <th className="px-4 py-3 font-normal">score</th>
+                        <th className="hidden px-4 py-3 font-normal sm:table-cell">score</th>
                         <th className="px-4 py-3 text-right font-normal">p&amp;l</th>
                         <th className="px-4 py-3 text-right font-normal">%</th>
-                        <th className="px-4 py-3 font-normal">exit</th>
-                        <th className="px-4 py-3 font-normal">closed</th>
+                        <th className="hidden px-4 py-3 font-normal sm:table-cell">exit</th>
+                        <th className="hidden px-4 py-3 font-normal sm:table-cell">closed</th>
                       </tr>
                     </thead>
                     <tbody>
                       {data.closed.map((t) => (
                         <tr key={t.symbol + t.closed} className="border-b border-line last:border-b-0">
-                          <td className="px-4 py-3 text-ink">{t.symbol}</td>
-                          <td className="px-4 py-3 text-soft">{t.score.toFixed(2)}</td>
+                          <td className="px-4 py-3 text-ink">
+                            {t.symbol}
+                            <span className="mt-0.5 block text-xs text-soft sm:hidden">
+                              {t.exit}
+                              {t.exit === "trail" && t.peakPct !== null ? `, peak ${signed(t.peakPct)}` : ""} · {fmtTime(t.closed)}
+                            </span>
+                          </td>
+                          <td className="hidden px-4 py-3 text-soft sm:table-cell">{t.score.toFixed(2)}</td>
                           <td className={`px-4 py-3 text-right ${t.pnlUsd < 0 ? "text-accent" : "text-ink"}`}>
                             {t.pnlUsd > 0 ? "+" : ""}
                             {usd(t.pnlUsd)}
                           </td>
                           <td className={`px-4 py-3 text-right ${t.pnlUsd < 0 ? "text-accent" : "text-ink"}`}>{signed(t.pnlPct)}</td>
-                          <td className="px-4 py-3 text-soft">
+                          <td className="hidden px-4 py-3 text-soft sm:table-cell">
                             {t.exit}
                             {t.exit === "trail" && t.peakPct !== null ? `, peak ${signed(t.peakPct)}` : ""}
                           </td>
-                          <td className="px-4 py-3 text-soft">{fmtTime(t.closed)}</td>
+                          <td className="hidden px-4 py-3 text-soft sm:table-cell">{fmtTime(t.closed)}</td>
                         </tr>
                       ))}
                     </tbody>

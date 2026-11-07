@@ -70,7 +70,7 @@ export default function SystemsPage() {
                 </button>
               ))}
               <label className="sr-only" htmlFor="guide-search">Search guides</label>
-              <input id="guide-search" type="search" value={guideQuery} onChange={(event) => setGuideQuery(event.target.value)} placeholder="Search guides" className="min-h-11 min-w-48 flex-1 border-2 border-line bg-cream px-4 font-mono text-base placeholder:text-soft focus:outline focus:outline-2 focus:outline-accent" />
+              <input id="guide-search" type="search" value={guideQuery} onChange={(event) => setGuideQuery(event.target.value)} placeholder="Search guides" className="field min-w-48 flex-1 text-base" />
             </div>
 
             {guides.length ? (
@@ -109,9 +109,9 @@ export default function SystemsPage() {
 
             <div className="mt-9 grid gap-3 sm:grid-cols-[1fr_auto]">
               <label className="sr-only" htmlFor="skill-search">Search skills and prompts</label>
-              <input id="skill-search" type="search" value={skillQuery} onChange={(event) => setSkillQuery(event.target.value)} placeholder="Search skills and prompts" className="min-h-12 border-2 border-line bg-cream px-4 font-mono text-base placeholder:text-soft focus:outline focus:outline-2 focus:outline-accent" />
+              <input id="skill-search" type="search" value={skillQuery} onChange={(event) => setSkillQuery(event.target.value)} placeholder="Search skills and prompts" className="field text-base" />
               <label className="sr-only" htmlFor="skill-category">Filter skills by category</label>
-              <select id="skill-category" value={category} onChange={(event) => setCategory(event.target.value)} className="min-h-12 border-2 border-line bg-cream px-4 font-mono text-base uppercase focus:outline focus:outline-2 focus:outline-accent">
+              <select id="skill-category" value={category} onChange={(event) => setCategory(event.target.value)} className="field text-base">
                 <option value="all">All categories</option>
                 {SKILL_CATEGORIES.map((item) => <option key={item} value={item}>{item}</option>)}
               </select>
