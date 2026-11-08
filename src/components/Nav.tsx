@@ -9,6 +9,7 @@ const LINKS = [
   ["guides", "/guides"],
   ["skills library", "/prompt-lab"],
   ["daily note", "/daily-note"],
+  ["photos", "/photos"],
   ["resources", "/resources"],
 ] as const;
 
