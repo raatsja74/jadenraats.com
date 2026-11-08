@@ -11,7 +11,7 @@ export default function GuidesIndex() {
       <main className="min-h-screen bg-cream text-ink">
         <section className="mx-auto max-w-6xl px-6 pb-16 pt-32 sm:px-10 sm:pb-20 sm:pt-40">
           <div className="border-t border-line pt-10">
-            <p className="kicker kicker-accent">guides</p>
+            <p className="kicker kicker-accent">Guides</p>
             <h1 className="display mt-6 max-w-4xl text-5xl sm:text-6xl">
               Practical guides to use AI
             </h1>
@@ -51,11 +51,11 @@ export default function GuidesIndex() {
           </ol>
 
           <aside
-            className="mt-10 card border-ink bg-surface p-6 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-8"
+            className="mt-10 card border-line bg-surface p-6 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-8"
             aria-label="More resources"
           >
             <div>
-              <p className="kicker kicker-accent">also</p>
+              <p className="kicker kicker-accent">Also</p>
               <h2 className="display mt-3 text-3xl sm:text-4xl">Resources</h2>
               <p className="mt-3 max-w-xl text-base leading-relaxed text-soft">
                 Skills library, daily note, CaptureVault map, and the rest of the public

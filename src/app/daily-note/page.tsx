@@ -3,7 +3,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import { getSkill } from "@/app/prompt-lab/skills";
 
-const TITLE = "Daily Note | Jaden Raats";
+const TITLE = "Daily note | Jaden Raats";
 const DESCRIPTION =
   "How to start each day from one note that already knows yesterday.";
 
@@ -30,7 +30,7 @@ export default function DailyNotePage() {
       <main className="mx-auto max-w-3xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
         <section className="border-t border-line pt-10">
           <p className="kicker kicker-accent">daily note</p>
-          <h1 className="display mt-6 text-5xl sm:text-6xl">Daily Note</h1>
+          <h1 className="display mt-6 text-5xl sm:text-6xl">Daily note</h1>
           <p className="mt-6 text-base leading-relaxed text-soft">
             One note per day. Yesterday rolls forward. Nothing else.
           </p>
@@ -65,7 +65,7 @@ export default function DailyNotePage() {
               href={`/prompt-lab?q=${encodeURIComponent(skill.name)}`}
               className="btn btn-primary mt-6"
             >
-              Open in Skills Library <span className="btn-arrow">→</span>
+              Open in Skills library <span className="btn-arrow">→</span>
             </Link>
           </section>
         )}

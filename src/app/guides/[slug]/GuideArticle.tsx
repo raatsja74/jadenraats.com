@@ -26,8 +26,8 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: EASE }}
           >
-            <Link href="/guides" className="hover:text-ink">
-              guides
+            <Link href="/guides" className="inline-flex min-h-[var(--uds-layout-touch-target-min)] items-center hover:text-ink">
+              Guides
             </Link>
             <span className="text-faint"> / </span>
             <span className="ast-host inline-flex items-center gap-1.5">
@@ -55,7 +55,7 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
           </motion.p>
 
           <motion.p
-            className="mt-8 text-base leading-relaxed text-soft"
+            className="mt-8 text-xl leading-relaxed text-soft"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.25 }}
@@ -128,11 +128,11 @@ export default function GuideArticle({ guide }: { guide: Guide }) {
             {...fadeUp}
             className="mt-16 flex flex-wrap gap-8 border-t border-line pt-10 font-mono text-sm"
           >
-            <Link href="/guides" className="link-underline text-ink">
-              ← all guides
+            <Link href="/guides" className="btn btn-secondary">
+              ← All guides
             </Link>
-            <a href="mailto:ai@jadenraats.com" className="link-underline text-soft">
-              ask about this →
+            <a href="mailto:ai@jadenraats.com" className="btn btn-secondary">
+              Ask about this →
             </a>
           </motion.div>
         </article>

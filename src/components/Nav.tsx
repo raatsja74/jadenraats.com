@@ -48,7 +48,7 @@ export default function Nav() {
             href="/prompt-lab"
             className="flex min-h-[var(--uds-layout-touch-target-min)] items-center gap-1.5 self-center rounded-[var(--modern-radius-pill)] bg-accent px-4 text-sm font-semibold text-action hover:shadow-[var(--modern-shadow-hover)]"
           >
-            <span aria-hidden="true">*</span><span className="hidden min-[375px]:inline">Skills Library</span><span className="min-[375px]:hidden">Skills</span>
+            <span aria-hidden="true">*</span><span className="hidden min-[375px]:inline">Skills library</span><span className="min-[375px]:hidden">Skills</span>
           </Link>
 
           <ThemeToggle />

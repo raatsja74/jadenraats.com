@@ -148,7 +148,7 @@ export const MODULES: VaultModule[] = [
     ],
     principles: [
       "Keep session note for history",
-      "Add Daily Note reference",
+      "Add Daily note reference",
       "Put real follow-up work in Todoist",
     ],
     items: [],
@@ -211,7 +211,7 @@ export const MODULES: VaultModule[] = [
       "Project context = where I resume",
       "Canonical home = truth",
       "Session Note = history",
-      "Daily Note = timeline",
+      "Daily note = timeline",
       "Todoist = action",
       "Bases / Dataview = views, not truth",
     ],
