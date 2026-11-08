@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 const LINKS = [
+  { href: "/photos", label: "Photos", note: "A personal photo journal" },
   {
     href: "/guides",
     label: "Free Guides to Learn AI",
