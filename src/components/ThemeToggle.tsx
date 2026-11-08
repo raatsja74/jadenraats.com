@@ -49,7 +49,7 @@ export default function ThemeToggle() {
       aria-label="Dark mode"
       aria-pressed={theme === "dark"}
       title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-      className="flex min-h-[var(--uds-layout-touch-target-min)] min-w-[var(--uds-layout-touch-target-min)] items-center justify-center gap-1 border-l-2 border-line px-2 font-mono text-sm uppercase tracking-wide text-ink transition-colors hover:bg-ink hover:text-cream sm:px-3"
+      className="flex min-h-[var(--uds-layout-touch-target-min)] min-w-[var(--uds-layout-touch-target-min)] items-center justify-center gap-1 self-center rounded-[var(--modern-radius-pill)] px-3 text-sm font-medium text-ink transition-colors hover:bg-ink/5"
     >
       <span className="text-lg" aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
       <span className="hidden min-[360px]:inline">{theme === "dark" ? "Light" : "Dark"}</span>

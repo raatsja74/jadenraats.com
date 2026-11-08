@@ -1,5 +1,7 @@
 "use client";
 
+import { categoryLabel } from "@/app/prompt-lab/skills";
+
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import Nav from "@/components/Nav";
@@ -29,7 +31,7 @@ export default function SystemsPage() {
     return SKILLS.filter((skill) => {
       const matchesCategory = category === "all" || skill.category === category;
       const matchesQuery =
-        !query || `${skill.name} ${skill.desc} ${skill.category}`.toLowerCase().includes(query);
+        !query || `${skill.name} ${skill.desc} ${categoryLabel(skill.category)}`.toLowerCase().includes(query);
       return matchesCategory && matchesQuery;
     });
   }, [category, skillQuery]);
@@ -38,7 +40,7 @@ export default function SystemsPage() {
     <>
       <Nav />
       <main id="main" className="min-h-screen bg-cream text-ink">
-        <section id="top" className="scroll-mt-24 border-b-2 border-line px-6 pb-16 pt-32 sm:px-10 sm:pb-24 sm:pt-40 lg:px-16">
+        <section id="top" className="scroll-mt-24 border-b border-line px-6 pb-16 pt-32 sm:px-10 sm:pb-24 sm:pt-40 lg:px-16">
           <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
               <p className="kicker kicker-accent">Personal systems / built in the open</p>
@@ -53,7 +55,7 @@ export default function SystemsPage() {
           </div>
         </section>
 
-        <section id="guides" className="scroll-mt-24 border-b-2 border-line px-6 py-16 sm:px-10 sm:py-24">
+        <section id="guides" className="scroll-mt-24 border-b border-line px-6 py-16 sm:px-10 sm:py-24">
           <div className="mx-auto max-w-6xl">
             <div className="max-w-3xl">
               <p className="kicker kicker-accent">01 / Field guides</p>
@@ -65,20 +67,20 @@ export default function SystemsPage() {
 
             <div className="mt-9 flex flex-wrap gap-2" aria-label="Filter guides by topic">
               {["all", ...TOPICS].map((item) => (
-                <button key={item} type="button" aria-pressed={topic === item} onClick={() => setTopic(item)} className={`min-h-11 border-2 border-line px-4 py-2 font-mono text-sm uppercase transition-colors ${topic === item ? "bg-ink text-cream" : "hover:bg-ink hover:text-cream"}`}>
+                <button key={item} type="button" aria-pressed={topic === item} onClick={() => setTopic(item)} className={`chip transition-colors ${topic === item ? "chip-active" : "chip-idle"}`}>
                   {item === "all" ? "All topics" : item}
                 </button>
               ))}
               <label className="sr-only" htmlFor="guide-search">Search guides</label>
-              <input id="guide-search" type="search" value={guideQuery} onChange={(event) => setGuideQuery(event.target.value)} placeholder="Search guides" className="min-h-11 min-w-48 flex-1 border-2 border-line bg-cream px-4 font-mono text-base placeholder:text-soft focus:outline focus:outline-2 focus:outline-accent" />
+              <input id="guide-search" type="search" value={guideQuery} onChange={(event) => setGuideQuery(event.target.value)} placeholder="Search guides" className="field min-w-48 flex-1 text-base" />
             </div>
 
             {guides.length ? (
               <ol className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {guides.map((guide, index) => (
                   <li key={guide.slug}>
-                    <Link href={`/guides/${guide.slug}`} className="group flex h-full min-h-64 flex-col justify-between border-2 border-line p-6 transition-colors hover:border-accent">
-                      <div className="flex items-center justify-between gap-4 font-mono text-sm uppercase">
+                    <Link href={`/guides/${guide.slug}`} className="group flex h-full min-h-64 flex-col justify-between card-outline border-line p-6 transition-colors hover:border-accent">
+                      <div className="flex items-center justify-between gap-4 font-mono text-sm">
                         <span>G–{String(index + 1).padStart(3, "0")}</span><span className="text-soft">{guide.tag} / {guide.readMinutes} min</span>
                       </div>
                       <div className="mt-10">
@@ -90,7 +92,7 @@ export default function SystemsPage() {
                   </li>
                 ))}
               </ol>
-            ) : <p className="mt-8 border-2 border-line p-6 font-mono text-sm">No guides match that search.</p>}
+            ) : <p className="mt-8 card-outline border-line p-6 font-mono text-sm">No guides match that search.</p>}
           </div>
         </section>
 
@@ -109,26 +111,26 @@ export default function SystemsPage() {
 
             <div className="mt-9 grid gap-3 sm:grid-cols-[1fr_auto]">
               <label className="sr-only" htmlFor="skill-search">Search skills and prompts</label>
-              <input id="skill-search" type="search" value={skillQuery} onChange={(event) => setSkillQuery(event.target.value)} placeholder="Search skills and prompts" className="min-h-12 border-2 border-line bg-cream px-4 font-mono text-base placeholder:text-soft focus:outline focus:outline-2 focus:outline-accent" />
+              <input id="skill-search" type="search" value={skillQuery} onChange={(event) => setSkillQuery(event.target.value)} placeholder="Search skills and prompts" className="field text-base" />
               <label className="sr-only" htmlFor="skill-category">Filter skills by category</label>
-              <select id="skill-category" value={category} onChange={(event) => setCategory(event.target.value)} className="min-h-12 border-2 border-line bg-cream px-4 font-mono text-base uppercase focus:outline focus:outline-2 focus:outline-accent">
+              <select id="skill-category" value={category} onChange={(event) => setCategory(event.target.value)} className="field text-base">
                 <option value="all">All categories</option>
-                {SKILL_CATEGORIES.map((item) => <option key={item} value={item}>{item}</option>)}
+                {SKILL_CATEGORIES.map((item) => <option key={item} value={item}>{categoryLabel(item)}</option>)}
               </select>
             </div>
-            <p className="mt-5 font-mono text-sm uppercase text-soft" aria-live="polite">{skills.length} results / {SKILLS.length} total</p>
-            <ul className="mt-3 border-2 border-line">
+            <p className="mt-5 font-mono text-sm text-soft" aria-live="polite">{skills.length} results / {SKILLS.length} total</p>
+            <ul className="mt-3 card-outline border-line">
               {skills.map((skill) => (
-                <li key={skill.id} className="border-b-2 border-line last:border-0">
-                  <Link href={`/prompt-lab?q=${encodeURIComponent(skill.name)}`} className="group flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-4 transition-colors hover:bg-ink hover:text-cream sm:px-6">
+                <li key={skill.id} className="border-b border-line last:border-0">
+                  <Link href={`/prompt-lab?q=${encodeURIComponent(skill.name)}`} className="group flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-x-6 px-5 py-4 transition-colors hover:bg-ink/[0.06] sm:px-6">
                     <span className="display-sentence text-xl">{skill.name}</span>
-                    <span className="max-w-xl flex-1 font-mono text-sm leading-relaxed text-soft group-hover:text-cream/75">{skill.desc}</span>
-                    <span className="kicker kicker-accent shrink-0 group-hover:text-cream">{skill.category}</span>
+                    <span className="max-w-xl flex-1 font-mono text-sm leading-relaxed text-soft">{skill.desc}</span>
+                    <span className="kicker kicker-accent shrink-0">{categoryLabel(skill.category)}</span>
                   </Link>
                 </li>
               ))}
             </ul>
-            {skills.length === 0 && <p className="border-x-2 border-b-2 border-line p-6 font-mono text-sm">No skills match that search.</p>}
+            {skills.length === 0 && <p className="border-x border-b border-line p-6 font-mono text-sm">No skills match that search.</p>}
           </div>
         </section>
       </main>

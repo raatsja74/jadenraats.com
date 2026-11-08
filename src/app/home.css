@@ -25,7 +25,7 @@
   font-weight: 500;
   letter-spacing: 0.05em;
   line-height: 1.45;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .home-cover {
@@ -37,7 +37,7 @@
   margin-inline: auto;
   border: var(--uds-border-width-strong) solid var(--site-border);
   background: var(--site-surface);
-  box-shadow: 0.75rem 0.75rem 0 var(--site-text-primary);
+  box-shadow: var(--modern-shadow-hover);
 }
 
 .home-cover-meta {
@@ -205,7 +205,7 @@
   padding: 0.75rem 0.9rem;
   border: var(--uds-border-width-strong) solid var(--site-border);
   background: var(--site-surface);
-  box-shadow: 0.4rem 0.4rem 0 var(--site-text-primary);
+  box-shadow: var(--modern-shadow-hover);
   text-align: center;
   transform: rotate(9deg);
 }
@@ -248,9 +248,9 @@
 .home-signal {
   display: flex;
   overflow: hidden;
-  border-block: var(--uds-border-width-strong) solid var(--site-border);
-  background: var(--site-text-primary);
-  color: var(--site-text-inverse);
+  border-block: 1px solid var(--site-border);
+  background: var(--site-surface);
+  color: var(--site-text-secondary);
   user-select: none;
 }
 
@@ -269,7 +269,9 @@
   align-items: center;
   gap: 2.5rem;
   flex: none;
-  font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   white-space: nowrap;
 }
 
@@ -325,7 +327,7 @@
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .home-text-link span,
@@ -348,7 +350,7 @@
 .home-system-card-index { grid-column: 1 / -1; padding-left: 0.65rem; border-left: var(--uds-border-width-strong) solid var(--uds-color-action-primary); color: var(--site-text-inverse); }
 .home-system-card strong { align-self: end; max-width: 13ch; font-size: clamp(3.4rem, 6.4vw, 6.75rem); font-weight: 400; line-height: 0.96; }
 .home-system-card-arrow { align-self: end; color: var(--uds-color-action-primary); font-size: clamp(5rem, 11vw, 10rem); line-height: 0.75; transition: transform 0.28s; }
-.home-system-card:is(:hover, :focus-visible) { transform: translate(-0.4rem, -0.4rem); box-shadow: 0.6rem 0.6rem 0 var(--uds-color-action-primary); }
+.home-system-card:is(:hover, :focus-visible) { transform: translateY(-2px); box-shadow: var(--modern-shadow-hover); }
 .home-system-card:is(:hover, :focus-visible) .home-system-card-arrow { transform: translate(0.3rem, -0.3rem); }
 
 .home-guides-head {
@@ -387,7 +389,7 @@
   transition: transform 0.28s var(--uds-motion-easing-standard), box-shadow 0.28s var(--uds-motion-easing-standard);
 }
 
-.home-guide-card:is(:hover, :focus-visible) { transform: translate(-0.3rem, -0.3rem); box-shadow: 0.5rem 0.5rem 0 var(--site-text-primary); }
+.home-guide-card:is(:hover, :focus-visible) { transform: translateY(-2px); box-shadow: var(--modern-shadow-hover); }
 
 .home-guide-image {
   position: relative;
@@ -396,22 +398,23 @@
   border-bottom: var(--uds-border-width-strong) solid var(--site-border);
 }
 
-.home-guide-image img { object-fit: cover; filter: grayscale(1) contrast(1.1); transition: transform 0.65s var(--uds-motion-easing-standard), filter 0.65s; }
-.home-guide-card:is(:hover, :focus-visible) .home-guide-image img { transform: scale(1.05); filter: grayscale(0); }
+.home-guide-image img { object-fit: cover;  transition: transform 0.65s var(--uds-motion-easing-standard), filter 0.65s; }
+.home-guide-card:is(:hover, :focus-visible) .home-guide-image img { transform: scale(1.05);  }
 
 .home-guide-number {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0.75rem;
+  left: 0.75rem;
   display: grid;
-  width: 3.2rem;
-  height: 3.2rem;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 0.6rem;
   place-items: center;
-  border-right: var(--uds-border-width-strong) solid var(--site-border);
-  border-bottom: var(--uds-border-width-strong) solid var(--site-border);
+  border-radius: var(--modern-radius-pill);
   background: var(--uds-color-action-primary);
   color: var(--uds-color-action-primaryText);
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .home-guide-content {
@@ -566,7 +569,7 @@
 
 @media (max-width: 600px) {
   .home-cover { padding: 4.6rem 0.85rem 3rem; }
-  .home-cover-frame { box-shadow: 0.45rem 0.45rem 0 var(--site-text-primary); }
+  .home-cover-frame { box-shadow: var(--modern-shadow-hover); }
   .home-cover-meta { padding: 0.75rem; font-size: 0.75rem; }
   .home-cover-meta span:last-child { text-align: right; }
   .home-cover-copy { padding: 2rem 1.25rem; }
@@ -620,3 +623,17 @@
   .home-guide-card:is(:hover, :focus-visible),
   .home-guide-card:is(:hover, :focus-visible) .home-guide-image img { transform: none; }
 }
+
+/* ── Modern layer: rounded cards, hairlines, soft depth ── */
+.home-cover-frame { border-radius: var(--modern-radius-card); overflow: hidden; background: var(--site-surface-elevated); box-shadow: var(--modern-shadow-card); }
+.home-art-orange { border-radius: var(--modern-radius-card); }
+.home-art-stamp { border-radius: var(--modern-radius-small); }
+.home-system-card, .home-guide-card { border-radius: var(--modern-radius-card); overflow: hidden; box-shadow: var(--modern-shadow-card); transition: transform 0.3s var(--modern-ease), box-shadow 0.3s var(--modern-ease); }
+.home-guide-card { background: var(--site-surface-elevated); }
+.home-guide-image { border-radius: var(--modern-radius-inner) var(--modern-radius-inner) 0 0; overflow: hidden; }
+.home-skills-list { border-radius: var(--modern-radius-card); overflow: hidden; background: var(--site-surface-elevated); }
+.home-cover-index a:is(:hover, :focus-visible),
+.home-skill-row:is(:hover, :focus-visible) { background: rgb(from var(--site-text-primary) r g b / 0.05); color: inherit; }
+.home-skill-row:is(:hover, :focus-visible) :is(.home-skill-index, .home-skill-name small) { color: var(--site-text-secondary); }
+.home-cover-title, .home-section-title, .home-skills-intro h2, .home-footer p, .home-system-card strong { font-weight: 700; letter-spacing: -0.045em; }
+.home-cover-title em, .home-section-title em, .home-skills-intro h2 em, .home-footer p em { font-style: normal; color: var(--uds-color-action-primary); }

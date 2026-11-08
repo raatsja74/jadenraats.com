@@ -28,7 +28,7 @@ export default function DailyNotePage() {
     <>
       <Nav />
       <main className="mx-auto max-w-3xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
-        <section className="border-t-2 border-line pt-10">
+        <section className="border-t border-line pt-10">
           <p className="kicker kicker-accent">daily note</p>
           <h1 className="display mt-6 text-5xl sm:text-6xl">Daily Note</h1>
           <p className="mt-6 text-base leading-relaxed text-soft">
@@ -38,11 +38,11 @@ export default function DailyNotePage() {
 
         <section className="mt-12">
           <h2 className="kicker kicker-faint">How to do it</h2>
-          <ol className="mt-4 border-2 border-line">
+          <ol className="mt-4 card-outline border-line">
             {STEPS.map((step, i) => (
               <li
                 key={step}
-                className="flex gap-4 border-b-2 border-line px-5 py-4 last:border-b-0 sm:px-6"
+                className="flex gap-4 border-b border-line px-5 py-4 last:border-b-0 sm:px-6"
               >
                 <span className="font-mono text-xs text-ink">
                   {String(i + 1).padStart(2, "0")}
@@ -54,11 +54,11 @@ export default function DailyNotePage() {
         </section>
 
         {skill && (
-          <section className="mt-12 border-2 border-line p-6 sm:p-8">
+          <section className="mt-12 card-outline border-line p-6 sm:p-8">
             <p className="kicker kicker-accent">Prompt</p>
             <h2 className="display-sentence mt-3 text-2xl">{skill.name}</h2>
             <p className="mt-3 text-base text-soft">{skill.desc}</p>
-            <pre className="mt-6 whitespace-pre-wrap border-2 border-line bg-surface p-4 font-mono text-sm leading-relaxed text-ink">
+            <pre className="mt-6 whitespace-pre-wrap card border-line bg-surface p-4 font-mono text-sm leading-relaxed text-ink">
               {skill.prompt}
             </pre>
             <Link

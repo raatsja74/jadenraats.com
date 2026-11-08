@@ -2,12 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* The palette, type roles, border widths, spacing and motion come from UDS. */
-html[data-uds-theme="jadenraats"] {
-  /* next/font's local font families keep the UDS type choices self-hosted. */
-  --uds-theme-font-body: var(--font-mono);
+/* The palette lives in src/tokens/modern.css; type is the platform system face
+   (SF Pro on Apple devices), with spacing and motion from UDS. */
+html[data-uds-theme="jadenraats-modern"] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-mono: var(--font-sans);
+  --font-serif: var(--font-display);
+  --uds-theme-font-body: var(--font-sans);
   --uds-theme-font-heading: var(--font-display);
-  --uds-theme-font-mono: var(--font-mono);
+  --uds-theme-font-mono: var(--font-sans);
   --site-text-primary: var(--uds-color-text-primary);
   --site-text-secondary: var(--uds-color-text-secondary);
   --site-text-inverse: var(--uds-color-text-inverse);
@@ -15,18 +20,11 @@ html[data-uds-theme="jadenraats"] {
   --site-surface: var(--uds-surface-canvas);
   --site-surface-elevated: var(--uds-surface-elevated);
   --site-surface-inverse: var(--uds-surface-inverse);
+  --site-positive: var(--modern-positive);
   color-scheme: light;
 }
 
-/* Dark mode reuses the Jaden UDS palette, reversing its paper and ink roles. */
-html[data-uds-theme="jadenraats"][data-site-theme="dark"] {
-  --site-text-primary: var(--uds-color-text-inverse);
-  --site-text-secondary: color-mix(in srgb, var(--uds-color-text-inverse) 78%, var(--uds-surface-inverse));
-  --site-text-inverse: var(--uds-color-text-primary);
-  --site-border: var(--uds-color-text-inverse);
-  --site-surface: var(--uds-surface-inverse);
-  --site-surface-elevated: color-mix(in srgb, var(--uds-surface-inverse) 88%, var(--uds-surface-canvas));
-  --site-surface-inverse: var(--uds-surface-canvas);
+html[data-uds-theme="jadenraats-modern"][data-site-theme="dark"] {
   color-scheme: dark;
 }
 
@@ -100,6 +98,8 @@ body {
   font-family: var(--uds-font-body), monospace;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.005em;
   overflow-x: hidden;
 }
 
@@ -108,60 +108,50 @@ body {
   color: var(--uds-color-action-primaryText);
 }
 
-/* ── Display type — heavy condensed grotesk, uppercase, tight ── */
+/* ── Display type — bold system grotesk, sentence case, tight ── */
 
 .display {
-  font-family: var(--uds-font-heading), Impact, sans-serif;
-  text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 0.005em;
-  line-height: 0.92;
+  font-family: var(--uds-font-heading), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
 }
 
-/* Sentence-case display — same grotesk, no uppercase transform.
-   Use for card titles and other titles that read better as written. */
 .display-sentence {
-  font-family: var(--uds-font-heading), Impact, sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 1.05;
+  font-family: var(--uds-font-heading), sans-serif;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
 }
 
-/* ── Kickers — readable mono labels with an orange structural cue ── */
+/* ── Kickers — small eyebrow labels with an orange dot ── */
 
 .kicker {
-  font-family: var(--uds-font-mono), monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.8rem;
+  font-family: var(--uds-font-mono), sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0;
   line-height: 1.5;
 }
 
 .kicker-accent {
-  color: var(--site-text-primary);
-  border-left: var(--uds-border-width-strong) solid var(--uds-color-action-primary);
-  padding-left: var(--uds-space-2);
-}
-.kicker-accent:is(a) {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
+  color: var(--uds-color-action-primary);
+}
+.kicker-accent::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: var(--modern-radius-pill);
+  background: var(--uds-color-action-primary);
+}
+.kicker-accent:is(a) {
   min-height: var(--uds-layout-touch-target-min);
 }
 .kicker-faint { color: var(--site-text-secondary); }
 .kicker-paper { color: rgb(from var(--site-surface) r g b / 0.6); }
-
-/* ── Photocopy texture — static grain over the whole page ── */
-
-.texture-grain::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
 
 /* ── Hero portrait — a transparent, illustrated cutout that lives in the
    same field as the name rather than inside a card or image frame. ─────── */
@@ -305,7 +295,10 @@ body {
 }
 
 .border-grid-overlap {
-  margin: calc(-1 * var(--uds-border-width-strong));
+  gap: 0.75rem;
+}
+.border-grid-overlap > * {
+  border-radius: var(--modern-radius-inner);
 }
 
 footer a {
@@ -324,7 +317,7 @@ button:hover .btn-arrow {
   transform: translateX(4px);
 }
 
-/* ── Buttons — square, hard-edged, 44px targets ── */
+/* ── Buttons — pill shaped, 44px targets ── */
 
 .btn {
   display: inline-flex;
@@ -333,49 +326,44 @@ button:hover .btn-arrow {
   gap: 0.5rem;
   min-height: var(--uds-layout-touch-target-min);
   padding: var(--uds-space-3) var(--uds-space-5);
-  border: var(--uds-border-width-strong) solid var(--site-text-primary);
-  border-radius: var(--uds-radius-none);
-  font-family: var(--uds-font-heading), Impact, sans-serif;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
+  border: var(--uds-border-width-standard) solid transparent;
+  border-radius: var(--modern-radius-pill);
+  font-family: var(--uds-font-body), sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   line-height: 1;
-  transition: background-color var(--uds-motion-duration-standard) var(--uds-motion-easing-standard), color var(--uds-motion-duration-standard) var(--uds-motion-easing-standard), border-color var(--uds-motion-duration-standard) var(--uds-motion-easing-standard);
+  transition: background-color 0.2s var(--modern-ease), color 0.2s var(--modern-ease), border-color 0.2s var(--modern-ease), transform 0.2s var(--modern-ease);
 }
+.btn:active { transform: scale(0.98); }
 
 .btn-primary {
   background: var(--uds-color-action-primary);
   color: var(--uds-color-action-primaryText);
 }
-
 .btn-primary:hover {
-  background: var(--site-text-primary);
-  color: var(--site-surface);
+  background: color-mix(in srgb, var(--uds-color-action-primary) 88%, var(--site-text-primary));
 }
 
 .btn-secondary {
-  background: var(--site-surface);
+  background: var(--site-surface-elevated);
   color: var(--site-text-primary);
+  border-color: var(--site-border);
 }
-
 .btn-secondary:hover {
-  background: var(--site-text-primary);
-  color: var(--site-surface);
+  background: color-mix(in srgb, var(--site-surface-elevated) 92%, var(--site-text-primary));
 }
 
 .btn-inverse {
   background: var(--site-surface-inverse);
   color: var(--site-text-inverse);
-  border-color: var(--site-surface);
 }
-
 .btn-inverse:hover {
   background: var(--uds-color-action-primary);
   color: var(--uds-color-action-primaryText);
-  border-color: var(--site-text-primary);
 }
 
-/* ── Chips — compact square filter/label controls (operational brutalism) ── */
+/* ── Chips — pill filter/label controls ── */
 
 .chip {
   display: inline-flex;
@@ -383,39 +371,30 @@ button:hover .btn-arrow {
   justify-content: center;
   gap: var(--uds-space-1);
   min-height: var(--uds-layout-touch-target-min);
-  padding: var(--uds-space-2) var(--uds-space-3);
-  border: var(--uds-border-width-strong) solid var(--site-text-primary);
-  border-radius: var(--uds-radius-none);
-  font-family: var(--uds-font-mono), monospace;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  padding: var(--uds-space-2) var(--uds-space-4);
+  border: var(--uds-border-width-standard) solid var(--site-border);
+  border-radius: var(--modern-radius-pill);
+  font-family: var(--uds-font-mono), sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
   line-height: 1;
   white-space: nowrap;
-  transition: background-color var(--uds-motion-duration-standard) var(--uds-motion-easing-standard), color var(--uds-motion-duration-standard) var(--uds-motion-easing-standard), border-color var(--uds-motion-duration-standard) var(--uds-motion-easing-standard);
+  transition: background-color 0.2s var(--modern-ease), color 0.2s var(--modern-ease), border-color 0.2s var(--modern-ease);
 }
-
 .chip-active {
-  background: var(--uds-color-action-primary);
-  color: var(--uds-color-action-primaryText);
-}
-
-.chip-active:hover {
   background: var(--site-text-primary);
+  border-color: var(--site-text-primary);
   color: var(--site-surface);
 }
-
 .chip-idle {
-  background: var(--site-surface);
+  background: var(--site-surface-elevated);
   color: var(--site-text-primary);
 }
-
 .chip-idle:hover {
-  background: var(--site-text-primary);
-  color: var(--site-surface);
+  background: color-mix(in srgb, var(--site-surface-elevated) 92%, var(--site-text-primary));
 }
 
-/* ── Data rows & status tags — operational brutalism (The Lab) ── */
+/* ── Data rows & status tags ── */
 
 .data-row {
   display: flex;
@@ -423,8 +402,10 @@ button:hover .btn-arrow {
   gap: 1rem;
   justify-content: space-between;
   padding: 1.5rem;
-  border: var(--uds-border-width-strong) solid var(--site-border);
-  background: var(--site-surface);
+  border: var(--uds-border-width-standard) solid var(--site-border);
+  border-radius: var(--modern-radius-card);
+  background: var(--site-surface-elevated);
+  box-shadow: var(--modern-shadow-card);
 }
 
 @media (min-width: 768px) {
@@ -438,24 +419,40 @@ button:hover .btn-arrow {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.25rem 0.6rem;
+  padding: 0.3rem 0.75rem;
   border: var(--uds-border-width-standard) solid var(--site-border);
-  font-family: var(--uds-font-mono), monospace;
-  font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  border-radius: var(--modern-radius-pill);
+  background: var(--site-surface-elevated);
+  font-family: var(--uds-font-mono), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
   white-space: nowrap;
 }
 
 .status-live {
   background: var(--uds-color-action-primary);
+  border-color: var(--uds-color-action-primary);
   color: var(--uds-color-action-primaryText);
 }
 
-/* Visible focus for keyboard users — square, orange, never rounded */
+/* Apple-style text field: hairline border, inner radius, accent border on focus */
+.field {
+  min-height: var(--uds-layout-touch-target-min);
+  border: 1px solid var(--site-border);
+  border-radius: var(--modern-radius-inner);
+  background: var(--site-surface-elevated);
+  color: var(--site-text-primary);
+  padding: 0 1rem;
+  transition: border-color 0.2s;
+}
+.field::placeholder { color: var(--site-text-secondary); }
+.field:focus { border-color: var(--uds-color-action-primary); }
+
+/* Visible focus for keyboard users — orange ring that follows the corner radius */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
+select:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid var(--uds-color-focus-ring);
   outline-offset: var(--uds-space-1);
@@ -473,6 +470,84 @@ input:focus-visible,
   }
 }
 
-/* Personal photo journal: shares site theme and typography tokens. */
-.jd-photos{max-width:1280px;margin:auto;padding:144px 40px 40px;color:var(--site-text-primary);font-family:var(--font-mono),monospace}.jd-photos-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:48px;border-bottom:3px solid var(--site-border)}.jd-photos-kicker{font-size:12px;letter-spacing:.1em;display:flex;align-items:center;gap:12px}.jd-photos-kicker span{color:var(--uds-color-action-primary);font-size:30px}.jd-photos-heading h1{font-family:var(--font-display),sans-serif;font-size:clamp(48px,6.8vw,96px);line-height:1.06;margin:24px 0 20px}.jd-photos-heading h1 em{display:block;font-family:var(--font-serif),serif;font-weight:400;font-size:.96em}.jd-photos-intro{font:22px var(--font-serif),serif}.jd-photos-actions{display:flex;flex-direction:column;align-items:flex-end;gap:24px}.jd-photos-actions a{min-height:44px;display:inline-flex;align-items:center;gap:8px;text-decoration:underline;text-underline-offset:6px;font-size:14px}.jd-photos-actions p{font-size:11px;letter-spacing:.1em}.jd-photos-tools{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:20px 0;border-bottom:1px solid var(--site-border)}.jd-photos-tabs{display:flex;flex-wrap:wrap;gap:8px}.jd-photos button{font:inherit;cursor:pointer;min-height:44px}.jd-photos-tabs button{padding:8px 16px;background:transparent;border:1px solid transparent;font-size:12px;display:flex;gap:12px;align-items:center}.jd-photos-tabs button[aria-pressed=true]{background:var(--site-surface-inverse);color:var(--site-text-inverse);border-color:var(--site-border)}.jd-photos-tabs small{opacity:.65}.jd-photos-search{display:flex;align-items:center;gap:12px;max-width:260px}.jd-photos-search>span{font-size:24px}.jd-photos-search input{width:100%;min-width:0;min-height:44px;background:transparent;border:0;font:12px var(--font-mono),monospace;color:inherit}.jd-photos-subbar{padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:11px;letter-spacing:.06em}.jd-photos-subbar button{background:transparent;border:1px solid var(--site-border);padding:8px 12px;font-size:11px}.jd-photos-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;align-items:start}.jd-photo-card:first-child{grid-column:span 2}.jd-photo-image{position:relative;display:block;width:100%;background:var(--site-surface-inverse);overflow:hidden;border:0;padding:0;text-align:left}.jd-photo-image img{display:block;width:100%;aspect-ratio:1.25;object-fit:cover;filter:grayscale(1);transition:transform .3s}.jd-photo-card:first-child img{aspect-ratio:1.4;object-position:center 44%}.jd-photo-image:hover img{transform:scale(1.025)}.jd-photo-image>span{position:absolute;bottom:16px;left:16px;background:var(--site-surface);padding:8px 12px;font-size:11px;opacity:0}.jd-photo-image:hover>span,.jd-photo-image:focus-visible>span{opacity:1}.jd-photo-caption{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--site-border);padding:20px 0}.jd-photo-caption h2{font:26px var(--font-serif),serif}.jd-photo-caption p,.jd-photo-caption>span{font-size:11px;margin-top:8px}.jd-photos-empty{padding:80px 24px;text-align:center}.jd-photos-empty h2{font:32px var(--font-serif),serif;margin-bottom:12px}.jd-photos-empty p{font-size:13px}.jd-photos-empty button{background:none;border:0;text-decoration:underline;font-size:13px}.jd-photos-end{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:3px solid var(--site-border);margin-top:64px;padding:16px 0 32px;font-size:10px;letter-spacing:.08em}.jd-photos-end>span:nth-child(2){color:var(--uds-color-action-primary);font-size:30px}.jd-photos-end a{min-height:44px;display:flex;align-items:center}.jd-photos-notice{padding:16px;border:1px solid var(--site-border);margin-top:24px;font-size:12px}.jd-photos-notice a{text-decoration:underline}.jd-photo-dialog{width:min(1100px,94vw);max-width:1100px;max-height:94dvh;padding:0;border:3px solid var(--site-border);background:var(--site-surface);color:var(--site-text-primary);margin:auto;overflow:auto}.jd-photo-dialog::backdrop{background:var(--uds-surface-inverse);opacity:.85}.jd-photo-dialog-inner{padding:32px;position:relative}.jd-photo-full{background:var(--uds-surface-inverse);display:flex;align-items:center;justify-content:center}.jd-photo-full img{max-height:72dvh;max-width:100%;object-fit:contain;filter:grayscale(1)}.jd-photos-color img{filter:none}.jd-photo-close{position:absolute;right:0;top:0;width:44px;height:44px;background:var(--site-surface);border:1px solid var(--site-border)}.jd-photo-dialog-info{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:16px}.jd-photo-dialog-info h2{font:28px var(--font-serif),serif}.jd-photo-dialog-info p{font-size:12px;margin-top:8px}.jd-photo-steps{display:flex;gap:8px}.jd-photo-steps button{width:44px;height:44px;border:1px solid var(--site-border);background:var(--site-surface)}.jd-photo-steps button:disabled{opacity:.4;cursor:default}.jd-photos :focus-visible{outline:3px solid var(--uds-color-focus-ring);outline-offset:4px}
-@media(max-width:900px){.jd-photos-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.jd-photo-card:first-child{grid-column:span 1}.jd-photo-card:first-child img{aspect-ratio:1.25}.jd-photos-heading h1{font-size:64px}}@media(max-width:600px){.jd-photos{padding:112px 20px 24px}.jd-photos-heading{display:block;padding-bottom:28px}.jd-photos-heading h1{font-size:52px;margin-top:20px}.jd-photos-actions{flex-direction:row;justify-content:space-between;align-items:center;margin-top:24px}.jd-photos-actions p{font-size:9px}.jd-photos-intro{font-size:20px}.jd-photos-tools{flex-direction:column;align-items:stretch;gap:8px;padding:12px 0}.jd-photos-search{max-width:none;border-top:1px solid var(--site-border);padding-top:8px}.jd-photos-tabs{gap:0}.jd-photos-tabs button{padding:8px 12px}.jd-photos-grid{grid-template-columns:minmax(0,1fr);gap:24px}.jd-photo-image img,.jd-photo-card:first-child img{aspect-ratio:.88}.jd-photos-subbar{letter-spacing:0;gap:8px}.jd-photo-dialog-inner{padding:32px 16px 16px}.jd-photo-dialog-info h2{font-size:24px}.jd-photo-full img{max-height:70dvh}.jd-photos-end{margin-top:40px}.jd-photos-kicker{font-size:10px}}@media(prefers-reduced-motion:reduce){.jd-photo-image img{transition:none}.jd-photo-image:hover img{transform:none}}
+/* Header: translucent bar over the page, the one place blur is used. */
+.nav-glass {
+  background: rgb(from var(--site-surface) r g b / 0.78);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+
+/* Explicit component surfaces; utility classes retain their normal meaning. */
+@layer components {
+.card-outline { border: 1px solid var(--site-border); border-radius: var(--modern-radius-card); }
+.card { border: 1px solid var(--site-border); border-radius: var(--modern-radius-card); background: var(--site-surface-elevated); box-shadow: var(--modern-shadow-card); }
+.border-grid-overlap > .card-outline { background: var(--site-surface-elevated); }
+}
+code, pre, kbd, samp { font-family: var(--font-code); }
+h1, h2, h3 { letter-spacing: -0.025em; }
+
+
+/* Photo journal — native modern surfaces, shared upload library. */
+.jd-photos { max-width: 1200px; margin: auto; padding: 128px 32px 40px; color: var(--site-text-primary); }
+.jd-photos-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; padding-bottom: 40px; }
+.jd-photos-kicker { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--site-text-secondary); }
+.jd-photos-kicker span { color: var(--uds-color-action-primary); font-size: 28px; }
+.jd-photos-heading h1 { max-width: 14ch; margin: 16px 0; font: 700 clamp(40px, 5.5vw, 72px)/1.05 var(--font-display); letter-spacing: -.045em; text-wrap: balance; }
+.jd-photos-intro { font-size: 20px; line-height: 1.5; color: var(--site-text-secondary); }
+.jd-photos-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; flex-shrink: 0; }
+.jd-photos-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; border-radius: var(--modern-radius-pill); background: var(--uds-color-action-primary); color: var(--uds-color-action-primaryText); padding: 12px 20px; font-size: 14px; font-weight: 600; }
+.jd-photos-actions a:hover { filter: brightness(.95); }
+.jd-photos-actions p { color: var(--site-text-secondary); font-size: 13px; }
+.jd-photos-tools { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; border-top: 1px solid var(--site-border); }
+.jd-photos-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.jd-photos button { min-height: 44px; cursor: pointer; font: inherit; }
+.jd-photos-tabs button { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid var(--site-border); border-radius: var(--modern-radius-pill); background: var(--site-surface-elevated); font-size: 14px; }
+.jd-photos-tabs button[aria-pressed=true] { background: var(--site-surface-inverse); color: var(--site-text-inverse); border-color: transparent; }
+.jd-photos-tabs small { font-size: 12px; opacity: .75; }
+.jd-photos-search { display: flex; align-items: center; gap: 10px; width: min(280px, 100%); padding: 0 14px; border: 1px solid var(--site-border); border-radius: var(--modern-radius-inner); background: var(--site-surface-elevated); }
+.jd-photos-search>span { font-size: 24px; }
+.jd-photos-search input { min-width: 0; width: 100%; min-height: 44px; border: 0; background: transparent; color: inherit; font: inherit; font-size: 16px; }
+.jd-photos-subbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 8px 0 24px; font-size: 13px; color: var(--site-text-secondary); }
+.jd-photos-subbar button { padding: 10px 16px; border: 1px solid var(--site-border); border-radius: var(--modern-radius-pill); background: var(--site-surface-elevated); color: var(--site-text-primary); font-size: 13px; }
+.jd-photos-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; align-items: start; }
+.jd-photo-card { min-width: 0; overflow: hidden; border: 1px solid var(--site-border); border-radius: var(--modern-radius-card); background: var(--site-surface-elevated); box-shadow: var(--modern-shadow-card); transition: transform .2s var(--modern-ease), box-shadow .2s var(--modern-ease); }
+.jd-photo-card:first-child { grid-column: span 2; }
+.jd-photo-card:hover { transform: translateY(-2px); box-shadow: var(--modern-shadow-hover); }
+.jd-photo-image { display: block; position: relative; width: 100%; overflow: hidden; padding: 0; border: 0; background: var(--site-surface); text-align: left; }
+.jd-photo-image img { display: block; width: 100%; aspect-ratio: 1.2; object-fit: cover; filter: grayscale(1); }
+.jd-photo-card:first-child img { aspect-ratio: 1.4; object-position: center 44%; }
+.jd-photo-image>span { position: absolute; bottom: 16px; left: 16px; background: var(--site-surface-elevated); color: var(--site-text-primary); padding: 8px 12px; border-radius: var(--modern-radius-pill); font-size: 12px; opacity: 0; transition: opacity .2s; }
+.jd-photo-image:hover>span,.jd-photo-image:focus-visible>span { opacity: 1; }
+.jd-photo-caption { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 20px 24px; }
+.jd-photo-caption>div { min-width: 0; }
+.jd-photo-caption h2 { font-size: 20px; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+.jd-photo-caption p,.jd-photo-caption>span { margin-top: 8px; font-size: 13px; color: var(--site-text-secondary); }
+.jd-photo-caption>span { flex-shrink: 0; }
+.jd-photos-empty { padding: 72px 24px; text-align: center; border: 1px solid var(--site-border); border-radius: var(--modern-radius-card); background: var(--site-surface-elevated); }
+.jd-photos-empty h2 { font-size: 28px; font-weight: 650; margin-bottom: 12px; }
+.jd-photos-empty p { color: var(--site-text-secondary); }
+.jd-photos-empty button { padding: 8px 16px; margin-top: 16px; border: 1px solid var(--site-border); border-radius: var(--modern-radius-pill); background: var(--site-surface); }
+.jd-photos-end { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 64px; padding: 24px 0; border-top: 1px solid var(--site-border); font-size: 13px; color: var(--site-text-secondary); }
+.jd-photos-end>span:nth-child(2) { color: var(--uds-color-action-primary); font-size: 28px; }
+.jd-photos-end a { display: flex; align-items: center; min-height: 44px; }
+.jd-photos-notice { padding: 16px 20px; margin-bottom: 24px; border: 1px solid var(--site-border); border-radius: var(--modern-radius-inner); background: var(--site-surface-elevated); font-size: 14px; }
+.jd-photos-notice a { text-decoration: underline; }
+.jd-photo-dialog { width: min(1100px,94vw); max-width: 1100px; max-height: 94dvh; margin: auto; padding: 0; border: 1px solid var(--site-border); border-radius: var(--modern-radius-card); background: var(--site-surface-elevated); color: var(--site-text-primary); box-shadow: var(--modern-shadow-card); overflow: auto; }
+.jd-photo-dialog::backdrop { background: var(--uds-surface-inverse); opacity: .85; }
+.jd-photo-dialog-inner { position: relative; padding: 24px; }
+.jd-photo-full { display: flex; align-items: center; justify-content: center; background: var(--site-surface); overflow: hidden; border-radius: var(--modern-radius-inner); }
+.jd-photo-full img { max-height: 72dvh; max-width: 100%; object-fit: contain; filter: grayscale(1); }
+.jd-photos-color img { filter: none; }
+.jd-photo-close { position: absolute; right: 12px; top: 12px; width: 44px; height: 44px; border: 1px solid var(--site-border); border-radius: var(--modern-radius-pill); background: var(--site-surface-elevated); }
+.jd-photo-dialog-info { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 20px; }
+.jd-photo-dialog-info>div:first-child { min-width: 0; }
+.jd-photo-dialog-info h2 { font-size: 24px; font-weight: 600; overflow-wrap: anywhere; }
+.jd-photo-dialog-info p { margin-top: 8px; font-size: 14px; color: var(--site-text-secondary); }
+.jd-photo-steps { display: flex; gap: 8px; flex-shrink: 0; }
+.jd-photo-steps button { width: 44px; height: 44px; border: 1px solid var(--site-border); border-radius: var(--modern-radius-pill); background: var(--site-surface); }
+.jd-photo-steps button:disabled { opacity: .4; cursor: default; }
+.jd-photos :focus-visible { outline: 2px solid var(--uds-color-focus-ring); outline-offset: 3px; }
+@media(max-width:900px) { .jd-photos-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .jd-photo-card:first-child { grid-column: span 1; } .jd-photo-card:first-child img { aspect-ratio: 1.2; } }
+@media(max-width:600px) { .jd-photos { padding: 104px 20px 24px; } .jd-photos-heading { display: block; padding-bottom: 28px; } .jd-photos-heading h1 { font-size: 44px; } .jd-photos-actions { flex-direction: row; justify-content: space-between; align-items: center; margin-top: 24px; gap: 12px; } .jd-photos-actions p { font-size: 12px; } .jd-photos-actions a { padding-inline: 16px; } .jd-photos-intro { font-size: 18px; } .jd-photos-tools { flex-direction: column; align-items: stretch; gap: 16px; padding: 20px 0; } .jd-photos-search { width: 100%; } .jd-photos-grid { grid-template-columns: minmax(0,1fr); } .jd-photo-image img,.jd-photo-card:first-child img { aspect-ratio: .95; } .jd-photo-caption { padding: 16px 20px; } .jd-photo-dialog-inner { padding: 16px; } .jd-photo-dialog-info h2 { font-size: 20px; } .jd-photo-full img { max-height: 70dvh; } .jd-photos-end { margin-top: 40px; font-size: 12px; } }
+@media(prefers-reduced-motion:reduce) { .jd-photo-card,.jd-photo-image>span { transition: none; } .jd-photo-card:hover { transform: none; } }

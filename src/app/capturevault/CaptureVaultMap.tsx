@@ -1,5 +1,7 @@
 "use client";
 
+import { stageLabel } from "./modules";
+
 import { useCallback, useEffect, useId, useMemo, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
@@ -115,7 +117,7 @@ export default function CaptureVaultMap() {
       <Nav />
       <main className="min-h-screen scroll-pt-20 bg-cream text-ink">
         <section className="mx-auto max-w-6xl px-6 pb-8 pt-32 sm:px-10 sm:pt-40">
-          <div className="border-t-2 border-line pt-10">
+          <div className="border-t border-line pt-10">
             <div className="max-w-3xl">
               <motion.p
                 className="kicker kicker-accent"
@@ -150,7 +152,7 @@ export default function CaptureVaultMap() {
             </div>
 
             <motion.div
-              className="sticky top-[3.25rem] z-40 -mx-6 mt-10 border-y-2 border-line bg-cream px-6 py-4 sm:-mx-10 sm:px-10"
+              className="sticky top-[3.25rem] z-40 -mx-6 mt-10 border-y border-line bg-cream px-6 py-4 sm:-mx-10 sm:px-10"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: EASE, delay: 0.45 }}
@@ -167,7 +169,7 @@ export default function CaptureVaultMap() {
                       aria-pressed={stage === s}
                       className={`chip ${stage === s ? "chip-active" : "chip-idle"}`}
                     >
-                      {s}
+                      {stageLabel(s)}
                     </button>
                     {i < FLOW_STAGES.length - 1 && (
                       <span className="hidden text-accent sm:inline" aria-hidden="true">
@@ -192,7 +194,7 @@ export default function CaptureVaultMap() {
             <HubNode filtered={!!stage} onClear={clearStage} />
             {columns.map((col) => (
               <div key={col.id} className="space-y-3">
-                <div className="flex items-baseline justify-between gap-3 border-b-2 border-line pb-2">
+                <div className="flex items-baseline justify-between gap-3 border-b border-line pb-2">
                   <p className="kicker kicker-accent">{col.label}</p>
                   <p className="font-mono text-xs text-faint">{col.kicker}</p>
                 </div>
@@ -210,7 +212,7 @@ export default function CaptureVaultMap() {
               <span className="kicker kicker-faint">flow</span>
               {STAGE_COLUMNS.map((col, i) => (
                 <span key={col.id} className="flex items-center gap-3">
-                  <span className="font-mono text-xs uppercase tracking-[0.08em] text-soft">
+                  <span className="font-mono text-xs text-soft">
                     {col.label}
                   </span>
                   {i < STAGE_COLUMNS.length - 1 && (
@@ -225,9 +227,9 @@ export default function CaptureVaultMap() {
             <div className="grid grid-cols-4 gap-4">
               {columns.map((col) => (
                 <div key={col.id} className="flex flex-col gap-3">
-                  <div className="border-2 border-ink bg-surface/50 px-3 py-2">
+                  <div className="card-outline border-ink bg-surface/50 px-3 py-2">
                     <p className="kicker kicker-accent">{col.label}</p>
-                    <p className="mt-1 font-mono text-xs uppercase tracking-[0.08em] text-faint">
+                    <p className="mt-1 font-mono text-xs text-faint">
                       {col.kicker}
                     </p>
                   </div>
@@ -249,7 +251,7 @@ export default function CaptureVaultMap() {
               </div>
               <div className="mx-auto max-w-xl">
                 <HubNode filtered={!!stage} onClear={clearStage} />
-                <p className="mt-3 text-center font-mono text-xs uppercase tracking-[0.08em] text-faint">
+                <p className="mt-3 text-center font-mono text-xs text-faint">
                   Click a module · Escape to close · Flow strip filters
                 </p>
               </div>
@@ -269,11 +271,11 @@ export default function CaptureVaultMap() {
             </AnimatePresence>
           </div>
 
-          <div className="mt-10 grid gap-4 border-2 border-ink bg-cream p-5 sm:grid-cols-2 sm:p-6">
-            <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink">
+          <div className="mt-10 grid gap-4 card border-ink bg-surface p-5 sm:grid-cols-2 sm:p-6">
+            <p className="font-mono text-xs text-ink">
               Folder Note = where I resume
             </p>
-            <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink sm:text-right">
+            <p className="font-mono text-xs text-ink sm:text-right">
               Canonical home = authoritative truth
             </p>
           </div>
@@ -283,7 +285,7 @@ export default function CaptureVaultMap() {
           className="mx-auto max-w-6xl px-6 pb-16 sm:px-10 sm:pb-24"
           aria-label="Brand strip"
         >
-          <aside className="grid grid-cols-2 gap-x-6 gap-y-1 border-2 border-ink p-4 font-mono text-xs uppercase tracking-[0.06em] text-soft sm:grid-cols-3 sm:p-6">
+          <aside className="grid grid-cols-2 gap-x-6 gap-y-1 card-outline border-ink p-4 font-mono text-xs text-soft sm:grid-cols-3 sm:p-6">
             <div className="space-y-1">
               <p>Systems</p>
               <p>Notes</p>
@@ -307,8 +309,8 @@ export default function CaptureVaultMap() {
           </aside>
         </section>
 
-        <footer className="border-t-2 border-line px-6 py-10 sm:px-10">
-          <div className="mx-auto flex max-w-6xl flex-col gap-4 font-mono text-xs uppercase tracking-[0.08em] text-faint sm:flex-row sm:items-center sm:justify-between">
+        <footer className="border-t border-line px-6 py-10 sm:px-10">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 font-mono text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
             <p>
               jaden<span className="text-accent">*</span> | ideas → systems → a
               clearer tomorrow
