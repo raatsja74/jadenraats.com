@@ -100,7 +100,7 @@ export default function PromptLab() {
         <section className="border-t border-line pt-10">
           <p className="kicker kicker-accent">skills library</p>
           <h1 className="display mt-6 max-w-4xl text-5xl sm:text-6xl">
-            AI Skills Library
+            AI skills library
           </h1>
         </section>
 
