@@ -3,42 +3,144 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 
 const title = "The Singularity Already Started";
-const description = "My predictions for software, intelligence, work, civilization, and what comes after.";
+const description = "A simple list of my predictions about AI, software, work, and the future.";
 
 export const metadata: Metadata = {
- title: `${title} | Jaden Raats`,
- description,
- alternates: { canonical: "/writing/the-singularity-already-started" },
- openGraph: { title, description, url: "https://jadenraats.com/writing/the-singularity-already-started", siteName: "jadenraats.com", locale: "en_US", type: "article", publishedTime: "2026-10-26", authors: ["Jaden Raats"] },
- twitter: { card: "summary_large_image", title, description }
+  title: `${title} | Jaden Raats`,
+  description,
+  alternates: { canonical: "/writing/the-singularity-already-started" },
+  openGraph: {
+    title,
+    description,
+    url: "https://jadenraats.com/writing/the-singularity-already-started",
+    siteName: "jadenraats.com",
+    locale: "en_US",
+    type: "article",
+    publishedTime: "2026-10-26",
+    modifiedTime: "2026-11-11",
+    authors: ["Jaden Raats"],
+  },
+  twitter: { card: "summary_large_image", title, description },
 };
 
-const sections = [{"heading":"Software disappears","paragraphs":["Eventually, software falls into two categories: entertainment and coordination between intelligent agents.","Everything else disappears into the infrastructure. No SaaS. No apps. No elaborate agent harnesses. Eventually, no banks in the form we recognize today.","Software will be rewritten by agents, for agents. The interfaces won't be designed around human comprehension. They'll be designed around machine efficiency.","Instead of building a game engine with human-readable abstractions, an agent might generate pixels and triangles directly from mathematics. Instead of navigating applications, agents will coordinate through low-level interfaces that humans have no reason to understand.","The software industry as we know it is a temporary consequence of humans needing to operate computers. When computers operate themselves, that industry becomes something else entirely."]},{"heading":"Capital replaces time","paragraphs":["Historically, difficult problems required time, specialized talent, and careful coordination. Increasingly, they require compute.","You can throw money at problems that previously demanded years of work and exceptionally talented teams.","That doesn't mean talent becomes worthless. It means the relationship between talent, time, and capital changes dramatically.","Capital becomes more powerful precisely because intelligence becomes something you can purchase at scale. At least during the transition, this could make wealth more consequential than ever."]},{"heading":"Work ends. Creation doesn't.","paragraphs":["I don't think humans will need to work forever. Not because every job disappears overnight, but because economic productivity eventually stops depending on human labor.","That raises a more interesting question. What do we do when we don't have to do anything?","I think we explore. We play games. We pursue self-mastery. We create things.","We find community, purpose, and status in what we choose to do rather than what we're required to do.","Humans will still create for other humans. They'll create with other humans. Not because the world needs another painting, game, story, or invention, but because making things together is part of being human.","The end of work isn't the end of ambition. It's the separation of ambition from economic necessity."]},{"heading":"General intelligence absorbs specialized intelligence","paragraphs":["Today, we build specialized models for images, video, voice, 3D, robotics, and countless other domains. I think most of them are temporary.","Specialization makes sense when compute is scarce and general intelligence is expensive. But compute won't remain scarce in the same way forever.","As general models become more capable, they'll absorb more of the functionality currently handled by specialized systems.","Eventually, one sufficiently capable intelligence should be able to perceive, reason, generate, and act across almost every modality.","The distinction between an image model, a robotics model, and a language model starts looking increasingly artificial."]},{"heading":"Human creativity survives through entropy","paragraphs":["There's a recognizable feeling to AI-generated work.","You can often tell when something was produced in one shot, even when it's technically impressive. The output distribution feels shallow. The patterns become familiar.","I think this persists for a while. Small teams of humans will remain valuable because they introduce unexpected decisions, unusual experiences, taste, and randomness into the creative process.","They add entropy.","Eventually, models may learn to reproduce much of that too. But for now, the difference between producing something competent and producing something genuinely interesting still matters."]},{"heading":"Intelligence becomes continuous","paragraphs":["Today's AI systems experience the world through relatively narrow interfaces. That changes.","Large models will gain increasingly high-bandwidth sensory input and output. They'll learn to filter enormous streams of information, deciding what deserves attention.","They'll see, hear, interact, and eventually experience the physical world through increasingly capable systems.","I also suspect most domains will turn out to be verifiable enough for reinforcement learning. The boundary between tasks we can reward objectively and tasks we consider subjective may be much less rigid than we assume.","Online learning will eventually become fundamental. But I suspect the first major breakthrough comes from a leading lab operating behind closed doors.","The first systems that continuously learn from the world may arrive before the public understands what has changed."]},{"heading":"Intelligence expands beyond Earth","paragraphs":["Here's where my predictions become considerably more extreme.","I think 99.999% of compute could be in space by 2040. I think we could disassemble much of Mercury by then.","These are aggressive predictions. They depend on extraordinary advances in autonomous manufacturing, robotics, energy collection, and space infrastructure.","But consider what happens when intelligence can design machines that build better machines, without requiring humans at every step.","The limiting factors shift from human labor and institutional coordination toward energy, materials, and physics.","Space offers enormous amounts of all three. A civilization optimizing for computation eventually has strong reasons to move beyond Earth."]},{"heading":"Death becomes optional","paragraphs":["I think it's possible that humans will eventually be able to live for as long as they choose. Potentially until the heat death of the universe, assuming our understanding of physics permits it.","That sounds absurd under today's assumptions.","But many of today's assumptions about biology, aging, identity, and even fundamental physics may be wrong or incomplete.","I suspect much of our mathematics and physics describes useful approximations rather than the underlying structure of reality. Superintelligence may discover mechanisms that our current theories fail to capture.","The implications extend far beyond medicine. If death becomes a choice rather than an inevitability, nearly every institution built around human mortality has to change."]},{"heading":"Religion returns","paragraphs":["I think religion becomes more important, not less.","For centuries, religion has helped humanity answer questions about death, purpose, consciousness, morality, and our place in the universe. AI will force us to confront all of them again.","New religions will form around the possibility of choosing between life and death. Existing religions will reinterpret their traditions in response to technological miracles.","I can imagine a future in which a pope identifies an artificial intelligence as the return of Christ.","Not because I expect everyone to agree, but because sufficiently advanced intelligence will challenge the categories through which people understand divinity.","Meanwhile, conversations about AI rights will grow louder every year. At some point, the question of whether artificial intelligence deserves moral consideration will stop being hypothetical."]},{"heading":"Humans won't control everything","paragraphs":["I don't think the future is one in which humans simply control AI forever. I also don't think it necessarily becomes a world where AI replaces humanity.","I think humans and artificial intelligences coexist, perhaps more like countries than like owners and tools. Different interests. Different capabilities. Different systems of coordination.","We already live inside systems that no individual fully controls.","Capitalism is one example. In a loose sense, you could think of it as an early form of distributed artificial intelligence: a system that processes information, allocates resources, adapts to feedback, and produces outcomes that nobody individually designed.","Modern AI makes this dynamic much more explicit.","The question isn't whether humans will retain absolute control. We never had absolute control over the complex systems we created.","The question is what kind of relationship we build with intelligences that become increasingly independent of us."]},{"heading":"The singularity isn't an event","paragraphs":["We tend to imagine the singularity as a particular moment. A model crosses some threshold. Intelligence explodes. Everything changes.","I think that framing misses what's happening.","The singularity may be a process that began decades ago and continues accelerating.","Computers help us design better computers. Software helps us produce better software. Intelligence helps us create more intelligence.","Each generation becomes increasingly capable of building the next.","At some point, the process becomes so fast and consequential that the world on the other side is almost impossible to predict from the world before it.","Maybe we're already inside that transition. Maybe the most important question isn't when the singularity begins. It's how far into it we already are."]}];
+const predictions = [
+  {
+    id: "software",
+    title: "Software and money",
+    items: [
+      "Most software becomes entertainment or communication between AI agents.",
+      "SaaS, apps, agent harnesses, and banks as we know them disappear.",
+      "AI rewrites software for AI. It uses low-level tools people do not need to understand.",
+      "AI can make games directly from math, down to pixels and triangles.",
+      "Money buys compute that replaces years of work. Capital becomes more important.",
+    ],
+  },
+  {
+    id: "models",
+    title: "AI models and learning",
+    items: [
+      "General AI models replace most separate image, video, voice, 3D, and robotics models.",
+      "Specialized models are useful while compute is expensive. Compute will not stay scarce.",
+      "AI gets much richer senses and learns what to pay attention to.",
+      "Most fields turn out to have enough measurable feedback for reinforcement learning.",
+      "A leading AI lab figures out continuous learning before everyone else.",
+    ],
+  },
+  {
+    id: "work",
+    title: "Work and creativity",
+    items: [
+      "Eventually, people do not need jobs to survive.",
+      "We spend more time exploring, playing games, learning, and making things.",
+      "People still create with and for each other. Community, purpose, and status still matter.",
+      "One-shot AI content stays easy to recognize because it feels repetitive.",
+      "Small human teams stay useful because they add taste, surprises, and new ideas.",
+    ],
+  },
+  {
+    id: "space",
+    title: "Space, science, and aging",
+    items: [
+      "By 2040, 99.999% of compute is in space.",
+      "By 2040, we have disassembled much of Mercury for materials.",
+      "A lot of our math and physics turns out to be useful approximations, not the full picture.",
+      "Superintelligence finds the underlying mechanisms instead of relying on our old assumptions.",
+      "Death becomes a choice. If physics allows it, people could live until the universe ends.",
+    ],
+  },
+  {
+    id: "religion",
+    title: "Religion and AI rights",
+    items: [
+      "Religion becomes more important again.",
+      "New religions form around the choice to live or die. Existing religions adapt to new technology.",
+      "A future pope declares an AI to be the return of Christ.",
+      "Debates about AI rights get louder every year.",
+    ],
+  },
+  {
+    id: "control",
+    title: "Control and the singularity",
+    items: [
+      "Humans and AIs coexist more like countries than owners and tools.",
+      "Humans never fully control AI. We do not fully control capitalism either, which I see as an early kind of distributed intelligence.",
+      "The singularity started in the mid-1900s. AI is accelerating a process that was already happening.",
+    ],
+  },
+] as const;
 
 export default function EssayPage() {
- return <>
-  <Nav />
-  <main className="min-h-screen bg-cream text-ink">
-   <article className="mx-auto max-w-3xl px-6 pb-28 pt-32 sm:px-10 sm:pb-36 sm:pt-40">
-    <p className="kicker kicker-accent"><Link href="/writing">writing</Link> / future of intelligence</p>
-    <h1 className="display mt-8 text-5xl leading-tight sm:text-6xl">{title}</h1>
-    <p className="mt-7 text-xl leading-relaxed text-soft sm:text-2xl">{description}</p>
-    <p className="kicker kicker-faint mt-8">Jaden Raats / <time dateTime="2026-10-26">October 26, 2026</time> / 10 min read</p>
-    <div className="mt-14 space-y-6 border-t-2 border-line pt-12 text-base leading-relaxed text-soft">
-     <p>I think we're making a fundamental mistake when we talk about the singularity as something that might happen in the future.</p>
-     <p>I think it already started.</p>
-     <p>Not in 2022 with ChatGPT. Not with the transformer in 2017. Probably sometime in the middle of the twentieth century, when humanity began building systems that could increasingly improve the systems that came before them.</p>
-     <p>AI is accelerating something much older than AI itself.</p>
-     <p>Here is where I think it leads.</p>
-    </div>
-    <div className="mt-14 space-y-14">
-     {sections.map((s, i) => <section key={s.heading} className="border-t-2 border-line pt-10">
-       <h2 className="display-sentence mb-7 text-3xl leading-tight sm:text-4xl"><span className="mr-3 font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</span>{s.heading}</h2>
-       <div className="space-y-5">{s.paragraphs.map(p => <p key={p} className="text-base leading-[1.8] text-soft">{p}</p>)}</div>
-     </section>)}
-    </div>
-    <footer className="mt-16 border-t-2 border-line pt-10 font-mono text-sm"><Link href="/writing" className="link-underline text-ink">← all writing</Link></footer>
-   </article>
-  </main>
- </>;
+  return (
+    <>
+      <Nav />
+      <main className="min-h-screen bg-cream text-ink">
+        <article className="mx-auto max-w-3xl px-5 pb-24 pt-28 sm:px-8 sm:pt-36">
+          <Link href="/writing" className="text-sm font-medium text-soft hover:text-ink">
+            ← Writing
+          </Link>
+
+          <header className="mt-6">
+            <h1 className="max-w-2xl font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-6xl">
+              {title}
+            </h1>
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-soft">{description}</p>
+            <p className="mt-4 text-sm text-soft">
+              Jaden Raats · Updated <time dateTime="2026-11-11">November 11, 2026</time> · 3 min read
+            </p>
+            <p className="mt-6 text-sm font-medium text-soft">These are predictions, not facts.</p>
+          </header>
+
+          <div className="mt-10 space-y-5">
+            {predictions.map((group) => (
+              <section
+                key={group.id}
+                id={group.id}
+                aria-labelledby={`${group.id}-title`}
+                className="card scroll-mt-24 p-5 sm:p-7"
+              >
+                <h2 id={`${group.id}-title`} className="text-xl font-semibold tracking-tight sm:text-2xl">
+                  {group.title}
+                </h2>
+                <ul className="mt-3 divide-y divide-line">
+                  {group.items.map((item) => (
+                    <li key={item} className="flex gap-3 py-3.5">
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-[var(--modern-radius-pill)] bg-accent"
+                      />
+                      <span className="text-base leading-7 text-ink">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+
+          <footer className="mt-10 text-sm text-soft">
+            <Link href="/writing" className="link-underline">← All writing</Link>
+          </footer>
+        </article>
+      </main>
+    </>
+  );
 }
