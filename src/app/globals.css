@@ -342,7 +342,8 @@ button:hover .btn-arrow {
   color: var(--uds-color-action-primaryText);
 }
 .btn-primary:hover {
-  background: color-mix(in srgb, var(--uds-color-action-primary) 88%, var(--site-text-primary));
+  background: var(--uds-color-action-primary);
+  box-shadow: var(--modern-shadow-hover);
 }
 
 .btn-secondary {
@@ -472,9 +473,28 @@ select:focus-visible,
 
 /* Header: translucent bar over the page, the one place blur is used. */
 .nav-glass {
+  background: var(--site-surface);
   background: rgb(from var(--site-surface) r g b / 0.78);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nav-glass { background: var(--site-surface); }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .nav-glass {
+    background: var(--site-surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+@media (prefers-contrast: more) {
+  .nav-glass { border-color: var(--site-text-primary); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn, .chip, .field { transition: none; }
+  .btn:active { transform: none; }
 }
 
 
@@ -497,7 +517,7 @@ h1, h2, h3 { letter-spacing: -0.025em; }
 .jd-photos-intro { font-size: 20px; line-height: 1.5; color: var(--site-text-secondary); }
 .jd-photos-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; flex-shrink: 0; }
 .jd-photos-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; border-radius: var(--modern-radius-pill); background: var(--uds-color-action-primary); color: var(--uds-color-action-primaryText); padding: 12px 20px; font-size: 14px; font-weight: 600; }
-.jd-photos-actions a:hover { filter: brightness(.95); }
+.jd-photos-actions a:hover { box-shadow: var(--modern-shadow-hover); }
 .jd-photos-actions p { color: var(--site-text-secondary); font-size: 13px; }
 .jd-photos-tools { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; border-top: 1px solid var(--site-border); }
 .jd-photos-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
