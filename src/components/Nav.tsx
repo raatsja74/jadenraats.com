@@ -7,6 +7,7 @@ import ThemeToggle from "./ThemeToggle";
 const LINKS = [
   ["systems", "/systems"],
   ["guides", "/guides"],
+  ["writing", "/writing"],
   ["skills library", "/prompt-lab"],
   ["daily note", "/daily-note"],
   ["photos", "/photos"],

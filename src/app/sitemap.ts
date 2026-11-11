@@ -10,6 +10,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: "https://jadenraats.com/writing",
+      lastModified: new Date("2026-10-26T00:00:00-07:00"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: "https://jadenraats.com/writing/the-singularity-already-started",
+      lastModified: new Date("2026-10-26T00:00:00-07:00"),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: "https://jadenraats.com/guides",
       lastModified: new Date(),
       changeFrequency: "weekly",
