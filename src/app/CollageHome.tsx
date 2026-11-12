@@ -99,7 +99,7 @@ export default function CollageHome() {
     <div className="cx">
       <header className="cx-top">
         <Link href="/" className="cx-mark" aria-label="Jaden Raats, home">
-          JADEN<span aria-hidden="true">*</span>
+          JD<span aria-hidden="true">*</span>
         </Link>
         <nav aria-label="Primary">
           <Link href="/systems">Systems</Link>
@@ -112,8 +112,8 @@ export default function CollageHome() {
       <main>
         <section className="cx-hero" aria-labelledby="cx-name">
           <div className="cx-copy">
-            <h1 id="cx-name" className="cx-name">
-              <span className="cx-first">Jaden</span>
+            <h1 id="cx-name" className="cx-name" aria-label="JD Raats">
+              <span className="cx-first">JD</span>
               <span className="cx-last">
                 Raats<span className="cx-ast" aria-hidden="true">*</span>
               </span>

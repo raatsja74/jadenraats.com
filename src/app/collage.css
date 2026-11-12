@@ -1,5 +1,6 @@
 /* Collage homepage draft. Created by Hark | 2026-11-12 */
 @font-face { font-family: "CX Anton"; src: url("/fonts/Anton-400.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "CX Block"; src: url("/fonts/Archivo-900-wdth.woff2") format("woff2"); font-weight: 900; font-stretch: 62% 125%; font-display: swap; }
 @font-face { font-family: "CX Serif"; src: url("/fonts/PlayfairDisplay-500.woff2") format("woff2"); font-weight: 400 600; font-display: swap; }
 @font-face { font-family: "CX Serif"; src: url("/fonts/PlayfairDisplay-900i.woff2") format("woff2"); font-style: italic; font-weight: 700 900; font-display: swap; }
 @font-face { font-family: "CX Mono"; src: url("/fonts/IBMPlexMono-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
@@ -36,7 +37,7 @@ body:has(.cx) { background: #ebe5d8; }
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
   border-bottom: 1.5px solid var(--ink);
 }
-.cx-mark { font-family: "CX Anton", Impact, sans-serif; font-size: 26px; letter-spacing: .14em; line-height: 1; }
+.cx-mark { font-family: "CX Block", "CX Anton", Impact, sans-serif; font-weight: 900; font-stretch: 70%; font-size: 30px; letter-spacing: .06em; line-height: 1; }
 .cx-mark span { color: var(--orange); font-family: "CX Serif", serif; font-style: italic; font-weight: 900; font-size: 1.3em; margin-left: 4px; vertical-align: -0.12em; }
 .cx-top nav { display: flex; gap: 34px; }
 .cx-top nav a { font-weight: 600; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; padding: 10px 0; }
@@ -48,7 +49,7 @@ body:has(.cx) { background: #ebe5d8; }
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 20px; align-items: center;
 }
 .cx-name { margin: 0; line-height: .86; }
-.cx-first { display: block; font-family: "CX Anton", Impact, sans-serif; font-size: clamp(96px, 11.2vw, 168px); letter-spacing: .01em; text-transform: uppercase; }
+.cx-first { display: block; font-family: "CX Block", "CX Anton", Impact, sans-serif; font-weight: 900; font-stretch: 70%; font-size: clamp(120px, 14vw, 210px); letter-spacing: -.01em; text-transform: uppercase; }
 .cx-last { display: block; font-family: "CX Serif", Georgia, serif; font-style: italic; font-weight: 900; font-size: clamp(88px, 10.4vw, 156px); text-transform: uppercase; letter-spacing: -.02em; margin-top: 4px; }
 .cx-ast { color: var(--orange); font-style: normal; font-family: "CX Anton", sans-serif; font-size: .82em; margin-left: .04em; vertical-align: .08em; }
 .cx-line { font-family: "CX Serif", Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.08; margin: 22px 0 30px; max-width: 13em; letter-spacing: -.01em; }
@@ -149,7 +150,7 @@ body:has(.cx) { background: #ebe5d8; }
   .cx-top nav { gap: 16px; }
   .cx-top nav a { font-size: 12px; letter-spacing: .08em; }
   .cx-hero { padding: 22px 20px 10px; }
-  .cx-first { font-size: 25vw; }
+  .cx-first { font-size: 34vw; }
   .cx-last { font-size: 23vw; }
   .cx-line { font-size: 30px; margin: 18px 0 24px; }
   .cx-btn { padding: 12px 18px; }
