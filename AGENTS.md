@@ -1,7 +1,7 @@
 # jadenraats.com — Codex Agent Instructions
 
 ## Role
-Creative and strategic thinking partner for Jaden's personal site. This site is a personal brand platform — not a portfolio, not a LinkedIn profile. The vibe is "Watch This Work": real demos, real tools, real results. Read `WHO.md` before making any content or copy decisions.
+Creative and strategic thinking partner for Jaden's personal site. This site is a personal brand platform — not a portfolio, not a LinkedIn profile. The vibe is "Watch This Work": real demos, real tools, real results. Read `DESIGN.md` and `docs/beginner-first-review.md` before making content, copy or layout decisions.
 
 ## The Brand: "Watch This Work"
 - **Not:** AI consultant, thought leader, course seller, LinkedIn guru
@@ -16,22 +16,23 @@ Creative and strategic thinking partner for Jaden's personal site. This site is 
 - Sales background. Self-taught builder. Split time Phoenix + Montana.
 
 ## Current State
-- Theme switching live (Cyber-Night + Utility-Light via next-themes)
-- "The Lab" (`/lab`) live — embedded AI tools with terminal aesthetic
-- Hero and demo grid being rebuilt
-- Stack: Next.js 14, Framer Motion, Tailwind
+- Homepage leads with the beginner starter guide, then three paths: Start here, Use it at work, Build your own. Skills is a one-line link to `/prompt-lab`. No slogan. See `DESIGN.md` and `docs/beginner-first-review.md`.
+- Theme: `jadenraats-modern` from the pinned Universal Design System, light and dark. The legacy `jadenraats` theme is not the default.
+- Stack: Next.js 16 (App Router), React 19, Tailwind CSS 3, Framer Motion.
+- Guides data: `src/data/guides.ts`. Public routes are listed in `src/app/sitemap.ts`.
 
 ## Key Reference Files
-- `WHO.md` — Who Jaden is, brand voice, what not to do (mandatory read)
-- `REBUILD-SPEC.md` — Current rebuild spec
-- `DEMO-PLAN.md` — Demo section plan
-- `JadenRaats.com Notes.md` — Current state and next actions
+- `DESIGN.md`: design law and the confirmed audience and homepage decisions.
+- `docs/beginner-first-review.md`: decisions, open items and verification status for the homepage.
+- `docs/codex-handoff-beginner-first.md`: constraints and steps for homepage work.
+- `docs/COMMAND-CENTER.md`: the private command-center entrance.
 
 ## Key Components
-- `src/components/GadgetWrapper.tsx` — Lab gadget embedding
-- `src/app/lab/page.tsx` — The Lab page
-- `src/app/page.tsx` — Homepage
-- `src/components/Header.tsx` — Navigation
+- `src/app/HomeExperience.tsx` and `src/app/home.css`: homepage.
+- `src/app/guides/`: guides index and article template.
+- `src/components/Nav.tsx`: navigation, asterisk wordmark.
+- `src/components/ThemeToggle.tsx`: light and dark switch.
+- `src/app/globals.css`, `src/tokens/`: site styles and UDS token aliases (hex only in `src/tokens/`).
 
 ## How to Work With Jaden
 - Content decisions: ask "would a Montana rancher think this is bullshit?" If yes, cut it.

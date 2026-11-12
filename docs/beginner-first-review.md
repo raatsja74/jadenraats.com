@@ -51,12 +51,12 @@ Reviewed against the full article, not the summary. It is a how-to for owners of
 
 ## Verification still needed
 
-Existing: lint, tsc, `check:design`, build, NOOP guide tests. Not yet done: any browser check. Needs 390px and 1440px screenshots, light and dark, of Home, Guides, the starter article, `/desk`, `/systems`, `/prompt-lab` and `/about`; primary CTA navigation; keyboard focus; image loading; horizontal overflow at 320 to 1440.
+Reported passing by the release commit: lint, tsc, `check:design`, build. Not independently re-run by the docs pass. Still not done: any browser check. Needs 390px and 1440px screenshots, light and dark, of Home, Guides, the starter article, `/desk`, `/systems`, `/prompt-lab` and `/about`; primary CTA navigation; keyboard focus; image loading; horizontal overflow at 320 to 1440.
 
-## Deployment and merge status (corrects the earlier note)
+## Deployment and merge status (updated after release)
 
 - Preview deploys are **on** for this branch as of 2026-11-11. `vercel.json` matches `main` (only `desk-data` is disabled). Production deploys stay main only.
-- Do not merge this branch to main before JD's visual approval.
+- Merged to main on 2026-11-11 (PR #36) on JD's authorization. Earlier text in this doc that says to wait for approval is historical.
 - UDS merges first (Hark is doing the field border at 3:1, border and glass checks in `check:contrast`, and shadow fallbacks on the UDS review branch). After JD approves the visuals, pin this site to the **UDS merge commit on main**. Do not pin to the review-branch commit c486502 for the final merge.
 - The design bundle is rebuilt from main after the merges, without the personal capture note. Leave it alone until then.
 
@@ -89,3 +89,12 @@ UDS PR #3 is merged at `808b457c106cc196e241a6f167646496d83f1961`. The site depe
 A genuine beginner cold test remains unperformed. No ten-minute completion promise is published. The starter article retains the existing shared placeholder illustration; a dedicated documentary image and the wider site image pass remain follow-up work. Local Chromium was retried and still fails with `socket() failed: Operation not permitted`. Mobile/full-page screenshots and a full light/dark visual audit remain incomplete; release authorization does not make those checks passed.
 
 Final release checks: ESLint passed (two existing gallery image warnings), design check passed, production webpack build passed, and TypeScript passed. Exact portrait file is present and included in the release.
+
+## Open after release
+
+- Cold end-to-end test of the starter guide, with a real note, and a real timing. The guide still says "about ten minutes".
+- 390px and 1440px screenshots, light and dark, plus keyboard, focus, touch-target and overflow checks. Not yet captured.
+- The starter guide still uses the "One front door" image, so two cards share a picture. Needs a real photo.
+- NOOP placement and Skills outcome: confirm.
+- PRs #35 and #32 and branch `review/beginner-priority-2026-11-12` overlap this work and are superseded by `main`; JD decides whether to close them.
+- UDS README still lists Notion as a source; that is a UDS-repo change.

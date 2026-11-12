@@ -1,8 +1,10 @@
 # jadenraats.com
 
-Jaden's personal site. The current public pages are Home, Guides (three articles),
-Skills Library, Daily Note, Resources, About, Case Study, and CaptureVault.
-`/skills` redirects to the Skills Library at `/prompt-lab`.
+Jaden's personal site. Guides lead the homepage, for people starting with AI,
+small-business owners, and people building their own systems. Public pages in the
+sitemap: Home, Guides, Writing, Systems, Skills Library, Daily Note, Resources,
+About, Case Study, Desk, CaptureVault and Photos. `/skills` redirects to the Skills
+Library at `/prompt-lab`. `/command-center` is unlisted and noindex.
 
 ## Stack and design
 
