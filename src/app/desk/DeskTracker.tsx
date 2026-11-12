@@ -121,7 +121,8 @@ function EquityChart({ series, start }: { series: [string, number][]; start: num
 
 export default function DeskTracker({ initial }: { initial: DeskData | null }) {
   const [data, setData] = useState<DeskData | null>(initial);
-  const [now, setNow] = useState(() => Date.now());
+  // Hydrate against the same snapshot clock; the first pull advances to live time.
+  const [now, setNow] = useState(initial ? new Date(initial.updatedAt).getTime() : 0);
 
   useEffect(() => {
     let alive = true;

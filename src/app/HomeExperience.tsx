@@ -197,7 +197,7 @@ function GuidesSection() {
                     <span className="home-guide-number">0{index + 1}</span>
                   </div>
                   <div className="home-guide-content">
-                    <span className="home-card-meta">GUIDE / {guide.readMinutes} MIN READ</span>
+                    <span className="home-card-meta">Guide / {guide.readMinutes} min read</span>
                     <h3>{guide.title}</h3>
                     <span className="home-card-action">Read the guide <span aria-hidden="true">↗</span></span>
                   </div>
@@ -221,7 +221,7 @@ function SkillsSection() {
           <h2 id="skills-title">Skills<br /><em>library.</em></h2>
           <p>Prompts and workflows you can copy, change, and put to work.</p>
           <Link href="/prompt-lab" className="btn btn-secondary">
-            BROWSE ALL {SKILLS.length} <span className="btn-arrow" aria-hidden="true">→</span>
+            Browse all {SKILLS.length} <span className="btn-arrow" aria-hidden="true">→</span>
           </Link>
         </Reveal>
         <div className="home-skills-list">

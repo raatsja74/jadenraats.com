@@ -21,7 +21,7 @@ export const GUIDES: Guide[] = [
   {
     "slug": "noop-whoop-without-subscription",
     "image": "/images/guides/noop-whoop-without-subscription.svg",
-    "title": "NOOP: Use Your WHOOP Without the Subscription",
+    "title": "NOOP: Use your WHOOP without the subscription",
     "tag": "tools",
     "summary": "An unofficial, local-first way to use a compatible WHOOP strap without a membership. What it does, how to try it, and where the limits are.",
     "readMinutes": 5,
