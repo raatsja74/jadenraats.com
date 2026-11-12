@@ -3,8 +3,16 @@ import CollageHome from "./CollageHome";
 import "./collage.css";
 
 export const metadata: Metadata = {
-  title: "Jaden Raats | I build AI systems that work in real life",
-  description: "Practical AI systems, step-by-step guides and experiments from Jaden Raats, tested in a real business.",
+  title: "JD Raats",
+  description: "JD Raats, from Phoenix to Bigfork. Guides, systems and small experiments, figured out in real life.",
+  openGraph: {
+    title: "JD Raats",
+    description: "JD Raats, from Phoenix to Bigfork. Guides, systems and small experiments, figured out in real life.",
+  },
+  twitter: {
+    title: "JD Raats",
+    description: "JD Raats, from Phoenix to Bigfork. Guides, systems and small experiments, figured out in real life.",
+  },
 };
 
 export default function HomePage() {

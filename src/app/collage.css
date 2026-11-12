@@ -205,3 +205,23 @@ body:has(.cx) { background: #ebe5d8; }
   .cx .cx-top nav { gap: 14px; padding-right: 8px; }
   .cx .cx-top nav a { font-size: 11px; letter-spacing: .06em; }
 }
+
+/* Final hero (JD's pick, 2026-11-12): faded serif JD tucked behind RAATS, mono CTA, hand caption, bigger Lab mark */
+.cx .cx-first {
+  position: relative; z-index: 0; display: block;
+  font-family: "CX Serif", Georgia, serif; font-style: italic; font-weight: 900; font-stretch: normal;
+  font-size: clamp(56px, 6vw, 88px); letter-spacing: -.02em; text-transform: none;
+  color: rgba(20, 18, 16, .16); margin: 0 0 -.62em .5em; line-height: 1;
+}
+.cx .cx-last { position: relative; z-index: 1; }
+.cx .cx-line { font-size: clamp(34px, 3.6vw, 50px); line-height: 1.1; max-width: 12.5em; margin: 22px 0 30px; }
+.cx .cx-btn { font-family: "CX Mono", monospace; font-weight: 600; font-size: 18px; letter-spacing: .14em; text-transform: uppercase; }
+.cx .cx-pola-card figcaption { font-family: "CX Hand", cursive; font-size: 24px; letter-spacing: .06em; text-transform: uppercase; padding: 14px 4px 18px; white-space: nowrap; }
+.cx .cx-mark img { width: 64px; height: 49px; margin: -2px 0 -14px; }
+@media (max-width: 600px) {
+  .cx .cx-first { font-size: 15vw; margin-left: .4em; }
+  .cx .cx-line { font-size: 31px; margin: 16px 0 24px; }
+  .cx .cx-btn { font-size: 15px; letter-spacing: .12em; padding: 14px 22px; }
+  .cx .cx-pola-card figcaption { font-size: 17px; padding: 10px 2px 12px; }
+  .cx .cx-mark img { width: 54px; height: 41px; margin: -2px 0 -12px; }
+}

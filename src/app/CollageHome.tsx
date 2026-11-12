@@ -38,7 +38,7 @@ export default function CollageHome() {
     <div className="cx">
       <header className="cx-top">
         <Link href="/" className="cx-mark" aria-label="JD Raats, home">
-          <img src="/home/lab-mark.webp" alt="" width="44" height="32" />
+          <img src="/home/lab-mark.png" alt="" width="142" height="108" />
           <span className="cx-mark-ast" aria-hidden="true">*</span>
         </Link>
         <nav aria-label="Primary">
@@ -59,11 +59,10 @@ export default function CollageHome() {
               </span>
             </h1>
             <p className="cx-line">
-              AI for <em>real life.</em>
+              Phoenix to Bigfork. Figuring out what works in <em>real life.</em>
             </p>
-            <p className="cx-sub">Useful guides, small experiments, and things I&apos;m building.</p>
             <Link href="/guides" className="cx-btn" style={{ clipPath: torn(5, 2.4, 40) }}>
-              Explore the guides <span aria-hidden="true">↗</span>
+              Explore the guides <span aria-hidden="true">→</span>
             </Link>
           </div>
 
@@ -78,7 +77,7 @@ export default function CollageHome() {
                 <div className="cx-pola-back" style={{ clipPath: torn(17, 3) }} />
                 <figure className="cx-pola-card">
                   <img src="/home/portrait.webp" alt="" draggable={false} />
-                  <figcaption>Notes from the workbench</figcaption>
+                  <figcaption>Built. Used. Fixed.</figcaption>
                 </figure>
                 <span className="cx-tape cx-tape-1" />
                 <span className="cx-tape cx-tape-2" />
