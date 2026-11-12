@@ -8,6 +8,21 @@ Modern, rounded, Apple-style. Neutral canvas (light and dark), white or graphite
 - Header: translucent bar with a saturate + blur backdrop, the one sanctioned blur.
 - Banned (pre-commit hook): Tailwind radius/shadow scale classes, backdrop-blur utility, glow blurs, purple palettes, Inter/Poppins, inline hex outside src/tokens/.
 
+## Audience and homepage priority (confirmed 2026-11-11)
+
+Serve all three audiences: everyday people starting with AI, small-business owners, and people already building with AI. Lead the homepage with beginners. The first-visit goal is one useful task in about ten minutes, using a guide the reader can follow immediately. Treat ten minutes as a design target, not a guarantee for every guide.
+
+Use one site with three browsing paths: Start here, Use it at work, Build your own. Guides lead; working systems provide supporting evidence. Keep the existing modern visual system. The first candidate guide turns a messy note into one clear next step, using the existing article template. Review visual changes on the review branch before merging to main.
+
+Decisions (2026-11-11, from JD):
+- Imagery: use the supplied monochrome portrait with its orange asterisk instead of the fishing illustration. Keep imagery black-and-white with orange cues. Apply the wider image pass after mobile review. Historical brand documents remain inspiration only.
+- No slogan on the homepage. Voice is humble, personable, plain English, low hype.
+- Provisional lead guide: "Turn a messy note into one clear next step". Its outcome and ten-minute timing are pending a cold end-to-end test; do not publish the homepage claim until that test passes.
+- Use it at work: "Follow-up that survives a Monday on a job site".
+- Build your own: "One front door" and "Write the rules down".
+- "NOOP: Use your WHOOP without the subscription" stays in the full Guides index (tag: tools) and is not placed in a homepage path; see docs/beginner-first-review.md for why.
+- Skills stay only if the simplified homepage gives them a clear purpose; a one-line link to a Skills sub page is the default.
+
 # Agent Command Center page
 
 ## NOOP article addition

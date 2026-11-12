@@ -11,10 +11,14 @@ export default function GuidesIndex() {
       <main className="min-h-screen bg-cream text-ink">
         <section className="mx-auto max-w-6xl px-6 pb-16 pt-32 sm:px-10 sm:pb-20 sm:pt-40">
           <div className="border-t border-line pt-10">
-            <p className="kicker kicker-accent">guides</p>
+            <p className="kicker kicker-accent">Guides</p>
             <h1 className="display mt-6 max-w-4xl text-5xl sm:text-6xl">
-              Free Guides to Learn AI
+              Practical guides to use AI
             </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-soft">
+              New to AI? Start with the first guide and one real task. Explore
+              business workflows and deeper builds when you are ready.
+            </p>
           </div>
         </section>
 
@@ -31,12 +35,13 @@ export default function GuidesIndex() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="kicker kicker-faint">
-                      {g.readMinutes} min
+                      {g.readMinutes} min read
                     </span>
                   </div>
                   <h2 className="display-sentence mt-8 text-2xl leading-tight sm:text-3xl">
                     {g.title}
                   </h2>
+                  <p className="mt-4 text-base leading-relaxed text-soft">{g.summary}</p>
                   <span className="kicker kicker-accent mt-8">
                     Read <span className="btn-arrow">→</span>
                   </span>
@@ -46,11 +51,11 @@ export default function GuidesIndex() {
           </ol>
 
           <aside
-            className="mt-10 card border-ink bg-surface p-6 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-8"
+            className="mt-10 card border-line bg-surface p-6 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-8"
             aria-label="More resources"
           >
             <div>
-              <p className="kicker kicker-accent">also</p>
+              <p className="kicker kicker-accent">Also</p>
               <h2 className="display mt-3 text-3xl sm:text-4xl">Resources</h2>
               <p className="mt-3 max-w-xl text-base leading-relaxed text-soft">
                 Skills library, daily note, CaptureVault map, and the rest of the public

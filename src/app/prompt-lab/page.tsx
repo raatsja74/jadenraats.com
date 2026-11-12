@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import PromptLab from "./PromptLab";
 
-const TITLE = "AI Skills Library | Jaden Raats";
+const TITLE = "AI skills library | Jaden Raats";
 const DESCRIPTION =
   "Copy prompts and skills to personalize your AI agent. Plain list, no sales copy.";
 

@@ -16,17 +16,17 @@ const LINKS = [
   { href: "/photos", label: "Photos", note: "A personal photo journal" },
   {
     href: "/guides",
-    label: "Free Guides to Learn AI",
+    label: "Free guides to learn AI",
     note: "Plain how-tos you can follow step by step",
   },
   {
     href: "/prompt-lab",
-    label: "AI Skills Library",
+    label: "AI skills library",
     note: "Copy prompts to personalize your AI agent",
   },
   {
     href: "/daily-note",
-    label: "Daily Note",
+    label: "Daily note",
     note: "One note per day, yesterday rolled forward",
   },
   {
