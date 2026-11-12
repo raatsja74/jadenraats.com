@@ -1,3 +1,5 @@
+> Release update: JD authorized publication on 2026-11-11 (America/Tijuana). The portrait is restored and UDS main is pinned at 808b457. Earlier hold instructions below are historical; see the authorized-release section in beginner-first-review.md.
+
 # Codex handoff: finish the beginner-first homepage
 
 Branch: `review/modern-visual-2026-11-11` (site repo `raatsja74/jadenraats.com`). Do not touch `main`.
@@ -47,3 +49,8 @@ You are finishing the beginner-first homepage work on `review/modern-visual-2026
 6. Open decisions for JD: confirm NOOP placement, confirm Skills outcome, confirm lead guide after the cold test.
 
 Commit to this branch with a clear message and push it. Do not claim approval, and do not claim anything was tested that was not.
+
+
+## Local continuation checkpoint
+
+See the mobile revision checkpoint in docs/beginner-first-review.md. Supply the exact portrait at public/images/jaden-portrait-mono-orange.jpg before pushing. The attachment path returned ENOENT after initial inspection. Do not substitute another image. Cold test and all after screenshots remain pending. Preserve latest remote documentation with a fresh-head check before advancing modern-visual.

@@ -15,6 +15,7 @@ Serve all three audiences: everyday people starting with AI, small-business owne
 Use one site with three browsing paths: Start here, Use it at work, Build your own. Guides lead; working systems provide supporting evidence. Keep the existing modern visual system. The first candidate guide turns a messy note into one clear next step, using the existing article template. Review visual changes on the review branch before merging to main.
 
 Decisions (2026-11-11, from JD):
+- Imagery: use the supplied monochrome portrait with its orange asterisk instead of the fishing illustration. Keep imagery black-and-white with orange cues. Apply the wider image pass after mobile review. Historical brand documents remain inspiration only.
 - No slogan on the homepage. Voice is humble, personable, plain English, low hype.
 - Provisional lead guide: "Turn a messy note into one clear next step". Its outcome and ten-minute timing are pending a cold end-to-end test; do not publish the homepage claim until that test passes.
 - Use it at work: "Follow-up that survives a Monday on a job site".

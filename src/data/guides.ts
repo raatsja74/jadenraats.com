@@ -23,7 +23,7 @@ export const GUIDES: Guide[] = [
     "image": "/images/guides/one-front-door.webp",
     "title": "Turn a messy note into one clear next step",
     "tag": "start here",
-    "summary": "Bring a rough note or a list that is stuck in your head. Use one prompt to sort it and choose a small action. Allow about ten minutes to try it.",
+    "summary": "Bring a rough note or a list that is stuck in your head. Use one prompt to sort it and choose a small action.",
     "readMinutes": 3,
     "published": "2026-11-11",
     "sections": [
