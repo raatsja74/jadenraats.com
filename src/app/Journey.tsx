@@ -197,7 +197,7 @@ export default function Journey() {
     <div className="jx">
       <section className="jx-intro" aria-label="About JD">
         <p>
-          Hey, I&apos;m JD. I run a floor coating business and split my time between Phoenix and Bigfork, Montana. This is a little of what I&apos;m
+          Hey, I&apos;m JD. I run a floor coating business and split my time between Bigfork, Montana and Phoenix. This is a little of what I&apos;m
           building, learning, and enjoying. Stick around a few minutes.
         </p>
       </section>

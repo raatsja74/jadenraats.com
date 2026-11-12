@@ -313,3 +313,14 @@ body:has(.cx) { background: #ebe5d8; }
   .jx-fold.is-open { animation: none; }
   .jx-scrap { transition: none; transform: none; }
 }
+
+/* Thin header, Lab hangs over it (JD, 2026-11-12) */
+.cx .cx-top { height: 40px; padding: 0 12px 0 14px; top: 10px; }
+.cx .cx-top nav a { padding: 10px 0; }
+.cx .cx-mark { position: relative; width: 62px; height: 40px; align-self: flex-start; }
+.cx .cx-mark img { position: absolute; left: 0; top: -6px; width: 62px; height: 68px; margin: 0; filter: drop-shadow(0 6px 8px rgba(40, 28, 16, .22)); }
+@media (max-width: 600px) {
+  .cx .cx-top { height: 36px; padding: 0 6px 0 10px; top: 8px; }
+  .cx .cx-mark { width: 52px; height: 36px; }
+  .cx .cx-mark img { top: -5px; width: 52px; height: 57px; }
+}

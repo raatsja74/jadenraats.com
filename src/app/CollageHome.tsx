@@ -52,7 +52,7 @@ export default function CollageHome() {
               </span>
             </h1>
             <p className="cx-line">
-              Phoenix to Bigfork. Figuring out what works in <em>real life.</em>
+              Bigfork to Phoenix. Figuring out what works in <em>real life.</em>
             </p>
             <Link href="/guides" className="cx-btn" style={{ clipPath: torn(5, 2.4, 40) }}>
               Explore the guides <span aria-hidden="true">→</span>
@@ -89,7 +89,7 @@ export default function CollageHome() {
           <Link href="/writing">Writing</Link>
           <a href="mailto:ai@jadenraats.com">Get in touch</a>
         </nav>
-        <span>Built in Phoenix and Bigfork.</span>
+        <span>Built in Bigfork and Phoenix.</span>
       </footer>
     </div>
   );
