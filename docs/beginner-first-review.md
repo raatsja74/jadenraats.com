@@ -37,6 +37,10 @@ These are code/build checks, not completed browser interaction or visual checks.
   - NOOP: see below.
 - **Skills** stay only if the simplified homepage gives them a clear job. Default: replace the four-card block with a one-line link to the Skills page. Keep the cards only if the mobile review shows they help a visitor choose a next step.
 
+### Imagery
+
+The starter guide reuses the "One front door" image, so two cards share a picture. Replace it with a real documentary photo from JD (no stock or AI-gradient art) before the homepage ships. A before and after SVG inside the article is optional, built after the real note exists.
+
 ### NOOP placement review
 
 Reviewed against the full article, not the summary. It is a how-to for owners of a compatible WHOOP strap: Bluetooth pairing, an unofficial GitHub project, WHOOP 4.0 supported and 5.0/MG limited, numbers that are estimates, noncommercial terms. The article itself says "You don't need AI to use a WHOOP for free"; the AI Coach is optional and needs the reader's own API key.

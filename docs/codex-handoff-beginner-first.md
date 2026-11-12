@@ -22,6 +22,8 @@ You are finishing the beginner-first homepage work on `review/modern-visual-2026
 
 **Step 2. Cold test of the lead guide.** Follow the starter guide exactly as a beginner would, with a real messy note and a stock AI chat. Record the actual time, whether the prompt works, and whether the outcome matches the page. Put the result in `docs/beginner-first-review.md`. If it fails or takes much longer than ten minutes, fix the guide or soften the wording, and tell JD. If you cannot run it, say so; do not mark it passed.
 
+**Step 2b. Starter guide image.** The starter guide currently reuses `/images/guides/one-front-door.webp`, so two cards share one picture on the homepage and the guides index. Do not generate stock or AI art to fix that. Keep the shared image only as a placeholder, and ask JD for a real documentary photo (for example a handwritten list or a rough note on a desk, checked for names and private details). When JD supplies it, add it as a small webp under `public/images/guides/`, point the guide at it, and write meaningful alt text. Optionally add a simple before and after SVG inside the article (messy note, then one clear next step) using UDS tokens only, built from the real note once it exists. No JR monogram, kayak mark or other brands' logos.
+
 **Step 3. Skills.** After the page is simplified, decide whether the Skills block earns its place. If not, replace it with the one-line link and keep the Skills page itself. Say which you chose and why.
 
 **Step 4. Stop for review.** Per the PRD, pause after the mobile draft. Do not do the wider desktop and documentation pass until JD has seen the mobile screenshots.
