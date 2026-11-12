@@ -372,3 +372,26 @@ html[data-site-theme="dark"] .jx-scraps { background: rgba(0, 0, 0, .18); }
 html[data-site-theme="dark"] .cx-pola-card { box-shadow: 0 22px 36px -18px rgba(0, 0, 0, .8); }
 html[data-site-theme="dark"] .cx-foot, html[data-site-theme="dark"] .cx footer { border-color: rgba(241, 235, 223, .5); }
 html[data-site-theme="dark"] .jx .jx-hand { color: #1f2a44; }
+
+/* Bigger portrait, more air above the header (JD, 2026-11-12) */
+.cx .cx-top { top: 20px; margin-top: 22px; }
+.cx .cx-mark img { top: -2px; }
+.cx-hero { padding-top: 44px; }
+.cx-collage { height: 600px; }
+.cx-pola { left: 14%; top: 0; width: 76%; }
+@media (max-width: 960px) {
+  .cx-collage { height: min(112vw, 680px); }
+  .cx-pola { left: 10%; width: 78%; }
+}
+@media (max-width: 600px) {
+  .cx .cx-top { top: 14px; margin-top: 16px; }
+  .cx .cx-mark img { top: -2px; }
+  .cx-hero { padding-top: 40px; }
+  .cx-collage { height: 108vw; }
+  .cx-pola { left: 7%; top: 1%; width: 84%; }
+  .cx .cx-pola-card figcaption { font-size: 22px; padding: 12px 2px 16px; }
+}
+.cx { padding-top: 22px; }
+.cx .cx-top { margin-top: 0; }
+.cx-desert-bg { -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 80%); mask-image: radial-gradient(ellipse at center, #000 55%, transparent 80%); }
+@media (max-width: 600px) { .cx { padding-top: 16px; } .cx .cx-top { margin-top: 0; } }
