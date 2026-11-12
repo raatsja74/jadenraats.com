@@ -35,103 +35,82 @@ function Reveal({
 }
 
 function Hero() {
-  const reduceMotion = useReducedMotion();
-  const enter = (delay: number) => ({
-    initial: reduceMotion ? false : { opacity: 0, y: 32 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.75, delay: reduceMotion ? 0 : delay, ease: "easeOut" as const },
-  });
-
   return (
-    <section id="top" className="home-cover" aria-labelledby="home-title">
-      <div className="home-cover-frame">
-        <div className="home-cover-meta">
-          <span>Field notes / 001</span>
-          <span>Phoenix, AZ · Built in the open</span>
+    <section id="top" className="home-start" aria-labelledby="home-title">
+      <div className="home-section-wrap home-start-layout">
+        <div className="home-start-copy">
+          <p className="home-start-eyebrow"><span aria-hidden="true">✱</span> A useful place to start</p>
+          <h1 id="home-title" className="home-start-title">
+            Give your tasks and ideas <span>one place to go.</span>
+          </h1>
+          <p className="home-start-description">
+            Notes in one app. Tasks in another. This guide shows how to choose
+            where new things go, so you can find them again.
+          </p>
+          <p className="home-start-byline">
+            I&apos;m Jaden. I share what I&apos;ve learned building useful systems
+            for my own business.
+          </p>
         </div>
 
-        <div className="home-cover-grid">
-          <div className="home-cover-copy">
-            <motion.p {...enter(0.05)} className="home-overline">
-              Owner / builder / the person who has to use it
-            </motion.p>
-
-            <h1 id="home-title" className="home-cover-title">
-              <motion.span {...enter(0.12)} className="home-cover-title-line">
-                Jaden
-              </motion.span>
-              <motion.span {...enter(0.22)} className="home-cover-title-line home-cover-title-last">
-                <em>Raats</em><span aria-hidden="true" className="home-title-mark">✱</span>
-              </motion.span>
-            </h1>
-
-            <motion.p {...enter(0.38)} className="home-cover-description">
-              I run a floor coating company in Phoenix. I build the AI systems
-              we use there. Start with the systems, guides, or skills below.
-            </motion.p>
-
-            <motion.div {...enter(0.5)} className="home-cover-actions">
-              <Link href="/systems" className="btn btn-primary">
-                See the systems <span className="btn-arrow" aria-hidden="true">→</span>
-              </Link>
-              <Link href="#guides" className="btn btn-secondary">
-                Read a guide <span className="btn-arrow" aria-hidden="true">↘</span>
-              </Link>
-            </motion.div>
-
-            <motion.p {...enter(0.62)} className="home-cover-footnote">
-              <span className="home-footnote-rule" aria-hidden="true" />
-              Real operations. Plain English. No magic tricks.
-            </motion.p>
-          </div>
-
-          <motion.figure
-            className="home-cover-art"
-            initial={reduceMotion ? false : { opacity: 0, rotate: 3 }}
-            animate={{ opacity: 1, rotate: 0 }}
-            transition={{ duration: 0.9, delay: reduceMotion ? 0 : 0.25, ease: "easeOut" }}
-          >
-            <div className="home-art-orange" aria-hidden="true" />
-            <span className="home-art-scribble" aria-hidden="true">↘</span>
-            <Image
-              src="/images/jaden-fishing.webp"
-              alt="Illustration of Jaden Raats holding a bass"
-              width={960}
-              height={1100}
-              priority
-              className="home-art-portrait"
-            />
-            <figcaption className="home-art-label">
-              <span>01 / The operator</span>
-              <span>Tested on a real Monday</span>
-            </figcaption>
-            <span className="home-art-stamp" aria-hidden="true">Built<br />Used<br />Fixed</span>
-          </motion.figure>
-        </div>
-
-        <div className="home-cover-index" aria-label="Explore the site">
-          <Link href="/systems"><span>01</span> Systems <span aria-hidden="true">↗</span></Link>
-          <Link href="#guides"><span>02</span> Guides <span aria-hidden="true">↗</span></Link>
-          <Link href="#lab"><span>03</span> Skills <span aria-hidden="true">↗</span></Link>
+        <div className="home-start-feature">
+          <p className="home-start-feature-label">Start here <span>·</span> 5 min read</p>
+          <h2>One front door: stop making AI guess your intent</h2>
+          <p>Choose two places to capture ideas and one home for what you save.</p>
+          <Link href="/guides/one-front-door" className="btn btn-primary home-start-cta">
+            Read guide <span aria-hidden="true">→</span>
+          </Link>
+          <span className="home-start-feature-note">Free guide. No special tools needed to read it.</span>
         </div>
       </div>
     </section>
   );
 }
 
-function SignalStrip() {
-  const phrases = ["Build it", "Use it", "Break it", "Fix it", "Show the work"];
+const BROWSING_PATHS = [
+  {
+    title: "Start here",
+    description: "Simplify how you save tasks and ideas.",
+    href: "/guides/one-front-door",
+    action: "Read the starter guide",
+  },
+  {
+    title: "Use it at work",
+    description: "Set a follow-up process that survives a busy day.",
+    href: "/guides/follow-up-that-survives-monday",
+    action: "Read the work guide",
+  },
+  {
+    title: "Build your own",
+    description: "Write simple rules before adding automation.",
+    href: "/guides/write-the-rules-down",
+    action: "Read the systems guide",
+  },
+] as const;
+
+function BrowsePaths() {
   return (
-    <div className="home-signal">
-      <span className="sr-only">Build it, use it, break it, fix it, show the work.</span>
-      {[0, 1].map((copy) => (
-        <div className="home-signal-track" key={copy} aria-hidden="true">
-          {phrases.map((phrase) => (
-            <span key={phrase}>{phrase}<b>✱</b></span>
+    <section className="home-paths" aria-labelledby="paths-title">
+      <div className="home-section-wrap">
+        <div className="home-paths-heading">
+          <div>
+            <p className="home-overline">Choose your next step</p>
+            <h2 id="paths-title">Three ways in. One site.</h2>
+          </div>
+          <Link href="/guides" className="home-text-link">See all guides <span aria-hidden="true">→</span></Link>
+        </div>
+        <div className="home-paths-grid">
+          {BROWSING_PATHS.map((path, index) => (
+            <Link href={path.href} className="home-path-card" key={path.title}>
+              <span className="home-path-number">0{index + 1}</span>
+              <h3>{path.title}</h3>
+              <p>{path.description}</p>
+              <span className="home-path-action">{path.action} <span aria-hidden="true">→</span></span>
+            </Link>
           ))}
         </div>
-      ))}
-    </div>
+      </div>
+    </section>
   );
 }
 
@@ -179,8 +158,8 @@ function GuidesSection() {
         <Reveal className="home-guides-head">
           <div>
             <p className="home-overline">No course. Just the steps.</p>
-            <h2 id="guides-title" className="home-section-title">Free guides<br /><em>to learn AI.</em></h2>
-            <p className="home-guides-summary">Short, practical steps from the tools I use at work.</p>
+            <h2 id="guides-title" className="home-section-title">More guides<br /><em>for what comes next.</em></h2>
+            <p className="home-guides-summary">Two next steps: make clear filing rules or improve customer follow-up.</p>
           </div>
           <Link href="/guides" className="home-text-link">
             All guides <span aria-hidden="true">↗</span>
@@ -188,7 +167,10 @@ function GuidesSection() {
         </Reveal>
 
         <ol className="home-guides-grid">
-          {GUIDES.map((guide, index) => (
+          {GUIDES.filter((guide) =>
+            guide.slug === "write-the-rules-down" ||
+            guide.slug === "follow-up-that-survives-monday"
+          ).map((guide, index) => (
             <li key={guide.slug}>
               <Reveal delay={index * 0.08} className="home-guide-reveal">
                 <Link href={`/guides/${guide.slug}`} className="home-guide-card">
@@ -199,7 +181,12 @@ function GuidesSection() {
                   <div className="home-guide-content">
                     <span className="home-card-meta">GUIDE / {guide.readMinutes} MIN READ</span>
                     <h3>{guide.title}</h3>
-                    <span className="home-card-action">Read the guide <span aria-hidden="true">↗</span></span>
+                    <p className="home-guide-outcome">
+                      {guide.slug === "write-the-rules-down"
+                        ? "Make a one-page rule for where notes, tasks and files belong."
+                        : "Plan how to reply to a new lead on a busy workday."}
+                    </p>
+                    <span className="home-card-action">Read guide <span aria-hidden="true">↗</span></span>
                   </div>
                 </Link>
               </Reveal>
@@ -286,9 +273,9 @@ export default function HomeExperience() {
       <Nav />
       <main>
         <Hero />
-        <SignalStrip />
-        <SystemsFeature />
+        <BrowsePaths />
         <GuidesSection />
+        <SystemsFeature />
         <SkillsSection />
       </main>
       <Footer />
