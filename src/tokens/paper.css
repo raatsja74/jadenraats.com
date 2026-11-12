@@ -1,0 +1,21 @@
+/* Approved warm paper palette, scoped to the personal homepage. */
+body:has(.cx) {
+  --paper-0: #ebe5d8;
+  --paper-1: #141210;
+  --paper-2: #efe9dd;
+  --paper-3: #f7f3eb;
+  --paper-4: #fbf8f1;
+  --paper-5: #e5501c;
+  --paper-6: #c9420f;
+  --paper-7: #fff;
+  --paper-8: #b23a0d;
+  --paper-9: #e2d9c6;
+  --paper-10: #e9e2d3;
+  --paper-11: #faf8f3;
+  --paper-12: #e8e4dc;
+  --paper-13: #2a2723;
+  --paper-14: #f3eee3;
+  --paper-15: #f6f1e6;
+  --paper-16: #4a443c;
+  --paper-17: #3a352f;
+}

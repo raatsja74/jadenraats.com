@@ -1,3 +1,5 @@
+> **2026-11-12 approved homepage exception:** The user approved Hark's paper collage layout with a pencil Labrador header mark, faint slanted JD behind RAATS, and the personal headline “A few things about me.” Publish authorization is explicit. `CollageHome.tsx` and `collage.css` own this warm-paper, light-only homepage. Preserve other routes, their modern UDS theme behavior, the original portrait asset, and Desk data/config. Earlier homepage visual holds are superseded for this release only.
+
 # jadenraats.com — Codex Agent Instructions
 
 ## Role

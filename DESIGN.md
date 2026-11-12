@@ -1,3 +1,5 @@
+> **2026-11-12 approved homepage exception:** The user approved Hark's paper collage layout with a pencil Labrador header mark, faint slanted JD behind RAATS, and the personal headline “A few things about me.” Publish authorization is explicit. `CollageHome.tsx` and `collage.css` own this warm-paper, light-only homepage. Preserve other routes, their modern UDS theme behavior, the original portrait asset, and Desk data/config. Earlier homepage visual holds are superseded for this release only.
+
 # Site design law (Nov 2026)
 
 Modern, rounded, Apple-style. Neutral canvas (light and dark), white or graphite cards, Jaden orange as the only accent, the asterisk as the mark. Shared palette, shape and depth live in the pinned UDS `jadenraats-modern` theme; site-specific raw colors live only in `src/tokens/modern.css`; everything else uses `--site-*`, `--uds-*` and `--modern-*` tokens.
