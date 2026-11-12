@@ -3,6 +3,7 @@
 // Created by Hark | 2026-11-12. Updated by Hark | 2026-11-12
 import Link from "next/link";
 import Journey from "./Journey";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Fine, irregular torn edge. Deterministic so server and client match.
 // Amplitude is in px so the tear reads the same on any element size.
@@ -39,6 +40,7 @@ export default function CollageHome() {
           <Link href="/systems">Systems</Link>
           <Link href="/prompt-lab">Lab</Link>
           <Link href="/about">About</Link>
+          <span className="cx-theme"><ThemeToggle /></span>
         </nav>
       </header>
 
