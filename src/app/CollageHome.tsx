@@ -2,7 +2,8 @@
 
 // Created by Hark | 2026-11-12. Updated by Hark | 2026-11-12
 import Link from "next/link";
-import { GUIDES } from "@/data/guides";
+import Journey from "./Journey";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Fine, irregular torn edge. Deterministic so server and client match.
 // Amplitude is in px so the tear reads the same on any element size.
@@ -27,25 +28,19 @@ function torn(seed: number, amp = 3, steps = 72, notch = 0.08) {
   return `polygon(${pts.join(",")})`;
 }
 
-const PICKS: { slug: string; art: string; label: string; title: string; line: string; seed: number; rot: number }[] = [
-  { slug: "turn-a-messy-note-into-a-next-step", art: "/home/g-note.webp", label: "Start here", title: "Turn a messy note into one clear next step", line: "One prompt. A clearer place to start.", seed: 11, rot: -0.5 },
-  { slug: "follow-up-that-survives-monday", art: "/home/g-followup.webp", label: "At work", title: "Follow-up that survives Monday", line: "Keep the next conversation moving.", seed: 23, rot: 0.4 },
-  { slug: "one-front-door", art: "/home/g-frontdoor.webp", label: "Build your own", title: "One front door", line: "Give your notes a place to land.", seed: 37, rot: -0.3 },
-];
-
 export default function CollageHome() {
   return (
     <div className="cx">
       <header className="cx-top">
         <Link href="/" className="cx-mark" aria-label="JD Raats, home">
-          <img src="/home/lab-mark.png" alt="" width="142" height="108" />
-          <span className="cx-mark-ast" aria-hidden="true">*</span>
+          <img src="/home/lab-logo.png" alt="" width="110" height="120" />
         </Link>
         <nav aria-label="Primary">
           <Link href="/guides">Guides</Link>
           <Link href="/systems">Systems</Link>
           <Link href="/prompt-lab">Lab</Link>
           <Link href="/about">About</Link>
+          <span className="cx-theme"><ThemeToggle /></span>
         </nav>
       </header>
 
@@ -59,7 +54,7 @@ export default function CollageHome() {
               </span>
             </h1>
             <p className="cx-line">
-              Phoenix to Bigfork. Figuring out what works in <em>real life.</em>
+              Bigfork to Phoenix. Figuring out what works in <em>real life.</em>
             </p>
             <Link href="/guides" className="cx-btn" style={{ clipPath: torn(5, 2.4, 40) }}>
               Explore the guides <span aria-hidden="true">→</span>
@@ -87,56 +82,16 @@ export default function CollageHome() {
           </div>
         </section>
 
-        <section className="cx-guides" aria-labelledby="cx-guides-title">
-          <div className="cx-guides-head">
-            <h2 id="cx-guides-title">
-              <em>Try something useful</em>
-            </h2>
-            <Link href="/guides" className="cx-more">
-              All guides <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-          <div className="cx-cards">
-            {PICKS.filter((p) => GUIDES.some((g) => g.slug === p.slug)).map(({ slug, art, label, title, line, seed, rot }) => (
-              <Link key={slug} href={`/guides/${slug}`} className="cx-card" style={{ ["--rot" as string]: `${rot}deg` }}>
-                <span className="cx-card-fringe" style={{ clipPath: torn(seed + 1, 3) }} aria-hidden="true" />
-                <span className="cx-card-paper" style={{ clipPath: torn(seed, 2.4) }}>
-                  <span className="cx-card-art">
-                    <img src={art} alt="" loading="lazy" />
-                  </span>
-                  <span className="cx-card-body">
-                    <span className="cx-card-meta">{label}</span>
-                    <span className="cx-card-title">{title}</span>
-                    <span className="cx-card-text">{line}</span>
-                  </span>
-                  <span className="cx-card-go" aria-hidden="true">→</span>
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="cx-bench" aria-labelledby="cx-bench-title">
-          <h2 id="cx-bench-title"><em>From the workbench</em></h2>
-          <Link href="/systems" className="cx-bench-row">
-            <img src="/home/gear.webp" alt="" />
-            <span className="cx-bench-name">Systems <span aria-hidden="true">→</span></span>
-            <span className="cx-bench-line">How I use AI at work</span>
-          </Link>
-          <Link href="/prompt-lab" className="cx-bench-row">
-            <img src="/home/flask.webp" alt="" />
-            <span className="cx-bench-name">Lab <span aria-hidden="true">→</span></span>
-            <span className="cx-bench-line">Small tools and experiments</span>
-          </Link>
-        </section>
+        <Journey />
       </main>
 
       <footer className="cx-foot">
         <nav aria-label="Footer">
           <Link href="/about">About</Link>
+          <Link href="/writing">Writing</Link>
           <a href="mailto:ai@jadenraats.com">Get in touch</a>
         </nav>
-        <span>Built in Phoenix and Bigfork.</span>
+        <span>Built in Bigfork and Phoenix.</span>
       </footer>
     </div>
   );
