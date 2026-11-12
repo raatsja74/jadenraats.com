@@ -1,8 +1,3 @@
 {
-  "git": {
-    "deploymentEnabled": {
-      "desk-data": false,
-      "review/modern-visual-2026-11-11": false
-    }
-  }
+  "git": { "deploymentEnabled": { "desk-data": false } }
 }
