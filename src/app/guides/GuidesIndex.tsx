@@ -13,8 +13,12 @@ export default function GuidesIndex() {
           <div className="border-t border-line pt-10">
             <p className="kicker kicker-accent">guides</p>
             <h1 className="display mt-6 max-w-4xl text-5xl sm:text-6xl">
-              Free Guides to Learn AI
+              Practical guides to use AI
             </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-soft">
+              New to AI? Start with the first guide and one real task. Explore
+              business workflows and deeper builds when you are ready.
+            </p>
           </div>
         </section>
 
@@ -31,12 +35,13 @@ export default function GuidesIndex() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="kicker kicker-faint">
-                      {g.readMinutes} min
+                      {g.readMinutes} min read
                     </span>
                   </div>
                   <h2 className="display-sentence mt-8 text-2xl leading-tight sm:text-3xl">
                     {g.title}
                   </h2>
+                  <p className="mt-4 text-base leading-relaxed text-soft">{g.summary}</p>
                   <span className="kicker kicker-accent mt-8">
                     Read <span className="btn-arrow">→</span>
                   </span>

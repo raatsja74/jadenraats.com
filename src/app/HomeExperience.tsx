@@ -53,7 +53,7 @@ function Hero() {
         <div className="home-cover-grid">
           <div className="home-cover-copy">
             <motion.p {...enter(0.05)} className="home-overline">
-              Owner / builder / the person who has to use it
+              Practical AI guides by Jaden Raats
             </motion.p>
 
             <h1 id="home-title" className="home-cover-title">
@@ -66,22 +66,22 @@ function Hero() {
             </h1>
 
             <motion.p {...enter(0.38)} className="home-cover-description">
-              I run a floor coating company in Phoenix. I build the AI systems
-              we use there. Start with the systems, guides, or skills below.
+              New to AI? Start with one useful task. Follow a short guide,
+              try it on something real, then explore what else you can do.
             </motion.p>
 
             <motion.div {...enter(0.5)} className="home-cover-actions">
-              <Link href="/systems" className="btn btn-primary">
-                See the systems <span className="btn-arrow" aria-hidden="true">→</span>
+              <Link href="/guides/turn-a-messy-note-into-a-next-step" className="btn btn-primary">
+                Try your first guide <span className="btn-arrow" aria-hidden="true">→</span>
               </Link>
               <Link href="#guides" className="btn btn-secondary">
-                Read a guide <span className="btn-arrow" aria-hidden="true">↘</span>
+                Browse all guides <span className="btn-arrow" aria-hidden="true">↘</span>
               </Link>
             </motion.div>
 
             <motion.p {...enter(0.62)} className="home-cover-footnote">
               <span className="home-footnote-rule" aria-hidden="true" />
-              Real operations. Plain English. No magic tricks.
+              Start with a messy note. Leave with a clear next step.
             </motion.p>
           </div>
 
@@ -110,9 +110,9 @@ function Hero() {
         </div>
 
         <div className="home-cover-index" aria-label="Explore the site">
-          <Link href="/systems"><span>01</span> Systems <span aria-hidden="true">↗</span></Link>
-          <Link href="#guides"><span>02</span> Guides <span aria-hidden="true">↗</span></Link>
-          <Link href="#lab"><span>03</span> Skills <span aria-hidden="true">↗</span></Link>
+          <Link href="#guides"><span>01</span> Start here <span aria-hidden="true">↗</span></Link>
+          <Link href="/systems"><span>02</span> Use it at work <span aria-hidden="true">↗</span></Link>
+          <Link href="#lab"><span>03</span> Build your own <span aria-hidden="true">↗</span></Link>
         </div>
       </div>
     </section>
@@ -140,11 +140,11 @@ function SystemsFeature() {
     <section id="systems" className="home-systems" aria-labelledby="systems-title">
       <div className="home-section-wrap">
         <Reveal className="home-section-topline">
-          <span>Field note / 01</span><span>Operations → automation</span>
+          <span>Field note / 02</span><span>Operations → automation</span>
         </Reveal>
         <div className="home-systems-grid">
           <Reveal className="home-systems-heading">
-            <p className="home-overline">This is the point</p>
+            <p className="home-overline">Use it at work</p>
             <h2 id="systems-title" className="home-section-title">
               Watch this <em>work.</em>
             </h2>
@@ -159,7 +159,7 @@ function SystemsFeature() {
         </div>
         <Reveal delay={0.15}>
           <Link href="/systems" className="home-system-card">
-            <span className="home-system-card-index">01 / Systems</span>
+            <span className="home-system-card-index">02 / Systems</span>
             <strong>Work that has to run</strong>
             <span className="home-system-card-arrow" aria-hidden="true">↗</span>
           </Link>
@@ -174,13 +174,13 @@ function GuidesSection() {
     <section id="guides" className="home-guides" aria-labelledby="guides-title">
       <div className="home-section-wrap">
         <Reveal className="home-section-topline">
-          <span>Field note / 02</span><span>Read it → try it</span>
+          <span>Field note / 01</span><span>Read it → try it</span>
         </Reveal>
         <Reveal className="home-guides-head">
           <div>
-            <p className="home-overline">No course. Just the steps.</p>
-            <h2 id="guides-title" className="home-section-title">Free guides<br /><em>to learn AI.</em></h2>
-            <p className="home-guides-summary">Short, practical steps from the tools I use at work.</p>
+            <p className="home-overline">Start here</p>
+            <h2 id="guides-title" className="home-section-title">One useful task.<br /><em>Then the next.</em></h2>
+            <p className="home-guides-summary">Begin with a simple task you can try in about ten minutes. Keep going with guides for work, tools, and your own systems.</p>
           </div>
           <Link href="/guides" className="home-text-link">
             All guides <span aria-hidden="true">↗</span>
@@ -197,8 +197,9 @@ function GuidesSection() {
                     <span className="home-guide-number">0{index + 1}</span>
                   </div>
                   <div className="home-guide-content">
-                    <span className="home-card-meta">GUIDE / {guide.readMinutes} MIN READ</span>
+                    <span className="home-card-meta">Guide / {guide.readMinutes} min read</span>
                     <h3>{guide.title}</h3>
+                    <p className="mt-4 text-base leading-relaxed text-soft">{guide.summary}</p>
                     <span className="home-card-action">Read the guide <span aria-hidden="true">↗</span></span>
                   </div>
                 </Link>
@@ -218,10 +219,10 @@ function SkillsSection() {
         <Reveal className="home-skills-intro">
           <span className="home-skills-topline">Field note / 03</span>
           <span className="home-skills-asterisk" aria-hidden="true">✱</span>
-          <h2 id="skills-title">Skills<br /><em>library.</em></h2>
+          <h2 id="skills-title">Build<br /><em>your own.</em></h2>
           <p>Prompts and workflows you can copy, change, and put to work.</p>
           <Link href="/prompt-lab" className="btn btn-secondary">
-            BROWSE ALL {SKILLS.length} <span className="btn-arrow" aria-hidden="true">→</span>
+            Browse all {SKILLS.length} <span className="btn-arrow" aria-hidden="true">→</span>
           </Link>
         </Reveal>
         <div className="home-skills-list">
@@ -287,8 +288,8 @@ export default function HomeExperience() {
       <main>
         <Hero />
         <SignalStrip />
-        <SystemsFeature />
         <GuidesSection />
+        <SystemsFeature />
         <SkillsSection />
       </main>
       <Footer />

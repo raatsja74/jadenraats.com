@@ -8,6 +8,12 @@ Modern, rounded, Apple-style. Neutral canvas (light and dark), white or graphite
 - Header: translucent bar with a saturate + blur backdrop, the one sanctioned blur.
 - Banned (pre-commit hook): Tailwind radius/shadow scale classes, backdrop-blur utility, glow blurs, purple palettes, Inter/Poppins, inline hex outside src/tokens/.
 
+## Audience and homepage priority (confirmed 2026-11-11)
+
+Serve all three audiences: everyday people starting with AI, small-business owners, and people already building with AI. Lead the homepage with beginners. The first-visit goal is one useful task in about ten minutes, using a guide the reader can follow immediately. Treat ten minutes as a design target, not a guarantee for every guide.
+
+Use one site with three browsing paths: Start here, Use it at work, Build your own. Guides lead; working systems provide supporting evidence. Keep the existing modern visual system. The first candidate guide turns a messy note into one clear next step, using the existing article template. Review visual changes on the review branch before merging or deployment.
+
 # Agent Command Center page
 
 ## NOOP article addition

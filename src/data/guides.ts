@@ -19,6 +19,73 @@ export type Guide = {
 /** First AI playbooks for business owners. Every claim has to survive a real Monday. */
 export const GUIDES: Guide[] = [
   {
+    "slug": "turn-a-messy-note-into-a-next-step",
+    "image": "/images/guides/one-front-door.webp",
+    "title": "Turn a messy note into one clear next step",
+    "tag": "start here",
+    "summary": "Bring a rough note or a list that is stuck in your head. Use one prompt to sort it and choose a small action. Allow about ten minutes to try it.",
+    "readMinutes": 3,
+    "published": "2026-11-11",
+    "sections": [
+      {
+        "type": "p",
+        "text": "You do not need an automation or a collection of prompts to start. Use an AI chat you already have and a note you actually want help with. The goal is one clear next action."
+      },
+      {
+        "type": "h2",
+        "text": "1. Pick one small mess"
+      },
+      {
+        "type": "p",
+        "text": "Use a rough to-do list, a voice-note transcript, or a paragraph about something you keep putting off. Leave out passwords, account details, and anything you do not want to share with that chat service."
+      },
+      {
+        "type": "h2",
+        "text": "2. Paste this prompt above your note"
+      },
+      {
+        "type": "callout",
+        "text": "Help me turn this note into one useful next step. Briefly separate facts, tasks, and open questions. Keep my meaning and do not invent dates, commitments, or missing details. Pick one action I can finish in ten minutes or less. If you need information to choose it, ask me one question. Keep the answer short. Here is my note: [paste your note]"
+      },
+      {
+        "type": "h2",
+        "text": "3. Check what it gave you"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Did it keep the meaning of your note? Correct anything it misunderstood.",
+          "Did it invent a deadline or assume you agreed to something? Remove it.",
+          "Is the next action small and specific? If not, ask: \u201cWhat is the first thing I can actually do?\u201d"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "A small example"
+      },
+      {
+        "type": "p",
+        "text": "Example note: \u201cNeed to get the bike fixed. Not sure which shop. Keep forgetting to check when they open.\u201d A useful next action could be: \u201cFind the opening hours for one nearby bike shop and save its number.\u201d The AI should not claim the shop is open unless it has checked a current source."
+      },
+      {
+        "type": "h2",
+        "text": "4. Do the action"
+      },
+      {
+        "type": "p",
+        "text": "Finish that one step, or put it in the task list you already use. You are done when the note has led to an action you understand and can carry out. A longer AI answer is not the goal."
+      },
+      {
+        "type": "h2",
+        "text": "Use the same approach at work"
+      },
+      {
+        "type": "p",
+        "text": "Once this feels useful, try it on your own meeting notes or a project list you are allowed to share. Keep reviewing the output before making commitments or sending anything to another person."
+      }
+    ]
+  },
+  {
     "slug": "noop-whoop-without-subscription",
     "image": "/images/guides/noop-whoop-without-subscription.svg",
     "title": "NOOP: Use Your WHOOP Without the Subscription",
