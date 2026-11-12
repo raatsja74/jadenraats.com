@@ -74,15 +74,15 @@
   display: block;
   width: 100%;
   margin: 0;
-  font-size: clamp(5.5rem, 10.2vw, 11rem);
+  font-size: clamp(2.5rem, 4.6vw, 5rem);
   font-weight: 400;
   letter-spacing: -0.035em;
-  line-height: 0.83;
+  line-height: 1.08;
 }
 
 .home-cover-title-line {
   display: block;
-  width: max-content;
+  width: auto;
   max-width: 100%;
 }
 
@@ -548,7 +548,7 @@
 @media (max-width: 1000px) {
   .home-cover-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); }
   .home-cover-copy { padding: 2rem; }
-  .home-cover-title { font-size: clamp(4.75rem, 10vw, 8rem); }
+  .home-cover-title { font-size: clamp(2.5rem, 4.6vw, 5rem); }
   .home-art-stamp { right: 1%; }
 }
 
@@ -556,7 +556,7 @@
   .home-cover { padding: 5.5rem 1.25rem 4rem; }
   .home-cover-grid { grid-template-columns: 1fr; }
   .home-cover-copy { padding: 2.5rem 2rem; }
-  .home-cover-title { font-size: clamp(5rem, 16vw, 8rem); }
+  .home-cover-title { font-size: clamp(2.5rem, 7vw, 4rem); }
   .home-cover-art { display: flex; flex-direction: column; justify-content: flex-end; min-height: 0; border-top: var(--uds-border-width-strong) solid var(--site-border); border-left: 0; }
   .home-art-orange { inset: 9% 15% 6% 15%; }
   .home-art-portrait { position: relative; right: auto; bottom: auto; width: 100%; max-height: none; margin-top: 1rem; }
@@ -577,7 +577,7 @@
   .home-cover-meta span:last-child { text-align: right; }
   .home-cover-copy { padding: 2rem 1.25rem; }
   .home-cover-copy .home-overline { margin-bottom: 1.5rem; }
-  .home-cover-title { font-size: clamp(4rem, 18vw, 6.5rem); }
+  .home-cover-title { font-size: clamp(2rem, 8vw, 3rem); }
   .home-cover-description { margin-top: 1.75rem; }
   .home-cover-actions { width: 100%; }
   .home-cover-actions .btn { flex: 1 1 100%; }
@@ -640,3 +640,28 @@
 .home-skill-row:is(:hover, :focus-visible) :is(.home-skill-index, .home-skill-name small) { color: var(--site-text-secondary); }
 .home-cover-title, .home-section-title, .home-skills-intro h2, .home-footer p, .home-system-card strong { font-weight: 700; letter-spacing: -0.045em; }
 .home-cover-title em, .home-section-title em, .home-skills-intro h2 em, .home-footer p em { font-style: normal; color: var(--uds-color-action-primary); }
+
+/* Keep the first task readable before the portrait and supporting proof. */
+.home-cover-title { letter-spacing: -0.035em; }
+.home-cover-title-last { display: block; }
+.home-paths { padding: 0 2rem 3rem; }
+.home-paths h2 { margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700; }
+.home-paths .home-cover-index { border: 0; gap: 0.75rem; }
+.home-paths .home-cover-index a {
+  border: 0;
+  border-radius: var(--modern-radius-inner);
+  background: var(--site-surface-elevated);
+}
+@media (max-width: 760px) {
+  .home-cover-grid { min-height: 0; }
+  .home-cover-art { display: none; }
+  .home-paths { padding-inline: 1.25rem; }
+  .home-paths .home-cover-index { grid-template-columns: 1fr; }
+  .home-paths .home-cover-index a { padding: 1rem; font-size: 1rem; }
+}
+@media (max-width: 600px) {
+  .home-cover-copy .home-overline { margin-bottom: 1rem; }
+  .home-cover-description { margin-top: 1.25rem; }
+  .home-cover-actions { margin-top: 1.25rem; }
+  .home-cover-footnote { margin-top: 1.25rem; }
+}

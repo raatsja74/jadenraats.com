@@ -58,16 +58,16 @@ function Hero() {
 
             <h1 id="home-title" className="home-cover-title">
               <motion.span {...enter(0.12)} className="home-cover-title-line">
-                Jaden
+                Turn a messy note
               </motion.span>
               <motion.span {...enter(0.22)} className="home-cover-title-line home-cover-title-last">
-                <em>Raats</em><span aria-hidden="true" className="home-title-mark">✱</span>
+                into a clear next step.
               </motion.span>
             </h1>
 
             <motion.p {...enter(0.38)} className="home-cover-description">
-              New to AI? Start with one useful task. Follow a short guide,
-              try it on something real, then explore what else you can do.
+              New to AI? Bring a note from your day. Follow the guide to turn it
+              into one small action you can take.
             </motion.p>
 
             <motion.div {...enter(0.5)} className="home-cover-actions">
@@ -81,7 +81,7 @@ function Hero() {
 
             <motion.p {...enter(0.62)} className="home-cover-footnote">
               <span className="home-footnote-rule" aria-hidden="true" />
-              Start with a messy note. Leave with a clear next step.
+              A simple prompt, a worked example, and a check before you act.
             </motion.p>
           </div>
 
@@ -109,29 +109,21 @@ function Hero() {
           </motion.figure>
         </div>
 
-        <div className="home-cover-index" aria-label="Explore the site">
-          <Link href="#guides"><span>01</span> Start here <span aria-hidden="true">↗</span></Link>
-          <Link href="/systems"><span>02</span> Use it at work <span aria-hidden="true">↗</span></Link>
-          <Link href="#lab"><span>03</span> Build your own <span aria-hidden="true">↗</span></Link>
-        </div>
       </div>
     </section>
   );
 }
 
-function SignalStrip() {
-  const phrases = ["Build it", "Use it", "Break it", "Fix it", "Show the work"];
+function BrowsingPaths() {
   return (
-    <div className="home-signal">
-      <span className="sr-only">Build it, use it, break it, fix it, show the work.</span>
-      {[0, 1].map((copy) => (
-        <div className="home-signal-track" key={copy} aria-hidden="true">
-          {phrases.map((phrase) => (
-            <span key={phrase}>{phrase}<b>✱</b></span>
-          ))}
-        </div>
-      ))}
-    </div>
+    <nav className="home-paths home-section-wrap" aria-labelledby="home-paths-title">
+      <h2 id="home-paths-title">Choose what to try next</h2>
+      <div className="home-cover-index">
+        <Link href="/guides"><span>01</span> Start here <span aria-hidden="true">↗</span></Link>
+        <Link href="/systems"><span>02</span> Use it at work <span aria-hidden="true">↗</span></Link>
+        <Link href="#lab"><span>03</span> Build your own <span aria-hidden="true">↗</span></Link>
+      </div>
+    </nav>
   );
 }
 
@@ -287,8 +279,8 @@ export default function HomeExperience() {
       <Nav />
       <main>
         <Hero />
-        <SignalStrip />
         <GuidesSection />
+        <BrowsingPaths />
         <SystemsFeature />
         <SkillsSection />
       </main>
