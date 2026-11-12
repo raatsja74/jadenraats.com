@@ -5,8 +5,8 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
 const LINKS = [
-  ["systems", "/systems"],
   ["guides", "/guides"],
+  ["systems", "/systems"],
   ["writing", "/writing"],
   ["skills library", "/prompt-lab"],
   ["daily note", "/daily-note"],
@@ -36,7 +36,7 @@ export default function Nav() {
         </Link>
 
         <div className="hidden min-[1060px]:flex min-[1060px]:items-center min-[1060px]:gap-1">
-          {LINKS.filter(([, href]) => href !== "/prompt-lab").map(([label, href]) => (
+          {LINKS.filter(([, href]) => href !== "/guides").map(([label, href]) => (
             <Link key={href + label} href={href} className={linkCls}>
               {label}
             </Link>
@@ -45,10 +45,10 @@ export default function Nav() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="/prompt-lab"
-            className="flex min-h-[var(--uds-layout-touch-target-min)] items-center gap-1.5 self-center rounded-[var(--modern-radius-pill)] bg-accent px-4 text-sm font-semibold text-action transition-[filter] duration-200 hover:brightness-95"
+            href="/guides"
+            className="flex min-h-[var(--uds-layout-touch-target-min)] items-center gap-1.5 self-center rounded-[var(--modern-radius-pill)] border border-line bg-surface px-4 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-ink/5"
           >
-            <span aria-hidden="true">*</span><span className="hidden min-[375px]:inline">Skills Library</span><span className="min-[375px]:hidden">Skills</span>
+            Guides
           </Link>
 
           <ThemeToggle />
