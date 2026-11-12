@@ -1,7 +1,7 @@
 # Beginner-first homepage review
 
 Owner: Codex. Checkpoint: 2026-11-11, America/Phoenix.
-Status: release authorized by JD on 2026-11-11 (America/Tijuana); final checks and deployment in progress. Earlier checkpoints below are historical.
+Status: release authorized by JD on 2026-11-11 (America/Tijuana); production deployment READY and custom-domain render verified on 2026-11-12. Earlier checkpoints below are historical.
 Base: `review/modern-visual-2026-11-11` (latest pushed commit: see `git log`). Updated 2026-11-11 with JD's decisions below.
 
 ## Decision and implementation
@@ -92,9 +92,15 @@ Final release checks: ESLint passed (two existing gallery image warnings), desig
 
 ## Open after release
 
-- Cold end-to-end test of the starter guide, with a real note, and a real timing. The guide still says "about ten minutes".
+- Cold end-to-end test with a synthetic/nonprivate note remains open. The published summary has no ten-minute completion promise. The prompt requests an action that takes ten minutes or less.
 - 390px and 1440px screenshots, light and dark, plus keyboard, focus, touch-target and overflow checks. Not yet captured.
 - The starter guide still uses the "One front door" image, so two cards share a picture. Needs a real photo.
-- NOOP placement and Skills outcome: confirm.
+- Settled in the November 12 handoff: keep NOOP in the full index and Skills as one link.
 - PRs #35 and #32 and branch `review/beginner-priority-2026-11-12` overlap this work and are superseded by `main`; JD decides whether to close them.
 - UDS README still lists Notion as a source; that is a UDS-repo change.
+
+## Verified continuation, November 12, 2026
+
+Vercel production deployment `dpl_5NWTXpwXMDtBKZEesZMUowQoJWwg` is READY at site commit `41059c5926906762e242187f922a3a50d820422d`, with `jadenraats.com` assigned and no alias error. A fresh cloud browser opened the custom domain and showed the approved starter-first homepage and exact portrait. Light and dark homepage screenshots were inspected at the available desktop viewport. The starter CTA opens the correct article and preserves dark mode. This resolves the previously reported stale homepage extraction mismatch for the inspected browser session. Mobile widths, full accessibility audit, Lighthouse and the cold test remain unverified.
+
+PR #37 reconciles documentation. PR #35 is an alternative earlier homepage draft superseded by #36. PR #32 contains overlapping surface/hydration work already carried into the release and remains an archived review candidate, not an instruction to merge its homepage. Preserve both PRs and branches.
