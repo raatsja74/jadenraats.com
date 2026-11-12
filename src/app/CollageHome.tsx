@@ -32,8 +32,7 @@ export default function CollageHome() {
     <div className="cx">
       <header className="cx-top">
         <Link href="/" className="cx-mark" aria-label="JD Raats, home">
-          <img src="/home/lab-mark.png" alt="" width="142" height="108" />
-          <span className="cx-mark-ast" aria-hidden="true">*</span>
+          <img src="/home/lab-logo.png" alt="" width="110" height="120" />
         </Link>
         <nav aria-label="Primary">
           <Link href="/guides">Guides</Link>
