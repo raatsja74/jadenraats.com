@@ -36,11 +36,11 @@ const PICKS: { slug: string; art: string; label: string; title: string; line: st
   { slug: "one-front-door", art: "/home/g-frontdoor.webp", label: "Build your own", title: "One front door", line: "Give your notes a place to land.", seed: 37, rot: -0.3 },
 ];
 
-const STICKERS = ["bass", "mascot"] as const;
+const STICKERS = ["bass"] as const;
 type StickerId = (typeof STICKERS)[number];
 
 export default function CollageHome() {
-  const [pos, setPos] = useState<Record<StickerId, Offset>>({ bass: { x: 0, y: 0 }, mascot: { x: 0, y: 0 } });
+  const [pos, setPos] = useState<Record<StickerId, Offset>>({ bass: { x: 0, y: 0 } });
   const drag = useRef<{ id: StickerId; sx: number; sy: number; ox: number; oy: number } | null>(null);
 
   const onDown = useCallback(
@@ -112,9 +112,6 @@ export default function CollageHome() {
 
             <div className="cx-drag cx-bass" style={{ transform: `translate(${pos.bass.x}px, ${pos.bass.y}px) rotate(-10deg)` }} onPointerDown={onDown("bass")} onPointerMove={onMove} onPointerUp={onUp}>
               <img src="/home/bass.webp" alt="" draggable={false} />
-            </div>
-            <div className="cx-drag cx-mascot" style={{ transform: `translate(${pos.mascot.x}px, ${pos.mascot.y}px) rotate(6deg)` }} onPointerDown={onDown("mascot")} onPointerMove={onMove} onPointerUp={onUp}>
-              <img src="/home/mascot.webp" alt="" draggable={false} />
             </div>
           </div>
         </section>
