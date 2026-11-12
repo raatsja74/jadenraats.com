@@ -1,6 +1,6 @@
 /* Collage homepage draft. Created by Hark | 2026-11-12 */
 @font-face { font-family: "CX Anton"; src: url("/fonts/Anton-400.woff2") format("woff2"); font-display: swap; }
-@font-face { font-family: "CX Block"; src: url("/fonts/Archivo-900-wdth.woff2") format("woff2"); font-weight: 900; font-stretch: 62% 125%; font-display: swap; }
+@font-face { font-family: "CX Block"; src: url("/fonts/Archivo-var.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
 @font-face { font-family: "CX Serif"; src: url("/fonts/PlayfairDisplay-500.woff2") format("woff2"); font-weight: 400 600; font-display: swap; }
 @font-face { font-family: "CX Serif"; src: url("/fonts/PlayfairDisplay-900i.woff2") format("woff2"); font-style: italic; font-weight: 700 900; font-display: swap; }
 @font-face { font-family: "CX Mono"; src: url("/fonts/IBMPlexMono-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
@@ -37,7 +37,7 @@ body:has(.cx) { background: #ebe5d8; }
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
   border-bottom: 1.5px solid var(--ink);
 }
-.cx-mark { font-family: "CX Block", "CX Anton", Impact, sans-serif; font-weight: 900; font-stretch: 70%; font-size: 30px; letter-spacing: .06em; line-height: 1; }
+.cx-mark { font-family: "CX Block", sans-serif; font-weight: 700; font-stretch: 80%; font-size: 24px; letter-spacing: .18em; line-height: 1; }
 .cx-mark span { color: var(--orange); font-family: "CX Serif", serif; font-style: italic; font-weight: 900; font-size: 1.3em; margin-left: 4px; vertical-align: -0.12em; }
 .cx-top nav { display: flex; gap: 34px; }
 .cx-top nav a { font-weight: 600; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; padding: 10px 0; }
@@ -46,12 +46,12 @@ body:has(.cx) { background: #ebe5d8; }
 /* Hero */
 .cx-hero {
   max-width: 1240px; margin: 0 auto; padding: 34px 40px 18px;
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 20px; align-items: center;
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 28px; align-items: center;
 }
 .cx-name { margin: 0; line-height: .86; }
-.cx-first { display: block; font-family: "CX Block", "CX Anton", Impact, sans-serif; font-weight: 900; font-stretch: 70%; font-size: clamp(120px, 14vw, 210px); letter-spacing: -.01em; text-transform: uppercase; }
-.cx-last { display: block; font-family: "CX Serif", Georgia, serif; font-style: italic; font-weight: 900; font-size: clamp(88px, 10.4vw, 156px); text-transform: uppercase; letter-spacing: -.02em; margin-top: 4px; }
-.cx-ast { color: var(--orange); font-style: normal; font-family: "CX Anton", sans-serif; font-size: .82em; margin-left: .04em; vertical-align: .08em; }
+.cx-first { display: block; font-family: "CX Block", sans-serif; font-weight: 700; font-stretch: 80%; font-size: clamp(44px, 4.6vw, 66px); line-height: 1; letter-spacing: .18em; margin: 0 0 8px .12em; text-transform: uppercase; }
+.cx-last { display: block; font-family: "CX Serif", Georgia, serif; font-style: italic; font-weight: 900; font-size: clamp(100px, 11.2vw, 164px); text-transform: uppercase; letter-spacing: -.02em; }
+.cx-ast { color: var(--orange); font-style: normal; font-family: "CX Block", sans-serif; font-weight: 900; font-stretch: 70%; font-size: .82em; margin-left: .04em; vertical-align: .08em; }
 .cx-line { font-family: "CX Serif", Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.08; margin: 22px 0 30px; max-width: 13em; letter-spacing: -.01em; }
 .cx-line em { font-style: italic; font-weight: 900; position: relative; white-space: nowrap; }
 .cx-line em::after {
@@ -150,8 +150,8 @@ body:has(.cx) { background: #ebe5d8; }
   .cx-top nav { gap: 16px; }
   .cx-top nav a { font-size: 12px; letter-spacing: .08em; }
   .cx-hero { padding: 22px 20px 10px; }
-  .cx-first { font-size: 34vw; }
-  .cx-last { font-size: 23vw; }
+  .cx-first { font-size: 12vw; }
+  .cx-last { font-size: 24vw; }
   .cx-line { font-size: 30px; margin: 18px 0 24px; }
   .cx-btn { padding: 12px 18px; }
   .cx-btn-primary { font-size: 17px; }
