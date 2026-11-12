@@ -1,6 +1,8 @@
 /* Site aliases consume the canonical UDS modern theme. */
 html[data-uds-theme="jadenraats-modern"] {
   --modern-positive: #1E9E5A;
+  /* Accessible ink for text on the orange action; UDS governance pending. */
+  --site-on-accent: #1D1D1F;
   --modern-radius-card: var(--uds-radius-card);
   --modern-radius-inner: var(--uds-radius-inner);
   --modern-radius-small: var(--uds-radius-small);
