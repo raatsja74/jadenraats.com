@@ -30,10 +30,10 @@ function torn(seed: number, amp = 3, steps = 72, notch = 0.08) {
   return `polygon(${pts.join(",")})`;
 }
 
-const PICKS: { slug: string; art: string; seed: number; rot: number }[] = [
-  { slug: "turn-a-messy-note-into-a-next-step", art: "/home/guide-note.webp", seed: 11, rot: -0.8 },
-  { slug: "follow-up-that-survives-monday", art: "/home/guide-followup.webp", seed: 23, rot: 0.5 },
-  { slug: "write-the-rules-down", art: "/home/guide-rules.webp", seed: 37, rot: -0.4 },
+const PICKS: { slug: string; art: string; label: string; title: string; line: string; seed: number; rot: number }[] = [
+  { slug: "turn-a-messy-note-into-a-next-step", art: "/home/g-note.webp", label: "Start here", title: "Turn a messy note into one clear next step", line: "One prompt. A clearer place to start.", seed: 11, rot: -0.5 },
+  { slug: "follow-up-that-survives-monday", art: "/home/g-followup.webp", label: "At work", title: "Follow-up that survives Monday", line: "Keep the next conversation moving.", seed: 23, rot: 0.4 },
+  { slug: "one-front-door", art: "/home/g-frontdoor.webp", label: "Build your own", title: "One front door", line: "Give your notes a place to land.", seed: 37, rot: -0.3 },
 ];
 
 const STICKERS = ["bass", "mascot"] as const;
@@ -59,7 +59,6 @@ export default function CollageHome() {
     drag.current = null;
   }, []);
 
-  const guides = PICKS.map((p) => ({ ...p, g: GUIDES.find((x) => x.slug === p.slug) })).filter((p) => p.g);
 
   return (
     <div className="cx">
@@ -85,10 +84,11 @@ export default function CollageHome() {
               </span>
             </h1>
             <p className="cx-line">
-              I build AI systems that work in <em>real life.</em>
+              AI for <em>real life.</em>
             </p>
+            <p className="cx-sub">Useful guides, small experiments, and things I&apos;m building.</p>
             <Link href="/guides" className="cx-btn" style={{ clipPath: torn(5, 2.4, 40) }}>
-              Explore the guides <span aria-hidden="true">→</span>
+              Explore the guides <span aria-hidden="true">↗</span>
             </Link>
           </div>
 
@@ -103,7 +103,7 @@ export default function CollageHome() {
                 <div className="cx-pola-back" style={{ clipPath: torn(17, 3) }} />
                 <figure className="cx-pola-card">
                   <img src="/home/portrait.webp" alt="" draggable={false} />
-                  <figcaption>Built. Used. Fixed.</figcaption>
+                  <figcaption>Notes from the workbench</figcaption>
                 </figure>
                 <span className="cx-tape cx-tape-1" />
                 <span className="cx-tape cx-tape-2" />
@@ -122,42 +122,51 @@ export default function CollageHome() {
         <section className="cx-guides" aria-labelledby="cx-guides-title">
           <div className="cx-guides-head">
             <h2 id="cx-guides-title">
-              Start with a <em>guide</em>
+              <em>Try something useful</em>
             </h2>
             <Link href="/guides" className="cx-more">
-              All guides <span aria-hidden="true">→</span>
+              All guides <span aria-hidden="true">↗</span>
             </Link>
           </div>
           <div className="cx-cards">
-            {guides.map(({ g, art, seed, rot }, i) => (
-              <Link key={g!.slug} href={`/guides/${g!.slug}`} className="cx-card" style={{ ["--rot" as string]: `${rot}deg` }}>
-                <span className="cx-card-fringe" style={{ clipPath: torn(seed + 1, 3.2) }} aria-hidden="true" />
-                <span className="cx-card-paper" style={{ clipPath: torn(seed, 2.6) }}>
+            {PICKS.filter((p) => GUIDES.some((g) => g.slug === p.slug)).map(({ slug, art, label, title, line, seed, rot }) => (
+              <Link key={slug} href={`/guides/${slug}`} className="cx-card" style={{ ["--rot" as string]: `${rot}deg` }}>
+                <span className="cx-card-fringe" style={{ clipPath: torn(seed + 1, 3) }} aria-hidden="true" />
+                <span className="cx-card-paper" style={{ clipPath: torn(seed, 2.4) }}>
                   <span className="cx-card-art">
-                    <img src={art} alt="" />
+                    <img src={art} alt="" loading="lazy" />
                   </span>
-                  <span className="cx-card-meta">
-                    <span className="cx-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
-                    {g!.tag} · {g!.readMinutes} min
+                  <span className="cx-card-body">
+                    <span className="cx-card-meta">{label}</span>
+                    <span className="cx-card-title">{title}</span>
+                    <span className="cx-card-text">{line}</span>
                   </span>
-                  <span className="cx-card-title">{g!.title}</span>
-                  <span className="cx-card-text">{g!.summary}</span>
-                  <span className="cx-card-go">
-                    Read the guide <span aria-hidden="true">→</span>
-                  </span>
+                  <span className="cx-card-go" aria-hidden="true">→</span>
                 </span>
               </Link>
             ))}
           </div>
         </section>
+
+        <section className="cx-bench" aria-labelledby="cx-bench-title">
+          <h2 id="cx-bench-title"><em>From the workbench</em></h2>
+          <Link href="/systems" className="cx-bench-row">
+            <img src="/home/gear.webp" alt="" />
+            <span className="cx-bench-name">Systems <span aria-hidden="true">→</span></span>
+            <span className="cx-bench-line">How I use AI at work</span>
+          </Link>
+          <Link href="/prompt-lab" className="cx-bench-row">
+            <img src="/home/flask.webp" alt="" />
+            <span className="cx-bench-name">Lab <span aria-hidden="true">→</span></span>
+            <span className="cx-bench-line">Small tools and experiments</span>
+          </Link>
+        </section>
       </main>
 
       <footer className="cx-foot">
         <nav aria-label="Footer">
-          <Link href="/systems">Systems</Link>
-          <Link href="/prompt-lab">Lab</Link>
-          <Link href="/about">About me</Link>
-          <a href="mailto:ai@jadenraats.com">ai@jadenraats.com</a>
+          <Link href="/about">About</Link>
+          <a href="mailto:ai@jadenraats.com">Get in touch</a>
         </nav>
         <span>Built in Phoenix and Bigfork.</span>
       </footer>
