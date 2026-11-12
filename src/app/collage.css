@@ -180,3 +180,28 @@ body:has(.cx) { background: #ebe5d8; }
   .cx-guides-head h2 { font-size: 25px; }
   .cx-pola-card figcaption { font-size: 10.5px; padding-left: 18%; }
 }
+
+/* Floating pill header: sticky, thin. Lab mark stays at the top while you scroll. */
+.cx .cx-top {
+  position: sticky; top: 12px; z-index: 50;
+  max-width: 1160px; margin: 12px auto 0; padding: 6px 10px 6px 14px; height: 52px;
+  border: 1px solid rgba(20, 18, 16, .1); border-bottom: 1px solid rgba(20, 18, 16, .1); border-radius: 999px;
+  background: rgba(250, 247, 240, .78);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow: 0 8px 24px -14px rgba(40, 28, 16, .35), 0 1px 0 rgba(255, 255, 255, .7) inset;
+}
+.cx .cx-mark { display: inline-flex; align-items: center; gap: 2px; letter-spacing: 0; }
+.cx .cx-mark img { display: block; width: 44px; height: 32px; object-fit: contain; mix-blend-mode: multiply; }
+.cx .cx-mark-ast { color: var(--orange); font-family: "CX Serif", serif; font-style: italic; font-weight: 900; font-size: 22px; line-height: 1; margin-top: -10px; }
+.cx .cx-top nav { gap: 28px; padding-right: 10px; }
+.cx .cx-top nav a { font-size: 13px; padding: 8px 0; }
+.cx-hero { padding-top: 34px; }
+@media (max-width: 960px) {
+  .cx .cx-top { margin: 10px 16px 0; }
+}
+@media (max-width: 600px) {
+  .cx .cx-top { margin: 10px 12px 0; height: 46px; padding: 5px 6px 5px 10px; top: 10px; }
+  .cx .cx-mark img { width: 38px; height: 28px; }
+  .cx .cx-top nav { gap: 14px; padding-right: 8px; }
+  .cx .cx-top nav a { font-size: 11px; letter-spacing: .06em; }
+}

@@ -2,10 +2,7 @@
 
 // Created by Hark | 2026-11-12. Updated by Hark | 2026-11-12
 import Link from "next/link";
-import { useCallback, useRef, useState } from "react";
 import { GUIDES } from "@/data/guides";
-
-type Offset = { x: number; y: number };
 
 // Fine, irregular torn edge. Deterministic so server and client match.
 // Amplitude is in px so the tear reads the same on any element size.
@@ -36,35 +33,13 @@ const PICKS: { slug: string; art: string; label: string; title: string; line: st
   { slug: "one-front-door", art: "/home/g-frontdoor.webp", label: "Build your own", title: "One front door", line: "Give your notes a place to land.", seed: 37, rot: -0.3 },
 ];
 
-const STICKERS = ["bass"] as const;
-type StickerId = (typeof STICKERS)[number];
-
 export default function CollageHome() {
-  const [pos, setPos] = useState<Record<StickerId, Offset>>({ bass: { x: 0, y: 0 } });
-  const drag = useRef<{ id: StickerId; sx: number; sy: number; ox: number; oy: number } | null>(null);
-
-  const onDown = useCallback(
-    (id: StickerId) => (e: React.PointerEvent<HTMLDivElement>) => {
-      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-      drag.current = { id, sx: e.clientX, sy: e.clientY, ox: pos[id].x, oy: pos[id].y };
-    },
-    [pos]
-  );
-  const onMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
-    const d = drag.current;
-    if (!d) return;
-    setPos((p) => ({ ...p, [d.id]: { x: d.ox + e.clientX - d.sx, y: d.oy + e.clientY - d.sy } }));
-  }, []);
-  const onUp = useCallback(() => {
-    drag.current = null;
-  }, []);
-
-
   return (
     <div className="cx">
       <header className="cx-top">
         <Link href="/" className="cx-mark" aria-label="JD Raats, home">
-          JD<span aria-hidden="true">*</span>
+          <img src="/home/lab-mark.webp" alt="" width="44" height="32" />
+          <span className="cx-mark-ast" aria-hidden="true">*</span>
         </Link>
         <nav aria-label="Primary">
           <Link href="/guides">Guides</Link>
@@ -110,9 +85,6 @@ export default function CollageHome() {
               </div>
             </div>
 
-            <div className="cx-drag cx-bass" style={{ transform: `translate(${pos.bass.x}px, ${pos.bass.y}px) rotate(-10deg)` }} onPointerDown={onDown("bass")} onPointerMove={onMove} onPointerUp={onUp}>
-              <img src="/home/bass.webp" alt="" draggable={false} />
-            </div>
           </div>
         </section>
 
