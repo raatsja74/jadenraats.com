@@ -83,7 +83,7 @@
 .pc-card-top { display: flex; align-items: flex-start; gap: 22px; height: 38px; position: relative; z-index: 2; }
 .pc-card-grip { font: 2rem/.7 Georgia,serif; }
 .pc-number { font: italic 700 1.1rem/1 'Courier New',monospace; padding: 6px 12px; border: 1.5px solid var(--pc-ink); border-radius: 50%; transform: rotate(-12deg); }
-.pc-card-01 .pc-number { border-color: var(--pc-orange); color: var(--pc-orange); }
+.pc-card-01 .pc-number { border-color: color-mix(in srgb, var(--pc-orange) 65%, var(--pc-ink)); color: color-mix(in srgb, var(--pc-orange) 65%, var(--pc-ink)); }
 .pc-card h3 { position: relative; z-index: 2; font: 400 clamp(2.7rem, 5.1vw, 5.45rem)/1 var(--paper-display), 'Roboto Condensed', Impact, sans-serif; letter-spacing: -.03em; margin: 3px 0 0 29px; }
 .pc-swipe { position: relative; z-index: 3; display: block; width: 75px; height: 5px; background: var(--pc-orange); transform: rotate(-6deg); margin: 1px 0 10px 36px; }
 .pc-card p { position: relative; z-index: 2; font: 700 .7rem/1.5 'Courier New',monospace; letter-spacing: .02em; text-transform: uppercase; max-width: 30ch; margin: 0 10px 0 36px; }
@@ -120,7 +120,7 @@
 @keyframes pc-unfold { from { transform: rotateX(-16deg) translateY(-8px); opacity: .7; } to { transform: rotateX(0) translateY(0); opacity: 1; } }
 .pc-guide-stack { border-top: 1px solid var(--paper-detail-43); }
 .pc-guide { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--paper-detail-44); }
-.pc-guide-num { font: italic 700 .85rem/1.5 'Courier New',monospace; color: var(--pc-orange); }
+.pc-guide-num { font: italic 700 .85rem/1.5 'Courier New',monospace; color: color-mix(in srgb, var(--pc-orange) 65%, var(--pc-ink)); }
 .pc-guide div > p:first-child { font: 700 .7rem/1.5 'Courier New',monospace; color: var(--pc-muted); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 7px; }
 .pc-guide h3 { font: 400 clamp(1.5rem, 2vw, 2rem)/1.13 Georgia,serif; letter-spacing: -.02em; margin: 0; }
 .pc-guide h3 a { text-decoration: none; }
