@@ -2,6 +2,8 @@
 
 # Codex handoff: finish the beginner-first homepage
 
+Status 2026-11-12: the homepage was released to main (PR #36). Treat the steps below as the reference for the remaining open items in `docs/beginner-first-review.md`, not as a request to rebuild the homepage. Where this file says not to merge, that applied before release.
+
 Branch: `review/modern-visual-2026-11-11` (site repo `raatsja74/jadenraats.com`). Do not touch `main`.
 Read first: `DESIGN.md` (section "Audience and homepage priority"), `docs/beginner-first-review.md`, and the PRD JD attached on 2026-11-11 if you have it.
 

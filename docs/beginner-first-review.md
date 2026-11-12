@@ -1,7 +1,7 @@
 # Beginner-first homepage review
 
 Owner: Codex. Checkpoint: 2026-11-11, America/Phoenix.
-Status: release authorized by JD on 2026-11-11 (America/Tijuana); final checks and deployment in progress. Earlier checkpoints below are historical.
+Status: release authorized by JD on 2026-11-11 (America/Tijuana); production deployment READY and custom-domain render verified on 2026-11-12. Earlier checkpoints below are historical.
 Base: `review/modern-visual-2026-11-11` (latest pushed commit: see `git log`). Updated 2026-11-11 with JD's decisions below.
 
 ## Decision and implementation
@@ -51,12 +51,12 @@ Reviewed against the full article, not the summary. It is a how-to for owners of
 
 ## Verification still needed
 
-Existing: lint, tsc, `check:design`, build, NOOP guide tests. Not yet done: any browser check. Needs 390px and 1440px screenshots, light and dark, of Home, Guides, the starter article, `/desk`, `/systems`, `/prompt-lab` and `/about`; primary CTA navigation; keyboard focus; image loading; horizontal overflow at 320 to 1440.
+Reported passing by the release commit: lint, tsc, `check:design`, build. Not independently re-run by the docs pass. Still not done: any browser check. Needs 390px and 1440px screenshots, light and dark, of Home, Guides, the starter article, `/desk`, `/systems`, `/prompt-lab` and `/about`; primary CTA navigation; keyboard focus; image loading; horizontal overflow at 320 to 1440.
 
-## Deployment and merge status (corrects the earlier note)
+## Deployment and merge status (updated after release)
 
 - Preview deploys are **on** for this branch as of 2026-11-11. `vercel.json` matches `main` (only `desk-data` is disabled). Production deploys stay main only.
-- Do not merge this branch to main before JD's visual approval.
+- Merged to main on 2026-11-11 (PR #36) on JD's authorization. Earlier text in this doc that says to wait for approval is historical.
 - UDS merges first (Hark is doing the field border at 3:1, border and glass checks in `check:contrast`, and shadow fallbacks on the UDS review branch). After JD approves the visuals, pin this site to the **UDS merge commit on main**. Do not pin to the review-branch commit c486502 for the final merge.
 - The design bundle is rebuilt from main after the merges, without the personal capture note. Leave it alone until then.
 
@@ -89,3 +89,18 @@ UDS PR #3 is merged at `808b457c106cc196e241a6f167646496d83f1961`. The site depe
 A genuine beginner cold test remains unperformed. No ten-minute completion promise is published. The starter article retains the existing shared placeholder illustration; a dedicated documentary image and the wider site image pass remain follow-up work. Local Chromium was retried and still fails with `socket() failed: Operation not permitted`. Mobile/full-page screenshots and a full light/dark visual audit remain incomplete; release authorization does not make those checks passed.
 
 Final release checks: ESLint passed (two existing gallery image warnings), design check passed, production webpack build passed, and TypeScript passed. Exact portrait file is present and included in the release.
+
+## Open after release
+
+- Cold end-to-end test with a synthetic/nonprivate note remains open. The published summary has no ten-minute completion promise. The prompt requests an action that takes ten minutes or less.
+- 390px and 1440px screenshots, light and dark, plus keyboard, focus, touch-target and overflow checks. Not yet captured.
+- The starter guide still uses the "One front door" image, so two cards share a picture. Needs a real photo.
+- Settled in the November 12 handoff: keep NOOP in the full index and Skills as one link.
+- PRs #35 and #32 and branch `review/beginner-priority-2026-11-12` overlap this work and are superseded by `main`; JD decides whether to close them.
+- UDS README still lists Notion as a source; that is a UDS-repo change.
+
+## Verified continuation, November 12, 2026
+
+Vercel production deployment `dpl_5NWTXpwXMDtBKZEesZMUowQoJWwg` is READY at site commit `41059c5926906762e242187f922a3a50d820422d`, with `jadenraats.com` assigned and no alias error. A fresh cloud browser opened the custom domain and showed the approved starter-first homepage and exact portrait. Light and dark homepage screenshots were inspected at the available desktop viewport. The starter CTA opens the correct article and preserves dark mode. This resolves the previously reported stale homepage extraction mismatch for the inspected browser session. Mobile widths, full accessibility audit, Lighthouse and the cold test remain unverified.
+
+PR #37 reconciles documentation. PR #35 is an alternative earlier homepage draft superseded by #36. PR #32 contains overlapping surface/hydration work already carried into the release and remains an archived review candidate, not an instruction to merge its homepage. Preserve both PRs and branches.
