@@ -361,6 +361,213 @@ export const GUIDES: Guide[] = [
       },
     ],
   },
+  {
+    "slug": "my-ai-staff",
+    "image": "/images/guides/write-the-rules-down.webp",
+    "title": "My AI Staff: The Exact System Behind My One-Man Operation",
+    "tag": "systems",
+    "summary": "How I run a one-man floor coating company with a small staff of AI agents: one email inbox, a printed morning page, and one agent that keeps the whole picture.",
+    "readMinutes": 10,
+    "published": "2026-11-13",
+    "sections": [
+      {
+        "type": "p",
+        "text": "I run a floor coating company in Phoenix. I don't have an assistant. I have a staff of them, and none are human. This is the full setup: the actual stack, how each piece works, and how to copy it."
+      },
+      {
+        "type": "h2",
+        "text": "The principle"
+      },
+      {
+        "type": "p",
+        "text": "AI doesn't replace the operator. It multiplies him."
+      },
+      {
+        "type": "p",
+        "text": "Everything below survived a real Monday before it earned a place here. I didn't build this in a weekend of enthusiasm. I built it one bottleneck at a time, usually at 6 AM, usually annoyed."
+      },
+      {
+        "type": "p",
+        "text": "The test for every piece: does it remove a decision, a handoff of context, or a thing I'd forget? If yes, it stays. If it's clever but needs babysitting, it goes."
+      },
+      {
+        "type": "p",
+        "text": "There are four pieces. None of them is exotic. What makes them work is that they connect."
+      },
+      {
+        "type": "h2",
+        "text": "The chief of staff"
+      },
+      {
+        "type": "p",
+        "text": "One agent sits above the rest. I call it my chief of staff."
+      },
+      {
+        "type": "p",
+        "text": "It holds around 287 skills, which are playbooks for everything from inbox triage to travel booking to reviewing a contract. When I give it a job, it doesn't ask me which tool to use. It already knows."
+      },
+      {
+        "type": "p",
+        "text": "The skill count isn't the important part. The context flow is."
+      },
+      {
+        "type": "p",
+        "text": "My other agents, the ones that run my prompts, sweep my inbox and draft my replies, all keep chat histories. My chief of staff reads those histories directly. I never copy and paste between agents, and I never brief one agent on what another one did."
+      },
+      {
+        "type": "p",
+        "text": "This is where most people go wrong. They build five clever agents and become the full-time secretary carrying information between them. That's not help, that's a new job."
+      },
+      {
+        "type": "callout",
+        "text": "The rule: agents read each other's work. I only make the decisions."
+      },
+      {
+        "type": "p",
+        "text": "If you're starting from zero, start here: one main agent that can read everything your other agents produce, even if that's just two agents and a notes folder."
+      },
+      {
+        "type": "h2",
+        "text": "My inbox runs the prompts"
+      },
+      {
+        "type": "p",
+        "text": "I have an agent inbox, which is just a plain email address. When I want something done, I email it with a tag in the subject line, and the body is the instruction."
+      },
+      {
+        "type": "p",
+        "text": "Every 15 minutes, a runner checks that inbox. If there's a new tagged email, it does what the body says, then archives the email."
+      },
+      {
+        "type": "p",
+        "text": "Why email and not an app?"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "It's everywhere. Every device I own sends email. No new app, no login.",
+          "It keeps a record. My Sent folder is a timestamped log of every instruction I've given. When something goes wrong, I can see exactly what I asked for.",
+          "I don't have to wait. I send it from a job site at 7 AM, the runner picks it up within 15 minutes, and I'm back to work."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The tags matter. Every email my agents create uses one consistent tag, so the runners never pick up each other's mail. Mine is simple: one tag per agent, and each runner only touches its own."
+      },
+      {
+        "type": "callout",
+        "text": "Copy this today: one email address, a check every 15 minutes, and one rule. The subject tag says which job, and the body is the instruction. Everything else is polish."
+      },
+      {
+        "type": "h2",
+        "text": "One page before coffee"
+      },
+      {
+        "type": "p",
+        "text": "Every morning I get one printed page. It puts itself together overnight from four places:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Todoist: what's due, what's overdue, what got added yesterday",
+          "Calendar: today's commitments, with times",
+          "Inbox: anything that came in overnight and needs me",
+          "My agents: what they did while I slept, and what they need from me"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Not a dashboard I have to open, and not a notification I'll swipe away. Paper on the counter. I read it while the coffee brews, and by the time I'm dressed I know what the day holds."
+      },
+      {
+        "type": "p",
+        "text": "It always has the same layout: top 3 priorities, today's commitments, what's waiting on me, and what the agents are doing. After two weeks I stopped reading every line and started scanning, because I knew where everything was."
+      },
+      {
+        "type": "p",
+        "text": "The catch is that the page is only as good as what feeds it. If your task list is a mess, your morning page is a mess. It doesn't fix bad inputs. It just shows them to you every morning until you fix them."
+      },
+      {
+        "type": "h2",
+        "text": "Every idea lands in under 10 seconds"
+      },
+      {
+        "type": "p",
+        "text": "This is the piece people copy first, because it's the simplest and it pays off right away."
+      },
+      {
+        "type": "p",
+        "text": "One email is the whole thing. I send it to my agent inbox with a word at the front:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "\"task:\" goes to my Todoist inbox",
+          "\"idea:\" or \"note:\" gets added to today's note in my notes",
+          "\"reminder:\" with a date goes to Todoist with a due time",
+          "\"receipt:\" gets filed and archived"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Attachments get saved and linked. Processed emails get labeled and archived, and my Sent folder keeps the record."
+      },
+      {
+        "type": "p",
+        "text": "It works because there's exactly one way to capture, so there's nothing to decide. Every time I tried a fancier app with inboxes, tags and projects, ideas died at \"I'll file this properly later.\" One email address, four words, no decisions."
+      },
+      {
+        "type": "callout",
+        "text": "The 10-second rule: if capturing takes longer than 10 seconds, you'll stop doing it when you're busy, which is exactly when the ideas matter. Time yourself. If it's over 10 seconds, make it simpler."
+      },
+      {
+        "type": "h2",
+        "text": "How the pieces connect"
+      },
+      {
+        "type": "p",
+        "text": "Each piece is fine on its own. Together they make a loop:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Capture feeds my task list and notes all day, from anywhere.",
+          "The runners do the routine work those captures create, every 15 minutes.",
+          "The morning page shows me what the loop produced and what needs my judgment.",
+          "The chief of staff holds the whole picture, so when I ask it something at 2 PM, it already knows what the runners did at 9 and what I captured at lunch."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "No single piece is the system. When I look at a new tool now, I don't ask if it's clever. I ask what it connects to and what it takes off my plate."
+      },
+      {
+        "type": "h2",
+        "text": "Start small"
+      },
+      {
+        "type": "p",
+        "text": "You don't need 287 skills. Here's the starter version, in order:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Capture first. One email address and three words: \"task:\", \"note:\", \"reminder:\". Use it for a week. If you won't capture, nothing after this matters.",
+          "One runner. A check every 15 minutes that sends those emails to your task list and notes. A simple script counts.",
+          "A morning page. Something that pulls your tasks, calendar and yesterday's notes into one page. Read it before your phone.",
+          "One main agent that can read all of the above. This comes last, because it needs the other three to be worth reading."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Build them in that order. Each one pays for itself before you build the next."
+      },
+      {
+        "type": "p",
+        "text": "I'm writing all of this down as I go: what works, what breaks, and the 6 AM rebuilds."
+      }
+    ]
+  }
 ];
 
 export function getGuide(slug: string): Guide | undefined {
