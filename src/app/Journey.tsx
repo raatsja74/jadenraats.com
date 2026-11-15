@@ -1,7 +1,8 @@
 "use client";
 
-// Created by Hark | 2026-11-12
+// Created by Hark | 2026-11-12. Updated by Hark | 2026-11-15
 // Homepage journey: meet JD, try something small, see it work, go deeper, keep exploring.
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -105,7 +106,7 @@ function RealLife() {
   return (
     <section className="jx-step jx-real" aria-labelledby="jx-real-title">
       <div className="jx-art">
-        <img src="/home/g-followup.webp" alt="Work gloves, a phone and a job sheet" loading="lazy" />
+        <Image src="/home/g-followup.webp" alt="Work gloves, a phone and a job sheet" width={800} height={600} sizes="(max-width: 768px) 85vw, 480px" />
       </div>
       <div className="jx-text">
         <h2 id="jx-real-title">
