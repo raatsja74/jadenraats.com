@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SystemsPage from "./SystemsPage";
+import { SHARE_IMAGES } from "@/lib/share-image";
 
 const TITLE = "Systems for Thinking, Working & Shipping | Jaden Raats";
 const DESCRIPTION =
@@ -16,8 +17,9 @@ export const metadata: Metadata = {
     siteName: "jadenraats.com",
     locale: "en_US",
     type: "website",
+    images: SHARE_IMAGES,
   },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: SHARE_IMAGES },
 };
 
 export default function Page() {

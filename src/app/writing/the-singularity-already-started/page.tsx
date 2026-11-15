@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
+import { SHARE_IMAGES } from "@/lib/share-image";
 
 const title = "The Singularity Already Started";
 const description = "A simple list of my predictions about AI, software, work, and the future.";
@@ -19,8 +20,9 @@ export const metadata: Metadata = {
     publishedTime: "2026-10-26",
     modifiedTime: "2026-11-11",
     authors: ["Jaden Raats"],
+    images: SHARE_IMAGES,
   },
-  twitter: { card: "summary_large_image", title, description },
+  twitter: { card: "summary_large_image", title, description, images: SHARE_IMAGES },
 };
 
 const predictions = [

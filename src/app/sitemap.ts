@@ -1,8 +1,12 @@
 import type { MetadataRoute } from "next";
+import { GUIDES } from "@/data/guides";
+
+// Updated by Hark | 2026-11-15: guides in src/data/guides.ts that are not listed
+// below are added automatically, so a new guide never misses the sitemap.
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    { url: "https://jadenraats.com/photos", changeFrequency: "weekly", priority: 0.6 },
+  const entries: MetadataRoute.Sitemap = [
+    { url: "https://jadenraats.com/photos", lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
     {
       url: "https://jadenraats.com",
       lastModified: new Date(),
@@ -106,4 +110,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
   ];
+
+  const listed = new Set(entries.map((entry) => entry.url));
+  for (const guide of GUIDES) {
+    const url = `https://jadenraats.com/guides/${guide.slug}`;
+    if (listed.has(url)) continue;
+    entries.push({
+      url,
+      lastModified: new Date(`${guide.published}T00:00:00-07:00`),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+
+  return entries;
 }

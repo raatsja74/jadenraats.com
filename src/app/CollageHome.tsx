@@ -1,6 +1,7 @@
 "use client";
 
-// Created by Hark | 2026-11-12. Updated by Hark | 2026-11-12
+// Created by Hark | 2026-11-12. Updated by Hark | 2026-11-12. Updated by Hark | 2026-11-15
+import Image from "next/image";
 import Link from "next/link";
 import Journey from "./Journey";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -33,7 +34,7 @@ export default function CollageHome() {
     <div className="cx">
       <header className="cx-top">
         <Link href="/" className="cx-mark" aria-label="JD Raats, home">
-          <img src="/home/lab-logo.png" alt="" width="110" height="120" />
+          <Image src="/home/lab-logo.png" alt="" width={110} height={120} priority />
         </Link>
         <nav aria-label="Primary">
           <Link href="/guides">Guides</Link>
@@ -64,14 +65,14 @@ export default function CollageHome() {
           <div className="cx-collage" aria-hidden="true">
             <div className="cx-scrap cx-scrap-a" style={{ clipPath: torn(3, 3) }} />
             <div className="cx-scrap cx-scrap-b" style={{ clipPath: torn(9, 3) }} />
-            <img className="cx-desert-bg" src="/home/desert.webp" alt="" />
+            <Image className="cx-desert-bg" src="/home/desert.webp" alt="" width={1584} height={365} sizes="(max-width: 768px) 65vw, 400px" style={{ height: "auto" }} priority />
 
             <div className="cx-pola">
               <div className="cx-pola-settle">
                 <div className="cx-pola-fringe" style={{ clipPath: torn(16, 3.5) }} />
                 <div className="cx-pola-back" style={{ clipPath: torn(17, 3) }} />
                 <figure className="cx-pola-card">
-                  <img src="/home/portrait.webp" alt="" draggable={false} />
+                  <Image src="/home/portrait.webp" alt="" width={820} height={803} sizes="(max-width: 768px) 75vw, 400px" style={{ height: "auto" }} draggable={false} priority />
                   <figcaption>Built. Used. Fixed.</figcaption>
                 </figure>
                 <span className="cx-tape cx-tape-1" />

@@ -1,11 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
+import { SHARE_IMAGES } from "@/lib/share-image";
+
+const TITLE = "Writing | Jaden Raats";
+const DESCRIPTION = "Ideas and predictions about technology, work, intelligence, and what comes next.";
 
 export const metadata: Metadata = {
-  title: "Writing | Jaden Raats",
-  description: "Ideas and predictions about technology, work, intelligence, and what comes next.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "/writing" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "https://jadenraats.com/writing",
+    siteName: "jadenraats.com",
+    locale: "en_US",
+    type: "website",
+    images: SHARE_IMAGES,
+  },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: SHARE_IMAGES },
 };
 
 export default function WritingPage() {

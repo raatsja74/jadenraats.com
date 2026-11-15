@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import { GUIDES } from "@/data/guides";
+import { SHARE_IMAGES } from "@/lib/share-image";
 
 const TITLE = "Resources | Jaden Raats";
 const DESCRIPTION = "Guides, skills library, daily note, and other public pages.";
@@ -10,6 +11,16 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/resources" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "https://jadenraats.com/resources",
+    siteName: "jadenraats.com",
+    locale: "en_US",
+    type: "website",
+    images: SHARE_IMAGES,
+  },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: SHARE_IMAGES },
 };
 
 const LINKS = [

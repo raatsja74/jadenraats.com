@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import DeskTracker, { type DeskData } from "./DeskTracker";
 import { DESK_DATA_URL } from "./constants";
+import { SHARE_IMAGES } from "@/lib/share-image";
 
 const TITLE = "Memecoin desk: six AI agents, paper money | Jaden Raats";
 const DESCRIPTION =
@@ -17,8 +18,9 @@ export const metadata: Metadata = {
     siteName: "jadenraats.com",
     locale: "en_US",
     type: "article",
+    images: SHARE_IMAGES,
   },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: SHARE_IMAGES },
 };
 
 export const revalidate = 60;
