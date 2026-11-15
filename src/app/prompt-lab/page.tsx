@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import PromptLab from "./PromptLab";
+import { SHARE_IMAGES } from "@/lib/share-image";
 
 const TITLE = "AI skills library | Jaden Raats";
 const DESCRIPTION =
@@ -17,11 +18,13 @@ export const metadata: Metadata = {
     siteName: "jadenraats.com",
     locale: "en_US",
     type: "website",
+    images: SHARE_IMAGES,
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
+    images: SHARE_IMAGES,
   },
 };
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import GuideArticle from "./GuideArticle";
 import { getGuide, getGuideSlugs } from "@/data/guides";
+import { SHARE_IMAGES } from "@/lib/share-image";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -30,11 +31,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "en_US",
       type: "article",
       publishedTime: guide.published,
+      images: SHARE_IMAGES,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: SHARE_IMAGES,
     },
   };
 }

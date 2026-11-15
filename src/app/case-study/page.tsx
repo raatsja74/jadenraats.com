@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CaseStudyPage from "./CaseStudyPage";
+import { SHARE_IMAGES } from "@/lib/share-image";
 
 const TITLE = "Case study: the AI assistant that broke quietly | Jaden Raats";
 const DESCRIPTION =
@@ -16,11 +17,13 @@ export const metadata: Metadata = {
     siteName: "jadenraats.com",
     locale: "en_US",
     type: "article",
+    images: SHARE_IMAGES,
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
+    images: SHARE_IMAGES,
   },
 };
 

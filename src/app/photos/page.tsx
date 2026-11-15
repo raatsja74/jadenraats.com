@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
 import PhotoGallery, { type Photo } from './photo-gallery';
+import { SHARE_IMAGES } from "@/lib/share-image";
 
 const LIBRARY = 'https://jadenraats-field-notes-private.jadenraats74.chatgpt.site';
 export const dynamic = 'force-dynamic';
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
   title: 'Photos | Jaden Raats',
   description: 'A personal photo journal by Jaden Raats.',
   alternates: { canonical: '/photos' },
-  openGraph: { title: 'Photos | Jaden Raats', description: 'A personal photo journal by Jaden Raats.', url: 'https://jadenraats.com/photos' },
+  openGraph: { title: 'Photos | Jaden Raats', description: 'A personal photo journal by Jaden Raats.', url: 'https://jadenraats.com/photos', images: SHARE_IMAGES },
+  twitter: { card: 'summary_large_image', title: 'Photos | Jaden Raats', description: 'A personal photo journal by Jaden Raats.', images: SHARE_IMAGES },
 };
 
 export default async function PhotosPage() {

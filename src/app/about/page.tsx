@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AboutContent from "./AboutContent";
+import { SHARE_IMAGES } from "@/lib/share-image";
 
 const TITLE = "Jaden Raats — AI Automation Entrepreneur & Owner, Award Coatings";
 const DESCRIPTION =
@@ -16,11 +17,13 @@ export const metadata: Metadata = {
     siteName: "jadenraats.com",
     locale: "en_US",
     type: "profile",
+    images: SHARE_IMAGES,
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
+    images: SHARE_IMAGES,
   },
 };
 

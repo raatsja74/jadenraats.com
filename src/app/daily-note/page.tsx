@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import { getSkill } from "@/app/prompt-lab/skills";
+import { SHARE_IMAGES } from "@/lib/share-image";
 
 const TITLE = "Daily note | Jaden Raats";
 const DESCRIPTION =
@@ -11,6 +12,16 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/daily-note" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "https://jadenraats.com/daily-note",
+    siteName: "jadenraats.com",
+    locale: "en_US",
+    type: "website",
+    images: SHARE_IMAGES,
+  },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: SHARE_IMAGES },
 };
 
 const STEPS = [
