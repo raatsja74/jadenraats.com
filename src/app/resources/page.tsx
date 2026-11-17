@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import { GUIDES } from "@/data/guides";
+import { getPublicNotes } from "@/lib/vault/catalog";
 import { SHARE_IMAGES } from "@/lib/share-image";
 
 const TITLE = "Resources | Jaden Raats";
@@ -58,6 +59,11 @@ const LINKS = [
 ] as const;
 
 export default function ResourcesPage() {
+  const vaultLinks = [
+    { section: "notes", href: "/notes", label: "Notes", note: "Published working notes" },
+    { section: "projects", href: "/projects", label: "Projects", note: "Published project notes" },
+  ] as const;
+  const links = [...LINKS, ...vaultLinks.filter(({ section }) => getPublicNotes(section).length)];
   return (
     <>
       <Nav />
@@ -70,7 +76,7 @@ export default function ResourcesPage() {
         <section className="mt-12">
           <h2 className="kicker kicker-faint">Pages</h2>
           <ul className="mt-4 card-outline border-line">
-            {LINKS.map((item, i) => (
+            {links.map((item, i) => (
               <li
                 key={item.href}
                 className="border-b border-line last:border-b-0"
