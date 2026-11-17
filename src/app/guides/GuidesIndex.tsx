@@ -4,7 +4,20 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import { GUIDES } from "@/data/guides";
 
-export default function GuidesIndex() {
+export default function GuidesIndex({
+  vaultGuides,
+}: {
+  vaultGuides: { url: string; title: string; description?: string }[];
+}) {
+  const guides = [
+    ...GUIDES.map((guide) => ({
+      url: `/guides/${guide.slug}`,
+      title: guide.title,
+      description: guide.summary,
+      detail: `${guide.readMinutes} min read`,
+    })),
+    ...vaultGuides.map((guide) => ({ ...guide, detail: "Published vault" })),
+  ];
   return (
     <>
       <Nav />
@@ -24,10 +37,10 @@ export default function GuidesIndex() {
 
         <section className="mx-auto max-w-6xl px-6 pb-28 sm:px-10 sm:pb-36">
           <ol className="grid gap-4 md:grid-cols-2">
-            {GUIDES.map((g, i) => (
-              <li key={g.slug}>
+            {guides.map((g, i) => (
+              <li key={g.url}>
                 <Link
-                  href={`/guides/${g.slug}`}
+                  href={g.url}
                   className="group flex h-full flex-col card border-line bg-surface p-6 transition-colors duration-200 hover:border-accent sm:p-8"
                 >
                   <div className="flex items-baseline justify-between gap-4">
@@ -35,13 +48,13 @@ export default function GuidesIndex() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="kicker kicker-faint">
-                      {g.readMinutes} min read
+                      {g.detail}
                     </span>
                   </div>
                   <h2 className="display-sentence mt-8 text-2xl leading-tight sm:text-3xl">
                     {g.title}
                   </h2>
-                  <p className="mt-4 text-base leading-relaxed text-soft">{g.summary}</p>
+                  <p className="mt-4 text-base leading-relaxed text-soft">{g.description}</p>
                   <span className="kicker kicker-accent mt-8">
                     Read <span className="btn-arrow">→</span>
                   </span>
