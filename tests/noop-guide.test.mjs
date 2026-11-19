@@ -43,6 +43,9 @@ test("NOOP card image exists and source links are secure official references", (
 
 test("NOOP article is in the public sitemap", () => {
   const source = readFileSync(new URL("../src/app/sitemap.ts", import.meta.url), "utf8");
-  assert.ok(source.includes(`https://jadenraats.com/guides/${slug}`));
-  assert.ok(!source.includes("https://jadenraats.com/command-center"));
+  // Updated by Hark | 2026-11-19: the sitemap lists every guide in GUIDES automatically.
+  assert.ok(getGuide(slug), "guide must be in GUIDES to be listed");
+  assert.match(source, /GUIDES\.map\(/);
+  assert.match(source, /\/guides\/\$\{guide\.slug\}/);
+  assert.ok(!/path: "\/command-center"/.test(source));
 });

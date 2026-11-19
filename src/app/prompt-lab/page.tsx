@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import PromptLab from "./PromptLab";
+import PromptLab, { PromptLabFromParams } from "./PromptLab";
 import { SHARE_IMAGES } from "@/lib/share-image";
 
 const TITLE = "AI skills library | Jaden Raats";
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
 
 export default function PromptLabPage() {
   return (
-    <Suspense>
-      <PromptLab />
+    <Suspense fallback={<PromptLab />}>
+      <PromptLabFromParams />
     </Suspense>
   );
 }

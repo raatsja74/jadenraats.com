@@ -9,12 +9,11 @@ const themeInit = `(function(){try{var saved=localStorage.getItem('jaden-theme')
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jadenraats.com"),
-  title: "Jaden Raats — AI for business owners, proven in a real business",
+  title: "Jaden Raats | Practical AI guides in plain English",
   description:
     "I run a floor coating company in Phoenix and use AI to run it better. Tools and plain-English guidance for business owners, tested in real operations first.",
-  alternates: { canonical: "/" },
   openGraph: {
-    title: "Jaden Raats — AI for business owners, proven in a real business",
+    title: "Jaden Raats | Practical AI guides in plain English",
     description:
       "AI tools and plain-English guidance for business owners, tested in a real operating business first.",
     url: "https://jadenraats.com",
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jaden Raats — AI for business owners, proven in a real business",
+    title: "Jaden Raats | Practical AI guides in plain English",
     description:
       "AI tools and plain-English guidance for business owners, tested in a real operating business first.",
     images: SHARE_IMAGES,

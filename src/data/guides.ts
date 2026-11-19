@@ -12,6 +12,8 @@ export type Guide = {
   image: string;
   readMinutes: number;
   published: string;
+  /** Last real content change (YYYY-MM-DD). Used for the sitemap and article dates. */
+  updated?: string;
   sections: GuideSection[];
   sources?: { label: string; href: string }[];
 };
@@ -300,6 +302,7 @@ export const GUIDES: Guide[] = [
     "summary": "An unofficial, local-first way to use a compatible WHOOP strap without a membership. What it does, how to try it, and where the limits are.",
     "readMinutes": 5,
     "published": "2026-10-24",
+    "updated": "2026-11-11",
     "sources": [
       {
         "label": "NOOP on GitHub",
