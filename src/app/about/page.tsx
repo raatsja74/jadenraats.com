@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import AboutContent from "./AboutContent";
 import { SHARE_IMAGES } from "@/lib/share-image";
 
-const TITLE = "Jaden Raats — AI Automation Entrepreneur & Owner, Award Coatings";
+// Updated by Hark | 2026-11-19: plainer, personable search title; no em dash.
+const TITLE = "About Jaden Raats | Award Coatings owner, Bigfork to Phoenix";
 const DESCRIPTION =
-  "Jaden Raats builds AI automation for service businesses. He owns Award Coatings, a floor coating company in Phoenix, and runs every system there before sharing it.";
+  "Jaden (JD) Raats owns Award Coatings, a floor coating company in Phoenix. He tests every AI system in his own business first, then writes it up as a plain-English guide.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -35,7 +36,7 @@ const PROFILE_SCHEMA = {
     "@id": "https://jadenraats.com/about#jaden-raats",
     name: "Jaden Raats",
     url: "https://jadenraats.com/about",
-    jobTitle: "AI Automation Entrepreneur & Owner, Award Coatings",
+    jobTitle: "Owner, Award Coatings",
     description: DESCRIPTION,
     email: "mailto:ai@jadenraats.com",
     knowsAbout: [

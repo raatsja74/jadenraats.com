@@ -3,18 +3,24 @@ import CollageHome from "./CollageHome";
 import "./collage.css";
 import { SHARE_IMAGES } from "@/lib/share-image";
 
+// Updated by Hark | 2026-11-19: search title and description name the guides.
+const HOME_TITLE = "JD Raats | Practical AI guides in plain English";
+const HOME_DESCRIPTION =
+  "Plain-English AI guides from JD Raats, Bigfork to Phoenix. Pick one, follow the steps, and finish one useful task, like turning a messy note into a clear next step.";
+
 export const metadata: Metadata = {
-  title: "JD Raats",
-  description: "JD Raats, from Bigfork to Phoenix. Guides, systems and small experiments, figured out in real life.",
+  alternates: { canonical: "/" },
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
   openGraph: {
-    title: "JD Raats",
+    title: HOME_TITLE,
     url: "https://jadenraats.com",
-    description: "JD Raats, from Bigfork to Phoenix. Guides, systems and small experiments, figured out in real life.",
+    description: HOME_DESCRIPTION,
     images: SHARE_IMAGES,
   },
   twitter: {
-    title: "JD Raats",
-    description: "JD Raats, from Bigfork to Phoenix. Guides, systems and small experiments, figured out in real life.",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: SHARE_IMAGES,
   },
 };

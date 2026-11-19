@@ -62,15 +62,27 @@ function SkillRow({
   );
 }
 
-export default function PromptLab() {
+// Updated by Hark | 2026-11-19: the full list renders on the server (the Suspense
+// fallback in page.tsx), so search engines and no-JS readers see every skill.
+// ?q= and ?cat= still filter once the page loads.
+export function PromptLabFromParams() {
   const params = useSearchParams();
-  const [query, setQuery] = useState(() => params.get("q") ?? "");
-  const [category, setCategory] = useState(() => {
-    const cat = params.get("cat");
-    return cat && (SKILL_CATEGORIES as readonly string[]).includes(cat)
-      ? cat
-      : "ALL";
-  });
+  const q = params.get("q") ?? "";
+  const cat = params.get("cat");
+  const category =
+    cat && (SKILL_CATEGORIES as readonly string[]).includes(cat) ? cat : "ALL";
+  return <PromptLab key={`${q}|${category}`} initialQuery={q} initialCategory={category} />;
+}
+
+export default function PromptLab({
+  initialQuery = "",
+  initialCategory = "ALL",
+}: {
+  initialQuery?: string;
+  initialCategory?: string;
+}) {
+  const [query, setQuery] = useState(initialQuery);
+  const [category, setCategory] = useState(initialCategory);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

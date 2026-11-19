@@ -1,127 +1,45 @@
 import type { MetadataRoute } from "next";
 import { GUIDES } from "@/data/guides";
 
-// Updated by Hark | 2026-11-15: guides in src/data/guides.ts that are not listed
-// below are added automatically, so a new guide never misses the sitemap.
+// Updated by Hark | 2026-11-15: guides in src/data/guides.ts are listed automatically.
+// Updated by Hark | 2026-11-19: lastModified is the last real content change, never the
+// build time, so search engines trust it. Bump a page's date here when its copy changes.
+// Guides use `updated` (or `published`) from src/data/guides.ts.
+// /command-center and /resume are noindex and stay out of this file on purpose.
+
+const SITE = "https://jadenraats.com";
+const at = (day: string) => new Date(`${day}T00:00:00-07:00`);
+
+const PAGES: { path: string; updated: string; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; priority: number }[] = [
+  { path: "", updated: "2026-11-15", changeFrequency: "monthly", priority: 1 },
+  { path: "/guides", updated: "2026-11-15", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/systems", updated: "2026-11-15", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/prompt-lab", updated: "2026-11-15", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/about", updated: "2026-11-15", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/daily-note", updated: "2026-11-15", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/resources", updated: "2026-11-15", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/case-study", updated: "2026-11-15", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/capturevault", updated: "2026-11-15", changeFrequency: "monthly", priority: 0.4 },
+  { path: "/desk", updated: "2026-11-15", changeFrequency: "daily", priority: 0.4 },
+  { path: "/photos", updated: "2026-11-15", changeFrequency: "weekly", priority: 0.4 },
+  { path: "/writing", updated: "2026-10-26", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/writing/the-singularity-already-started", updated: "2026-11-11", changeFrequency: "monthly", priority: 0.6 },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const entries: MetadataRoute.Sitemap = [
-    { url: "https://jadenraats.com/photos", lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
-    {
-      url: "https://jadenraats.com",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: "https://jadenraats.com/writing",
-      lastModified: new Date("2026-10-26T00:00:00-07:00"),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: "https://jadenraats.com/writing/the-singularity-already-started",
-      lastModified: new Date("2026-11-11T00:00:00-08:00"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://jadenraats.com/guides",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: "https://jadenraats.com/systems",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: "https://jadenraats.com/prompt-lab",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: "https://jadenraats.com/daily-note",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: "https://jadenraats.com/resources",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: "https://jadenraats.com/about",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: "https://jadenraats.com/case-study",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: "https://jadenraats.com/desk",
-      lastModified: new Date(),
-      changeFrequency: "hourly",
-      priority: 0.7,
-    },
-    {
-      url: "https://jadenraats.com/capturevault",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: "https://jadenraats.com/guides/turn-a-messy-note-into-a-next-step",
-      lastModified: new Date("2026-11-11T00:00:00-07:00"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://jadenraats.com/guides/noop-whoop-without-subscription",
-      lastModified: new Date("2026-10-24T00:00:00-07:00"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://jadenraats.com/guides/write-the-rules-down",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://jadenraats.com/guides/one-front-door",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://jadenraats.com/guides/follow-up-that-survives-monday",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-  ];
+  const pages: MetadataRoute.Sitemap = PAGES.map((page) => ({
+    url: `${SITE}${page.path}`,
+    lastModified: at(page.updated),
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+  }));
 
-  const listed = new Set(entries.map((entry) => entry.url));
-  for (const guide of GUIDES) {
-    const url = `https://jadenraats.com/guides/${guide.slug}`;
-    if (listed.has(url)) continue;
-    entries.push({
-      url,
-      lastModified: new Date(`${guide.published}T00:00:00-07:00`),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    });
-  }
+  const guides: MetadataRoute.Sitemap = GUIDES.map((guide) => ({
+    url: `${SITE}/guides/${guide.slug}`,
+    lastModified: at(guide.updated ?? guide.published),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
 
-  return entries;
+  return [...pages, ...guides];
 }
