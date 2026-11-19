@@ -80,6 +80,16 @@ export default function CollageHome() {
               </div>
             </div>
 
+            <div className="cx-duo-sticker" aria-hidden="true">
+              <Image
+                src="/home/jd-and-lab-sticker.svg"
+                alt=""
+                width={300}
+                height={304}
+                unoptimized
+                draggable={false}
+              />
+            </div>
           </div>
         </section>
 
