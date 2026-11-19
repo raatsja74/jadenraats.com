@@ -4,6 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Journey from "./Journey";
+import CollectionCards from "./CollectionCards";
 import ThemeToggle from "@/components/ThemeToggle";
 
 // Fine, irregular torn edge. Deterministic so server and client match.
@@ -83,6 +84,7 @@ export default function CollageHome() {
           </div>
         </section>
 
+        <CollectionCards />
         <Journey />
       </main>
 
