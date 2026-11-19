@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import CollageHome from "./CollageHome";
 import "./collage.css";
 import "./collection.css";
+import "./work-photo.css";
 import { SHARE_IMAGES } from "@/lib/share-image";
 
 export const metadata: Metadata = {

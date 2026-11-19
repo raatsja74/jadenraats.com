@@ -105,9 +105,16 @@ function TrySmall() {
 function RealLife() {
   return (
     <section className="jx-step jx-real" aria-labelledby="jx-real-title">
-      <div className="jx-art">
-        <Image src="/home/g-followup.webp" alt="Work gloves, a phone and a job sheet" width={800} height={600} sizes="(max-width: 768px) 85vw, 480px" />
-      </div>
+      <figure className="jx-art jx-art--documentary">
+        <Image
+          src="/home/jd-jobsite-pickup.webp"
+          alt="Jaden in a work-stained shirt beside a pickup truck and a tool case."
+          width={1086}
+          height={1448}
+          sizes="(max-width: 600px) calc(100vw - 70px), (max-width: 960px) 420px, 410px"
+        />
+        <figcaption>ON THE JOB <span aria-hidden="true">/</span> FIELD PHOTO 001</figcaption>
+      </figure>
       <div className="jx-text">
         <h2 id="jx-real-title">
           See it work in <em>real life.</em>
