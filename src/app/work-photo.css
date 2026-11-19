@@ -1,0 +1,55 @@
+/* Homepage field photograph. Original image supplied by JD; no generated subjects. */
+.cx .jx-art--documentary {
+  position: relative;
+  box-sizing: border-box;
+  width: min(100%, 410px);
+  justify-self: start;
+  margin: 0;
+  padding: 13px 13px 9px;
+  background: #fbf6eb;
+  color: #141210;
+  transform: rotate(-1.3deg);
+  box-shadow: 3px 3px 0 rgba(94, 70, 45, .12),
+    9px 17px 22px -14px rgba(40, 28, 16, .4);
+}
+.cx .jx-art--documentary::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -12px;
+  left: 34%;
+  width: 33%;
+  height: 31px;
+  background: rgba(216, 198, 164, .73);
+  border: 1px solid rgba(126, 109, 78, .12);
+  box-shadow: 1px 2px 4px rgba(50, 36, 20, .11);
+  transform: rotate(-4deg);
+  clip-path: polygon(1% 8%, 100% 0, 98% 100%, 0 91%);
+  pointer-events: none;
+}
+.cx .jx-art--documentary img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 47%;
+  mix-blend-mode: normal;
+}
+.cx .jx-art--documentary figcaption {
+  margin: 0;
+  padding: 13px 4px 6px;
+  font: 600 10px/1.35 "CX Mono", ui-monospace, monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.cx .jx-art--documentary figcaption span { color: var(--orange-deep); margin: 0 .6em; }
+@media (max-width: 960px) {
+  .cx .jx-art--documentary { width: min(100%, 420px); justify-self: center; margin-inline: auto; }
+}
+@media (max-width: 600px) {
+  .cx .jx-art--documentary { width: min(100%, 380px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cx .jx-art--documentary { animation: none; transition: none; }
+}

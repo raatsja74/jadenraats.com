@@ -1,0 +1,233 @@
+/* Paper collection — homepage only. Keeps the live collage, theme and UDS untouched. */
+.cx-collection {
+  width: min(calc(100% - 80px), 1240px);
+  margin: 0 auto;
+  padding: 28px 0 clamp(64px, 8vw, 112px);
+  scroll-margin-top: 90px;
+  --cx-card-ink: rgb(21 19 16);
+  --cx-card-paper: rgb(253 249 240);
+}
+
+.cx-collection-rule {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 23px 2px 21px;
+  border-top: 1.5px solid var(--ink);
+}
+
+.cx-collection-rule h2,
+.cx-collection-rule p {
+  margin: 0;
+  font-family: "CX Mono", ui-monospace, monospace;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+.cx-collection-rule h2 span { color: var(--orange); }
+.cx-collection-rule p { font-style: italic; }
+.cx-collection-rule p span { margin: 0 19px; }
+
+.cx-collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(16px, 2.6vw, 34px);
+  padding: 11px 5px 14px;
+}
+
+.cx .cx-collection-card {
+  --card-tilt: -1.7deg;
+  position: relative;
+  display: block;
+  min-width: 0;
+  color: var(--cx-card-ink);
+  text-decoration: none;
+  transform: rotate(var(--card-tilt));
+  filter: drop-shadow(3px 9px 5px rgb(39 27 21 / .21));
+  transition: transform .32s cubic-bezier(.2,.75,.2,1), filter .32s ease;
+  isolation: isolate;
+}
+.cx .cx-collection-card--guides { --card-tilt: .9deg; }
+.cx .cx-collection-card--lab { --card-tilt: -.6deg; }
+
+.cx-collection-card--systems::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -9px -5px -5px 10px;
+  background: var(--orange);
+  transform: rotate(.6deg);
+  clip-path: polygon(0 2%, 99% 0, 100% 97%, 2% 100%);
+}
+
+.cx-collection-paper {
+  position: relative;
+  height: clamp(320px, 29vw, 370px);
+  background: var(--cx-card-paper);
+  background-image: radial-gradient(ellipse at 19% 17%, rgb(255 255 255 / .56), transparent 60%),
+    repeating-linear-gradient(110deg, transparent 0 5px, rgb(112 91 62 / .012) 6px 7px);
+  clip-path: polygon(0 1.5%, 3.5% 0, 96.8% 1.4%, 100% 5%, 99.3% 97.4%, 95.4% 100%, 1.1% 98.7%);
+  overflow: hidden;
+  padding: 25px clamp(19px, 2.3vw, 36px) 24px;
+}
+
+.cx-collection-card--guides .cx-collection-paper { background-color: rgb(238 230 217); }
+.cx-collection-card--lab .cx-collection-paper { background-color: rgb(251 247 238); }
+
+.cx-collection-top { display: flex; align-items: flex-start; gap: 25px; height: 39px; position: relative; z-index: 2; }
+.cx-collection-grip {
+  width: 23px;
+  height: 27px;
+  flex: none;
+  background-image: radial-gradient(circle, var(--cx-card-ink) 1.8px, transparent 2.1px);
+  background-size: 8px 8px;
+  background-position: 0 0;
+}
+.cx-collection-number {
+  display: inline-block;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  transform: rotate(-11deg);
+  padding: 6px 11px 5px;
+  font: italic 600 19px/1 "CX Mono", ui-monospace, monospace;
+}
+.cx-collection-card--systems .cx-collection-number { color: var(--orange-deep); }
+
+.cx-collection-card .cx-collection-arrow {
+  position: absolute;
+  top: 19px;
+  right: 26px;
+  font: 34px/1 Georgia, serif;
+  transform: rotate(-8deg);
+}
+
+.cx-collection-card h3 {
+  position: relative;
+  z-index: 2;
+  margin: 22px 0 0 40px;
+  font: 400 clamp(58px, 6vw, 91px)/.94 "CX Anton", Impact, sans-serif;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+}
+.cx-collection-underline {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 84px;
+  height: 6px;
+  background: var(--orange);
+  transform: rotate(-6deg);
+  margin: 7px 0 13px 50px;
+}
+.cx-collection-card p {
+  position: relative;
+  z-index: 2;
+  max-width: 31ch;
+  margin: 0 2px 0 48px;
+  font: 600 clamp(10px, .92vw, 12px)/1.62 "CX Mono", ui-monospace, monospace;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--cx-card-ink);
+}
+
+.cx-collection-mountains {
+  position: absolute;
+  bottom: -17px;
+  left: 2%;
+  width: 94%;
+  opacity: .38;
+  color: rgb(34 32 29);
+}
+.cx-collection-gear {
+  position: absolute;
+  right: 19px;
+  bottom: 16px;
+  font: 60px/1 Georgia, serif;
+  color: rgb(20 18 16);
+  transform: rotate(8deg);
+}
+.cx-collection-compass {
+  position: absolute;
+  width: 50%;
+  height: auto;
+  right: -9%;
+  bottom: -23%;
+  opacity: .24;
+  color: rgb(60 50 37);
+  transform: rotate(-12deg);
+}
+.cx-collection-flask {
+  position: absolute;
+  width: 111px;
+  height: 117px;
+  right: 11px;
+  bottom: -13px;
+  color: var(--orange);
+  transform: rotate(-5deg);
+}
+
+.cx-collection-handnote {
+  margin: 6px 7px 0;
+  text-align: right;
+  font: italic 600 12px/1.4 "CX Mono", ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.cx-collection-handnote span { color: var(--orange); font-size: 20px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .cx .cx-collection-card:hover {
+    transform: translateY(-9px) rotate(-.15deg);
+    filter: drop-shadow(5px 17px 10px rgb(39 27 21 / .32));
+  }
+}
+.cx .cx-collection-card:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 6px;
+  transform: translateY(-5px) rotate(0deg);
+}
+.cx .cx-collection-card:active { transform: translateY(-2px) rotate(0deg); }
+
+@media (max-width: 1100px) {
+  .cx-collection-card h3 { font-size: clamp(49px, 6vw, 71px); margin-left: 26px; }
+  .cx-collection-card p { margin-left: 34px; }
+  .cx-collection-underline { margin-left: 36px; }
+  .cx-collection-paper { padding-inline: 18px; }
+  .cx-collection-card .cx-collection-arrow { right: 14px; }
+}
+@media (max-width: 800px) {
+  .cx-collection { width: min(calc(100% - 46px), 550px); padding: 35px 0 70px; }
+  .cx-collection-grid { grid-template-columns: 1fr; gap: 23px; padding: 12px 9px; }
+  .cx-collection-paper { height: 265px; padding: 19px 25px 20px; }
+  .cx-collection-card h3 { font-size: clamp(63px, 13vw, 86px); margin: 10px 0 0 39px; }
+  .cx-collection-card p { margin-left: 46px; font-size: 11px; max-width: 30ch; }
+  .cx-collection-underline { margin: 5px 0 9px 49px; }
+  .cx-collection-mountains { bottom: -48px; opacity: .28; }
+  .cx-collection-compass { width: 42%; bottom: -30%; }
+  .cx-collection-flask { width: 90px; height: 96px; }
+}
+@media (max-width: 430px) {
+  .cx-collection { width: calc(100% - 36px); }
+  .cx-collection-rule { padding: 16px 2px; align-items: flex-start; }
+  .cx-collection-rule h2, .cx-collection-rule p { font-size: 10px; }
+  .cx-collection-rule p { text-align: right; }
+  .cx-collection-rule p span { margin: 0 4px; }
+  .cx-collection-paper { height: 252px; padding-inline: 16px; }
+  .cx-collection-card h3 { font-size: clamp(57px, 17vw, 70px); margin-left: 33px; }
+  .cx-collection-card p { margin-left: 39px; font-size: 10px; }
+  .cx-collection-underline { margin-left: 43px; }
+  .cx-collection-gear { font-size: 49px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cx .cx-collection-card,
+  .cx .cx-collection-card:hover,
+  .cx .cx-collection-card:focus-visible,
+  .cx .cx-collection-card:active {
+    transition: none;
+    transform: rotate(var(--card-tilt));
+  }
+}
