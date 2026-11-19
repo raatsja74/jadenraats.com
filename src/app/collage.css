@@ -395,3 +395,23 @@ html[data-site-theme="dark"] .jx .jx-hand { color: #1f2a44; }
 .cx .cx-top { margin-top: 0; }
 .cx-desert-bg { -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 80%); mask-image: radial-gradient(ellipse at center, #000 55%, transparent 80%); }
 @media (max-width: 600px) { .cx { padding-top: 16px; } .cx .cx-top { margin-top: 0; } }
+
+
+/* Illustrated paper sticker sits beneath the portrait, without replacing it. */
+.cx-duo-sticker {
+  position: absolute;
+  left: -1%;
+  bottom: 2%;
+  z-index: 4;
+  width: min(36%, 225px);
+  padding: 8px;
+  background: var(--card);
+  transform: rotate(-6deg);
+  box-shadow: 0 14px 20px -12px rgba(30, 20, 10, .4);
+  pointer-events: none;
+}
+.cx-duo-sticker img { display: block; width: 100%; height: auto; }
+
+@media (max-width: 600px) {
+  .cx-duo-sticker { left: -2%; bottom: 0; width: 38%; padding: 5px; }
+}
