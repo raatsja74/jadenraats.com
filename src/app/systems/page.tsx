@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import SystemsPage from "./SystemsPage";
 import { SHARE_IMAGES } from "@/lib/share-image";
 
-const TITLE = "Systems for Thinking, Working & Shipping | Jaden Raats";
+const TITLE = "How I use AI at work | Jaden Raats";
 const DESCRIPTION =
-  "Working guides and practical AI workflows, built from systems I use.";
+  "See how I use AI for customer follow-up, quotes, and tasks at Award Coatings. Browse the guides, skills, and prompts I use.";
 
 export const metadata: Metadata = {
   title: TITLE,

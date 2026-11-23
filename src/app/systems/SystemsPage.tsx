@@ -43,12 +43,11 @@ export default function SystemsPage() {
         <section id="top" className="scroll-mt-24 border-b border-line px-6 pb-16 pt-32 sm:px-10 sm:pb-24 sm:pt-40 lg:px-16">
           <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <p className="kicker kicker-accent">Personal systems / built in the open</p>
               <h1 className="display mt-8 max-w-5xl text-6xl leading-[0.88] sm:text-8xl lg:text-[7vw]">
-                Systems for thinking, working &amp; shipping.
+                How I use AI at work
               </h1>
               <p className="mt-8 max-w-2xl text-base leading-relaxed text-soft">
-                I build practical workflows that connect people, AI tools, and knowledge. This is where I document what survives real use.
+                I use AI to draft customer replies, build quotes, and keep track of tasks at Award Coatings. Here&apos;s how I set it up.
               </p>
             </div>
             <a href="#guides" className="btn btn-primary w-fit">Explore the guides <span aria-hidden="true">→</span></a>
@@ -58,10 +57,9 @@ export default function SystemsPage() {
         <section id="guides" className="scroll-mt-24 border-b border-line px-6 py-16 sm:px-10 sm:py-24">
           <div className="mx-auto max-w-6xl">
             <div className="max-w-3xl">
-              <p className="kicker kicker-accent">01 / Field guides</p>
-              <h2 className="display mt-5 text-5xl sm:text-7xl">Guides, not content.</h2>
+              <h2 className="display mt-5 text-5xl sm:text-7xl">Guides</h2>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-soft">
-                Working notes refined into useful systems. Filter by topic or search the published guides.
+                Search the guides or filter by topic.
               </p>
             </div>
 
@@ -100,13 +98,12 @@ export default function SystemsPage() {
           <div className="mx-auto max-w-6xl">
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <p className="kicker kicker-accent">02 / Skill cabinet</p>
-                <h2 className="display mt-5 text-5xl sm:text-7xl">The working database.</h2>
+                <h2 className="display mt-5 text-5xl sm:text-7xl">Skills and prompts</h2>
               </div>
               <Link href="/prompt-lab" className="kicker kicker-accent">Open skills library <span aria-hidden="true">→</span></Link>
             </div>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-soft">
-              Skills and prompts collected across the tools I use. Search the published inventory or narrow it by category.
+              Search the skills and prompts I use, or filter them by category.
             </p>
 
             <div className="mt-9 grid gap-3 sm:grid-cols-[1fr_auto]">

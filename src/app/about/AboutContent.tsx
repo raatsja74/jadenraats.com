@@ -24,26 +24,26 @@ const fadeUp = {
 const SYSTEMS: { stat: string | null; title: string; body: string }[] = [
   {
     stat: null,
-    title: "Leads get followed up whether or not I'm on a job site",
-    body: "Web forms, missed calls and Google messages land in one place and get a response automatically, instead of sitting in somebody's phone until the evening. The lead that goes cold is the most expensive thing a service business owns.",
+    title: "New leads get a reply while I'm on a job site",
+    body: "Web forms, missed calls, and Google messages go to one inbox. My system sends the first reply, so customers don't have to wait until I check my phone that evening.",
   },
   {
     stat: null,
-    title: "Quotes get built from a price book, not from scratch at 9pm",
-    body: "Measurements in, priced estimate out, same format every time. Quoting used to be the task that decided how long my day was.",
+    title: "I build quotes from a price book",
+    body: "I enter the measurements and the tool pulls prices from my price book. Every estimate comes out in the same format. I used to start each one from scratch at 9 p.m.",
   },
   {
     stat: "$14.15",
-    title: "The whole back office runs on one assistant, for pocket change",
-    body: "I pulled nine apps — messages, notes, tasks, files — behind a single front door, ran it as its only user for 55 days, and spent $14.15 in model costs doing it. Then I published everything that broke.",
+    title: "One assistant connects nine apps",
+    body: "I ran it myself for 55 days and spent $14.15 on model calls. The case study shows what broke along the way.",
   },
 ];
 
 /** Verified figures from the assistant build, measured over the 55-day run.
  *  These are the same numbers published in the case study on the homepage. */
 const NUMBERS = [
-  { n: "9", l: "apps unified" },
-  { n: "55", l: "days run live" },
+  { n: "9", l: "apps connected" },
+  { n: "55", l: "days in use" },
   { n: "$14.15", l: "total model cost" },
   { n: "2,142", l: "messages handled" },
 ];
@@ -96,8 +96,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
         >
-          Owner of Award Coatings. Builder of the AI systems that run it. I
-          share what survives a real Monday, in plain English.
+          I own Award Coatings, a floor coating company in Phoenix. I build and test AI tools there before I write about them.
         </motion.p>
 
         <motion.p
@@ -106,10 +105,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.5 }}
         >
-          I own a floor coating company in Phoenix and I build the AI systems that
-          run it — lead follow-up, quoting, scheduling, the back office. Award
-          Coatings isn&apos;t a case study I read about. It&apos;s the business
-          that has to still work on Monday if I get the automation wrong.
+          I use those tools to follow up with customers, write quotes, and schedule jobs. If I get the setup wrong, I still have to run the business on Monday.
         </motion.p>
 
         <motion.div
@@ -133,20 +129,12 @@ function Hero() {
 function Systems() {
   return (
     <section className="mx-auto max-w-6xl border-t border-line px-6 py-24 sm:px-10 sm:py-28">
-      <SectionLabel>how ai runs the business</SectionLabel>
-
       <motion.h2
         {...fadeUp}
         className="display mt-6 max-w-3xl text-5xl sm:text-6xl"
       >
-        Operator first, <span className="font-serif italic normal-case">builder</span> second.
+        How I use AI at <span className="font-serif italic normal-case">Award Coatings</span>
       </motion.h2>
-
-      <motion.p {...fadeUp} className="mt-8 max-w-2xl text-base leading-relaxed text-soft">
-        Most AI advice comes from people who have never had to make payroll. Mine
-        comes out of a coating business with crews, callbacks and a phone that
-        rings during a pour. Three things AI actually does here:
-      </motion.p>
 
       <div className="mt-14 border-t border-line">
         {SYSTEMS.map((s, i) => (
@@ -182,12 +170,10 @@ function Systems() {
 function Numbers() {
   return (
     <section className="mx-auto max-w-6xl border-t border-line px-6 py-24 sm:px-10 sm:py-28">
-      <SectionLabel>measured, not estimated</SectionLabel>
+      <SectionLabel>55 days with one assistant</SectionLabel>
 
       <motion.p {...fadeUp} className="mb-10 max-w-2xl text-base leading-relaxed text-soft">
-        The assistant that runs the back office, as actually metered over its
-        first 55 days. The full teardown — including the two weeks it silently
-        broke — is in the{" "}
+        I tracked the assistant&apos;s usage for its first 55 days. It stopped working for two weeks before I noticed. I wrote about what happened in the{" "}
         <Link href="/case-study" className="link-underline text-ink">
           case study
         </Link>
@@ -217,17 +203,10 @@ function Background() {
 
       <div className="grid gap-8 text-base leading-relaxed text-soft sm:grid-cols-2 sm:gap-14">
         <motion.p {...fadeUp}>
-          I came up in sales, not engineering. I taught myself to build because
-          the software I needed for a floor coating company either didn&apos;t
-          exist or cost more per month than it saved. So I started writing my
-          own, badly at first, and kept the parts that survived contact with real
-          jobs.
+          I started in sales. I taught myself to write software because the tools I needed either didn&apos;t exist or cost more than they saved. I wrote some bad software at first. I kept what worked on actual jobs.
         </motion.p>
         <motion.p {...fadeUp}>
-          That&apos;s still the filter. If a system holds up through a full week
-          at Award Coatings, I&apos;ll show other owners exactly how it works, in
-          plain English, including what it cost and what broke. If it
-          doesn&apos;t hold up, you&apos;ll never hear about it.
+          When a tool gets through a week at Award Coatings, I share how I set it up, what it cost, and what broke along the way.
         </motion.p>
       </div>
     </section>
@@ -238,13 +217,11 @@ function Elsewhere() {
   return (
     <section className="border-t border-line rounded-[var(--modern-radius-inner)] bg-ink px-6 py-24 text-cream sm:px-10 sm:py-28">
       <div className="mx-auto max-w-6xl">
-        <SectionLabel>elsewhere</SectionLabel>
-
         <motion.h2
           {...fadeUp}
           className="display mt-6 max-w-2xl text-5xl sm:text-6xl"
         >
-          Same person, <span className="font-serif italic normal-case">every list</span>.
+          Where to <span className="font-serif italic normal-case">find me</span>
         </motion.h2>
 
         <div className="mt-12 border-t border-cream/10">

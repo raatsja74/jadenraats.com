@@ -55,10 +55,10 @@ export default function CollageHome() {
               </span>
             </h1>
             <p className="cx-line">
-              Bigfork to Phoenix. Figuring out what works in <em>real life.</em>
+              I use AI to sort notes and <em>follow up.</em>
             </p>
             <Link href="/guides" className="cx-btn" style={{ clipPath: torn(5, 2.4, 40) }}>
-              Explore the guides <span aria-hidden="true">→</span>
+              Browse AI guides <span aria-hidden="true">→</span>
             </Link>
           </div>
 
@@ -73,7 +73,7 @@ export default function CollageHome() {
                 <div className="cx-pola-back" style={{ clipPath: torn(17, 3) }} />
                 <figure className="cx-pola-card">
                   <Image src="/home/portrait.webp" alt="" width={820} height={803} sizes="(max-width: 768px) 75vw, 400px" style={{ height: "auto" }} draggable={false} priority />
-                  <figcaption>Built. Used. Fixed.</figcaption>
+                  <figcaption>JD Raats</figcaption>
                 </figure>
                 <span className="cx-tape cx-tape-1" />
                 <span className="cx-tape cx-tape-2" />

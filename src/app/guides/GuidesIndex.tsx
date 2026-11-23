@@ -13,11 +13,11 @@ export default function GuidesIndex() {
           <div className="border-t border-line pt-10">
             <p className="kicker kicker-accent">Guides</p>
             <h1 className="display mt-6 max-w-4xl text-5xl sm:text-6xl">
-              Practical guides to use AI
+              Practical AI guides in plain English
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-soft">
-              New to AI? Start with the first guide and one real task. Explore
-              business workflows and deeper builds when you are ready.
+              New to AI? Start with a <Link href="/guides/turn-a-messy-note-into-a-next-step" className="link-underline">guide to sorting a messy note</Link>.
+              If you use AI at work, try the guides on customer follow-up or setting up an inbox for your assistant.
             </p>
           </div>
         </section>
@@ -58,8 +58,7 @@ export default function GuidesIndex() {
               <p className="kicker kicker-accent">Also</p>
               <h2 className="display mt-3 text-3xl sm:text-4xl">Resources</h2>
               <p className="mt-3 max-w-xl text-base leading-relaxed text-soft">
-                Skills library, daily note, CaptureVault map, and the rest of the public
-                pages.
+                Find the skills library, daily note, and CaptureVault map.
               </p>
             </div>
             <Link
