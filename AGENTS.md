@@ -39,3 +39,12 @@ Creative and strategic thinking partner for Jaden's personal site. This site is 
 - Design: follow DESIGN.md (rounded cards, pill controls, system type, orange accent). Avoid pastel, purple gradients, generic SaaS templates.
 - Copy: short sentences. Real outcomes. No "leverage synergies" or "thought leader" language.
 - The site should make someone say "this guy actually builds stuff" not "this guy talks about AI".
+
+## Unslop copy pass
+
+Run this pass on new or edited site copy, including headings, buttons, guide summaries, and search and share descriptions. Preserve Jaden's meaning and voice. Keep exact figures, names, quotes, and working examples where they matter.
+
+- Say what the reader can do or what the system does. Name the actor, tool, or result. Name the source of a claim or cut it.
+- Use plain words, active voice, and complete sentences. Split dense sentences. Cut filler, unsupported comparisons, forced lists of three, and lines that could fit any site.
+- Use sentence case and straight quotes. Skip em dashes, decorative emoji, and bold labels that repeat the line. Use colons for lists or examples.
+- Reread the finished copy. Rewrite anything that sounds like a pitch, a chatbot, or a slogan.

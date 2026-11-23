@@ -31,10 +31,10 @@ function useSeen<T extends HTMLElement>() {
   return { ref, seen };
 }
 
-function ShowMeHow({ href }: { href: string }) {
+function GuideLink({ href, children }: { href: string; children: string }) {
   return (
     <Link href={href} className="jx-how">
-      Show me how <span aria-hidden="true">→</span>
+      {children} <span aria-hidden="true">→</span>
     </Link>
   );
 }
@@ -55,15 +55,14 @@ function TrySmall() {
     <section className="jx-step jx-try" aria-labelledby="jx-try-title">
       <div className="jx-text">
         <h2 id="jx-try-title">
-          Try something <em>small.</em>
+          Sort a <em>messy note</em>
         </h2>
         <p>
-          Most of my AI use starts with a messy note. One prompt sorts it and picks a single thing I can do in ten minutes.
-          Here&apos;s one to try.
+          This prompt asks AI to pull out what you know, what you need to check, and one thing you can do in ten minutes.
         </p>
         <div className="jx-actions">
           <button type="button" className="jx-btn" aria-expanded={open} aria-controls="jx-answer" onClick={() => setOpen((o) => !o)}>
-            {open ? "Fold it back" : "Sort this note"}
+            {open ? "Hide example" : "Sort this note"}
           </button>
           <button type="button" className="jx-link" onClick={copy}>
             {copied ? "Prompt copied" : "Copy the prompt"}
@@ -72,7 +71,7 @@ function TrySmall() {
         <span className="jx-sr" aria-live="polite">
           {copied ? "Prompt copied to clipboard" : ""}
         </span>
-        <ShowMeHow href="/guides/turn-a-messy-note-into-a-next-step" />
+        <GuideLink href="/guides/turn-a-messy-note-into-a-next-step">Read the starter guide</GuideLink>
       </div>
 
       <div className="jx-note-wrap">
@@ -88,14 +87,14 @@ function TrySmall() {
             </div>
             <div>
               <dt>Open question</dt>
-              <dd>Which shop, and when it&apos;s open.</dd>
+              <dd>Which bike shop should I call, and when does it open?</dd>
             </div>
             <div className="jx-next">
-              <dt>Next step, 10 min</dt>
+              <dt>Next step</dt>
               <dd>Find the opening hours for one nearby bike shop and save its number.</dd>
             </div>
           </dl>
-          <p className="jx-check">It shouldn&apos;t claim the shop is open unless it checked a current source.</p>
+          <p className="jx-check">Check the shop&apos;s hours on its website before you go.</p>
         </div>
       </div>
     </section>
@@ -110,24 +109,24 @@ function RealLife() {
       </div>
       <div className="jx-text">
         <h2 id="jx-real-title">
-          See it work in <em>real life.</em>
+          Follow up with <em>new leads</em>
         </h2>
         <p className="jx-lede">
-          I run Award Coatings, a floor coating company in Phoenix. Leads, quotes, crews, callbacks. If a tool can&apos;t survive a Monday there, I don&apos;t keep it.
+          I used to check four inboxes for new leads after dinner. Here&apos;s how I handle follow-up at Award Coatings now.
         </p>
         <ol className="jx-story">
           <li>
-            <strong>What went wrong.</strong> Leads landed in four inboxes I checked after dinner, and vague automation is the fastest way to look bad in front of a customer.
+            Forms, missed calls, and messages go to one inbox.
           </li>
           <li>
-            <strong>What I changed.</strong> Every form, missed call and message goes to one place. Three reply templates: new lead, missing info, still interested?
+            I use reply templates for new leads, missing details, and leads who haven&apos;t replied.
           </li>
           <li>
-            <strong>What helped.</strong> AI drafts the reply and nudges me when a lead goes quiet. Prices and schedules never send without me.
+            AI drafts replies and reminds me when a lead goes quiet. I approve prices and scheduling before they go out.
           </li>
         </ol>
-        <blockquote>If you wouldn&apos;t send the draft while standing next to the customer, don&apos;t automate the send.</blockquote>
-        <ShowMeHow href="/guides/follow-up-that-survives-monday" />
+        <blockquote>Read each reply template before you let the system send it.</blockquote>
+        <GuideLink href="/guides/follow-up-that-survives-monday">Read the follow-up guide</GuideLink>
       </div>
     </section>
   );
@@ -146,12 +145,12 @@ function FrontDoor() {
     <section className="jx-step jx-door" aria-labelledby="jx-door-title">
       <div className="jx-text">
         <h2 id="jx-door-title">
-          Go a little <em>deeper.</em>
+          Save notes <em>to one app</em>
         </h2>
         <p>
-          I was capturing work in eight places and finding it in none of them. The fix was one front door: everything goes to a chat, and which chat I pick decides where it lands. Nothing has to guess.
+          I used to save things in eight places and forget where I put them. Now I send everything through one app. The chat I choose decides whether I&apos;m saving a link, adding a task, filing a document, or asking a question.
         </p>
-        <ShowMeHow href="/guides/one-front-door" />
+        <GuideLink href="/guides/one-front-door">Read the chat setup guide</GuideLink>
       </div>
       <div ref={ref} className={`jx-scraps ${seen ? "is-settled" : ""}`} aria-label="Four notes sorted into four chats">
         {SCRAPS.map((s, i) => (
@@ -169,12 +168,12 @@ function KeepExploring() {
   return (
     <section className="jx-step jx-more" aria-labelledby="jx-more-title">
       <h2 id="jx-more-title">
-        Keep <em>exploring.</em>
+        More from <em>the site</em>
       </h2>
       <div className="jx-more-grid">
         <Link href="/guides" className="jx-more-row">
           <span className="jx-more-name">All guides →</span>
-          <span className="jx-more-line">Short, plain-English how-tos</span>
+          <span className="jx-more-line">Try AI on a note or a task at work</span>
         </Link>
         <Link href="/systems" className="jx-more-row">
           <span className="jx-more-name">Systems →</span>
@@ -186,7 +185,7 @@ function KeepExploring() {
         </Link>
         <Link href="/photos" className="jx-more-row">
           <span className="jx-more-name">Photos →</span>
-          <span className="jx-more-line">The rest of real life</span>
+          <span className="jx-more-line">My photo gallery</span>
         </Link>
       </div>
     </section>
@@ -198,8 +197,7 @@ export default function Journey() {
     <div className="jx">
       <section className="jx-intro" aria-label="About JD">
         <p>
-          Hey, I&apos;m JD. I run a floor coating business and split my time between Bigfork, Montana and Phoenix. This is a little of what I&apos;m
-          building, learning, and enjoying. Stick around a few minutes.
+          I run Award Coatings, a floor coating company in Phoenix. I split my time between Phoenix and Bigfork, Montana.
         </p>
       </section>
       <TrySmall />
